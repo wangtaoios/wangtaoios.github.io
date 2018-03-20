@@ -1822,6 +1822,218 @@ NSArray *array = @[@&quot;不可达&quot;,@&quot;2G/3G/4G&quot;,@&quot;wi-fi&quo
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://weibo.com/wangtaoworld/2014/11/20/NTFS-read-write/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wangtao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="wt">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2014/11/20/NTFS-read-write/" itemprop="url">Unbenannt</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2014-11-20T09:06:21+08:00">
+                2014-11-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>title: NTFS read-write<br>date: 2014-11-20 09:06:21<br>tags:NTFS</p>
+<pre><code>********************************************************************
+    1:&gt;&gt;&gt;  sudo mount | grep ntfs  &lt;&lt;&lt;
+    2:会得到如下路径，第3条的命令根据该路径而变化
+    &quot;/dev/disk1s1 on /Volumes/半片残枫 (ntfs, local, nodev, nosuid, read-only, noowners)&quot;
+    3:&gt;&gt;&gt;  sudo umount /dev/disk1s1  &lt;&lt;&lt;
+    4:&gt;&gt;&gt;  sudo mkdir -p /Volumes/wto  &lt;&lt;&lt;
+    5:&gt;&gt;&gt;  sudo mount_ntfs -o rw,auto,nobrowse,noowners,noatime /dev/disk1s1 /Volumes/wto  &lt;&lt;&lt;
+    //网上代码    &gt;&gt;&gt;  sudo mount_ntfs -o rw,auto,nobrowse,noowners,noatime  /dev/disk0s1 /Volumes/Win7boot
+       &lt;&lt;&lt;
+    6:&gt;&gt;&gt;  cd /Volumes  &lt;&lt;&lt;
+    7:&gt;&gt;&gt;  open .  &lt;&lt;&lt;
+    8:推出硬盘命令
+    &gt;&gt;&gt;  sudo umount /Volumes/wto  &lt;&lt;&lt;
+    或者在Finder中右键推出
+    *****此方法需要每次插入硬盘时执行该部分命令
+********************************************************************
+    http://www.memacx.com/forum.php?mod=viewthread&amp;tid=5482
+    //
+    在root下使用(建议使用此条)
+    &gt;&gt;&gt;   vi ~/.bashrc   &lt;&lt;&lt;
+    编辑添加： export EDITOR=vim
+    网上&gt;&gt;&gt;  echo export EDITOR=/usr/bin/vim &gt;&gt; ~/.bashrc
+    或者
+    //直接执行
+    &gt;&gt;&gt;  export EDITOR=vim
+    或者
+    //执行
+    &gt;&gt;&gt;  EDITOR=vim  &lt;&lt;&lt;
+    &gt;&gt;&gt;  export EDITOR  &lt;&lt;&lt;
+
+保存后即可和vim编译器一样编辑 /etc/fstab 下的内容：vim /etc/fstab,
+也就是可以直接执行 &gt;&gt;&gt;&gt;   vifs  &lt;&lt;&lt;命令
+然后直接像在vim中一样直接编辑添加
+//
+LABEL=半片残枫 none ntfs rw,nobrowse,noatime,nosuid
+//或
+LABEL=半片残枫 none ntfs rw,nobrowse,noowners,noatime,nosuid
+//
+******此方法即可在以后每次开机时自动执行该命令，自动会挂载NTFS格式硬盘半片残枫为读写格式的
+********************************************************************
+    /////////////////////////////////////////////////////////////
+    尤明大牛给的建议：
+    //1：
+    先执行
+    &gt;&gt;&gt;   sudo mount_ntfs -o rw,auto.nobrowse,noowners,noatime /dev/disk1s1 /Volumes/disk   &lt;&lt;&lt;
+    //其中disk为自己在  /Volmes/  下创建的文件，
+    //disk1s1为执行&gt;&gt;&gt;  sudo mount | grep ntfs  &lt;&lt;&lt;后查看到的文件
+    //此方法需要每次插入硬盘时都需要执行该部分命令
+    //2：
+    不行的话就在   /etc/fstab 下
+    vi fsatb
+    //
+    添加
+    LABEL=半片残枫 none ntfs rw
+    //
+    此方法即可每次开机自动将NTFS格式的硬盘挂载为读写格式的
+    ///////////////////////////////////////////////////////////////
+**********************************************************************
+    //链接
+    一般情况下，ubuntu终端下的默认编辑器为nano，我们直接编辑某个文件，默认就会打开nano。比如我们输入“crontab -e“的时候默认会打开nano编辑器。
+    对于熟悉VIM的朋友来说，都希望默认编辑器能使用vim，那么我们就需要修改ubuntu的默认编辑器。
+    修改ubuntu默认编辑器有三种方法：
+    一、直接在终端输入：
+
+echo export EDITOR=/usr/bin/vim &gt;&gt; ~/.bashrc
+二、使用系统管理工具update-alternatives来修改
+在终端输入：
+update-alternatives --config editor
+然后选择vim.basic这项即可
+三、如果系统中只剩下nano和vim两个编辑器，这个时候我们如果完全删除nano，那么系统会默认选择vim为默认编辑器
+在终端输入删除nano编辑器的命令：
+
+sudo apt-get remove nano
+
+修改完成之后我们输入：
+
+crontab -e
+看一看出现的是不是大家喜欢的vim编辑器呢。
+
+
+改变默认的程序来运行
+
+比如说，想给PDF文件换个默认的阅读工具，怎么弄呢？
+　　随便找个PDF文件，右击-&gt;使用其它程序打开，这样是可以选择不同的阅读器，可是如何指定为默认的阅读器呢？
+　　ubuntu中有两个文件，跟文件的默认打开方式有关：
+　　1./etc/gnome/defaults.list 保存了全局的打开方式
+　　2.~/.local/share/applications/mimeapps.list 保存了个人的打开方式
+
+    当两着有冲突，则优先采用局部的个人设置。举个例子：
+　　application/pdf=Foxit-Reader.desktop;
+    这样，系统就默认使用Foxit Reader作为PDF默认的阅读器，而不是系统自带的evince。注意格式，文件名要写对，后面有分号。
+　　文件名怎么写呢？其实，通过“右击-&gt;使用其它程序打开”，就会在mimeapps.list，产生一条记录，该记录就会显示你选中程序的文件名，这下该知道怎么做了吧
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://weibo.com/wangtaoworld/2014/11/17/MacBook-Pro/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2130,418 +2342,6 @@ hexo g -d
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://weibo.com/wangtaoworld/2014/11/13/UI-notes/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wangtao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="wt">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2014/11/13/UI-notes/" itemprop="url">UI_notes</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2014-11-13T16:20:58+08:00">
-                2014-11-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><img src="http://www.52nx.net/article/UploadPic/2011-5/201152320185636873.png" alt="image"></p>
-<h1 id="UIView常用属性及方法"><a href="#UIView常用属性及方法" class="headerlink" title="UIView常用属性及方法"></a>UIView常用属性及方法</h1><h3 id="常用属性"><a href="#常用属性" class="headerlink" title="常用属性"></a>常用属性</h3><p>NSInteger tag;</p>
-<p><strong>CGRect</strong> frame;</p>
-<p><strong>CGRect</strong> bounds;</p>
-<p><strong>CGPoint</strong> center;</p>
-<p><strong>CGAffineTransform</strong> transform;</p>
-<p><strong>BOOL</strong> multipleTouchEnable;</p>
-<p><strong>BOOL</strong> exclusiveTouch;</p>
-<p><strong>UIView</strong>  *superView;</p>
-<p><strong>NSArray</strong> *subViews;</p>
-<p><strong>UIWindow</strong>  *window;</p>
-<p><strong>UIColor</strong>  *backgroundColor;</p>
-<p><strong>CGFloat</strong>  alpa;</p>
-<p><strong>BOOL</strong>  opaque;</p>
-<p><strong>BOOL</strong>  hidden;</p>
-<h3 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h3><h4 id="类方法"><a href="#类方法" class="headerlink" title="类方法"></a>类方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">+ (id)initWithFrame:(CGRect)frame;</span><br></pre></td></tr></table></figure>
-<h4 id="实例方法"><a href="#实例方法" class="headerlink" title="实例方法"></a>实例方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">- (void)removeFromSuperview;</span><br><span class="line">- (void)insertSubview:(UIView *)view atIndex:(NSInteger)index;</span><br><span class="line">- (void)exchangeSubviewAtIndex:(NSInteger)index1 withSubviewAtIndex:(NSInteger)index2;</span><br><span class="line">- (void)addSubview:(UIView *)view;</span><br><span class="line">- (void)insertSubview:(UIView *)view belowSubview:(UIView *)siblingSubview;</span><br><span class="line">- (void)insertSubview:(UIView *)view aboveSubview:(UIView *)siblingSubview;</span><br></pre></td></tr></table></figure>
-<h1 id="UIView常见子类"><a href="#UIView常见子类" class="headerlink" title="UIView常见子类"></a>UIView常见子类</h1><h2 id="UIControl"><a href="#UIControl" class="headerlink" title="UIControl"></a>UIControl</h2><h4 id="常用属性-1"><a href="#常用属性-1" class="headerlink" title="常用属性"></a>常用属性</h4><p><strong>BOOL</strong> enable;</p>
-<p><strong>BOOL</strong> selected;</p>
-<p><strong>BOOL</strong> highlighted;</p>
-<p><strong>UIControlState</strong> state;&lt;<code>readonly</code>&gt;</p>
-<p><strong>BOOL</strong> touchInside;&lt;<code>readonly</code>&gt;</p>
-<h4 id="实例方法-1"><a href="#实例方法-1" class="headerlink" title="实例方法"></a>实例方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- (void)addTarget:(id)target action:(SEL)action forControlEvent:(UIControlEvent)controlEvent;</span><br><span class="line">- (void)removeTarget:(id)target action:(SEL)action forControlEvent:(UIControlEvent)controlEvent;</span><br><span class="line">- (void)sendAction:(SEL)action to:(id)target forEvent:(UIEvent)event;</span><br><span class="line">- (void)sendActionsForControlEvents:(UIControlEvent)controlEvents;</span><br></pre></td></tr></table></figure>
-<h2 id="UIControl常见子类"><a href="#UIControl常见子类" class="headerlink" title="UIControl常见子类"></a>UIControl常见子类</h2><h3 id="UIButton"><a href="#UIButton" class="headerlink" title="UIButton"></a>UIButton</h3><h4 id="常用属性-2"><a href="#常用属性-2" class="headerlink" title="常用属性"></a>常用属性</h4><p><strong>UIButtonType</strong> buttonType;&lt;<code>readonly</code>&gt;</p>
-<p><strong>NSString</strong> *currentTitle;&lt;<code>readonly</code>&gt;</p>
-<p><strong>UIColor</strong> *currentColor;&lt;<code>readonly</code>&gt;</p>
-<p><strong>UIImage</strong> *currentImage;&lt;<code>readonly</code>&gt;</p>
-<p><strong>UIImage</strong>  *currentBackgroundImage;&lt;<code>readonly</code>&gt;</p>
-<p><strong>NSAttributedString</strong>  *currentAttributedTitle;&lt;<code>readonly</code>&gt;</p>
-<h4 id="类方法-1"><a href="#类方法-1" class="headerlink" title="类方法"></a>类方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">+ (id)buttonWithType:(UIButtonType)buttonType;</span><br></pre></td></tr></table></figure>
-<h4 id="实例方法-2"><a href="#实例方法-2" class="headerlink" title="实例方法"></a>实例方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">- (void)setTitle:(NSString *)title forState:(UIControlState)state;</span><br><span class="line">- (void)setTitleColor:(UIColor *)color forState:(UIControlState)state;</span><br><span class="line">- (void)setImage:(UIImage *)image forState:(UIControlState)state;</span><br><span class="line">- (void)setBackgroundImage:(UIImage *)image forState:(UIControlState)state;</span><br><span class="line">- (void)setAttributedTitle:(NSAttributedString *)title forState:(UIControlState)state;</span><br><span class="line">- (NSString *)titleForState:(UIControlState)state;</span><br><span class="line">- (UIColor *)titleColorForState:(UIControlState)state;</span><br><span class="line">- (UIImage *)imageForState:(UIControlState)state;</span><br><span class="line">- (UIImage *)backgroundImageForState:(UIControlState)state;</span><br><span class="line">- (NSAttributedString *)attributedStringForState:(UIControlState)state;</span><br></pre></td></tr></table></figure>
-<h3 id="UISlider"><a href="#UISlider" class="headerlink" title="UISlider"></a>UISlider</h3><h4 id="常见属性"><a href="#常见属性" class="headerlink" title="常见属性"></a>常见属性</h4><p><strong>float</strong>  value;</p>
-<p><strong>float</strong>  minimumValue;</p>
-<p><strong>float</strong> maximumValue;</p>
-<p><strong>UIImage</strong>  *minimumValue;</p>
-<p><strong>UIImage</strong>  *maximumValue;</p>
-<p><strong>BOOL</strong>  continuous;</p>
-<p><strong>UIColor</strong>  *minimumTrackTintColor;</p>
-<p><strong>UIColor</strong>  *maximumTrackTintColor;</p>
-<p><strong>UIColor</strong>  *thumbTintColor;</p>
-<p><code>readonly</code></p>
-<p><strong>UIImage</strong>  *currentThumbImage;</p>
-<p><strong>UIImage</strong>  *currentMinimumTrackImage;</p>
-<p><strong>UIImage</strong>  *currentMaximumTrackImage;</p>
-<h4 id="实例方法-3"><a href="#实例方法-3" class="headerlink" title="实例方法"></a>实例方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">- (void)setThumbImage:(UIImage *)image forState:(UIControlState)state;</span><br><span class="line">- (void)setMinimumTrackImage:(UIImage *)image forState:(UIControlState)state;</span><br><span class="line">- (void)setMaximumTrackImage:(UIImage *)image forState:(UIControlState)state;</span><br><span class="line">- (UIImage *)thumbImage forState:(UIControlState)state;</span><br><span class="line">- (UIImage *)minimumTrackImage forState:(UIControlState)state;</span><br><span class="line">- (UIImage *)maximumTrackImage forState:(UIControlState)state;</span><br></pre></td></tr></table></figure>
-<h3 id="UITextField"><a href="#UITextField" class="headerlink" title="UITextField"></a>UITextField</h3><h4 id="常用属性-3"><a href="#常用属性-3" class="headerlink" title="常用属性"></a>常用属性</h4><p><strong>NSString</strong> *text;</p>
-<p><strong>UIColor</strong>  *textColor;</p>
-<p><strong>UIFont</strong>  *font;</p>
-<p><strong>NSTextAlignment</strong>  textAlignment;</p>
-<p><strong>UITextBorderStyle</strong>  borderStyle;</p>
-<p><strong>NSString</strong>   *placeholder;</p>
-<p><strong>BOOL</strong>  clearOnBeginEditing;</p>
-<p><strong>BOOL</strong>  adjustsFontSizeToFitWidth;</p>
-<p><strong>CGFloat</strong>  minimumFontSize;</p>
-<p><strong>id<uitextfielddelegate></uitextfielddelegate></strong>  delegate;</p>
-<p><strong>UIImage</strong> *background;</p>
-<p><strong>UIImage</strong>  *disabledBackground;</p>
-<p><strong>BOOL</strong>  editing;</p>
-<p><strong>UITextFieldViewMode</strong>  clearButtonMode;</p>
-<p><strong>UIView</strong> *leftView;</p>
-<p><strong>UITextFieldViewMode</strong> leftViewMode;</p>
-<p><strong>UIView</strong> *rightView;</p>
-<p><strong>UITextFieldViewMode</strong> rightViewMode;</p>
-<p><strong>UIView</strong>  *inputView;</p>
-<p><strong>UIView</strong>  *inputAccessoryView;</p>
-<h4 id="实例方法-4"><a href="#实例方法-4" class="headerlink" title="实例方法"></a>实例方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">- (void)drawPlaceholderInRect:(CGRect)rect;</span><br><span class="line">- (void)drawTextInRect:(CGRect)rect;</span><br></pre></td></tr></table></figure>
-<h3 id="UISegmentedControl"><a href="#UISegmentedControl" class="headerlink" title="UISegmentedControl"></a>UISegmentedControl</h3><h4 id="常用属性-4"><a href="#常用属性-4" class="headerlink" title="常用属性"></a>常用属性</h4><p><strong>UISegmentedControlStyle</strong>  segmentedControlStyle;</p>
-<p><strong>NSUInteger</strong> numberOfSegments; &lt;<code>readonly</code>&gt;</p>
-<p><strong>UIColor</strong>  *tintColor;</p>
-<p><strong>NSInteger</strong>  selectedSegmentIndex;</p>
-<h4 id="实例方法-5"><a href="#实例方法-5" class="headerlink" title="实例方法"></a>实例方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">- (id)initWithItems:(NSArray *)items;</span><br><span class="line">- (void)insertSegmentWithTitle:(NSString *)title atIndex:(NSUInteger)segment animated:(BOOL)animated;</span><br><span class="line">- (void)insertSegmentWithImage:(UIImage *)image atIndex:(NSUInteger)segment animated:(BOOL)animated;</span><br><span class="line">- (void)removeSegmentAtIndex:(NSUInteger)segment animated:(BOOL)animated;</span><br><span class="line">- (void)removeAllSegments;</span><br><span class="line">- (void)setTitle:(NSString *)title forSegmentAtIndex:(NSUInteger)segment;</span><br><span class="line">- (NSString *)titleForSegmentAtIndex:(NSUInteger)segment;</span><br><span class="line">- (void)setImage:(UIImage *)image forSegmentAtIndex:(NSUInteger)segment;</span><br><span class="line">- (UIImage *)imageForSegmentAtIndex:(NSUInteger)segment;</span><br><span class="line">- (void)setWidth:(CGFloat)width forSegmentAtIndex:(NSUInteger)segment;</span><br><span class="line">- (CGFloat)widthForSegmentAtIndex:(NSUInteger)segment;</span><br><span class="line">- (void)setEnabled:(BOOL)enabled forSegmentAtIndex:(NSUInteger)segment;</span><br><span class="line">- (BOOL)isEnabledForSegmentAtIndex:(NSUInteger)segment;</span><br><span class="line">- (void)setBackgroundImage:(UIImage *)backgroundImage forState:(UIControlState)state barMetrics:(UIBarMetrics)barMetrics;</span><br><span class="line">- (UIImage *)backgroundImageForState:(UIControlState)state barMetrics:(UIBarMetrics)barMetrics;</span><br></pre></td></tr></table></figure>
-<h3 id="UIPageControl"><a href="#UIPageControl" class="headerlink" title="UIPageControl"></a>UIPageControl</h3><h4 id="常用属性-5"><a href="#常用属性-5" class="headerlink" title="常用属性"></a>常用属性</h4><p><strong>NSInteger</strong>  numberOfPages;</p>
-<p><strong>NSInteger</strong>  currentPage;</p>
-<p><strong>BOOL</strong> hidesForSinglePage;</p>
-<p><strong>BOOL</strong>  defersCurrentPageDisplay; //点击翻页无效</p>
-<p><strong>UIColor</strong>  *pageIndicatorTintColor;</p>
-<p><strong>UIColor</strong>  *currentPageIndicatorColor;</p>
-<h4 id="实例方法-6"><a href="#实例方法-6" class="headerlink" title="实例方法"></a>实例方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">- (void)updateCurrentPageDisplay;</span><br><span class="line">- (CGSize)sizeForNumberOfPages:(NSInteger)pageCount;</span><br></pre></td></tr></table></figure>
-<h3 id="UISwitch"><a href="#UISwitch" class="headerlink" title="UISwitch"></a>UISwitch</h3><h4 id="常用属性-6"><a href="#常用属性-6" class="headerlink" title="常用属性"></a>常用属性</h4><p><strong>UIColor</strong>  *onTintColor;</p>
-<p><strong>UIColor</strong>  *tintColor;</p>
-<p><strong>UIColor</strong>  *thumbColor;</p>
-<p><strong>UIImage</strong>  *onImage;</p>
-<p><strong>UIImage</strong>  *offImage;</p>
-<p><strong>BOOL</strong> on;</p>
-<h4 id="实例方法-7"><a href="#实例方法-7" class="headerlink" title="实例方法"></a>实例方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">- (void)initWithFrame:(CGRect)frame;</span><br><span class="line">- (void)setOn:(BOOL)on animated:(BOOL)animated;</span><br></pre></td></tr></table></figure>
-<h3 id="UIDatePicker"><a href="#UIDatePicker" class="headerlink" title="UIDatePicker"></a>UIDatePicker</h3><h4 id="常用属性-7"><a href="#常用属性-7" class="headerlink" title="常用属性"></a>常用属性</h4><p><strong>UIDatePicker</strong>  datePickerMode;</p>
-<p><strong>NSLocale</strong>   *locale;</p>
-<p><strong>NSTimeZone</strong>  *timeZone;</p>
-<p><strong>NSDate</strong>     *date;</p>
-<p><strong>NSDate</strong>      *minimumDate;</p>
-<p><strong>NSDate</strong>      *MaximumDate;</p>
-<p><strong>NSTimerInterval</strong>    *countDownDuration;</p>
-<p><strong>NSInteger</strong>    minuteInterval;</p>
-<h4 id="实例方法-8"><a href="#实例方法-8" class="headerlink" title="实例方法"></a>实例方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (void)setDate:(NSDate *)date animated:(BOOL)animated;</span><br></pre></td></tr></table></figure>
-<h2 id="UILabel"><a href="#UILabel" class="headerlink" title="UILabel"></a>UILabel</h2><h4 id="常用属性-8"><a href="#常用属性-8" class="headerlink" title="常用属性"></a>常用属性</h4><p><strong>NSString</strong> *text;</p>
-<p><strong>UIFont</strong> *font;</p>
-<p><strong>UIColor</strong>   *color;</p>
-<p><strong>UIColor</strong>    *shadowColor;</p>
-<p><strong>CGSize</strong>     shadowOffset;</p>
-<p><strong>NSTextAlignment</strong>     textAlignment;</p>
-<p><strong>NSLineBreakMode</strong>     lineBreakMode;</p>
-<p><strong>NSAttributedString</strong>    attributedText;</p>
-<p><strong>UIColor</strong>   *highlightedTextColor;</p>
-<p><strong>BOOL</strong>  highlighted;</p>
-<p><strong>BOOL</strong>  userInteractionEnabled;</p>
-<p><strong>BOOL</strong>   enabled;</p>
-<p><strong>NSInteger</strong>    numberOfLines;</p>
-<p><strong>BOOL</strong>   adjustsFontSizeToFitWidth;</p>
-<p><strong>BOOL</strong> minimumFontSize;</p>
-<h4 id="实例方法-9"><a href="#实例方法-9" class="headerlink" title="实例方法"></a>实例方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">- (CGRect)textRectForBounds:(CGRect)bounds limitedToNumberOfLines:(NSInteger)numberOfLines;</span><br><span class="line">- (void)drawTextInRect:(CGRect)rect;</span><br></pre></td></tr></table></figure>
-<h2 id="UIAlertView"><a href="#UIAlertView" class="headerlink" title="UIAlertView"></a>UIAlertView</h2><h4 id="常见属性-1"><a href="#常见属性-1" class="headerlink" title="常见属性"></a>常见属性</h4><p><strong>id<uialertviewdelegate></uialertviewdelegate></strong> delegate; </p>
-<p><strong>NSString</strong>   *title;</p>
-<p><strong>NSString</strong>   *message;</p>
-<p><strong>NSInteger</strong>  cancelButtonIndex;</p>
-<p><code>readonly</code></p>
-<p><strong>NSInteger</strong>    numberOfButtons；</p>
-<p><strong>NSInteger</strong>  firstOtherButtonIndex;</p>
-<p><strong>BOOL</strong>    visible;</p>
-<p><strong>UIAlertViewStyle</strong> alertViewStyle;</p>
-<h4 id="实例方法-10"><a href="#实例方法-10" class="headerlink" title="实例方法"></a>实例方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- (id)initWithTitle:(NSString *)title message:(NSString *)message delegate:(id /*&lt;UIAlertViewDelegate&gt;*/)delegate cancelButtonTitle:(NSString *)cancelButtonTitle otherButtonTitles:(NSString *)otherButtonTitles, ... ;</span><br><span class="line">- (void)show;</span><br><span class="line">- (void)dismissWithClickEdButtonIndex:(NSInteger)buttonIndex animated:(BOOL)animated;</span><br><span class="line">- (UITextField *)textFieldAtIndex:(NSInteger)textFieldIndex;</span><br></pre></td></tr></table></figure>
-<h2 id="UIActionSheet"><a href="#UIActionSheet" class="headerlink" title="UIActionSheet"></a>UIActionSheet</h2><h4 id="常见属性-2"><a href="#常见属性-2" class="headerlink" title="常见属性"></a>常见属性</h4><p><strong>id<uiactionsheetdelegate></uiactionsheetdelegate></strong>  delegate;</p>
-<p><strong>NSString</strong>    *title;</p>
-<p><strong>UIActionSheetStyle</strong>      actionSheetStyle;</p>
-<p><strong>NSInteger</strong>     cancelButtonIndex;</p>
-<p><strong>NSInteger</strong>  destructiveButtonIndex;</p>
-<p><code>readonly</code></p>
-<p><strong>NSInteger</strong>   numberOfButtons;</p>
-<p><strong>NSInteger</strong>   firstOtherButtonIndex;</p>
-<p><strong>BOOL</strong>     visible;</p>
-<h4 id="实例方法-11"><a href="#实例方法-11" class="headerlink" title="实例方法"></a>实例方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">- (id)initWithTitle:(NSString *)title delegate:(id&lt;UIActionSheetDelegate&gt;)delegate cancelButtonTitle:(NSString *)cancelButtonTitle destructiveButtonTitle:(NSString *)destructiveButtonTitle otherButtonTitles:(NSString *)otherButtonTitles, ... ;</span><br><span class="line">- (NSInteger)addButtonWithTitle:(NSString *)title;</span><br><span class="line">- (NSString *)buttonTitleAtIndex:(NSInteger)buttonIndex;</span><br><span class="line">- (void)showFromToolbar:(UIToolBar *)view;</span><br><span class="line">- (void)showFromTabBar:(UITabBar *)view;</span><br><span class="line">- (void)showFromBarButtonItem:(UIBarButtonItem *)item animated:(BOOL)animates;</span><br><span class="line">- (void)showFromRect:(CGRect)rect inView:(UIView *)view animated:(BOOL)animated;</span><br><span class="line">- (void)showInView:(UIView *)view;</span><br><span class="line">- (void)dismissWithClickedButtonIndex:(NSInteger)buttonIndex animated:(BOOL)animated;</span><br></pre></td></tr></table></figure>
-<h2 id="UIImageView"><a href="#UIImageView" class="headerlink" title="UIImageView"></a>UIImageView</h2><h4 id="常用属性-9"><a href="#常用属性-9" class="headerlink" title="常用属性"></a>常用属性</h4><p><strong>UIImage</strong>   *image;</p>
-<p><strong>UIImage</strong>  *highlightedImage;</p>
-<p><strong>BOOL</strong>   userInteractionEnable;</p>
-<p><strong>BOOL</strong>    highlighted;</p>
-<p><strong>NSArray</strong>    *animationImages;</p>
-<p><strong>NSArray</strong>    *highlightedAnimationImages;</p>
-<p><strong>NSTimeInterval</strong>    animationDuration;</p>
-<p><strong>NSInteger</strong>    animationRepeatCount;</p>
-<p><strong>UIColor</strong>   tintColor;</p>
-<h4 id="实例方法-12"><a href="#实例方法-12" class="headerlink" title="实例方法"></a>实例方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">- (id)initWithImage:(UIImage *)image;</span><br><span class="line">- (id)initWithImage:(UIImage *)image highlightedImage:(UIImage *)highlightedImage;</span><br><span class="line">- (void)startAnimating;</span><br><span class="line">- (void)stopAnimating;</span><br><span class="line">- (BOOL)isAnimating;</span><br></pre></td></tr></table></figure>
-<h2 id="UINavigationBar"><a href="#UINavigationBar" class="headerlink" title="UINavigationBar"></a>UINavigationBar</h2><h4 id="常用属性-10"><a href="#常用属性-10" class="headerlink" title="常用属性"></a>常用属性</h4><p><strong>UIBarStyle</strong>   barStyle;</p>
-<p><strong>id</strong>  delegate;</p>
-<p><strong>BOOL</strong> translucent;</p>
-<p><strong>NSArray</strong>  *items;</p>
-<p><strong>UIColor</strong> *tintColor;</p>
-<p><strong>UIColor</strong>  *barTintColor;</p>
-<p><strong>UIImage</strong>  *shadowImage;</p>
-<p><strong>NSDictionary</strong>  *titleTextAttributes;</p>
-<p><strong>UIImage</strong>  *backIndicatorImage;</p>
-<p><strong>UIImage</strong>  *backIndicatorTransitionMaskImage;</p>
-<p><code>readonly</code></p>
-<p><strong>UINavigationItem</strong>  *topItem;</p>
-<p><strong>UINavigationItem</strong>  *backItem;</p>
-<h4 id="实例方法-13"><a href="#实例方法-13" class="headerlink" title="实例方法"></a>实例方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">- (void)pushNavigationItem:(UINavigationItem *)item animated:(BOOL)animated;</span><br><span class="line">- (UINavigationItem *)popNavigationItemAnimated:(BOOL)animated;</span><br><span class="line">- (void)setItems:(NSArray *)items animated:(BOOL)animated;</span><br><span class="line">- (void)setBackgroundImage:(UIImage *)backgroundImage forBarPosition:(UIBarPosition)barPosition barMetrics:(UIBarMetrics)barMetrics;</span><br><span class="line">- (UIImage *)backgroundImageForBarPosition:(UIBarPosition)barPosition barMetrics:(UIBarMetrics)barMetrics;</span><br><span class="line">- (void)setBackgroundImage:(UIImage *)backgroundImage forBarMetrics:(UIBarMetrics)barMetrics NS_AVAILABLE_IOS(5_0);</span><br><span class="line">- (UIImage *)backgroundImageForBarMetrics:(UIBarMetrics)barMetrics;</span><br><span class="line">- (void)setTitleVerticalPositionAdjustment:(CGFloat)adjustment forBarMetrics:(UIBarMetrics)barMetrics;</span><br><span class="line">- (CGFloat)titleVerticalPositionAdjustmentForBarMetrics:(UIBarMetrics)barMetrics;</span><br></pre></td></tr></table></figure>
-<h2 id="UITabBar"><a href="#UITabBar" class="headerlink" title="UITabBar"></a>UITabBar</h2><h4 id="常用属性-11"><a href="#常用属性-11" class="headerlink" title="常用属性"></a>常用属性</h4><p><strong>id<uitabbardelegate></uitabbardelegate></strong>  delegate;</p>
-<p><strong>NSArray</strong>             *items;</p>
-<p><strong>UIBarStyle</strong> barStyle  </p>
-<p><strong>UITabBarItem</strong>        *selectedItem;</p>
-<p><strong>UIColor</strong> *tintColor;</p>
-<p><strong>UIColor</strong> *barTintColor;</p>
-<p><strong>BOOL</strong> translucent;</p>
-<p><strong>UIColor</strong> *selectedImageTintColor;</p>
-<p><strong>UIImage</strong> *backgroundImage;</p>
-<p><strong>UIImage</strong> *selectionIndicatorImage;</p>
-<p><strong>UIImage</strong> *shadowImage;</p>
-<p><strong>UITabBarItemPositioning</strong> itemPositioning;</p>
-<p><strong>CGFloat</strong> itemWidth;</p>
-<p><strong>CGFloat</strong> itemSpacing;</p>
-<h4 id="实例方法-14"><a href="#实例方法-14" class="headerlink" title="实例方法"></a>实例方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- (void)setItems:(NSArray *)items animated:(BOOL)animated;</span><br><span class="line">- (void)beginCustomizingItems:(NSArray *)items;</span><br><span class="line">- (BOOL)endCustomizingAnimated:(BOOL)animated;</span><br><span class="line">- (BOOL)isCustomizing;</span><br></pre></td></tr></table></figure>
-<h2 id="UIToolbar"><a href="#UIToolbar" class="headerlink" title="UIToolbar"></a>UIToolbar</h2><h4 id="常用属性-12"><a href="#常用属性-12" class="headerlink" title="常用属性"></a>常用属性</h4><p><strong>UIBarStyle</strong> barStyle;</p>
-<p><strong>NSArray</strong>   *items;</p>
-<p><strong>BOOL</strong> translucent;</p>
-<p><strong>UIColor</strong> *tintColor;</p>
-<p><strong>UIColor</strong> *barTintColor;</p>
-<p><strong>id<uitoolbardelegate></uitoolbardelegate></strong> delegate;</p>
-<h4 id="实例方法-15"><a href="#实例方法-15" class="headerlink" title="实例方法"></a>实例方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">- (void)setItems:(NSArray *)items animated:(BOOL)animated;</span><br><span class="line">- (void)setBackgroundImage:(UIImage *)backgroundImage forToolbarPosition:(UIBarPosition)topOrBottom barMetrics:(UIBarMetrics)barMetrics;</span><br><span class="line">- (UIImage *)backgroundImageForToolbarPosition:(UIBarPosition)topOrBottom barMetrics:(UIBarMetrics)barMetrics;</span><br><span class="line">- (void)setShadowImage:(UIImage *)shadowImage forToolbarPosition:(UIBarPosition)topOrBottom;</span><br><span class="line">- (UIImage *)shadowImageForToolbarPosition:(UIBarPosition)topOrBottom;</span><br></pre></td></tr></table></figure>
-<h2 id="UISearchBar"><a href="#UISearchBar" class="headerlink" title="UISearchBar"></a>UISearchBar</h2><h4 id="常用属性-13"><a href="#常用属性-13" class="headerlink" title="常用属性"></a>常用属性</h4><p><strong>UIBarStyle</strong>              barStyle; </p>
-<p><strong>id<uisearchbardelegate></uisearchbardelegate></strong> delegate;</p>
-<p><strong>NSString</strong>               *text;</p>
-<p><strong>NSString</strong>               *prompt;</p>
-<p><strong>NSString</strong>               *placeholder;</p>
-<p><strong>BOOL</strong>                    showsBookmarkButton;</p>
-<p><strong>BOOL</strong>                   showsCancelButton;</p>
-<p><strong>BOOL</strong>                    showsSearchResultsButton;</p>
-<p><strong>UIColor</strong> *tintColor;</p>
-<p><strong>UIColor</strong> *barTintColor;</p>
-<p><strong>UISearchBarStyle</strong> searchBarStyle;</p>
-<p><strong>UITextAutocapitalizationType</strong> autocapitalizationType;</p>
-<p><strong>UITextAutocorrectionType</strong>     autocorrectionType;</p>
-<p><strong>UITextSpellCheckingType</strong>      spellCheckingType;</p>
-<p><strong>UIKeyboardType</strong>               keyboardType;</p>
-<p><strong>NSArray</strong>   *scopeButtonTitles;</p>
-<p><strong>NSInteger</strong>  selectedScopeButtonIndex;</p>
-<p><strong>BOOL</strong>       showsScopeBar;</p>
-<p><strong>UIView</strong> *inputAccessoryView;</p>
-<h2 id="UIWebView"><a href="#UIWebView" class="headerlink" title="UIWebView"></a>UIWebView</h2><h4 id="常用属性-14"><a href="#常用属性-14" class="headerlink" title="常用属性"></a>常用属性</h4><p><strong>id<uiwebviewdelegate></uiwebviewdelegate></strong> delegate;</p>
-<p><code>readonly</code></p>
-<p><strong>BOOL</strong> canGoBack;</p>
-<p><strong>BOOL</strong> canGoForward;</p>
-<p><strong>BOOL</strong> loading;</p>
-<p><strong>UIScrollView</strong> *scrollView;</p>
-<p><strong>NSURLRequest</strong> *request;</p>
-<h4 id="实例方法-16"><a href="#实例方法-16" class="headerlink" title="实例方法"></a>实例方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">- (void)loadRequest:(NSURLRequest *)request;</span><br><span class="line">- (void)loadHTMLString:(NSString *)string baseURL:(NSURL *)baseURL;</span><br><span class="line">- (void)loadData:(NSData *)data MIMEType:(NSString *)MIMEType textEncodingName:(NSString *)textEncodingName baseURL:(NSURL *)baseURL;</span><br><span class="line">- (void)reload;</span><br><span class="line">- (void)stopLoading;</span><br><span class="line">- (void)goBack;</span><br><span class="line">- (void)goForward;</span><br><span class="line">- (NSString *)stringByEvaluatingJavaScriptFromString:(NSString *)script;</span><br></pre></td></tr></table></figure>
-<h2 id="UIPickerView"><a href="#UIPickerView" class="headerlink" title="UIPickerView"></a>UIPickerView</h2><h4 id="常用属性-15"><a href="#常用属性-15" class="headerlink" title="常用属性"></a>常用属性</h4><p><strong>id<uipickerviewdatasource></uipickerviewdatasource></strong> dataSource;</p>
-<p><strong>id<uipickerviewdelegate></uipickerviewdelegate></strong>   delegate;</p>
-<p><strong>BOOL</strong>                       showsSelectionIndicator;</p>
-<p><strong>NSInteger</strong> numberOfComponents;&lt;<code>readonly</code>&gt;</p>
-<h4 id="实例方法-17"><a href="#实例方法-17" class="headerlink" title="实例方法"></a>实例方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">- (NSInteger)numberOfRowsInComponent:(NSInteger)component;</span><br><span class="line">- (CGSize)rowSizeForComponent:(NSInteger)component;</span><br><span class="line">- (UIView *)viewForRow:(NSInteger)row forComponent:(NSInteger)component;</span><br><span class="line">- (void)reloadAllComponents;</span><br><span class="line">- (void)reloadComponent:(NSInteger)component;</span><br><span class="line">- (void)selectRow:(NSInteger)row inComponent:(NSInteger)component animated:(BOOL)animated;</span><br><span class="line">- (NSInteger)selectedRowInComponent:(NSInteger)component;</span><br></pre></td></tr></table></figure>
-<h2 id="UITableViewCell"><a href="#UITableViewCell" class="headerlink" title="UITableViewCell"></a>UITableViewCell</h2><h4 id="常用属性-16"><a href="#常用属性-16" class="headerlink" title="常用属性"></a>常用属性</h4><p><strong>UITableViewStyle</strong>           style; &lt;<code>readonly</code>&gt;</p>
-<p><strong>id <uitableviewdatasource></uitableviewdatasource></strong> dataSource;</p>
-<p><strong>id <uitableviewdelegate></uitableviewdelegate></strong>   delegate;</p>
-<p><strong>CGFloat</strong>                     rowHeight;</p>
-<p><strong>CGFloat</strong>                     sectionHeaderHeight;</p>
-<p><strong>CGFloat</strong>                     sectionFooterHeight;</p>
-<p><strong>CGFloat</strong>                     estimatedRowHeight;</p>
-<p><strong>CGFloat</strong>                     estimatedSectionHeaderHeight;</p>
-<p><strong>CGFloat</strong>                     estimatedSectionFooterHeight;</p>
-<p><strong>UIEdgeInsets</strong>                separatorInset;</p>
-<p><strong>UIView</strong>                         *backgroundView;</p>
-<p><strong>BOOL</strong> editing;</p>
-<p><strong>BOOL</strong> allowsSelection;</p>
-<p><strong>BOOL</strong> allowsSelectionDuringEditing;</p>
-<p><strong>BOOL</strong> allowsMultipleSelection;</p>
-<p><strong>BOOL</strong> allowsMultipleSelectionDuringEditing;</p>
-<p><strong>UIView</strong> *tableHeaderView;</p>
-<p><strong>UIView</strong> *tableFooterView;</p>
-<p><strong>NSInteger</strong> sectionIndexMinimumDisplayRowCount;</p>
-<p><strong>UIColor</strong> *sectionIndexColor;</p>
-<p><strong>UIColor</strong> *sectionIndexBackgroundColor;</p>
-<p><strong>UIColor</strong> *sectionIndexTrackingBackgroundColor;</p>
-<p><strong>UITableViewCellSeparatorStyle</strong> separatorStyle;</p>
-<p><strong>UIColor</strong>               *separatorColor;</p>
-<h4 id="实例方法-18"><a href="#实例方法-18" class="headerlink" title="实例方法"></a>实例方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">- (id)initWithFrame:(CGRect)frame style:(UITableViewStyle)style;</span><br><span class="line">- (void)reloadData; </span><br><span class="line">- (void)reloadSectionIndexTitles;</span><br><span class="line">- (NSInteger)numberOfSections;</span><br><span class="line">- (NSInteger)numberOfRowsInSection:(NSInteger)section;</span><br><span class="line">- (CGRect)rectForSection:(NSInteger)section;</span><br><span class="line">- (CGRect)rectForHeaderInSection:(NSInteger)section;</span><br><span class="line">- (CGRect)rectForFooterInSection:(NSInteger)section;</span><br><span class="line">- (CGRect)rectForRowAtIndexPath:(NSIndexPath *)indexPath;</span><br><span class="line">- (NSIndexPath *)indexPathForRowAtPoint:(CGPoint)point;</span><br><span class="line">- (NSIndexPath *)indexPathForCell:(UITableViewCell *)cell;</span><br><span class="line">- (NSArray *)indexPathsForRowsInRect:(CGRect)rect;        </span><br><span class="line">- (UITableViewCell *)cellForRowAtIndexPath:(NSIndexPath *)indexPath; </span><br><span class="line">- (NSArray *)visibleCells;</span><br><span class="line">- (NSArray *)indexPathsForVisibleRows;</span><br><span class="line">- (UITableViewHeaderFooterView *)headerViewForSection:(NSInteger)section;</span><br><span class="line">- (UITableViewHeaderFooterView *)footerViewForSection:(NSInteger)section;</span><br><span class="line">- (void)beginUpdates;</span><br><span class="line">- (void)endUpdates;</span><br><span class="line">- (void)insertSections:(NSIndexSet *)sections withRowAnimation:(UITableViewRowAnimation)animation;</span><br><span class="line">- (void)deleteSections:(NSIndexSet *)sections withRowAnimation:(UITableViewRowAnimation)animation;</span><br><span class="line">- (void)reloadSections:(NSIndexSet *)sections withRowAnimation:(UITableViewRowAnimation)animation;</span><br><span class="line">- (void)moveSection:(NSInteger)section toSection:(NSInteger)newSection;</span><br><span class="line">- (void)insertRowsAtIndexPaths:(NSArray *)indexPaths withRowAnimation:(UITableViewRowAnimation)animation;</span><br><span class="line">- (void)deleteRowsAtIndexPaths:(NSArray *)indexPaths withRowAnimation:(UITableViewRowAnimation)animation;</span><br><span class="line">- (void)reloadRowsAtIndexPaths:(NSArray *)indexPaths withRowAnimation:(UITableViewRowAnimation)animation;</span><br><span class="line">- (void)moveRowAtIndexPath:(NSIndexPath *)indexPath toIndexPath:(NSIndexPath *)newIndexPath;</span><br><span class="line">- (NSIndexPath *)indexPathForSelectedRow;</span><br><span class="line">- (NSArray *)indexPathsForSelectedRows;</span><br><span class="line">- (id)dequeueReusableCellWithIdentifier:(NSString *)identifier;</span><br><span class="line">- (id)dequeueReusableCellWithIdentifier:(NSString *)identifier forIndexPath:(NSIndexPath *)indexPath;</span><br><span class="line">- (id)dequeueReusableHeaderFooterViewWithIdentifier:(NSString *)identifier;</span><br><span class="line">- (void)registerNib:(UINib *)nib forCellReuseIdentifier:(NSString *)identifier;</span><br><span class="line">- (void)registerClass:(Class)cellClass forCellReuseIdentifier:(NSString *)identifier;</span><br><span class="line">- (void)registerNib:(UINib *)nib forHeaderFooterViewReuseIdentifier:(NSString *)identifier;</span><br><span class="line">- (void)registerClass:(Class)aClass forHeaderFooterViewReuseIdentifier:(NSString *)identifier;</span><br></pre></td></tr></table></figure>
-<h1 id="UIViewController"><a href="#UIViewController" class="headerlink" title="UIViewController"></a>UIViewController</h1><h3 id="常用属性-17"><a href="#常用属性-17" class="headerlink" title="常用属性"></a>常用属性</h3><p><strong>UIView</strong> *view;</p>
-<p><strong>NSString</strong> *title;</p>
-<p><code>readonly</code></p>
-<p><strong>NSString</strong> *nibName;</p>
-<p><strong>NSBundle</strong> *nibBundle;</p>
-<p><strong>UIStoryboard</strong> *storyboard;</p>
-<p><strong>UIViewController</strong> *parentViewController;</p>
-<p><strong>UIViewController</strong> *presentedViewController;</p>
-<p><strong>UIViewController</strong> *presentingViewController</p>
-<h3 id="实例方法-19"><a href="#实例方法-19" class="headerlink" title="实例方法"></a>实例方法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (void)loadView;</span><br></pre></td></tr></table></figure>
-<h1 id="UIViewController的常见子类"><a href="#UIViewController的常见子类" class="headerlink" title="UIViewController的常见子类"></a>UIViewController的常见子类</h1><h2 id="UITabBarController"><a href="#UITabBarController" class="headerlink" title="UITabBarController"></a>UITabBarController</h2><h4 id="常用属性-18"><a href="#常用属性-18" class="headerlink" title="常用属性"></a>常用属性</h4><p><strong>NSArray</strong> *viewControllers;</p>
-<p><strong>UIViewController</strong> *selectedViewController;</p>
-<p><strong>NSUInteger</strong> selectedIndex;</p>
-<p><strong>id<uitabbarcontrollerdelegate></uitabbarcontrollerdelegate></strong> delegate;</p>
-<p><code>readonly</code></p>
-<p><strong>UITabBar</strong> *tabBar;</p>
-<p><strong>UINavigationController</strong> *moreNavigationController;</p>
-<h4 id="实例方法-20"><a href="#实例方法-20" class="headerlink" title="实例方法"></a>实例方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (void)setViewControllers:(NSArray *)viewControllers animated:(BOOL)animated;</span><br></pre></td></tr></table></figure>
-<h2 id="UINavigationController"><a href="#UINavigationController" class="headerlink" title="UINavigationController"></a>UINavigationController</h2><h4 id="常用属性-19"><a href="#常用属性-19" class="headerlink" title="常用属性"></a>常用属性</h4><p><strong>id<uinavigationcontrollerdelegate></uinavigationcontrollerdelegate></strong>  delegate;</p>
-<p><strong>NSArray</strong>   *viewControllers;</p>
-<p><strong>BOOL</strong>      toolbarHidden;</p>
-<p><code>readonly</code></p>
-<p><strong>UIViewController</strong>   *topViewController;</p>
-<p><strong>UIViewController</strong>    *visibleViewController;</p>
-<p><strong>UINavigationBar</strong> *navigationBar;</p>
-<p><strong>UIToolbar</strong>   toolbar;</p>
-<h4 id="实例方法-21"><a href="#实例方法-21" class="headerlink" title="实例方法"></a>实例方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">- (id)initWithRootViewController:(UIViewController *)rootViewController;</span><br><span class="line">- (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated;</span><br><span class="line">- (UIViewController *)popViewControllerAnimated:(BOOL)animated;</span><br><span class="line">- (NSArray *)popToViewController:(UIViewController *)viewController animated:(BOOL)animated;</span><br><span class="line">- (NSArray *)popToRootViewControllerAnimated:(BOOL)animated;</span><br><span class="line">- (void)setViewControllers:(NSArray *)viewControllers animated:(BOOL)animated;</span><br><span class="line">- (void)setNavigationBarHidden:(BOOL)hidden animated:(BOOL)animated;</span><br><span class="line">- (void)setToolbarHidden:(BOOL)hidden animated:(BOOL)animated;</span><br></pre></td></tr></table></figure>
-<h2 id="UITableViewController"><a href="#UITableViewController" class="headerlink" title="UITableViewController"></a>UITableViewController</h2><h4 id="常用属性-20"><a href="#常用属性-20" class="headerlink" title="常用属性"></a>常用属性</h4><p><strong>UITableView</strong> *tableView;</p>
-<p><strong>BOOL</strong> clearsSelectionOnViewWillAppear;</p>
-<p><strong>UIRefreshControl</strong> *refreshControl;</p>
-<h4 id="实例方法-22"><a href="#实例方法-22" class="headerlink" title="实例方法"></a>实例方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (id)initWithStyle:(UITableViewStyle)style;</span><br></pre></td></tr></table></figure>
-<h1 id="UIBarItem"><a href="#UIBarItem" class="headerlink" title="UIBarItem"></a>UIBarItem</h1><h3 id="常用属性-21"><a href="#常用属性-21" class="headerlink" title="常用属性"></a>常用属性</h3><p><strong>BOOL</strong> enable;</p>
-<p><strong>NSString</strong>  *title;</p>
-<p><strong>UIImage</strong>  *image;</p>
-<p><strong>UIImage</strong>  *landscapeImagePhone;</p>
-<p><strong>UIEdgeInsets</strong> imageInsets;</p>
-<p><strong>UIEdgeInsets</strong> landscapeImagePhoneInsets;</p>
-<p><strong>NSInteger</strong>    tag;</p>
-<h3 id="实例方法-23"><a href="#实例方法-23" class="headerlink" title="实例方法"></a>实例方法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">- (void)setTitleTextAttributes:(NSDictionary *)attributes forState:(UIControlState)state;</span><br><span class="line">- (NSDictionary *)titleTextAttributesForState:(UIControlState)state;</span><br></pre></td></tr></table></figure>
-<h2 id="UIBarButtonItem"><a href="#UIBarButtonItem" class="headerlink" title="UIBarButtonItem"></a>UIBarButtonItem</h2><h4 id="常用属性-22"><a href="#常用属性-22" class="headerlink" title="常用属性"></a>常用属性</h4><p><strong>UIBarButtonItem</strong>  style;</p>
-<p><strong>CGFloat</strong>  width;</p>
-<p><strong>NSSet</strong>  *possibleTitles;</p>
-<p><strong>UIView</strong>  *customView;</p>
-<p><strong>SEL</strong>     action;</p>
-<p><strong>id</strong>        target;</p>
-<h4 id="实例方法-24"><a href="#实例方法-24" class="headerlink" title="实例方法"></a>实例方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">- (id)initWithImage:(UIImage *)image style:(UIBarButtonItemStyle)style target:(id)target action:(SEL)action;</span><br><span class="line">- (id)initWithImage:(UIImage *)image landscapeImagePhone:(UIImage *)landscapeImagePhone style:(UIBarButtonItemStyle)style target:(id)target action:(SEL)action;</span><br><span class="line">- (id)initWithTitle:(NSString *)title style:(UIBarButtonItemStyle)style target:(id)target action:(SEL)action;</span><br><span class="line">- (id)initWithBarButtonSystemItem:(UIBarButtonSystemItem)systemItem target:(id)target action:(SEL)action;</span><br><span class="line">- (id)initWithCustomView:(UIView *)customView;</span><br><span class="line">- (void)setBackgroundImage:(UIImage *)backgroundImage forState:(UIControlState)state barMetrics:(UIBarMetrics)barMetrics;</span><br><span class="line">- (UIImage *)backgroundImageForState:(UIControlState)state barMetrics:(UIBarMetrics)barMetrics</span><br></pre></td></tr></table></figure>
-<h2 id="UITabBarItem"><a href="#UITabBarItem" class="headerlink" title="UITabBarItem"></a>UITabBarItem</h2><h4 id="常用属性-23"><a href="#常用属性-23" class="headerlink" title="常用属性"></a>常用属性</h4><p><strong>UIImage</strong> selectedImage;</p>
-<p><strong>NSString</strong>  badgeValue;</p>
-<h4 id="实例方法-25"><a href="#实例方法-25" class="headerlink" title="实例方法"></a>实例方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- (id)initWithTitle:(NSString *)title image:(UIImage *)image tag:(NSInteger)tag;</span><br><span class="line">- (instancetype)initWithTitle:(NSString *)title image:(UIImage *)image selectedImage:(UIImage *)selectedImage NS_AVAILABLE_IOS(7_0);</span><br><span class="line">- (id)initWithTabBarSystemItem:(UITabBarSystemItem)systemItem tag:(NSInteger)tag;</span><br></pre></td></tr></table></figure>
-<h1 id="UINavigationItem"><a href="#UINavigationItem" class="headerlink" title="UINavigationItem"></a>UINavigationItem</h1><h3 id="常用属性-24"><a href="#常用属性-24" class="headerlink" title="常用属性"></a>常用属性</h3><p><strong>NSSting</strong> *title;</p>
-<p><strong>UIBarButtonItem</strong>  *backBarButtonItem;</p>
-<p><strong>UIView</strong>  *titleView;</p>
-<p><strong>NSString</strong>    *prompt;</p>
-<p><strong>BOOL</strong>  hidesBackButton;</p>
-<p><strong>NSArray</strong>  *leftBarButtonItems;</p>
-<p><strong>NSArray</strong>  *rightBarButtonItems;</p>
-<p><strong>BOOL</strong>  leftItemsSupplementBackButton;</p>
-<p><strong>UIBarButtonItem</strong>   *leftBarButtonItem;</p>
-<p><strong>UIBarButtonItem</strong>  *rightBarButtonItem;</p>
-<h3 id="实例方法-26"><a href="#实例方法-26" class="headerlink" title="实例方法"></a>实例方法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">- (id)initWithTitle:(NSString *)title;</span><br><span class="line">- (void)setHidesBackButton:(BOOL)hidesBackButton animated:(BOOL)animated;</span><br><span class="line">- (void)setLeftBarButtonItems:(NSArray *)items animated:(BOOL)animated; </span><br><span class="line">- (void)setRightBarButtonItems:(NSArray *)items animated:(BOOL)animated;</span><br><span class="line">- (void)setLeftBarButtonItem:(UIBarButtonItem *)item animated:(BOOL)animated;</span><br><span class="line">- (void)setRightBarButtonItem:(UIBarButtonItem *)item animated:(BOOL)animated；</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2592,7 +2392,7 @@ hexo g -d
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">Artikel</span>
                 </a>
               </div>
