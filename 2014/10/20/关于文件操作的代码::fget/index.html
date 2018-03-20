@@ -5,18 +5,18 @@
   
 
   
-  <title>test | Hexo</title>
+  <title>Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="6666 78888">
+  <meta name="description" content="一个文件操作的代码date: 2014-10-20 18:52:13tags: 创建文件 呵呵 ###关于文件操作的代码//  main.m//  WTFgets////  Created by qingyun on 14-10-20.//  Copyright (c) 2014年 qingyun. All rights reserved.// #import &amp;lt;Foundation/Fou">
 <meta property="og:type" content="article">
-<meta property="og:title" content="test">
-<meta property="og:url" content="http://yoursite.com/2018/03/20/test/index.html">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2014/10/20/关于文件操作的代码::fget/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="6666 78888">
-<meta property="og:updated_time" content="2018-03-20T06:34:25.000Z">
+<meta property="og:description" content="一个文件操作的代码date: 2014-10-20 18:52:13tags: 创建文件 呵呵 ###关于文件操作的代码//  main.m//  WTFgets////  Created by qingyun on 14-10-20.//  Copyright (c) 2014年 qingyun. All rights reserved.// #import &amp;lt;Foundation/Fou">
+<meta property="og:updated_time" content="2014-10-20T11:02:06.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="test">
-<meta name="twitter:description" content="6666 78888">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="一个文件操作的代码date: 2014-10-20 18:52:13tags: 创建文件 呵呵 ###关于文件操作的代码//  main.m//  WTFgets////  Created by qingyun on 14-10-20.//  Copyright (c) 2014年 qingyun. All rights reserved.// #import &amp;lt;Foundation/Fou">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -63,35 +63,47 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-test" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-关于文件操作的代码::fget" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/03/20/test/" class="article-date">
-  <time datetime="2018-03-20T06:33:30.000Z" itemprop="datePublished">2018-03-20</time>
+    <a href="/2014/10/20/关于文件操作的代码::fget/" class="article-date">
+  <time datetime="2014-10-20T10:52:13.000Z" itemprop="datePublished">2014-10-20</time>
 </a>
     
   </div>
   <div class="article-inner">
     
     
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      test
-    </h1>
-  
-
-      </header>
-    
     <div class="article-entry" itemprop="articleBody">
       
-        <p>6666</p>
-<p>78888</p>
+        <h1 id="一个文件操作的代码"><a href="#一个文件操作的代码" class="headerlink" title="一个文件操作的代码"></a>一个文件操作的代码</h1><p>date: 2014-10-20 18:52:13<br>tags:</p>
+<pre><code>创建文件
+</code></pre><p>呵呵</p>
+<p>###关于文件操作的代码<br>//  main.m<br>//  WTFgets<br>//<br>//  Created by qingyun on 14-10-20.<br>//  Copyright (c) 2014年 qingyun. All rights reserved.<br>//</p>
+<pre><code>#import &lt;Foundation/Foundation.h&gt;
+
+int main(int argc, const char * argv[]) {
+    @autoreleasepool {
+
+        FILE *wordFile = fopen(&quot;/Users/qingyun/Desktop/test/word.txt&quot;, &quot;r&quot;);
+        char word[100];
+
+        while (fgets(word, 100, wordFile)) {
+            word[strlen(word) - 1] = &apos;\0&apos;;
+
+            NSLog(@&quot;%s is %lu characters long&quot;, word, strlen(word));
+        }
+        fclose(wordFile);
+
+
+    }
+    return 0;
+}
+</code></pre><p>待续</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/20/test/" data-id="cjezb8e9o000fipm493bk0rew" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2014/10/20/关于文件操作的代码::fget/" data-id="cjezb8ea0000uipm4e8cun5lq" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -100,10 +112,19 @@
     
 <nav id="article-nav">
   
+    <a href="/2014/10/20/accelerator-key/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          accelerator-key
+        
+      </div>
+    </a>
   
-    <a href="/2018/03/20/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+  
+    <a href="/2014/10/15/vimtutor/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Älter</strong>
-      <div class="article-nav-title">Hello World</div>
+      <div class="article-nav-title"></div>
     </a>
   
 </nav>

@@ -50,7 +50,7 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -89,7 +89,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/20/test/" data-id="cjezaw50d0000h6m4l2y15jrq" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/03/20/test/" data-id="cjezb8e9o000fipm493bk0rew" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -134,7 +134,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/20/hello-world/" data-id="cjezaw5140001h6m4ezswwid3" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/03/20/hello-world/" data-id="cjezb8e9x000pipm4cx0edtx6" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -144,7 +144,1437 @@
 
 
   
+    <article id="post-常见面试题" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/01/24/常见面试题/" class="article-date">
+  <time datetime="2015-01-24T11:26:36.000Z" itemprop="datePublished">2015-01-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/01/24/常见面试题/">1124</a>
+    </h1>
+  
 
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#2015-01-21#</p>
+<p>#谈谈你对MVC的理解#</p>
+<p>###1.概括：###<br>    MVC是一种设计模式，这种设计模式用于分离代码的不同模块，用于提高代码的健壮性和复用性</p>
+<pre><code>M：modal 指的是程序的数据相关，
+
+V：View  凡事在界面上看到的内容都是View 换句话说就是如何显示具体的内容
+
+C：controller 如果M与V有过多的关联，那么一定会影响代码的复用性。如果要有很好的复用性，就必须让代码模块之间具备很好的独立性。但是他们之间还是要有联系的。controller就是起到一个中间协调的作用，另外controller还需要处理业务逻辑，并根据业务逻辑来改变modal view
+</code></pre><p>###2.讲述MVC之间的联系###<br>    M(Modal)和C(Controller)控制器可以通过Notifacation和KVO的形式对模型数据进行访问，modal不能访问控制器</p>
+<pre><code>M(Modal)和C(Controller)不存在任何形式的通讯，彼此之间不能直接访问，只能通过controller控制器
+
+V(view)和C(Controller)控制器可以直接访问view  view可以通过设置delegate，datasource，或者target(在控制器上)&lt;&lt;----action(在view上)的形式来访问控制器
+</code></pre><p>##import跟#include的区别是什么?#import&lt;&gt;#import””的区别是什么？@class的作用是什么#</p>
+<p>##1.#import跟#include的区别是什么?<br>    这两个指令都是预处理指令，都是在预处理阶段执行，功能都是用于包含头文件。两者的区别是:单独使用#include时，会出现重复包含头文件的问题，为了解决重复包含的问题，c语言提供了头文件卫士的预处理指令。ex:</p>
+<pre><code>#ifndef XXX
+#define XXX
+#include&lt;XXX.h&gt;...(要包含的头文件)
+#else
+(要处理的其他操作)
+#endif    
+#import这个预处理指令，内部解决了重复包含头文件的功能，所以＃import是＃include的升级版本
+</code></pre><p>##import&lt; &gt;#import” “的区别是什么？</p>
+<pre><code>#import&lt;&gt;用于包含系统头文件，＃import“ ”用于包含工程内的自定义的头文件
+</code></pre><p>#@class的作用是?<br>    @class的作用是前向声明，主要是当一个类，只是要知道另外一个类的描述信息，可以使用前向声明，来表达这个意思。</p>
+<pre><code>使用的原因：解决文件依赖关系,依赖关系是指两个实体之间的关系，1.依赖关系可以存在于两个类之间（例如 A类继承了B类，如果B类发生了变化，例如添加了一个实例变量，那么A类就必须重新编译来适应这个变化。2.依赖关系也可以存在于两个或多个文件之间(例如：##p77明天继续##)。），
+</code></pre><p>#什么是浅拷贝 什么是深拷贝<br>    my<br>    浅拷贝是：指针拷贝 不可变的数组 字典 字符串类型都是浅拷贝<br>    深拷贝：内存拷贝 可变的（Mutable）数组，字典 字符串类型都是深拷贝<br>    teacher<br>    浅拷贝相当于是仅仅拷贝了指针，新的指针指向的还是同一块内存空间，深拷贝是重新想操作系统申请了相同的内存，并把原来的数据复制一份。浅拷贝相当于对于原指针引用计数器加1 深拷贝的主要区别 主要是 重新分配内存空间 真正意义存在了两个对象。实际，深拷贝是我们一般理解的拷贝</p>
+<p>#id声明的对象有什么特性<br>    id是一种通用的指针类型，可以指向任意的数据对象类型，通俗的理解，可以认为它是万能指针，他最大的特点就是具有动态特性（重点），需要注意的是使用id声明对象时，不要再添加<em>号 其本身就是一个指针，所以修饰的对象不需要指针</em>修饰</p>
+<p>#声明一个属性实际上做了三件事<br>    1.声明了一个成员变量 2.声明了一个set方法 3.声明一个get方法</p>
+<p>#手动管理内存基本原则是什么？在使用@property的时候，如何避免内存泄露？<br>    1.内存管理的原则：如果使用了new alloc copy方法得到了一个对象，就必须使用释放或自动释放该对象</p>
+<pre><code>2.当你通过其他方法获得一个对象时，假设该对象的引用计数器是1，并且已经被设置成自动释放，那么你不需要执行任何操作来确保该对象得到清理。如果你打算在一段时间内持有该对象，则需要保留它，并在操作完成的时候释放他。
+
+3.如果你保留了某个对象（调用retain消息），那么就必须负责释放或者自动释放这个对象，注意要保证retain和relaese的次数相等
+总结：如果我使用了new alloc copy方法获得了一个对象，那我就释放或者自动释放该对象。无论什么时候拥有一个对象，有两件事必须明确，1.怎样获得该对象（alloc\new\copy 或者其他方法 ） 2 打算持有多长时间
+
+在使用property的时候，如果用到retain copy关键字，那么在初始化的时候，不要使用点语法，如果是手动管理内存就必须重写dealloc方法，并在dealloc方法里面释放成员变量，如果在ARC的环境下，必须在dealloc方法将该成员变量指针置nil
+</code></pre><p>#在iOS的平台里，出现过Nil,nil,NULL,NSNull他们分别表达的意思是什么？有什么区别<br>    my<br>    nil用于将一个实例对象置空，Nil用于将一个类置空，NULL用于将一个基本数据类型置空，NSNULL用于集合类型中，用于代表一个空对象（在集合中不允许使用nil为对象赋值，nil代表着集合的结束）<br>    teacher</p>
+<pre><code>NULL定义在#include&lt;stddef.h&gt; 
+#define NULL (void *)0 
+所以NULL本质就是（void *）0
+
+Nil 在系统的定义里面 
+#define Nil __DARWIN_NULL
+#define __DARWIN_NULL ((void *)0)
+所以在oc里面 Nil的本质还是 ((void *)0)
+
+nil的本质是 ((void *)0)
+
+NSNull本质上就是OC中的一个类
+@interface NSNull : NSObject &lt;NSCopying, NSSecureCoding&gt;
++ (NSNull *)null;
+@end
+
+NULL用于表示C语言里面的指针中的空值  
+nil用于表示OC语言里面对象的空值，
+Nil用于表示OC语言中类类型(class)值为空的情况
+总结：
+不管是NULL、nil、Nil 本质都是（void *）0 只是写法不同 这样做的意义是为了区分不同的数据类型，增强代码的可读性。举个例子：当看到一个变量赋值给NULL，就能明白这是C语言定义的指针类型，看到nil这个变量是oc的对象指针。。。。。
+</code></pre><p>2014年8月29日    </p>
+<h1 id="什么是类别？类别的主要作用，请列出三点"><a href="#什么是类别？类别的主要作用，请列出三点" class="headerlink" title="什么是类别？类别的主要作用，请列出三点"></a>什么是类别？类别的主要作用，请列出三点</h1><pre><code>类别是一种为现有类添加新方法的方式 它是利用OC的动态运行时分配机制，为现有的类添加新的方法
+类别的主要作用
+1 将类的实现代码分散到多个不同的文件或者框架中 
+2 创建对私有方法的前向引用 
+3 向对象添加非正式协议(实现方式：向NSObject中添加方法)
+类别的缺陷
+1 可以在类别中添加属性，但是属性必须是@dynamic类型，但是无法向类中添加新的实例变量，类别没有空间容纳实例变量。
+2 名称冲突，也就是类别中的方法与现有的方法重名。当名称发生冲突时，类别具有更高的优先级，类别方法会完全取代初始方法（添加前缀是个解决重名的好方法）。
+
+类扩展是一种特殊的类别 
+特点：1.不需要名字 
+2 可以在包含你的源代码的类(也就是你自己的类)中使用它 
+3 你可以添加实例变量 
+4 你可以将只读权限改成读写权限 
+5 创建的数量不限 
+teacher
+作用：1 类别为 **已经存在** 的类添加方法，包括系统定义的类，也包括自己或者第三方定义的类
+2 可以将类的实现分散到不同的文件或者多个不同的框架中实现
+3 可以向对象添加非正式协议：（非正式协议：采用类别来实现的）
+4 创建对私有方法的前向引用
+类别的局限性：
+1 无法向已存在的类中添加实例变量，因为类别没有位置容纳实例变量
+2 容易造成命名冲突，根据类别的特性，通过类别向类中添加方法后会与原始的类中定义的方法重名（冲突），类别的方法优先级比原始类中的高，所以当冲突时候，类别的方法会取代原是类的方法，这样会导致错误的方法。
+</code></pre><p>#内存管理<br>    对象的生命周期<br>    1 诞生（通过alloc new方法实现）<br>    2 生存（接受消息并执行操作）<br>    3 交友（通过复合以及向方法传递参数）<br>    4 死去 （被释放掉）</p>
+<p>###引用计数<br>    Cocoa通过采用引用计数的方式（reference counting）每个对象都有一个与之相关联的整数，被称为引用计数器，当某段代码段需要访问一个对象时，这个代码段就将保留计数器加1 当访问结束后，将该对象的保留计数器减1.当一个对象的保留计数器归0时，OC会自动向对象发送一条dealloc消息。（注意dealloc消息不能直接调用，OC会在需要销毁对象的时候自动调用它）</p>
+<pre><code>- （id）retain；（注意返回值类型是id 这样做的好处是 可以再接受其他消息的同时进行retain操作，增加对象的保留计数器的值并要求对象完成某种操作。例如 [[car retain] setTire:tire]） 表示要求car对象的保留计数器加1并执行setTire操作
+- （void）release；
+- （NSInterger）retainCount
+</code></pre><p>###对象所有权的问题<br>    定义：如果一个对象（假设这个对象是car）内有指向其他对象的实例变量（假设是engine），则称该对象拥有这些对象。同样，如果一个函数（假设是main函数）创建了一个对象，则称该函数拥有该对象。<br>    问题：对象的所有权是谁，谁负责当对象不再使用的时候向对象发送release消息 因为car可能正在使用engine，所以不可能有main函数，也有可能main函数在随后要用到engine，所以不能是car发送release<br>    解决问题的办法：让car类保留engine对象，car类应该在setEngine:方法中保留engine对象（将其引用计数器加1 变成2）这是因为car和main两个实体都在使用engine对象，而main函数负责释放engine对象。然后当car类完成其任务后在释放engine对象（在他的dealloc方法中）最后engine被回收<br>    由此牵引出另一个问题：访问方法中的保留与释放</p>
+<p>###访问方法中的保留与释放</p>
+<pre><code>- （void）setEngine：（Engine *）newEngine
+{
+    engine = [newEngine retain];
+}//bad code 
+在main函数中
+Engine *engine1 = [Engine new];//count = 1
+[car setEngine:engine1];// count = 2
+[engine1 release];//count = 1;
+
+Engine *engine2 = [Engine new];//count = 1
+[car setEngine:engine2];//count = 2
+此时出现的问题是 engine1的应用计数器还是1 不能被回收 造成内存泄露
+改进1
+- （void）setEngine：（Engine *）newEngine
+{
+    [engine release];
+
+    engine = [newEngine retain];
+}//bad code 
+可以修复前一个例子的问题，但是当newEngine对象和engin（原来的）是同一个对象时，会出问题
+Engine *engine = [Engine new];//engine count = 1
+Car *car1 = [Car new];
+Car *car2 = [Car new];
+[car1 setEngine:engine];//engine count = 2
+[engine release];//main函数对engine对象进行释放 count = 1
+
+[car2 setEngine:engine];//由于engine的set方法先对engine对象进行release操作，所以engine的count = 0 ，并释放掉这块内存，所以在执行下面的操作engine = [newEngine retain];会出现错误（访问了一块bad Acess）
+改进2
+- （void）setEngine：（newEngine）
+{
+    [newEngine retain];//先保留新的engine
+    [engine release];//释放
+    engine = newEngine;
+}    //解决
+上一个问题比较好解决的原因就是因为我们知道什么时候这个对象不再使用。接下来的问题是当我们不知道什么时候不在使用一个对象时怎么办
+引出下一个问题：对象的自动释放
+</code></pre><p>###对象的自动释放<br>    例子：</p>
+<pre><code>- (NSString *)description
+{
+    NSString *desc;
+    desc = [[NSString alloc] initWithFormat:@&quot;i am %d years old&quot;,4];
+    return desc;
+}
+在这个例子中我们创建了一个字符串对象，但是由谁来负责销毁它呢。首先不能是description方法 因为如果先释放掉字符串对象再返回它，则保留计数器归零 对象会马上被销毁。
+可以这样做
+NSString *desc = [someobject description];
+....//操作
+[desc release]; //但是不方便  还有更好的的方法 自动释放池
+</code></pre><p>###自动释放池<br>    概念：一个用来存放对象的池子（集合），当该自动释放池要被销毁时，会向池子中的所有对象发送release消息，所有的对象的引用计数器都会减一（但不一定对象会被回收）<br>    所以上面的例子可以这么写：</p>
+<pre><code>- (NSString *)description
+{
+    NSString *desc;
+    desc = [[NSString alloc] initWithFormat:@&quot;i am %d years old&quot;,4];
+    return [desc autorelease];//加入到自动释放池
+}
+</code></pre><p>#tcp协议的三次握手 四次挥手</p>
+<p>#手势识别的过程<br>    事件分发：<br>    1.首先用户触发事件,操作系统产生硬件中断响应，ios操作系统识别并捕捉到touch，motion，remote control事件，并将该事件封装成UIEvent(UIEvent 包含三种事件 touch motion remote_control(远端控制))事件，并将该事件放入到应用程序的事件队列中，该事件队列由UIApplication管理<br>    2.UIApplication对象开始管理事件队列，并从事件队列中的最上层取出事件，并分发下去处理<br>    3.分发下去的事件首先交给key window，然后key window再将事件分发给其它初始化对象<br>    4.UIWindow实例对象会首先在他的内容视图上通过调用hit-Test:WithEvent:  此方法会在其视图层次结构中的每个视图上调用pointInside:withEvent:(该方法用来判断点击事件发生的位置是否处于当前视图的范围之内，以确定用户是不是点击了当前的视图)，如果pointInside:(withEvent):方法返回YES 则继续逐级调用直到找到touch操作发生的位置 这个视图也就是要找的hit-test View<br>    hitTest:withEvent:方法处理的流程：<br>    hitTest:withEvent:方法根据已经获得的CGPOint和UIEVent事件返回hitTestView，hitTest:withEvent:方法通过调用自身的PointInside:(withEvent):方法，如果传递到hitTest:withEvent:方法中的Point在他的bounce之内，就返回YES ，然后，这个方法在每个返回YES的子视图中重复调用，直到找到最后一个在bounce内的子视图</p>
+<pre><code>1 调用当前视图的PointInside:(withEvent):方法判断触摸点是否在当前视图
+2 若返回NO 则hitTest:(withEvent):返回nil 说明不再当前视图
+3 若返回YES 则向当前的视图的所有子视图(subViews)发送hitTest:withEvent:消息，所有子视图的遍历顺序是从最顶层视图一直到最底层视图，即subViews数组的末尾向前遍历，直到有子视图返回非空对象或者全部子视图遍历完毕；
+4 如果第一次有子视图返回非空对象，则hit:(withEvent:)方法返回此对象，处理结束 如果所有子视图返回非，则hitTest:(withEvent):返回自身self
+
+处理逻辑：
+根据响应者链,如果当前view是否可以处理当前事件，如果不能处理，就将事件转发给该视图的视图控制器，如果该视图控制器仍不能处理，就将该事件转发给当前视图的父视图，依次类推，如果到keyWindow事件仍然没有得到处理，那么keyWindow就将事件转发给UIApplication对象，如果仍然不能处理，就将该事件丢弃。
+起始于window的初始化对象(hitTestView)，结束于UIApplication对象
+所谓的响应者对象就是指可以响应并且处理事件的对象。响应者链就是一系列的响应者对象构成的一个层次结构
+第一响应者指的就是当前正在响应事件的对象。
+</code></pre><p>#方法签名<br>    方法在声明的时候，方法的名字。<br>    button有3种方法签名<br>    1 没有参数 2 有一个参数UIButton 3 有两个参数 UIButton和 触发事件 参数<br>    手势有两种事件签名<br>    1 没有参数 2 有一个UIGestureRecognizer类型的参数</p>
+<p>#main函数的作用<br>    main函数是程序的启动入口，在ios app中，main函数的功能被最小化，他的主要工作交给了UIKit framework</p>
+<pre><code>#import &lt;UIKit/UIKit.h&gt;
+#import &quot;QYAppDelegate.h&quot;
+int main(int argc, char * argv[])
+{
+    @autoreleasepool {
+        return UIApplicationMain(argc, argv, nil, NSStringFromClass([QYAppDelegate class]));
+    }
+}
+在main函数里面执行了一个UIApplicationMain函数。
+argc, argv,直接交给UIapplicationMain进行相关处理即可。第三个参数确定主要应用程序类的名称，如果这个参数是nil，这样就会使用UIApplication类创建对象。第四个参数是程序自定义的代理类名
+理解：UIApplicationMain的三件事：
+1 根据第三个参数创建UIApplication对象 
+2 根据第四个参数确定应用程序的delegate 
+3 设置主事件循环(main event loop 可以认为这是一个死循环，他不断的检测事件队列中是否有事件需要处理，当他监听到系统事件时，就会通知UIApplication对象的代理delegate对象)包括application的run loop，同时开始处理事件 当程序加载完毕后调用（只调用一次）application：didFinishLaunchingWithOption:方法。
+</code></pre><p>#UIWindow<br>    UIWindow是一种特殊的UIView，通常一个app中只有UIWindow，ios程序启动完毕后，创建的第一个视图控件就是UIWindow，接着创建控制器的view 最后将控制器的view添加到UIWindow 于是控制器的view就显示屏幕上。也就是说，没有UIWindow，就看不到UI界面<br>    UIWindow的获得：<br>    1 [UIApplication shardApplication].windows 在本应用中打开UIWindow列表，这样就可以接触到应用中的任何一个UIView对象<br>    2 [UIApplication shardApplication].keyWindow 用来接受键盘以及非接触类的消息事件的UIWindow 应用程序中每个时刻只能有一个UIWindow是keyWindow 如果某个UIWindow内部文本框不能输入文字，可能就是这个UIwindow不是keyWindow<br>    3 view.window 获得某个UIView所在的UIWindow<br>    storyBoard加载时<br>    1 会自动创建一个UIWindow对象，<br>    2 加载Main storyBoard 创建箭头所指的视图控制器<br>    3 并将storyBoard箭头所指的控制器设为rootController，并将窗口显示在屏幕上</p>
+<p>#UIApplication<br>    UIApplication 对象是应用程序的象征，并且是单例的 [UIApp;icatin shardApplication]可以获得这个单例对象 这个是ios程序启动后创建的第一个对象 并且不允许自己创建该对象<br>    利用UIApplication对象，可以进行一些应用级别的操作<br>    1 设置联网指示器的可见 networkActivityIndicationVisible<br>    2 设置应用程序图标右上角的红色提示数字 applicationIconBadgeNumber(0 代表清除图标右上角的数字)<br>    3 在ios7开始 系统提供了2中管理状态栏的方式 1 通过UIViewController管理 每个UIViewController都可以拥有一个自己的不同的状态栏 2 通过UIApplication管理 一个应用程序的状态栏由他统一管理。<br>    默认的情况下，状态栏都是由UIViewController管理   - （BOOl）preferStatusBarHidden 状态栏的可见性<br>    如果要利用UIApplication来管理状态栏 首先修改info.plist文件<br>    加上row （View controller-based status bar appearance BOOL NO）<br>    4 UIApplication有一个功能十分强大 openURL：方法<br>    UIApplication *app = [UIApplication shardAppliaction];<br>    [app openURL:[NSURL URLWithString:@”tel://10086”]];//打电话<br>    [app openURL:[NSURL URLWithString:@”sms://10086”]];//发短信<br>    [app openURL:[NSURL URLWithString:@”mailto:<a href="mailto://1235@qq.com" target="_blank" rel="noopener">//1235@qq.com</a>“]];//发邮件<br>    [app openURL:[NSURL URLWithStrinf:@”<a href="http://www.baidu.com&quot;]]" target="_blank" rel="noopener">http://www.baidu.com&quot;]]</a>;<br>    打开其他应用app</p>
+<p>#程序启动的完整过程<br>    1 首先执行main函数<br>    2 在main函数中调用UIApplication Main函数<br>        创建UIApplication对象<br>        创建UIApplication的Delegate对象<br>    3 delegate对象开始监听系统事件（在非storyBoard的情况下）<br>        1 程序启动完毕后，就会调用代理的<br>        2 application:(UIApplication <em>) didFinishLaunchingWithOptions:(NSDictionary </em>)launchOptions方法<br>        在这个方法中创建UIWindow和rootViewController对象<br>        3 显示窗口<br>    3 根据info.plist获得最主要的storyBoard的文件名，加载最主要的storyboard<br>        1 创建UIWindow<br>        2 创建和设置UIwindow的rootViewController<br>        3 显示窗口</p>
+<p>##UIApplication，UIApplication的代理MKDelegate对象，UIWindow，UIViewController之间的关系<br>    UIApplication对象内部有一个代理属性 关联到MKDelegate对象,MKDelegate里面有一个UIwindow属性，关联到UIWindow对象<br>    UIWindow对象通过设置rootViewController属性关联到UIViewController对象，UIViewController的View属性用于显示视图</p>
+<p>#退出键盘方法<br>    老方法：谁把键盘叫出来，谁就把键盘放回去<br>    新方法：调用[self.view endEditing:YES]方法 是整个View都不是第一响应者</p>
+<p>#info.plist，pch文件 infoPList.string文件<br>    info.plist文件是对整个工程做一些运行期的配置，不能删除，所以在自定义的plist文件命名不能以plist开头，如果修改了info.plist文件，需要先把工程clean 然后再把模拟器中的应用删除<br>    infoPlist.string文件用于本地化 支持对语言环境</p>
+<pre><code>pch文件是一个头文件 pch头文件中的内容可以被项目中的其他所有的源文件共享和访问  
+
+作用 1 可以用于存放全局变量（整个项目都用得上的宏） 
+2 如果某个头文件要在整个项目中到处使用，可以在pch文件中包含
+eg 在pch文件中添加 #define MKLog(...) NSLog(__AV_ARGS__)(固定写法)用MKLog代替NSLog
+当改为 #define MKLog(...) //NSLog(__) NSLog(__AV_ARGS__) 相当于把所有的MKLog注释了
+3 自动打开后者关闭日志输出功能
+应用程序可分为调试阶段和发布阶段，在调试阶段系统（通过检测程序的运行是在真机设配还是模拟器(或者Xcode环境)）会自定义一个叫做DEBUG的宏，当处于发布阶段的时候，DEBUG这个宏会由系统自动删除
+#ifdef DEBUG//调试阶段 //很有用
+#define MKLog(...) NSLog(__AV_ARGS__)
+#else //发布阶段
+#define MKLog(...)
+#endif
+******************************
+#ifdef __OBJC__//只有OC文件中的.m 和 .mm 才能使用 __OBJC__这个宏表示只有OC才能使用 所以OC文件里面使用的宏要放在这个宏里面
+#import &lt;UIKit/UIKit.h&gt;
+#import &lt;Foundation/Foundation.h&gt;
+#endif
+</code></pre><p>#谓词 predicate<br>    在编程中，经常需要获取一个对象的集合，并通过某些已知条件计算这个集合的值，并保留某些符合条件的对象，删除不满足的条件的对象。 NSPredicate是一种过滤条件,用于指定过滤器的条件。通过创建NSPredicate对象，准确的描述过滤条件，通过谓词筛选对象，判断他们是否于过滤条件匹配<br>    方便1 数组过滤器：通过这种方式不必编写for循环和if语句  -filteredArrayUsingPredicate:是NSArray NSMutableArray数组中的一种类别方法，他将循环遍历数组内容，根据谓词计算每个对象的值，并将值为YES的对象累计添加到一个新数组中。缺点：运行速度没有自己写的代码快<br>    解决谓词中的硬编码问题：方法一：格式说明符 方法2：变量名<br>    predict = [NSPredicate predicateWithFormat:@”engine.horsepower &gt; %d”,50];<br>    predict = [NSPredicate predicateWithFormat:@”name == %@”,@”herbie”]; 通过传参<br>    predict = [NSPredicate predicateWithFormat:@”%K==%@”,@name,@”Herbie”];//改变键路径 只能通过%K的格式符改变键路径<br>    2<br>    predictTemplate = [NSPredicate predicateWithFormat:@”name = $NAME”];<br>    NSDictionary *dict = @{@”NAME”:@”heibie”}<br>    predicate = [predicateTemPlate predicateWithSubstitleVariables:dict];//返回一个新的谓词对象</p>
+<p>#正则表达式<br>    正则表达式以用^表示开始 $表示结束 以一个[A-Za-z0-9_+-]表示匹配一个字符 {8}表示匹配8个字符<br>    | 竖直分隔符代表选择。例如“gray|grey”可以匹配grey或gray。</p>
+<pre><code>+ 加号代表前面的字符必须至少出现一次。(1次、或多次)。例如,“goo+gle”可以匹 配google、gooogle、goooogle等
+? 问号代表前面的字符最多只可以出现一次。(0次、或1次)。例如,“colou?r”可以匹 配color或者colour
+* 星号代表前面的字符可以不出现,也可以出现一次或者多次。(0次、或1次、或多 次)。例如,“0*42”可以匹配42、042、0042、00042等。
+{n}重复n此
+{n,}至少重复 n 此
+{n,m}重n 到 m 此
+</code></pre><p>#kvc kvo<br>    KVC (key value coding) 是一种协议,(属性的点或者设置实例变量来 直接 更改对象的状态)是一种 间接 更改对象状态的方式.它实现的方法就是使用字符串表示更改的对象状态,如果找不到会调用undefined方法.</p>
+<pre><code>KVO 提供了一种机制,当制定对象的属性发生改变后,则对象就会接收到通知,简单的说就是每次指定的被观察的对象的属性被修改后, KVO 就会自动通知相应观察者.
+注意:必须使用 set 方法,或者 KVC 的方法修改属性的值,才会引起 KVO 的通知
+KVO 是 model 于 controller 之间通信的一种机制.controller 作为观察者,监听 modal 某一属性的改变.
+KVO 于 notification 的区别和联系
+相同:均可以实现 modal 和 controller 之间的通信
+区别: KVO 直接通知 controller, 模型数据的变化,前提是 controller 已经是 modal 的观察者
+优点:只通知一个属性的改变,并且属性的改变是由系统通知给 controller, 模型对象不需要发送 post 通知,效率更高,力度更消耗资源更少
+notification 可以实现连个对象之间的通信
+1 需要通知中心 ,间接地通知 controller, 只要注册即可,
+2 如果 modal 发生改变,需要 modal 自己向通知中心发送(调用post方法)通知,再有通知中心再向 controller(前提是已经向通知中心注册) 发送,这个过程力度较大,会通知所有改变
+通知(notification 和代理 delegate 的区别)
+相同:都能完成对象之间的通信
+代理是一对一的(一个对象对应于另外一个对象,并且一个对象只能告诉另外一个对象发生什么事情(单向通信)),通知是多对多的关系(一个对象(通知发布者)可以对应于多个观察者(通知接受者),同时每个观察对象可以同时观察多个对象  )
+</code></pre><p>#XML解析<br>    XML 被设计用来结构化(基于树形结构(很重要)),存储以及传输信息,它没有任何行为,不能显示任何信息,区分于HTML<br>    使用 XML json 的目的是为了跨平台<br>    SAX(simple APIs for XML)提供了一种 顺序访问模式 ，当使用SAX分析器解析XML文档进行分析时，会触发一系列的事件，并激活相应的事件处理函数。应用程序通过对这些事件处理函数来实现对XML文件的解析。所以SAX也被成为  事件驱动  接口。由于SAX在对XML文件解析时会触发一系列的处理函数，由于事件触发本身是有时序性的，因此，SAX是一种顺序访问机制，对于已经访问过的部分，不能再倒回去重新工作。SAX在实现时，只是在顺序的检查XML文档中的字节流，判断当前字节是XML语法中的那一部分，是否符合XML语法，再触发相应的事件，事件的处理函数由应用程序自己实现<br>    使用NSXMLParser<br>    优点：对内存占用的少，实现简单，对只需要访问XML文档中的数据而不对文档进行更改的应用程序来说很合适<br>     缺点：缺少灵活性,，效率较低<br>    DOM(document object modal) 文件解析 是利用第三方库GDataXMLNode.h GDataXMLNode.m 在使用第三库的时候在使用DOMXML解析文件是设置一下几项<br>    1 在Header Search Paths 加上/usr/include/libxml2<br>    2 在build Phases中的GCDataXMLNode.m 加上-fno-objc-arc<br>    3 other linkFlag 添上 -lxml2(一套开源的解析框架)<br>    一次性将 XML 文档读入到内存中,并以树形结构存在,可以随意访问任何一个元素<br>    缺点：占用的内存较多</p>
+<p>#json<br>    json (javascript object notation)javaScript对象表示法 是轻量级的文本数据交换格式，独立于语言，具有自我描述性，易理解 独立于语言和平台 比XML相比的优点：没有结束标签 更短 读写速度更快 使用数组 不使用保留字,网络数据量消耗小<br>    缺点:可读性差,编码难度大<br>    两种框架<br>    1 NSJsonSerialization ios5.0之后有效<br>    2 jsonKit </p>
+<p>#web 服务器<br>    web 服务器也被称为 www服务器,主要功能是可以向发出请求的浏览器提供文档程序.<br>    服务器是一种被动程序,只有当 Internet 上运行其他计算机的浏览器发出请求时,服务器才会响应,常用的服务器有 IIS 和 Apache .<br>    web 服务器是一台在 Internet 上具有独立的 ip 地址的计算机<br>    web 服务器是指驻留在因特网上的某种类型计算机的程序<br>    在 MAC 启动本地的 Apache 服务器 sudo apachectl -k start 重新启动: sudo apachectl -k restart</p>
+<p>#post&amp;get<br>    post 和 get 是两种最常用的与服务器进行交互的 HTTP 方法<br>    get 的语义是 获取 指定的URL的资源<br>    将数据按照 variable =value 的形式,添加到 action 所指的 URL 后面,并且两者之间使用?连接,各变量之间使用&amp;连接<br>    缺点:<br>    1 貌似不安全,因为在传输的过程中,数据将被放在请求的 URL 中<br>    2 传输的数据量小,这主要是因为受 URL 的长度限制<br>    post:<br>    post 的语义是 向指定的URL的资源 添加 数据<br>    将数据放在数据体中,按照变量和值向对应的方式,传递到 action 所指向的 URL<br>    优点<br>    1 所有的数据对用户来说都是不可见的<br>    2 可以传输大量数据,上传文件只能是 post<br>    总结:如果从 URL 的角度看的话: get方法是不安全的, post方法是安全的,因为get在传输过程中,数据都放在URL中,但是如果从服务器的角度上讲, get方法是安全的, post方法是不安全的,因为 post方法回向服务器添加数据,而 get 方法只会向服务器获取数据,所以,如果要想服务器进行攻击,只能使用 post 方法</p>
+<p>#block<br>    (返回值类型)(^块名字)(参数类型) = ^(参数列表){代码实现};<br>    block 是一种特殊的数据类型,可以将 block 当做比较特殊的对象</p>
+<h3 id="使用局部变量"><a href="#使用局部变量" class="headerlink" title="使用局部变量"></a>使用局部变量</h3><pre><code>block 可以使用在定义之前声明的局部变量(默认的情况下是只读的)
+int i = 10;
+void (^myblock)() = ^{
+    NSLog(&quot;%d&quot;,i);
+};
+i = 100;
+myblock();
+输出结果是 10 
+注意:
+1 在定义 block 时 ,会在 block 中建立  当前局部变量内容的副本(拷贝), block 中所用的也就是这个副本
+2 后续在对该变量的的任何修改,都不会影响 block 中的这个变量的数值
+3 如果需要在 block 中保持局部变量的数值变化,需要使用__ block 关键字
+4 使用__block 关键字之后,同样可以再 block 中修改变量数值
+</code></pre><p>###传递对象</p>
+<p>###注意循环引用<br>    @property (nonatomic, strong) NSMutableArray *myBlocks;</p>
+<pre><code>#pragma mark 将代码改为调用self的方法
+int(^sum)(int, int) = ^(int x, int y) {
+    return [self sum:x y:y];
+};
+[self.myBlocks addObject:sum];
+
+#pragma mark 对象被释放时自动调用
+- (void)dealloc
+{
+    NSLog(@&quot;DemoObj被释放&quot;);
+}
+self 对 myblocks 强引用 myblock 对sum 强引用 sum 对 self 强引用 产生循环引用的结果就是对象无法释放,由于局部变量默认的都是强引用,离开其所在的作用区域后都会被释放.所以使用__ weak关键字,将局部变量声明为弱引用
+__weak DemoObj *weakSelf = self;
+int (^int,int) = ^(int,int){
+    return [weakSelf sum:x y:y];
+};
+所以在 block 内部,如果碰到 self, 最好能够思考一下,不要造成循环引用
+</code></pre><p>#进程 线程<br>    进程作为分配资源的基本单位,<br>    线程是独立运行和独立调度(有操作系统内核调度)的基本单位.</p>
+<p>###进程:<br>    正在运行中的程序,负责程序运行的内存分配,每一个进程都有一个自己独立的虚拟内存空间,进程是一个基本的分配单元,也是一个基本的执行单元,相比较程序,进程是一个动态概念,进程是程序在处理机上的一个执行过程,而程序是一种静态概念,它是一种软件资料在外存上长期有效<br>    要点:<br>    1 进程是一个实体,每个进程都有一个他自己的地址空间,一般情况下,包含数据区域,文本区域,堆和栈.<br>    文本区域存储处理器执行的代码;<br>    数据段存储全局变量,静态变量常亮,还有一些进程执行期间使用的动态分配内存<br>    堆栈区域存储的是进程调用的指令和本地变量<br>    2 进程是一个在内存中运行的程序<br>    进程的缺点:独立的地址造成不同的进程之间的共享状态信息非常困难,为了共享信息,必须显式的使用进程通信机制系统的开销很大, 这就造成了进程之间的通信比较慢,</p>
+<p>###线程:<br>    是进程中一个独立的执行路径(控制单元),一个进程中至少包含一个线程,即主线程,通常将耗时的执行路径:eg:网络请求放在其他线程执行.<br>    创建线程的目的就是为了开启一条新的执行路径(在进程中开辟了一个上下文的逻辑流),运行指定的代码,与主线程的代码实现并发运行<br>    多线程优势:<br>    1 充分发挥多核处理器的优势,将不同的线程分配给不同的处理器,<br>    2 将耗时操作分配到其他线程执行,由主线程负责统一更新界面会使程序更加流畅<br>    3 当硬件处理器的数量增加时,程序会运行更快<br>    4 占用的资源很少,所以对他的调度付出的系统开销很小,能跟高效的提高提高系统内多个程序间的并发执行速度<br>    缺点:新建线程会消耗内存空间和 CPU 时间,降低系统性能,多线程技术是为了并发执行多项任务,不会提高单个算法本身的执行效率</p>
+<p>###ios 三种多线程技术<br>    1 NSThread (创建简单,管理困难,常使用[NSThread currentThread]跟踪任务所在线程)<br>    2 NSOperation/NSOperationQueue (是使用 GCD 实现的一套 OC 的 API)<br>    3 GCD(Grand Central Dispatch 大中心调度,基于C语言的底层API,用block定义任务,方便,提供了更多的控制能力以及操作队列中不能使用的底层函数)  </p>
+<p>#git<br>    git init –bare 创建一个纯代码仓库<br>    git clone ssh:<a href="mailto://git@192.168.1.122" target="_blank" rel="noopener">//git@192.168.1.122</a>/Users/git/Documents/test<br>    git push ssh:<a href="mailto://git@192.168.1.122" target="_blank" rel="noopener">//git@192.168.1.122</a>/Users/git/Documents/test master<br>    git pull </p>
+<p>#@property属性的用法<br>    weak(assign):代理\ UI控件<br>    strong(retain)其他对象(除代理\UI控件\字符串)<br>    copy (字符串)<br>    assign 基本数据类型(int float 枚举 结构体 BOOL)</p>
+<p>#比较常用的程序架构<br>    当首次使用软件的时候,需要登录为例:<br>        1 下载完成后,运行,先弹出的是用户指引界面,一般式 UIScrollView 和 UIImageView 结合实现,当 UIScrollView 滑动到最后一个界面,通常有一个按钮,点击按钮后进入到登录页面,填写完用户名和密码后,进入主界面<br>        当不是第一次运行APP 的时候,在屏幕上点击 ICNO 图标时,如果记住密码,就直接进入程序主界面,如果没有记住密码的时候,则会重新弹出登录界面,要求用户输入用户名和密码,然后进入主界面.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/01/24/常见面试题/" data-id="cjezb8eap0010ipm4zqyxenu7" class="article-share-link">Teilen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/程序又崩溃啦/">程序又崩溃啦</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-viewController" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/01/17/viewController/" class="article-date">
+  <time datetime="2015-01-17T05:43:19.000Z" itemprop="datePublished">2015-01-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/01/17/viewController/">viewController</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-UIViewController生命周期几种方法调用时机"><a href="#1-UIViewController生命周期几种方法调用时机" class="headerlink" title="1.UIViewController生命周期几种方法调用时机"></a>1.UIViewController生命周期几种方法调用时机</h2><ol>
+<li>- (id)initWithNibName:(NSString <em>)nibNameOrNil bundle:(NSBundle </em>)nibBundleOrNil;<br>当UIViewController在初始化加载xib文件时，该方法被调用。</li>
+<li>- (void)loadView;<br>当每次访问UIViewController的view(比如controller.view,self.view)并且view为nil，该方法就会被调用。</li>
+<li>- (void)viewWillUnload; </li>
+<li>- (void)viewDidUnload;</li>
+<li>- (void)viewDidLoad;<br>不管是通过xib文件还是重写loadView创建UIViewController的view，在view创建完毕后，最终都会调用该方法。</li>
+<li>- (void)viewWillAppear:(BOOL)animated;<br>当view将要呈现在UI界面上时会调用该方法。</li>
+<li>- (void)viewDidAppear:(BOOL)animated;<br>当view已经完全过渡到屏幕上时会调用该方法。</li>
+<li>- (void)viewWillDisappear:(BOOL)animated;<br>当view将要消失，或被覆盖、隐藏时会调用该方法。</li>
+<li>- (void)viewDidDisappear:(BOOL)animated;<br>当view已经完全消失，或被覆盖、隐藏时会调用该方法。</li>
+</ol>
+<h2 id="2-UIViewController-xib的加载过程"><a href="#2-UIViewController-xib的加载过程" class="headerlink" title="2.UIViewController xib的加载过程"></a>2.UIViewController xib的加载过程</h2><p>loadView默认实现就是在自定义的UIViewController类里不重写loadView方法，或者重写后只是在方法里简单实现[super loadView]。默认实现做了如下几个工作：</p>
+<ol>
+<li>它会先去查找与UIViewController相关联的xib文件，通过加载xib文件来创建UIViewController的view<br> 如果在初始化UIViewController指定了xib文件名，就会根据传入的xib文件名加载对应的xib文件<br> [[UIViewController alloc] initWithNibName:@”ViewController” bundle:nil];<br> 如果没有明显地传xib文件名，就会加载跟UIViewController同名的xib文件<br> [[UIViewController alloc] init]; // 加载UIViewController.xib </li>
+<li>如果没有找到相关联的xib文件，就会创建一个空白的UIView，然后赋值给UIViewController的view属性，大致如下：<br> self.view = [[[UIView alloc] initWithFrame:[UIScreen mainScreen].applicationFrame] autorelease];</li>
+</ol>
+<h2 id="3-几种控制器容器的优缺点"><a href="#3-几种控制器容器的优缺点" class="headerlink" title="3.几种控制器容器的优缺点"></a>3.几种控制器容器的优缺点</h2><h3 id="1-UITabBarController-Tabbar底部标签式-Instagram、微信、微博"><a href="#1-UITabBarController-Tabbar底部标签式-Instagram、微信、微博" class="headerlink" title="1.UITabBarController(Tabbar底部标签式:Instagram、微信、微博)"></a>1.UITabBarController(Tabbar底部标签式:Instagram、微信、微博)</h3><p>UITabBarController作为一种容器适合管理底部标签式（TabBar 如： Instagram、微信、微博）这种结构的APP</p>
+<h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><ol>
+<li>清楚当前所在的入口位置</li>
+<li>轻松在各入口间频繁跳转且不会迷失方向</li>
+<li>直接展现最重要入口的内容信息（默认首页）</li>
+</ol>
+<h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><p>功能入口过多时，该模式显得笨重不实用(超过5个的时候会将其他控制器添加到一个更多界面)</p>
+<h3 id="2-UINavigationController-Springboard跳板式-星巴克"><a href="#2-UINavigationController-Springboard跳板式-星巴克" class="headerlink" title="2.UINavigationController (Springboard跳板式:星巴克)"></a>2.UINavigationController (Springboard跳板式:星巴克)</h3><p>UINavigationController作为一种容器适合管理跳板式（SpringBoard 如： 星巴克）这种结构的APP</p>
+<h4 id="优点-1"><a href="#优点-1" class="headerlink" title="优点"></a>优点</h4><ol>
+<li>清晰展现各入口</li>
+<li>容易记住各入口位置，方便快速找到</li>
+</ol>
+<h4 id="确定"><a href="#确定" class="headerlink" title="确定"></a>确定</h4><ol>
+<li>无法在多入口间灵活跳转，不适合任务操作</li>
+<li>容易形成更深的路径</li>
+<li>不能直接展现入口内容</li>
+<li>不能显示太多入口次级内容</li>
+</ol>
+<h3 id="3-UINavigationController做整体，融合TabBarController（List-Menu列表式：知乎）"><a href="#3-UINavigationController做整体，融合TabBarController（List-Menu列表式：知乎）" class="headerlink" title="3.UINavigationController做整体，融合TabBarController（List Menu列表式：知乎）"></a>3.UINavigationController做整体，融合TabBarController（List Menu列表式：知乎）</h3><h4 id="优点-2"><a href="#优点-2" class="headerlink" title="优点"></a>优点</h4><ol>
+<li>层次展示清晰</li>
+<li>可展示内容较长的标题</li>
+<li>可展示标题的次级内容</li>
+</ol>
+<h4 id="缺点-1"><a href="#缺点-1" class="headerlink" title="缺点"></a>缺点</h4><ol>
+<li>同级内容过多时，用户浏览容易产生疲劳</li>
+<li>排版灵活性不是很高</li>
+<li>只能通过排列顺序、颜色来区分各入口重要程度</li>
+</ol>
+<h3 id="4-UIScrollvIewController融合pageControl-Carousel旋转木马式-豆瓣同城"><a href="#4-UIScrollvIewController融合pageControl-Carousel旋转木马式-豆瓣同城" class="headerlink" title="4.UIScrollvIewController融合pageControl (Carousel旋转木马式:豆瓣同城)"></a>4.UIScrollvIewController融合pageControl (Carousel旋转木马式:豆瓣同城)</h3><h4 id="优点-3"><a href="#优点-3" class="headerlink" title="优点"></a>优点</h4><ol>
+<li>单页面内容整体性强</li>
+<li>线性的浏览方式有顺畅感、方向感</li>
+</ol>
+<h4 id="缺点-2"><a href="#缺点-2" class="headerlink" title="缺点"></a>缺点</h4><ol>
+<li>不适合展示过多页面</li>
+<li>不能跳跃性地查看间隔的页面，只能按顺序查看相邻的页面</li>
+<li>由于各页面内容结构相似，容易忽略后面的内容</li>
+</ol>
+<h3 id="5-Drawer抽屉式：豆瓣小组"><a href="#5-Drawer抽屉式：豆瓣小组" class="headerlink" title="5. Drawer抽屉式：豆瓣小组"></a>5. Drawer抽屉式：豆瓣小组</h3><h4 id="优点-4"><a href="#优点-4" class="headerlink" title="优点"></a>优点</h4><ol>
+<li>兼容多种模式（页面内自有组织）</li>
+<li>扩展性好</li>
+</ol>
+<h4 id="缺点-3"><a href="#缺点-3" class="headerlink" title="缺点"></a>缺点</h4><ol>
+<li>隐藏框架中其他入口</li>
+<li>对入口交互的功能可见性(affordance)要求高</li>
+<li>对排版要求高</li>
+</ol>
+<h3 id="6-Plus点聚式：Path"><a href="#6-Plus点聚式：Path" class="headerlink" title="6. Plus点聚式：Path"></a>6. Plus点聚式：Path</h3><h4 id="优点-5"><a href="#优点-5" class="headerlink" title="优点"></a>优点</h4><ol>
+<li>灵活</li>
+<li>展示方式有趣</li>
+<li>使界面更开阔</li>
+</ol>
+<h4 id="缺点-4"><a href="#缺点-4" class="headerlink" title="缺点"></a>缺点</h4><ol>
+<li>隐藏框架中其他入口</li>
+<li>对入口交互的功能可见性(affordance)要求高</li>
+</ol>
+<h3 id="7-Gallery陈列馆式：多看，豆瓣电影"><a href="#7-Gallery陈列馆式：多看，豆瓣电影" class="headerlink" title="7.Gallery陈列馆式：多看，豆瓣电影"></a>7.Gallery陈列馆式：多看，豆瓣电影</h3><h4 id="优点-6"><a href="#优点-6" class="headerlink" title="优点"></a>优点</h4><ol>
+<li>直观展现各项内容</li>
+<li>方便浏览经常更新的内容</li>
+</ol>
+<h4 id="缺点-5"><a href="#缺点-5" class="headerlink" title="缺点"></a>缺点</h4><ol>
+<li>不适合展现顶层入口框架</li>
+<li>容易形成界面内容过多，显得杂乱</li>
+<li>设计效果容易呆板</li>
+</ol>
+<h3 id="8-Waterfall瀑布式"><a href="#8-Waterfall瀑布式" class="headerlink" title="8.Waterfall瀑布式"></a>8.Waterfall瀑布式</h3><h4 id="优点-7"><a href="#优点-7" class="headerlink" title="优点"></a>优点</h4><ol>
+<li>浏览时产生流畅体验</li>
+</ol>
+<h4 id="缺点-6"><a href="#缺点-6" class="headerlink" title="缺点"></a>缺点</h4><ol>
+<li>缺乏对整体内容的体积感，容易发生空间位置迷失</li>
+<li>浏览一段时间后，容易产生疲劳感</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/01/17/viewController/" data-id="cjezb8e9s000hipm42uuvv6xh" class="article-share-link">Teilen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/kinds-of-viewControllers/">kinds of viewControllers</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-AFNetworking" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/11/29/AFNetworking/" class="article-date">
+  <time datetime="2014-11-29T13:55:09.000Z" itemprop="datePublished">2014-11-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/11/29/AFNetworking/">AFNetworking</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="下载AFNetworking开源代码"><a href="#下载AFNetworking开源代码" class="headerlink" title="下载AFNetworking开源代码"></a>下载AFNetworking开源代码</h2><p>点击链接：<a href="https://github.com/AFNetworking/AFNetworking/archive/master.zip" target="_blank" rel="noopener">AFNetworking</a></p>
+<h1 id="Architecture"><a href="#Architecture" class="headerlink" title="Architecture"></a>Architecture</h1><hr>
+<h2 id="NSURLConnection"><a href="#NSURLConnection" class="headerlink" title="NSURLConnection"></a>NSURLConnection</h2><ul>
+<li>AFURLConnectioinOperatioin</li>
+<li>AFHTTPRequestOperation</li>
+<li>AFHTTPRequestOperationManager</li>
+</ul>
+<h2 id="NSURLSession-iOS-7-Mac-OS-10-9"><a href="#NSURLSession-iOS-7-Mac-OS-10-9" class="headerlink" title="NSURLSession(iOS 7 /Mac OS 10.9)"></a>NSURLSession(iOS 7 /Mac OS 10.9)</h2><ul>
+<li>AFURLSessionManager</li>
+<li>AFHTTPSessionManager</li>
+</ul>
+<h2 id="Serialization"><a href="#Serialization" class="headerlink" title="Serialization"></a>Serialization</h2><ul>
+<li><p><strong>AFURLRequestSerialization</strong></p>
+<ul>
+<li><p>AFHTTPRequestSerialization</p>
+</li>
+<li><p>AFJSONRequestSerialization</p>
+</li>
+<li><p>AFPropertyListRequestSerialization</p>
+</li>
+</ul>
+</li>
+<li><p><strong>AFURLResponseSerialization</strong></p>
+<ul>
+<li><p>AFHTTPResponseSerialization</p>
+</li>
+<li><p>AFJSONResponseSerialization</p>
+</li>
+<li><p>AFXMLParserResponseSerialization</p>
+</li>
+<li><p>AFXMLDocumentResponseSerialization (<code>MAC OS X</code>)</p>
+</li>
+<li><p>AFPropertyListResponseSerialization</p>
+</li>
+<li><p>AFImageResponseSerializer</p>
+</li>
+<li><p>AFCompoundResponseSerializer</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="Additional-Functionality"><a href="#Additional-Functionality" class="headerlink" title="Additional Functionality"></a>Additional Functionality</h2><ul>
+<li>AFSecurityPolicy</li>
+<li>AFNetworkReachabilityManager</li>
+</ul>
+<hr>
+<h1 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h1><p>#define kBaseURL        @”<a href="http://afnetworking.sinaapp.com&quot;" target="_blank" rel="noopener">http://afnetworking.sinaapp.com&quot;</a></p>
+<hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">requestSerializer 默认是 [AFHTTPRequestSerializer serializer];</span><br><span class="line"></span><br><span class="line">responseSerializer 默认是 [AFJSONResponseSerializer serializer];</span><br></pre></td></tr></table></figure>
+<h2 id="AFHTTPRequestOperation"><a href="#AFHTTPRequestOperation" class="headerlink" title="AFHTTPRequestOperation"></a>AFHTTPRequestOperation</h2><pre><code>NSString *urlStr = [kBaseURL stringByAppendingPathComponent:@&quot;request_get.json&quot;];
+NSDictionary *parameters = @{@&quot;foo&quot;:@&quot;bar&quot;};
+NSURLRequest *request = [[AFHTTPRequestSerializer serializer] requestWithMethod:@&quot;GET&quot; URLString:urlStr parameters:parameters error:nil];
+AFHTTPRequestOperation *op = [[AFHTTPRequestOperation alloc]initWithRequest:request];
+op.responseSerializer = [AFJSONResponseSerializer serializer];
+[op setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+    NSLog(@&quot;response object : %@&quot;,responseObject);
+} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    NSLog(@&quot;Error : %@&quot;,error);
+}];
+[[NSOperationQueue mainQueue] addOperation:op];
+-----------------------------------------------------    
+结果：
+    Success:
+    response object : {
+        data =     {
+            foo = bar;
+        };
+        success = 1;
+    }
+    Error:{
+            &quot;errors&quot;:&quot;Parameter error!&quot;,
+            &quot;success&quot;:false
+    }
+-----------------------------------------------------    
+</code></pre><h2 id="AFHTTPRequestOperationManager"><a href="#AFHTTPRequestOperationManager" class="headerlink" title="AFHTTPRequestOperationManager"></a>AFHTTPRequestOperationManager</h2><h3 id="GET-Request"><a href="#GET-Request" class="headerlink" title="GET Request"></a><code>GET</code> Request</h3><pre><code>NSString *urlStr = [kBaseURL stringByAppendingPathComponent:@&quot;request_get.json&quot;];
+NSDictionary *parameters = @{@&quot;foo&quot;:@&quot;bar&quot;};
+AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+[manager GET:urlStr parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    NSLog(@&quot;response object : %@&quot;,responseObject);
+} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    NSLog(@&quot;Error : %@&quot;,error);
+}];
+-----------------------------------------------------    
+结果：
+    Success: 
+    response object : {
+        data =     {
+            foo = bar;
+        };
+        success = 1;
+    }
+    Error:{
+            &quot;errors&quot;:&quot;Parameter error!&quot;,
+            &quot;success&quot;:false
+    }
+-----------------------------------------------------        
+</code></pre><h3 id="POST-URL-Form-Request"><a href="#POST-URL-Form-Request" class="headerlink" title="POST URL-Form-Request"></a><code>POST</code> URL-Form-Request</h3><pre><code>NSString *httpUrlStr = [kBaseURL stringByAppendingPathComponent:@&quot;request_post_body_http.json&quot;];
+NSDictionary *parameters = @{@&quot;foo&quot;:@&quot;bar&quot;};
+AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+[manager POST:httpUrlStr parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    NSLog(@&quot;response object : %@&quot;,responseObject);
+} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    NSLog(@&quot;Error : %@&quot;,error);
+}];
+
+NSString *jsonUrlStr = [kBaseURL stringByAppendingPathComponent:@&quot;request_post_body_json.json&quot;];
+[manager POST:jsonUrlStr parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    NSLog(@&quot;Response object : %@&quot;,responseObject);
+} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    NSLog(@&quot;Error : %@&quot;,error);
+}];
+-----------------------------------------------------    
+结果：
+    Success: 
+    response object : {
+        data =     {
+            foo = bar;
+        };
+        success = 1;
+    }
+    Error:{
+            &quot;errors&quot;:&quot;Parameter error!&quot;,
+            &quot;success&quot;:false
+    }
+-----------------------------------------------------
+</code></pre><h3 id="POST-Multi-Part-Request"><a href="#POST-Multi-Part-Request" class="headerlink" title="POST Multi-Part-Request"></a><code>POST</code> Multi-Part-Request</h3><pre><code>NSString *urlStr = [kBaseURL stringByAppendingPathComponent:@&quot;upload2server.json&quot;];
+NSDictionary *parameters = @{@&quot;foo&quot;:@&quot;bar&quot;};
+AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+[manager POST:urlStr parameters:parameters constructingBodyWithBlock:^(id&lt;AFMultipartFormData&gt; formData) {
+    NSURL *fileURL = [[NSBundle mainBundle] URLForResource:@&quot;b_Aquarius&quot; withExtension:@&quot;jpg&quot;];
+    [formData appendPartWithFileURL:fileURL name:@&quot;image&quot; fileName:@&quot;constellation.jpg&quot; mimeType:@&quot;image/jpeg&quot; error:nil];
+    fileURL = [[NSBundle mainBundle] URLForResource:@&quot;b_Aries&quot; withExtension:@&quot;png&quot;];
+    [formData appendPartWithFileURL:fileURL name:@&quot;image&quot; fileName:@&quot;constellation.png&quot; mimeType:@&quot;image/png&quot; error:nil];
+} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    NSLog(@&quot;Response object : %@&quot;,responseObject);
+} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    NSLog(@&quot;Error : %@&quot;,error);
+}];
+-----------------------------------------------------
+结果：
+    Success: 
+    Response object : {
+        data =     (
+                    {
+                name = &quot;constellation.jpg&quot;;
+                url = &quot;http://afnetworking-userdomain.stor.sinaapp.com/constellation.jpg&quot;;
+            },
+                    {
+                name = &quot;constellation.png&quot;;
+                url = &quot;http://afnetworking-userdomain.stor.sinaapp.com/constellation.png&quot;;
+            }
+        );
+        success = 1;
+    }
+-----------------------------------------------------
+</code></pre><hr>
+<h2 id="AFURLSessionManager"><a href="#AFURLSessionManager" class="headerlink" title="AFURLSessionManager"></a>AFURLSessionManager</h2><h3 id="Creating-a-Download-Task"><a href="#Creating-a-Download-Task" class="headerlink" title="Creating a Download Task"></a>Creating a Download Task</h3><p>/#define kDownloadUrl             @”<a href="http://music.baidu.com/data/music/file?link=http://yinyueshiting.baidu.com/data2/music/346495/3464861417179661128.mp3?xcode=91aea20a92711d3d83f3f76a0952eb4b63b77ba183a87289&amp;song_id=346486&quot;" target="_blank" rel="noopener">http://music.baidu.com/data/music/file?link=http://yinyueshiting.baidu.com/data2/music/346495/3464861417179661128.mp3?xcode=91aea20a92711d3d83f3f76a0952eb4b63b77ba183a87289&amp;song_id=346486&quot;</a>  <code>kDownloadUrl 是下载链接</code></p>
+<pre><code>NSURL *url = [NSURL URLWithString:kDownloadUrl];
+NSURLRequest *request = [NSURLRequest requestWithURL:url];
+AFURLSessionManager *manager = [[AFURLSessionManager alloc]initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+NSProgress *progress = nil;
+NSURLSessionDownloadTask *downloadTask = [manager downloadTaskWithRequest:request progress:&amp;progress destination:^NSURL *(NSURL *targetPath, NSURLResponse *response) {
+    NSString *filePath = @&quot;/Users/qingyun/Desktop&quot;;
+    NSString *newFielPath = [filePath stringByAppendingPathComponent:response.suggestedFilename];
+    NSLog(@&quot;name : %@&quot;,response.suggestedFilename);
+    return [NSURL fileURLWithPath:newFielPath];
+} completionHandler:^(NSURLResponse *response, NSURL *filePath, NSError *error) {
+    if (error) {
+        NSLog(@&quot;Error : %@&quot;,error);
+    }else{
+        NSLog(@&quot;File path : %@&quot;,filePath);
+    }
+}];
+[downloadTask resume];
+-----------------------------------------------------
+结果：
+Success: File path : file:///Users/qingyun/Desktop/Only%20Love.mp3
+-----------------------------------------------------
+</code></pre><h3 id="Creation-a-Upload-Task"><a href="#Creation-a-Upload-Task" class="headerlink" title="Creation a Upload Task"></a>Creation a Upload Task</h3><pre><code>    NSString *urlStr = [kBaseURL stringByAppendingPathComponent:@&quot;upload2server.json&quot;];
+NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlStr]];
+AFURLSessionManager *manager = [[AFURLSessionManager alloc]initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+NSProgress *progress = nil;
+NSString *filePath = @&quot;file:///Users/qingyun/Desktop/xml&amp;json.pdf&quot;;
+NSURLSessionUploadTask *uploadTask = [manager uploadTaskWithRequest:request fromFile:[NSURL fileURLWithPath:filePath] progress:&amp;progress completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
+    if (error) {
+        NSLog(@&quot;Error : %@&quot;,error);
+    }else{
+        NSLog(@&quot;Response objecct : %@&quot;,responseObject);
+    }
+}];
+[uploadTask resume];
+-----------------------------------------------------    
+结果：
+  Success：Response objecct : {
+success = 1;
+}
+-----------------------------------------------------
+</code></pre><h3 id="Creation-a-Upload-Task-For-Multi-Part-Request-With-Progress"><a href="#Creation-a-Upload-Task-For-Multi-Part-Request-With-Progress" class="headerlink" title="Creation a Upload Task For Multi-Part Request, With Progress"></a>Creation a Upload Task For Multi-Part Request, With Progress</h3><pre><code>NSString *urlStr = [kBaseURL stringByAppendingPathComponent:@&quot;upload2server.json&quot;];
+NSURLRequest *request = [[AFHTTPRequestSerializer serializer] multipartFormRequestWithMethod:@&quot;POST&quot; URLString:urlStr parameters:nil constructingBodyWithBlock:^(id&lt;AFMultipartFormData&gt; formData) {
+    NSURL *fileURL = [[NSBundle mainBundle] URLForResource:@&quot;b_Cancer&quot; withExtension:@&quot;png&quot;];
+    [formData appendPartWithFileURL:fileURL name:@&quot;image&quot; fileName:@&quot;Cancer.png&quot; mimeType:@&quot;image/png&quot; error:nil];
+
+    fileURL = [NSURL URLWithString:@&quot;file://Users/qingyun/Desktop/xml&amp;json.pdf&quot;];
+    [formData appendPartWithFileURL:fileURL name:@&quot;image&quot; error:nil];
+} error:nil];
+NSProgress *progress = nil;
+AFURLSessionManager *manager = [[AFURLSessionManager alloc]initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+NSURLSessionUploadTask *uploadTask = [manager uploadTaskWithStreamedRequest:request progress:&amp;progress completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
+    if (error) {
+        NSLog(@&quot;Error : %@&quot;,error);
+    }else{
+        NSLog(@&quot;Response objecct : %@&quot;,responseObject);
+    }
+}];
+[uploadTask resume];
+-----------------------------------------------------    
+结果：
+Success:Response objecct : {
+        data =     (
+                    {
+                name = &quot;Cancer.png&quot;;
+                url = &quot;http://afnetworking-userdomain.stor.sinaapp.com/Cancer.png&quot;;
+            }
+        );
+        success = 1;
+    }
+-----------------------------------------------------
+</code></pre><h3 id="Creation-a-Data-Task"><a href="#Creation-a-Data-Task" class="headerlink" title="Creation a Data Task"></a>Creation a Data Task</h3><pre><code>NSURL *url = [NSURL URLWithString:[kBaseURL stringByAppendingPathComponent:@&quot;response.json&quot;]];
+NSURLRequest *request = [NSURLRequest requestWithURL:url];
+AFURLSessionManager *manager = [[AFURLSessionManager alloc]initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
+    if (error) {
+        NSLog(@&quot;Error : %@&quot;,error);
+    }else{
+        NSLog(@&quot;response object : %@&quot;,responseObject);
+    }
+}];
+[dataTask resume];
+-----------------------------------------------------
+结果：
+Success： response object : {
+data = &quot;This is a json data.&quot;;
+success = 1;
+}
+-----------------------------------------------------
+</code></pre><hr>
+<h2 id="AFHTTPSessionManager"><a href="#AFHTTPSessionManager" class="headerlink" title="AFHTTPSessionManager"></a>AFHTTPSessionManager</h2><h3 id="GET-Request-1"><a href="#GET-Request-1" class="headerlink" title="GET Request"></a><code>GET</code> Request</h3><pre><code>NSString *urlStr = [kBaseURL stringByAppendingPathComponent:@&quot;request_get.json&quot;];
+NSDictionary *parameters = @{@&quot;foo&quot;:@&quot;bar&quot;};
+AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+NSURLSessionDataTask *dataTask = [manager GET:urlStr parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
+    NSLog(@&quot;response object : %@&quot;,responseObject);
+} failure:^(NSURLSessionDataTask *task, NSError *error) {
+    NSLog(@&quot;Error : %@&quot;,error);
+}];
+[dataTask resume];
+----------------------------------------------------
+结果：
+Success :response object : {
+    data =     {
+        foo = bar;
+    };
+    success = 1;
+}
+----------------------------------------------------
+</code></pre><h3 id="POSTRequest"><a href="#POSTRequest" class="headerlink" title="POSTRequest"></a><code>POST</code>Request</h3><pre><code>NSString *urlStr = [kBaseURL stringByAppendingPathComponent:@&quot;request_post_body_http.json&quot;];
+NSDictionary *parameters = @{@&quot;foo&quot;:@&quot;bar&quot;};
+AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+NSURLSessionDataTask *dataTask = [manager POST:urlStr parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
+    NSLog(@&quot;response object : %@&quot;,responseObject);
+} failure:^(NSURLSessionDataTask *task, NSError *error) {
+    NSLog(@&quot;Error : %@&quot;,error);
+}];
+[dataTask resume];
+-----------------------------------------------------
+结果：
+Success:response object : {
+    data =     {
+        foo = bar;
+    };
+    success = 1;
+}
+-----------------------------------------------------
+</code></pre><h3 id="HEADRequest"><a href="#HEADRequest" class="headerlink" title="HEADRequest"></a><code>HEAD</code>Request</h3><pre><code>NSString *urlStr = [kBaseURL stringByAppendingPathComponent:@&quot;request_post_body_http.json&quot;];
+NSDictionary *parameters = @{@&quot;foo&quot;:@&quot;bar&quot;};
+AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+NSURLSessionDataTask *dataTask = [manager HEAD:urlStr parameters:parameters success:^(NSURLSessionDataTask *task) {
+    NSLog(@&quot;Task : %@&quot;,task);
+} failure:^(NSURLSessionDataTask *task, NSError *error) {
+    NSLog(@&quot;Task : %@ Error : %@&quot;,task,error);
+}];
+[dataTask resume];
+----------------------------------------------------
+结果：
+Success： Task : &lt;__NSCFLocalDataTask: 0x8d77b10&gt; { completed }
+----------------------------------------------------
+</code></pre><hr>
+<h2 id="AFNetworkReachabilityManager"><a href="#AFNetworkReachabilityManager" class="headerlink" title="AFNetworkReachabilityManager"></a>AFNetworkReachabilityManager</h2><pre><code>/*
+ *AFNetworkReachabilityStatusNotReachable     = 0,
+ *AFNetworkReachabilityStatusReachableViaWWAN = 1,
+ *AFNetworkReachabilityStatusReachableViaWiFi = 2
+ */
+NSArray *array = @[@&quot;不可达&quot;,@&quot;2G/3G/4G&quot;,@&quot;wi-fi&quot;];
+
+[AFNetworkReachabilityManager *manager = [AFNetworkReachabilityManager sharedManager];
+[self.manager setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@&quot;网络检测&quot; message:[NSString stringWithFormat:@&quot;%@&quot;,array[status]] delegate:nil cancelButtonTitle:@&quot;确定&quot; otherButtonTitles:nil, nil];
+    [alert show];
+
+}];
+
+-----
+[manager startMonitoring];
+[manager stopMonitoring];
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2014/11/29/AFNetworking/" data-id="cjezb8e8v0001ipm4wrfmiqae" class="article-share-link">Teilen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AFNetworking/">AFNetworking</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-XML-JSON" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/11/27/XML-JSON/" class="article-date">
+  <time datetime="2014-11-27T13:16:13.000Z" itemprop="datePublished">2014-11-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/11/27/XML-JSON/">XML_JSON</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="XML"><a href="#XML" class="headerlink" title="XML"></a>XML</h2><h3 id="SAX解析"><a href="#SAX解析" class="headerlink" title="SAX解析"></a>SAX解析</h3><ol>
+<li><p>创建XML解析对象</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">NSURL *url = [NSBundle mainBundle] URLForResource:@&quot;bookstore&quot; withExternsion:@&quot;xml&quot;];</span><br><span class="line">NSXMLParser *parser = [][NSXMLParser alloc]initWithContentsOfURL:url];</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设置XMLParser 对象的delegate</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">parser.delegate = self;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>调用delegate的fangf</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">- (void)parserDidStartDocument:(NSXMLParser *)parser</span><br><span class="line">&#123;</span><br><span class="line">    //当时开始解析的时候条用该方法，通常在这个方法里，		    		    创建模型数组</span><br><span class="line">&#125;</span><br><span class="line">- (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict</span><br><span class="line">&#123;</span><br><span class="line">    //当开始解析，遇到元素的开始标签时，回调用这个方法，通常在这个方法里，创建模型对象，或解析标签中得属性并保存在模型对象中</span><br><span class="line">&#125;</span><br><span class="line">- (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string</span><br><span class="line">&#123;</span><br><span class="line">    //当解析到xml标签的文本内容时，回调用这个方法，通常在这个方法里，暂存解析到的文本内容</span><br><span class="line">&#125;</span><br><span class="line">- (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName</span><br><span class="line">&#123;</span><br><span class="line">    //当解析xml内容遇到结束标签时，回调用这个方法，通常在这个方法里，需要将模型对象保存到数组中或把标签对应的文本内容解析出来，保存在模型对象中。（通过KVC赋值）</span><br><span class="line">&#125;</span><br><span class="line">- (void)parserDidEndDocument:(NSXMLParser *)parser</span><br><span class="line">&#123;</span><br><span class="line">	//当整个xml解析完成条用这个方法，可以完成其他操作</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="DOM解析"><a href="#DOM解析" class="headerlink" title="DOM解析"></a>DOM解析</h3><p>以下以GDataXMLNode为例：</p>
+<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">￼* &lt;节点&gt; (GDataXMLNode)￼* 根据 DOM,XML ⽂文档中的每个成分都是⼀一个节点。￼* DOM 是这样规定的:￼* 整个⽂文档是⼀一个⽂文档节点￼* 每个 XML 标签是⼀一个元素节点￼* 包含在 XML 元素中的⽂文本是⽂文本节点￼* 每⼀一个 XML 属性是⼀一个属性节点￼* 注释属于注释节点￼￼</span><br></pre></td></tr></table></figure>
+</code></pre><ol>
+<li><p>导入第三方库</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">导入第三方库时，首先编译检查是否可用，（头文件是否编译通过，头文件是否需要导入头文件路径，是否使用非ARC环境）</span><br><span class="line">1. 头文件编译未通过，添加文件搜索路径，头文件为系统头文件时：在Build setting下的Header Search Paths 添加/usr/include/libxml2</span><br><span class="line">	头文件为用户头文件时：在Build setting下的User Header Search Paths 添加/usr/include/libxml2</span><br><span class="line">2. 在Build Phases 下的Link Binary With Libraries 添加libxml2.dylib,链接的动态库</span><br><span class="line">3. 在Build Phases 下的Compile Sources 将导入的编译文件设置为非ARC 即添加 -fno-objc-arc即可</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建GDataXMLDocument对象</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">NSData *data = [[NSBundle mainBundle] URLForResource:@&quot;bokstore&quot; withExternsion:&quot;xml&quot;];</span><br><span class="line">GDataXMLDocument *document = [[GDataXMLDocument alloc]initWithData:data options:0 error:nil];</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>获取根元素rootElement</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[document rootElement];</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>由根元素，可以获取到根元素下的子元素，以及对子元素的属性赋值；</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">获取子元素的方法：</span><br><span class="line">- (NSArray *)elementsForName:(NSString *)name;</span><br><span class="line">获取子元素属性的方法：</span><br><span class="line">- (GDataXMLNode *)attributeForName:(NSString *)name;</span><br><span class="line">将GDataXMLNode对象转换为NSString对象的方法：</span><br><span class="line">- (NSString *)stringValue;</span><br></pre></td></tr></table></figure>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">for (GDataXMLElement *element in elements) &#123;￼// 创建图书对象￼YMBook *book = [[YMBook alloc] init];￼// 根据属性名字,解析book元素的属性值￼book.category = [[element attributeForName:kCategory]￼stringValue];￼// 解析book的⼦子元素包含的⽂文本内容及其⼦子元素的属性￼[0];GDataXMLElement *titleElement = [element elementsForName:kTitle]￼￼book.title = [titleElement stringValue];￼book.lang = [[titleElement attributeForName:kLanguage]￼stringValue];￼GDataXMLElement *authorElement = [element￼elementsForName:kAuthor][0];￼book.author = [authorElement stringValue];￼GDataXMLElement *yearElement = [element elementsForName:kYear]￼[0];￼book.year = [yearElement stringValue];￼GDataXMLElement *priceElement = [element elementsForName:kPrice]￼[0];￼book.price = [priceElement stringValue];￼    [_bookStore addObject:book];&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h2><p>1.数据分类<br>从结构上看,所有的数据(data)最终都可以分解成三种类型:</p>
+<pre><code>- 第一种类型是标量(scalar),也就是一个单独的字符串(string)或数字 (numbers),比如&quot;北京&quot;这个单独的词 
+
+- 第二种类型是序列(sequence),也就是若干个相关的数据按照一定顺序并列在一 起,又叫做数组(array)或列表(List),比如&quot;北京,上海&quot; 
+
+- 第三种类型是映射(mapping),也就是一个名/值对(Name/value),即数据有一个 名称,还有一个与之相对应的值,这又称作散列(hash)或字典(dictionary),比 如&quot;首都:北京&quot;
+</code></pre><p>Douglas Crockford发明了JSON,Json的规定非常简单:</p>
+<ol>
+<li><p>并列的数据之间用逗号(“, “)分隔 </p>
+</li>
+<li><p>映射用冒号(“: “)表示</p>
+</li>
+<li><p>并列数据的集合(数组)用方括号(“[]”)表示 </p>
+</li>
+<li><p>映射的集合(对象)用大括号(“{}”)表示</p>
+</li>
+</ol>
+<p>比如,下面这句话:</p>
+<p>“”北京市的⾯面积为16800平⽅方公⾥里,常住⼈人⼜⼝口1600万⼈人。上海市的⾯面积为6400平⽅方 公⾥里,常住⼈人⼜⼝口1800万。”</p>
+<p>写成JSON格式就是这样:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">￼  &#123;&quot;城市&quot;:&quot;北京&quot;,&quot;⾯面积&quot;:16800,&quot;⼈人⼝口&quot;:1600&#125;,￼  &#123;&quot;城市&quot;:&quot;上海&quot;,&quot;⾯面积</span><br><span class="line">]</span><br><span class="line">```如果事先知道数据的结构,上面的写法还可以进一步简化:</span><br></pre></td></tr></table></figure>
+<p>[<br>    [“北京”,16800,1600],<br>    [“上海”,6400,1800]<br>]</p>
+<pre><code>&lt;www.json.org/json-zh.htm&gt;
+
+
+### NSJSONSerialization
+
+    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">	- 反序列</span><br><span class="line">	￼+ (id)JSONObjectWithData:(NSData *)data	                     error:(NSError **)error	￼options:(NSJSONReadingOptions)opt	￼error:(NSError **)error</span><br><span class="line">	- 序列化	￼+ (NSData *)dataWithJSONObject:(id)obj	options:(NSJSONWritingOptions)opt	￼￼</span><br><span class="line">	```### JSONKit</span><br><span class="line">1. 需要导入第三方库</span><br><span class="line">使用: `-fno-objc-arc`</span><br><span class="line">序列化: **NSArray** **NSDictionary** **NSString**￼</span><br></pre></td></tr></table></figure>
+
+    – JSONData
+    ￼– JSONDataWithOptions:includeQuotes:error:
+    ￼-
+    ￼JSONDataWithOptions:serializeUnsupportedClassesUsingDelegate:selector:error:
+    ￼- JSONDataWithOptions:serializeUnsupportedClassesUsingBlock:error:
+    ￼– JSONString
+    ￼– JSONStringWithOptions:includeQuotes:error:
+    ￼-
+    ￼JSONStringWithOptions:serializeUnsupportedClassesUsingDelegate:selector:erro
+    ￼r:
+    ￼– JSONStringWithOptions:serializeUnsupportedClassesUsingBlock:error:
+    ￼
+    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">反序列化：**NSData** **NSString**</span><br></pre></td></tr></table></figure>
+
+    – objectFromJSONData
+    ￼– objectFromJSONDataWithParseOptions:
+    ￼– objectFromJSONDataWithParseOptions:error:
+    ￼– mutableObjectFromJSONData
+    ￼– mutableObjectFromJSONDataWithParseOptions:
+    ￼– mutableObjectFromJSONDataWithParseOptions:error:
+    ￼– objectFromJSONString
+    ￼– objectFromJSONStringWithParseOptions:
+    ￼– objectFromJSONStringWithParseOptions:error:
+    ￼– mutableObjectFromJSONString
+    ￼– mutableObjectFromJSONStringWithParseOptions:
+    ￼– mutableObjectFromJSONStringWithParseOptions:error:
+    ￼
+</code></pre><p>￼<br>￼</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2014/11/27/XML-JSON/" data-id="cjezb8e900004ipm4ylsv0i2z" class="article-share-link">Teilen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/XML-JSON/">XML&JSON</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-1124" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/11/24/1124/" class="article-date">
+  <time datetime="2014-11-24T01:36:56.000Z" itemprop="datePublished">2014-11-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/11/24/1124/">1124</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>蹦，崩</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2014/11/24/1124/" data-id="cjezb8e8q0000ipm467m81iqu" class="article-share-link">Teilen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/程序又崩溃啦/">程序又崩溃啦</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-MacBook-Pro" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/11/17/MacBook-Pro/" class="article-date">
+  <time datetime="2014-11-17T15:27:11.000Z" itemprop="datePublished">2014-11-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/11/17/MacBook-Pro/">MacBook Pro</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>我的MacBook Pro，哈哈，不习惯没有鼠标的操作，尽快适应吧，嘿嘿</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2014/11/17/MacBook-Pro/" data-id="cjezb8e910005ipm40f3sykrl" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-hexo" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/11/16/hexo/" class="article-date">
+  <time datetime="2014-11-16T13:53:25.000Z" itemprop="datePublished">2014-11-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/11/16/hexo/">hexo指南</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="hexo指南"><a href="#hexo指南" class="headerlink" title="####hexo指南"></a>####hexo指南</h2><pre><code>//
+brew install   &gt;&gt;&gt;&gt;   brew.sh网站上
+//
+ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;
+//
+brew install wget
+//
+wget -qO- https://raw.github.com/creationix/nvm/master/install.sh | sh
+// 或者
+wget -qO- https://raw.github.com/creationix/nvm/master/install.sh
+//
+vi ~/.zshrc  &gt;&gt;&gt;将Users/后面改为wangtao
+//
+hostname
+//
+users
+//
+source ~/.zshrc
+//
+which nvm
+//
+nvm install 0.10
+//
+npm install -g hexo
+//
+hexo init hexo 
+//
+cd hexo
+//
+npm install  &gt;&gt;&gt;初始化
+//
+hexo g
+//vi 
+hexo s
+//
+//
+hehe
+//
+haha
+//
+hiahia
+//
+heihei
+//
+//
+
+//
+//
+在 /Users/wangtao下 
+///   cd .nvm  
+///   cd vo.10.33   
+///   cd bin   
+///   ls -a  查看是否有hexo node npm，有的话，就拷贝pwd目录
+
+/Users/wangtao/.nvm/v0.10.33/bin
+
+//
+在 /Users/wangtao  下vi  .zsfrc   &lt;&lt;&lt;
+export PATH=/Users/wangtao/.nvm/v0.10.33/bin:$PATH
+//
+在/Users/wangtao/hexo   下vi _config.yml
+//
+将title:        更改
+//
+deploy:
+  type: github
+  repository: https://github.com/wangtaoios/wangtaoios.github.io.git
+  branch: master
+//
+
+//
+hexo new &quot;biaoti&quot;
+//
+mou /Users/qingyun/hexo/source/_posts/biaoti.md
+//
+hexo g -d   ==   hexo g  和 hexo s
+// 
+//
+hexo g -d
+//
+在vi  .gitconfih
+//
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2014/11/16/hexo/" data-id="cjezb8e9n000dipm4jqzntwwx" class="article-share-link">Teilen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo指南/">hexo指南</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-UI-notes" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/11/13/UI-notes/" class="article-date">
+  <time datetime="2014-11-13T08:20:58.000Z" itemprop="datePublished">2014-11-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/11/13/UI-notes/">UI_notes</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="http://www.52nx.net/article/UploadPic/2011-5/201152320185636873.png" alt="image"></p>
+<h1 id="UIView常用属性及方法"><a href="#UIView常用属性及方法" class="headerlink" title="UIView常用属性及方法"></a>UIView常用属性及方法</h1><h3 id="常用属性"><a href="#常用属性" class="headerlink" title="常用属性"></a>常用属性</h3><p>NSInteger tag;</p>
+<p><strong>CGRect</strong> frame;</p>
+<p><strong>CGRect</strong> bounds;</p>
+<p><strong>CGPoint</strong> center;</p>
+<p><strong>CGAffineTransform</strong> transform;</p>
+<p><strong>BOOL</strong> multipleTouchEnable;</p>
+<p><strong>BOOL</strong> exclusiveTouch;</p>
+<p><strong>UIView</strong>  *superView;</p>
+<p><strong>NSArray</strong> *subViews;</p>
+<p><strong>UIWindow</strong>  *window;</p>
+<p><strong>UIColor</strong>  *backgroundColor;</p>
+<p><strong>CGFloat</strong>  alpa;</p>
+<p><strong>BOOL</strong>  opaque;</p>
+<p><strong>BOOL</strong>  hidden;</p>
+<h3 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h3><h4 id="类方法"><a href="#类方法" class="headerlink" title="类方法"></a>类方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">+ (id)initWithFrame:(CGRect)frame;</span><br></pre></td></tr></table></figure>
+<h4 id="实例方法"><a href="#实例方法" class="headerlink" title="实例方法"></a>实例方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">- (void)removeFromSuperview;</span><br><span class="line">- (void)insertSubview:(UIView *)view atIndex:(NSInteger)index;</span><br><span class="line">- (void)exchangeSubviewAtIndex:(NSInteger)index1 withSubviewAtIndex:(NSInteger)index2;</span><br><span class="line">- (void)addSubview:(UIView *)view;</span><br><span class="line">- (void)insertSubview:(UIView *)view belowSubview:(UIView *)siblingSubview;</span><br><span class="line">- (void)insertSubview:(UIView *)view aboveSubview:(UIView *)siblingSubview;</span><br></pre></td></tr></table></figure>
+<h1 id="UIView常见子类"><a href="#UIView常见子类" class="headerlink" title="UIView常见子类"></a>UIView常见子类</h1><h2 id="UIControl"><a href="#UIControl" class="headerlink" title="UIControl"></a>UIControl</h2><h4 id="常用属性-1"><a href="#常用属性-1" class="headerlink" title="常用属性"></a>常用属性</h4><p><strong>BOOL</strong> enable;</p>
+<p><strong>BOOL</strong> selected;</p>
+<p><strong>BOOL</strong> highlighted;</p>
+<p><strong>UIControlState</strong> state;&lt;<code>readonly</code>&gt;</p>
+<p><strong>BOOL</strong> touchInside;&lt;<code>readonly</code>&gt;</p>
+<h4 id="实例方法-1"><a href="#实例方法-1" class="headerlink" title="实例方法"></a>实例方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- (void)addTarget:(id)target action:(SEL)action forControlEvent:(UIControlEvent)controlEvent;</span><br><span class="line">- (void)removeTarget:(id)target action:(SEL)action forControlEvent:(UIControlEvent)controlEvent;</span><br><span class="line">- (void)sendAction:(SEL)action to:(id)target forEvent:(UIEvent)event;</span><br><span class="line">- (void)sendActionsForControlEvents:(UIControlEvent)controlEvents;</span><br></pre></td></tr></table></figure>
+<h2 id="UIControl常见子类"><a href="#UIControl常见子类" class="headerlink" title="UIControl常见子类"></a>UIControl常见子类</h2><h3 id="UIButton"><a href="#UIButton" class="headerlink" title="UIButton"></a>UIButton</h3><h4 id="常用属性-2"><a href="#常用属性-2" class="headerlink" title="常用属性"></a>常用属性</h4><p><strong>UIButtonType</strong> buttonType;&lt;<code>readonly</code>&gt;</p>
+<p><strong>NSString</strong> *currentTitle;&lt;<code>readonly</code>&gt;</p>
+<p><strong>UIColor</strong> *currentColor;&lt;<code>readonly</code>&gt;</p>
+<p><strong>UIImage</strong> *currentImage;&lt;<code>readonly</code>&gt;</p>
+<p><strong>UIImage</strong>  *currentBackgroundImage;&lt;<code>readonly</code>&gt;</p>
+<p><strong>NSAttributedString</strong>  *currentAttributedTitle;&lt;<code>readonly</code>&gt;</p>
+<h4 id="类方法-1"><a href="#类方法-1" class="headerlink" title="类方法"></a>类方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">+ (id)buttonWithType:(UIButtonType)buttonType;</span><br></pre></td></tr></table></figure>
+<h4 id="实例方法-2"><a href="#实例方法-2" class="headerlink" title="实例方法"></a>实例方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">- (void)setTitle:(NSString *)title forState:(UIControlState)state;</span><br><span class="line">- (void)setTitleColor:(UIColor *)color forState:(UIControlState)state;</span><br><span class="line">- (void)setImage:(UIImage *)image forState:(UIControlState)state;</span><br><span class="line">- (void)setBackgroundImage:(UIImage *)image forState:(UIControlState)state;</span><br><span class="line">- (void)setAttributedTitle:(NSAttributedString *)title forState:(UIControlState)state;</span><br><span class="line">- (NSString *)titleForState:(UIControlState)state;</span><br><span class="line">- (UIColor *)titleColorForState:(UIControlState)state;</span><br><span class="line">- (UIImage *)imageForState:(UIControlState)state;</span><br><span class="line">- (UIImage *)backgroundImageForState:(UIControlState)state;</span><br><span class="line">- (NSAttributedString *)attributedStringForState:(UIControlState)state;</span><br></pre></td></tr></table></figure>
+<h3 id="UISlider"><a href="#UISlider" class="headerlink" title="UISlider"></a>UISlider</h3><h4 id="常见属性"><a href="#常见属性" class="headerlink" title="常见属性"></a>常见属性</h4><p><strong>float</strong>  value;</p>
+<p><strong>float</strong>  minimumValue;</p>
+<p><strong>float</strong> maximumValue;</p>
+<p><strong>UIImage</strong>  *minimumValue;</p>
+<p><strong>UIImage</strong>  *maximumValue;</p>
+<p><strong>BOOL</strong>  continuous;</p>
+<p><strong>UIColor</strong>  *minimumTrackTintColor;</p>
+<p><strong>UIColor</strong>  *maximumTrackTintColor;</p>
+<p><strong>UIColor</strong>  *thumbTintColor;</p>
+<p><code>readonly</code></p>
+<p><strong>UIImage</strong>  *currentThumbImage;</p>
+<p><strong>UIImage</strong>  *currentMinimumTrackImage;</p>
+<p><strong>UIImage</strong>  *currentMaximumTrackImage;</p>
+<h4 id="实例方法-3"><a href="#实例方法-3" class="headerlink" title="实例方法"></a>实例方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">- (void)setThumbImage:(UIImage *)image forState:(UIControlState)state;</span><br><span class="line">- (void)setMinimumTrackImage:(UIImage *)image forState:(UIControlState)state;</span><br><span class="line">- (void)setMaximumTrackImage:(UIImage *)image forState:(UIControlState)state;</span><br><span class="line">- (UIImage *)thumbImage forState:(UIControlState)state;</span><br><span class="line">- (UIImage *)minimumTrackImage forState:(UIControlState)state;</span><br><span class="line">- (UIImage *)maximumTrackImage forState:(UIControlState)state;</span><br></pre></td></tr></table></figure>
+<h3 id="UITextField"><a href="#UITextField" class="headerlink" title="UITextField"></a>UITextField</h3><h4 id="常用属性-3"><a href="#常用属性-3" class="headerlink" title="常用属性"></a>常用属性</h4><p><strong>NSString</strong> *text;</p>
+<p><strong>UIColor</strong>  *textColor;</p>
+<p><strong>UIFont</strong>  *font;</p>
+<p><strong>NSTextAlignment</strong>  textAlignment;</p>
+<p><strong>UITextBorderStyle</strong>  borderStyle;</p>
+<p><strong>NSString</strong>   *placeholder;</p>
+<p><strong>BOOL</strong>  clearOnBeginEditing;</p>
+<p><strong>BOOL</strong>  adjustsFontSizeToFitWidth;</p>
+<p><strong>CGFloat</strong>  minimumFontSize;</p>
+<p><strong>id<uitextfielddelegate></uitextfielddelegate></strong>  delegate;</p>
+<p><strong>UIImage</strong> *background;</p>
+<p><strong>UIImage</strong>  *disabledBackground;</p>
+<p><strong>BOOL</strong>  editing;</p>
+<p><strong>UITextFieldViewMode</strong>  clearButtonMode;</p>
+<p><strong>UIView</strong> *leftView;</p>
+<p><strong>UITextFieldViewMode</strong> leftViewMode;</p>
+<p><strong>UIView</strong> *rightView;</p>
+<p><strong>UITextFieldViewMode</strong> rightViewMode;</p>
+<p><strong>UIView</strong>  *inputView;</p>
+<p><strong>UIView</strong>  *inputAccessoryView;</p>
+<h4 id="实例方法-4"><a href="#实例方法-4" class="headerlink" title="实例方法"></a>实例方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">- (void)drawPlaceholderInRect:(CGRect)rect;</span><br><span class="line">- (void)drawTextInRect:(CGRect)rect;</span><br></pre></td></tr></table></figure>
+<h3 id="UISegmentedControl"><a href="#UISegmentedControl" class="headerlink" title="UISegmentedControl"></a>UISegmentedControl</h3><h4 id="常用属性-4"><a href="#常用属性-4" class="headerlink" title="常用属性"></a>常用属性</h4><p><strong>UISegmentedControlStyle</strong>  segmentedControlStyle;</p>
+<p><strong>NSUInteger</strong> numberOfSegments; &lt;<code>readonly</code>&gt;</p>
+<p><strong>UIColor</strong>  *tintColor;</p>
+<p><strong>NSInteger</strong>  selectedSegmentIndex;</p>
+<h4 id="实例方法-5"><a href="#实例方法-5" class="headerlink" title="实例方法"></a>实例方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">- (id)initWithItems:(NSArray *)items;</span><br><span class="line">- (void)insertSegmentWithTitle:(NSString *)title atIndex:(NSUInteger)segment animated:(BOOL)animated;</span><br><span class="line">- (void)insertSegmentWithImage:(UIImage *)image atIndex:(NSUInteger)segment animated:(BOOL)animated;</span><br><span class="line">- (void)removeSegmentAtIndex:(NSUInteger)segment animated:(BOOL)animated;</span><br><span class="line">- (void)removeAllSegments;</span><br><span class="line">- (void)setTitle:(NSString *)title forSegmentAtIndex:(NSUInteger)segment;</span><br><span class="line">- (NSString *)titleForSegmentAtIndex:(NSUInteger)segment;</span><br><span class="line">- (void)setImage:(UIImage *)image forSegmentAtIndex:(NSUInteger)segment;</span><br><span class="line">- (UIImage *)imageForSegmentAtIndex:(NSUInteger)segment;</span><br><span class="line">- (void)setWidth:(CGFloat)width forSegmentAtIndex:(NSUInteger)segment;</span><br><span class="line">- (CGFloat)widthForSegmentAtIndex:(NSUInteger)segment;</span><br><span class="line">- (void)setEnabled:(BOOL)enabled forSegmentAtIndex:(NSUInteger)segment;</span><br><span class="line">- (BOOL)isEnabledForSegmentAtIndex:(NSUInteger)segment;</span><br><span class="line">- (void)setBackgroundImage:(UIImage *)backgroundImage forState:(UIControlState)state barMetrics:(UIBarMetrics)barMetrics;</span><br><span class="line">- (UIImage *)backgroundImageForState:(UIControlState)state barMetrics:(UIBarMetrics)barMetrics;</span><br></pre></td></tr></table></figure>
+<h3 id="UIPageControl"><a href="#UIPageControl" class="headerlink" title="UIPageControl"></a>UIPageControl</h3><h4 id="常用属性-5"><a href="#常用属性-5" class="headerlink" title="常用属性"></a>常用属性</h4><p><strong>NSInteger</strong>  numberOfPages;</p>
+<p><strong>NSInteger</strong>  currentPage;</p>
+<p><strong>BOOL</strong> hidesForSinglePage;</p>
+<p><strong>BOOL</strong>  defersCurrentPageDisplay; //点击翻页无效</p>
+<p><strong>UIColor</strong>  *pageIndicatorTintColor;</p>
+<p><strong>UIColor</strong>  *currentPageIndicatorColor;</p>
+<h4 id="实例方法-6"><a href="#实例方法-6" class="headerlink" title="实例方法"></a>实例方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">- (void)updateCurrentPageDisplay;</span><br><span class="line">- (CGSize)sizeForNumberOfPages:(NSInteger)pageCount;</span><br></pre></td></tr></table></figure>
+<h3 id="UISwitch"><a href="#UISwitch" class="headerlink" title="UISwitch"></a>UISwitch</h3><h4 id="常用属性-6"><a href="#常用属性-6" class="headerlink" title="常用属性"></a>常用属性</h4><p><strong>UIColor</strong>  *onTintColor;</p>
+<p><strong>UIColor</strong>  *tintColor;</p>
+<p><strong>UIColor</strong>  *thumbColor;</p>
+<p><strong>UIImage</strong>  *onImage;</p>
+<p><strong>UIImage</strong>  *offImage;</p>
+<p><strong>BOOL</strong> on;</p>
+<h4 id="实例方法-7"><a href="#实例方法-7" class="headerlink" title="实例方法"></a>实例方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">- (void)initWithFrame:(CGRect)frame;</span><br><span class="line">- (void)setOn:(BOOL)on animated:(BOOL)animated;</span><br></pre></td></tr></table></figure>
+<h3 id="UIDatePicker"><a href="#UIDatePicker" class="headerlink" title="UIDatePicker"></a>UIDatePicker</h3><h4 id="常用属性-7"><a href="#常用属性-7" class="headerlink" title="常用属性"></a>常用属性</h4><p><strong>UIDatePicker</strong>  datePickerMode;</p>
+<p><strong>NSLocale</strong>   *locale;</p>
+<p><strong>NSTimeZone</strong>  *timeZone;</p>
+<p><strong>NSDate</strong>     *date;</p>
+<p><strong>NSDate</strong>      *minimumDate;</p>
+<p><strong>NSDate</strong>      *MaximumDate;</p>
+<p><strong>NSTimerInterval</strong>    *countDownDuration;</p>
+<p><strong>NSInteger</strong>    minuteInterval;</p>
+<h4 id="实例方法-8"><a href="#实例方法-8" class="headerlink" title="实例方法"></a>实例方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (void)setDate:(NSDate *)date animated:(BOOL)animated;</span><br></pre></td></tr></table></figure>
+<h2 id="UILabel"><a href="#UILabel" class="headerlink" title="UILabel"></a>UILabel</h2><h4 id="常用属性-8"><a href="#常用属性-8" class="headerlink" title="常用属性"></a>常用属性</h4><p><strong>NSString</strong> *text;</p>
+<p><strong>UIFont</strong> *font;</p>
+<p><strong>UIColor</strong>   *color;</p>
+<p><strong>UIColor</strong>    *shadowColor;</p>
+<p><strong>CGSize</strong>     shadowOffset;</p>
+<p><strong>NSTextAlignment</strong>     textAlignment;</p>
+<p><strong>NSLineBreakMode</strong>     lineBreakMode;</p>
+<p><strong>NSAttributedString</strong>    attributedText;</p>
+<p><strong>UIColor</strong>   *highlightedTextColor;</p>
+<p><strong>BOOL</strong>  highlighted;</p>
+<p><strong>BOOL</strong>  userInteractionEnabled;</p>
+<p><strong>BOOL</strong>   enabled;</p>
+<p><strong>NSInteger</strong>    numberOfLines;</p>
+<p><strong>BOOL</strong>   adjustsFontSizeToFitWidth;</p>
+<p><strong>BOOL</strong> minimumFontSize;</p>
+<h4 id="实例方法-9"><a href="#实例方法-9" class="headerlink" title="实例方法"></a>实例方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">- (CGRect)textRectForBounds:(CGRect)bounds limitedToNumberOfLines:(NSInteger)numberOfLines;</span><br><span class="line">- (void)drawTextInRect:(CGRect)rect;</span><br></pre></td></tr></table></figure>
+<h2 id="UIAlertView"><a href="#UIAlertView" class="headerlink" title="UIAlertView"></a>UIAlertView</h2><h4 id="常见属性-1"><a href="#常见属性-1" class="headerlink" title="常见属性"></a>常见属性</h4><p><strong>id<uialertviewdelegate></uialertviewdelegate></strong> delegate; </p>
+<p><strong>NSString</strong>   *title;</p>
+<p><strong>NSString</strong>   *message;</p>
+<p><strong>NSInteger</strong>  cancelButtonIndex;</p>
+<p><code>readonly</code></p>
+<p><strong>NSInteger</strong>    numberOfButtons；</p>
+<p><strong>NSInteger</strong>  firstOtherButtonIndex;</p>
+<p><strong>BOOL</strong>    visible;</p>
+<p><strong>UIAlertViewStyle</strong> alertViewStyle;</p>
+<h4 id="实例方法-10"><a href="#实例方法-10" class="headerlink" title="实例方法"></a>实例方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- (id)initWithTitle:(NSString *)title message:(NSString *)message delegate:(id /*&lt;UIAlertViewDelegate&gt;*/)delegate cancelButtonTitle:(NSString *)cancelButtonTitle otherButtonTitles:(NSString *)otherButtonTitles, ... ;</span><br><span class="line">- (void)show;</span><br><span class="line">- (void)dismissWithClickEdButtonIndex:(NSInteger)buttonIndex animated:(BOOL)animated;</span><br><span class="line">- (UITextField *)textFieldAtIndex:(NSInteger)textFieldIndex;</span><br></pre></td></tr></table></figure>
+<h2 id="UIActionSheet"><a href="#UIActionSheet" class="headerlink" title="UIActionSheet"></a>UIActionSheet</h2><h4 id="常见属性-2"><a href="#常见属性-2" class="headerlink" title="常见属性"></a>常见属性</h4><p><strong>id<uiactionsheetdelegate></uiactionsheetdelegate></strong>  delegate;</p>
+<p><strong>NSString</strong>    *title;</p>
+<p><strong>UIActionSheetStyle</strong>      actionSheetStyle;</p>
+<p><strong>NSInteger</strong>     cancelButtonIndex;</p>
+<p><strong>NSInteger</strong>  destructiveButtonIndex;</p>
+<p><code>readonly</code></p>
+<p><strong>NSInteger</strong>   numberOfButtons;</p>
+<p><strong>NSInteger</strong>   firstOtherButtonIndex;</p>
+<p><strong>BOOL</strong>     visible;</p>
+<h4 id="实例方法-11"><a href="#实例方法-11" class="headerlink" title="实例方法"></a>实例方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">- (id)initWithTitle:(NSString *)title delegate:(id&lt;UIActionSheetDelegate&gt;)delegate cancelButtonTitle:(NSString *)cancelButtonTitle destructiveButtonTitle:(NSString *)destructiveButtonTitle otherButtonTitles:(NSString *)otherButtonTitles, ... ;</span><br><span class="line">- (NSInteger)addButtonWithTitle:(NSString *)title;</span><br><span class="line">- (NSString *)buttonTitleAtIndex:(NSInteger)buttonIndex;</span><br><span class="line">- (void)showFromToolbar:(UIToolBar *)view;</span><br><span class="line">- (void)showFromTabBar:(UITabBar *)view;</span><br><span class="line">- (void)showFromBarButtonItem:(UIBarButtonItem *)item animated:(BOOL)animates;</span><br><span class="line">- (void)showFromRect:(CGRect)rect inView:(UIView *)view animated:(BOOL)animated;</span><br><span class="line">- (void)showInView:(UIView *)view;</span><br><span class="line">- (void)dismissWithClickedButtonIndex:(NSInteger)buttonIndex animated:(BOOL)animated;</span><br></pre></td></tr></table></figure>
+<h2 id="UIImageView"><a href="#UIImageView" class="headerlink" title="UIImageView"></a>UIImageView</h2><h4 id="常用属性-9"><a href="#常用属性-9" class="headerlink" title="常用属性"></a>常用属性</h4><p><strong>UIImage</strong>   *image;</p>
+<p><strong>UIImage</strong>  *highlightedImage;</p>
+<p><strong>BOOL</strong>   userInteractionEnable;</p>
+<p><strong>BOOL</strong>    highlighted;</p>
+<p><strong>NSArray</strong>    *animationImages;</p>
+<p><strong>NSArray</strong>    *highlightedAnimationImages;</p>
+<p><strong>NSTimeInterval</strong>    animationDuration;</p>
+<p><strong>NSInteger</strong>    animationRepeatCount;</p>
+<p><strong>UIColor</strong>   tintColor;</p>
+<h4 id="实例方法-12"><a href="#实例方法-12" class="headerlink" title="实例方法"></a>实例方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">- (id)initWithImage:(UIImage *)image;</span><br><span class="line">- (id)initWithImage:(UIImage *)image highlightedImage:(UIImage *)highlightedImage;</span><br><span class="line">- (void)startAnimating;</span><br><span class="line">- (void)stopAnimating;</span><br><span class="line">- (BOOL)isAnimating;</span><br></pre></td></tr></table></figure>
+<h2 id="UINavigationBar"><a href="#UINavigationBar" class="headerlink" title="UINavigationBar"></a>UINavigationBar</h2><h4 id="常用属性-10"><a href="#常用属性-10" class="headerlink" title="常用属性"></a>常用属性</h4><p><strong>UIBarStyle</strong>   barStyle;</p>
+<p><strong>id</strong>  delegate;</p>
+<p><strong>BOOL</strong> translucent;</p>
+<p><strong>NSArray</strong>  *items;</p>
+<p><strong>UIColor</strong> *tintColor;</p>
+<p><strong>UIColor</strong>  *barTintColor;</p>
+<p><strong>UIImage</strong>  *shadowImage;</p>
+<p><strong>NSDictionary</strong>  *titleTextAttributes;</p>
+<p><strong>UIImage</strong>  *backIndicatorImage;</p>
+<p><strong>UIImage</strong>  *backIndicatorTransitionMaskImage;</p>
+<p><code>readonly</code></p>
+<p><strong>UINavigationItem</strong>  *topItem;</p>
+<p><strong>UINavigationItem</strong>  *backItem;</p>
+<h4 id="实例方法-13"><a href="#实例方法-13" class="headerlink" title="实例方法"></a>实例方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">- (void)pushNavigationItem:(UINavigationItem *)item animated:(BOOL)animated;</span><br><span class="line">- (UINavigationItem *)popNavigationItemAnimated:(BOOL)animated;</span><br><span class="line">- (void)setItems:(NSArray *)items animated:(BOOL)animated;</span><br><span class="line">- (void)setBackgroundImage:(UIImage *)backgroundImage forBarPosition:(UIBarPosition)barPosition barMetrics:(UIBarMetrics)barMetrics;</span><br><span class="line">- (UIImage *)backgroundImageForBarPosition:(UIBarPosition)barPosition barMetrics:(UIBarMetrics)barMetrics;</span><br><span class="line">- (void)setBackgroundImage:(UIImage *)backgroundImage forBarMetrics:(UIBarMetrics)barMetrics NS_AVAILABLE_IOS(5_0);</span><br><span class="line">- (UIImage *)backgroundImageForBarMetrics:(UIBarMetrics)barMetrics;</span><br><span class="line">- (void)setTitleVerticalPositionAdjustment:(CGFloat)adjustment forBarMetrics:(UIBarMetrics)barMetrics;</span><br><span class="line">- (CGFloat)titleVerticalPositionAdjustmentForBarMetrics:(UIBarMetrics)barMetrics;</span><br></pre></td></tr></table></figure>
+<h2 id="UITabBar"><a href="#UITabBar" class="headerlink" title="UITabBar"></a>UITabBar</h2><h4 id="常用属性-11"><a href="#常用属性-11" class="headerlink" title="常用属性"></a>常用属性</h4><p><strong>id<uitabbardelegate></uitabbardelegate></strong>  delegate;</p>
+<p><strong>NSArray</strong>             *items;</p>
+<p><strong>UIBarStyle</strong> barStyle  </p>
+<p><strong>UITabBarItem</strong>        *selectedItem;</p>
+<p><strong>UIColor</strong> *tintColor;</p>
+<p><strong>UIColor</strong> *barTintColor;</p>
+<p><strong>BOOL</strong> translucent;</p>
+<p><strong>UIColor</strong> *selectedImageTintColor;</p>
+<p><strong>UIImage</strong> *backgroundImage;</p>
+<p><strong>UIImage</strong> *selectionIndicatorImage;</p>
+<p><strong>UIImage</strong> *shadowImage;</p>
+<p><strong>UITabBarItemPositioning</strong> itemPositioning;</p>
+<p><strong>CGFloat</strong> itemWidth;</p>
+<p><strong>CGFloat</strong> itemSpacing;</p>
+<h4 id="实例方法-14"><a href="#实例方法-14" class="headerlink" title="实例方法"></a>实例方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- (void)setItems:(NSArray *)items animated:(BOOL)animated;</span><br><span class="line">- (void)beginCustomizingItems:(NSArray *)items;</span><br><span class="line">- (BOOL)endCustomizingAnimated:(BOOL)animated;</span><br><span class="line">- (BOOL)isCustomizing;</span><br></pre></td></tr></table></figure>
+<h2 id="UIToolbar"><a href="#UIToolbar" class="headerlink" title="UIToolbar"></a>UIToolbar</h2><h4 id="常用属性-12"><a href="#常用属性-12" class="headerlink" title="常用属性"></a>常用属性</h4><p><strong>UIBarStyle</strong> barStyle;</p>
+<p><strong>NSArray</strong>   *items;</p>
+<p><strong>BOOL</strong> translucent;</p>
+<p><strong>UIColor</strong> *tintColor;</p>
+<p><strong>UIColor</strong> *barTintColor;</p>
+<p><strong>id<uitoolbardelegate></uitoolbardelegate></strong> delegate;</p>
+<h4 id="实例方法-15"><a href="#实例方法-15" class="headerlink" title="实例方法"></a>实例方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">- (void)setItems:(NSArray *)items animated:(BOOL)animated;</span><br><span class="line">- (void)setBackgroundImage:(UIImage *)backgroundImage forToolbarPosition:(UIBarPosition)topOrBottom barMetrics:(UIBarMetrics)barMetrics;</span><br><span class="line">- (UIImage *)backgroundImageForToolbarPosition:(UIBarPosition)topOrBottom barMetrics:(UIBarMetrics)barMetrics;</span><br><span class="line">- (void)setShadowImage:(UIImage *)shadowImage forToolbarPosition:(UIBarPosition)topOrBottom;</span><br><span class="line">- (UIImage *)shadowImageForToolbarPosition:(UIBarPosition)topOrBottom;</span><br></pre></td></tr></table></figure>
+<h2 id="UISearchBar"><a href="#UISearchBar" class="headerlink" title="UISearchBar"></a>UISearchBar</h2><h4 id="常用属性-13"><a href="#常用属性-13" class="headerlink" title="常用属性"></a>常用属性</h4><p><strong>UIBarStyle</strong>              barStyle; </p>
+<p><strong>id<uisearchbardelegate></uisearchbardelegate></strong> delegate;</p>
+<p><strong>NSString</strong>               *text;</p>
+<p><strong>NSString</strong>               *prompt;</p>
+<p><strong>NSString</strong>               *placeholder;</p>
+<p><strong>BOOL</strong>                    showsBookmarkButton;</p>
+<p><strong>BOOL</strong>                   showsCancelButton;</p>
+<p><strong>BOOL</strong>                    showsSearchResultsButton;</p>
+<p><strong>UIColor</strong> *tintColor;</p>
+<p><strong>UIColor</strong> *barTintColor;</p>
+<p><strong>UISearchBarStyle</strong> searchBarStyle;</p>
+<p><strong>UITextAutocapitalizationType</strong> autocapitalizationType;</p>
+<p><strong>UITextAutocorrectionType</strong>     autocorrectionType;</p>
+<p><strong>UITextSpellCheckingType</strong>      spellCheckingType;</p>
+<p><strong>UIKeyboardType</strong>               keyboardType;</p>
+<p><strong>NSArray</strong>   *scopeButtonTitles;</p>
+<p><strong>NSInteger</strong>  selectedScopeButtonIndex;</p>
+<p><strong>BOOL</strong>       showsScopeBar;</p>
+<p><strong>UIView</strong> *inputAccessoryView;</p>
+<h2 id="UIWebView"><a href="#UIWebView" class="headerlink" title="UIWebView"></a>UIWebView</h2><h4 id="常用属性-14"><a href="#常用属性-14" class="headerlink" title="常用属性"></a>常用属性</h4><p><strong>id<uiwebviewdelegate></uiwebviewdelegate></strong> delegate;</p>
+<p><code>readonly</code></p>
+<p><strong>BOOL</strong> canGoBack;</p>
+<p><strong>BOOL</strong> canGoForward;</p>
+<p><strong>BOOL</strong> loading;</p>
+<p><strong>UIScrollView</strong> *scrollView;</p>
+<p><strong>NSURLRequest</strong> *request;</p>
+<h4 id="实例方法-16"><a href="#实例方法-16" class="headerlink" title="实例方法"></a>实例方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">- (void)loadRequest:(NSURLRequest *)request;</span><br><span class="line">- (void)loadHTMLString:(NSString *)string baseURL:(NSURL *)baseURL;</span><br><span class="line">- (void)loadData:(NSData *)data MIMEType:(NSString *)MIMEType textEncodingName:(NSString *)textEncodingName baseURL:(NSURL *)baseURL;</span><br><span class="line">- (void)reload;</span><br><span class="line">- (void)stopLoading;</span><br><span class="line">- (void)goBack;</span><br><span class="line">- (void)goForward;</span><br><span class="line">- (NSString *)stringByEvaluatingJavaScriptFromString:(NSString *)script;</span><br></pre></td></tr></table></figure>
+<h2 id="UIPickerView"><a href="#UIPickerView" class="headerlink" title="UIPickerView"></a>UIPickerView</h2><h4 id="常用属性-15"><a href="#常用属性-15" class="headerlink" title="常用属性"></a>常用属性</h4><p><strong>id<uipickerviewdatasource></uipickerviewdatasource></strong> dataSource;</p>
+<p><strong>id<uipickerviewdelegate></uipickerviewdelegate></strong>   delegate;</p>
+<p><strong>BOOL</strong>                       showsSelectionIndicator;</p>
+<p><strong>NSInteger</strong> numberOfComponents;&lt;<code>readonly</code>&gt;</p>
+<h4 id="实例方法-17"><a href="#实例方法-17" class="headerlink" title="实例方法"></a>实例方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">- (NSInteger)numberOfRowsInComponent:(NSInteger)component;</span><br><span class="line">- (CGSize)rowSizeForComponent:(NSInteger)component;</span><br><span class="line">- (UIView *)viewForRow:(NSInteger)row forComponent:(NSInteger)component;</span><br><span class="line">- (void)reloadAllComponents;</span><br><span class="line">- (void)reloadComponent:(NSInteger)component;</span><br><span class="line">- (void)selectRow:(NSInteger)row inComponent:(NSInteger)component animated:(BOOL)animated;</span><br><span class="line">- (NSInteger)selectedRowInComponent:(NSInteger)component;</span><br></pre></td></tr></table></figure>
+<h2 id="UITableViewCell"><a href="#UITableViewCell" class="headerlink" title="UITableViewCell"></a>UITableViewCell</h2><h4 id="常用属性-16"><a href="#常用属性-16" class="headerlink" title="常用属性"></a>常用属性</h4><p><strong>UITableViewStyle</strong>           style; &lt;<code>readonly</code>&gt;</p>
+<p><strong>id <uitableviewdatasource></uitableviewdatasource></strong> dataSource;</p>
+<p><strong>id <uitableviewdelegate></uitableviewdelegate></strong>   delegate;</p>
+<p><strong>CGFloat</strong>                     rowHeight;</p>
+<p><strong>CGFloat</strong>                     sectionHeaderHeight;</p>
+<p><strong>CGFloat</strong>                     sectionFooterHeight;</p>
+<p><strong>CGFloat</strong>                     estimatedRowHeight;</p>
+<p><strong>CGFloat</strong>                     estimatedSectionHeaderHeight;</p>
+<p><strong>CGFloat</strong>                     estimatedSectionFooterHeight;</p>
+<p><strong>UIEdgeInsets</strong>                separatorInset;</p>
+<p><strong>UIView</strong>                         *backgroundView;</p>
+<p><strong>BOOL</strong> editing;</p>
+<p><strong>BOOL</strong> allowsSelection;</p>
+<p><strong>BOOL</strong> allowsSelectionDuringEditing;</p>
+<p><strong>BOOL</strong> allowsMultipleSelection;</p>
+<p><strong>BOOL</strong> allowsMultipleSelectionDuringEditing;</p>
+<p><strong>UIView</strong> *tableHeaderView;</p>
+<p><strong>UIView</strong> *tableFooterView;</p>
+<p><strong>NSInteger</strong> sectionIndexMinimumDisplayRowCount;</p>
+<p><strong>UIColor</strong> *sectionIndexColor;</p>
+<p><strong>UIColor</strong> *sectionIndexBackgroundColor;</p>
+<p><strong>UIColor</strong> *sectionIndexTrackingBackgroundColor;</p>
+<p><strong>UITableViewCellSeparatorStyle</strong> separatorStyle;</p>
+<p><strong>UIColor</strong>               *separatorColor;</p>
+<h4 id="实例方法-18"><a href="#实例方法-18" class="headerlink" title="实例方法"></a>实例方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">- (id)initWithFrame:(CGRect)frame style:(UITableViewStyle)style;</span><br><span class="line">- (void)reloadData; </span><br><span class="line">- (void)reloadSectionIndexTitles;</span><br><span class="line">- (NSInteger)numberOfSections;</span><br><span class="line">- (NSInteger)numberOfRowsInSection:(NSInteger)section;</span><br><span class="line">- (CGRect)rectForSection:(NSInteger)section;</span><br><span class="line">- (CGRect)rectForHeaderInSection:(NSInteger)section;</span><br><span class="line">- (CGRect)rectForFooterInSection:(NSInteger)section;</span><br><span class="line">- (CGRect)rectForRowAtIndexPath:(NSIndexPath *)indexPath;</span><br><span class="line">- (NSIndexPath *)indexPathForRowAtPoint:(CGPoint)point;</span><br><span class="line">- (NSIndexPath *)indexPathForCell:(UITableViewCell *)cell;</span><br><span class="line">- (NSArray *)indexPathsForRowsInRect:(CGRect)rect;        </span><br><span class="line">- (UITableViewCell *)cellForRowAtIndexPath:(NSIndexPath *)indexPath; </span><br><span class="line">- (NSArray *)visibleCells;</span><br><span class="line">- (NSArray *)indexPathsForVisibleRows;</span><br><span class="line">- (UITableViewHeaderFooterView *)headerViewForSection:(NSInteger)section;</span><br><span class="line">- (UITableViewHeaderFooterView *)footerViewForSection:(NSInteger)section;</span><br><span class="line">- (void)beginUpdates;</span><br><span class="line">- (void)endUpdates;</span><br><span class="line">- (void)insertSections:(NSIndexSet *)sections withRowAnimation:(UITableViewRowAnimation)animation;</span><br><span class="line">- (void)deleteSections:(NSIndexSet *)sections withRowAnimation:(UITableViewRowAnimation)animation;</span><br><span class="line">- (void)reloadSections:(NSIndexSet *)sections withRowAnimation:(UITableViewRowAnimation)animation;</span><br><span class="line">- (void)moveSection:(NSInteger)section toSection:(NSInteger)newSection;</span><br><span class="line">- (void)insertRowsAtIndexPaths:(NSArray *)indexPaths withRowAnimation:(UITableViewRowAnimation)animation;</span><br><span class="line">- (void)deleteRowsAtIndexPaths:(NSArray *)indexPaths withRowAnimation:(UITableViewRowAnimation)animation;</span><br><span class="line">- (void)reloadRowsAtIndexPaths:(NSArray *)indexPaths withRowAnimation:(UITableViewRowAnimation)animation;</span><br><span class="line">- (void)moveRowAtIndexPath:(NSIndexPath *)indexPath toIndexPath:(NSIndexPath *)newIndexPath;</span><br><span class="line">- (NSIndexPath *)indexPathForSelectedRow;</span><br><span class="line">- (NSArray *)indexPathsForSelectedRows;</span><br><span class="line">- (id)dequeueReusableCellWithIdentifier:(NSString *)identifier;</span><br><span class="line">- (id)dequeueReusableCellWithIdentifier:(NSString *)identifier forIndexPath:(NSIndexPath *)indexPath;</span><br><span class="line">- (id)dequeueReusableHeaderFooterViewWithIdentifier:(NSString *)identifier;</span><br><span class="line">- (void)registerNib:(UINib *)nib forCellReuseIdentifier:(NSString *)identifier;</span><br><span class="line">- (void)registerClass:(Class)cellClass forCellReuseIdentifier:(NSString *)identifier;</span><br><span class="line">- (void)registerNib:(UINib *)nib forHeaderFooterViewReuseIdentifier:(NSString *)identifier;</span><br><span class="line">- (void)registerClass:(Class)aClass forHeaderFooterViewReuseIdentifier:(NSString *)identifier;</span><br></pre></td></tr></table></figure>
+<h1 id="UIViewController"><a href="#UIViewController" class="headerlink" title="UIViewController"></a>UIViewController</h1><h3 id="常用属性-17"><a href="#常用属性-17" class="headerlink" title="常用属性"></a>常用属性</h3><p><strong>UIView</strong> *view;</p>
+<p><strong>NSString</strong> *title;</p>
+<p><code>readonly</code></p>
+<p><strong>NSString</strong> *nibName;</p>
+<p><strong>NSBundle</strong> *nibBundle;</p>
+<p><strong>UIStoryboard</strong> *storyboard;</p>
+<p><strong>UIViewController</strong> *parentViewController;</p>
+<p><strong>UIViewController</strong> *presentedViewController;</p>
+<p><strong>UIViewController</strong> *presentingViewController</p>
+<h3 id="实例方法-19"><a href="#实例方法-19" class="headerlink" title="实例方法"></a>实例方法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (void)loadView;</span><br></pre></td></tr></table></figure>
+<h1 id="UIViewController的常见子类"><a href="#UIViewController的常见子类" class="headerlink" title="UIViewController的常见子类"></a>UIViewController的常见子类</h1><h2 id="UITabBarController"><a href="#UITabBarController" class="headerlink" title="UITabBarController"></a>UITabBarController</h2><h4 id="常用属性-18"><a href="#常用属性-18" class="headerlink" title="常用属性"></a>常用属性</h4><p><strong>NSArray</strong> *viewControllers;</p>
+<p><strong>UIViewController</strong> *selectedViewController;</p>
+<p><strong>NSUInteger</strong> selectedIndex;</p>
+<p><strong>id<uitabbarcontrollerdelegate></uitabbarcontrollerdelegate></strong> delegate;</p>
+<p><code>readonly</code></p>
+<p><strong>UITabBar</strong> *tabBar;</p>
+<p><strong>UINavigationController</strong> *moreNavigationController;</p>
+<h4 id="实例方法-20"><a href="#实例方法-20" class="headerlink" title="实例方法"></a>实例方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (void)setViewControllers:(NSArray *)viewControllers animated:(BOOL)animated;</span><br></pre></td></tr></table></figure>
+<h2 id="UINavigationController"><a href="#UINavigationController" class="headerlink" title="UINavigationController"></a>UINavigationController</h2><h4 id="常用属性-19"><a href="#常用属性-19" class="headerlink" title="常用属性"></a>常用属性</h4><p><strong>id<uinavigationcontrollerdelegate></uinavigationcontrollerdelegate></strong>  delegate;</p>
+<p><strong>NSArray</strong>   *viewControllers;</p>
+<p><strong>BOOL</strong>      toolbarHidden;</p>
+<p><code>readonly</code></p>
+<p><strong>UIViewController</strong>   *topViewController;</p>
+<p><strong>UIViewController</strong>    *visibleViewController;</p>
+<p><strong>UINavigationBar</strong> *navigationBar;</p>
+<p><strong>UIToolbar</strong>   toolbar;</p>
+<h4 id="实例方法-21"><a href="#实例方法-21" class="headerlink" title="实例方法"></a>实例方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">- (id)initWithRootViewController:(UIViewController *)rootViewController;</span><br><span class="line">- (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated;</span><br><span class="line">- (UIViewController *)popViewControllerAnimated:(BOOL)animated;</span><br><span class="line">- (NSArray *)popToViewController:(UIViewController *)viewController animated:(BOOL)animated;</span><br><span class="line">- (NSArray *)popToRootViewControllerAnimated:(BOOL)animated;</span><br><span class="line">- (void)setViewControllers:(NSArray *)viewControllers animated:(BOOL)animated;</span><br><span class="line">- (void)setNavigationBarHidden:(BOOL)hidden animated:(BOOL)animated;</span><br><span class="line">- (void)setToolbarHidden:(BOOL)hidden animated:(BOOL)animated;</span><br></pre></td></tr></table></figure>
+<h2 id="UITableViewController"><a href="#UITableViewController" class="headerlink" title="UITableViewController"></a>UITableViewController</h2><h4 id="常用属性-20"><a href="#常用属性-20" class="headerlink" title="常用属性"></a>常用属性</h4><p><strong>UITableView</strong> *tableView;</p>
+<p><strong>BOOL</strong> clearsSelectionOnViewWillAppear;</p>
+<p><strong>UIRefreshControl</strong> *refreshControl;</p>
+<h4 id="实例方法-22"><a href="#实例方法-22" class="headerlink" title="实例方法"></a>实例方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (id)initWithStyle:(UITableViewStyle)style;</span><br></pre></td></tr></table></figure>
+<h1 id="UIBarItem"><a href="#UIBarItem" class="headerlink" title="UIBarItem"></a>UIBarItem</h1><h3 id="常用属性-21"><a href="#常用属性-21" class="headerlink" title="常用属性"></a>常用属性</h3><p><strong>BOOL</strong> enable;</p>
+<p><strong>NSString</strong>  *title;</p>
+<p><strong>UIImage</strong>  *image;</p>
+<p><strong>UIImage</strong>  *landscapeImagePhone;</p>
+<p><strong>UIEdgeInsets</strong> imageInsets;</p>
+<p><strong>UIEdgeInsets</strong> landscapeImagePhoneInsets;</p>
+<p><strong>NSInteger</strong>    tag;</p>
+<h3 id="实例方法-23"><a href="#实例方法-23" class="headerlink" title="实例方法"></a>实例方法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">- (void)setTitleTextAttributes:(NSDictionary *)attributes forState:(UIControlState)state;</span><br><span class="line">- (NSDictionary *)titleTextAttributesForState:(UIControlState)state;</span><br></pre></td></tr></table></figure>
+<h2 id="UIBarButtonItem"><a href="#UIBarButtonItem" class="headerlink" title="UIBarButtonItem"></a>UIBarButtonItem</h2><h4 id="常用属性-22"><a href="#常用属性-22" class="headerlink" title="常用属性"></a>常用属性</h4><p><strong>UIBarButtonItem</strong>  style;</p>
+<p><strong>CGFloat</strong>  width;</p>
+<p><strong>NSSet</strong>  *possibleTitles;</p>
+<p><strong>UIView</strong>  *customView;</p>
+<p><strong>SEL</strong>     action;</p>
+<p><strong>id</strong>        target;</p>
+<h4 id="实例方法-24"><a href="#实例方法-24" class="headerlink" title="实例方法"></a>实例方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">- (id)initWithImage:(UIImage *)image style:(UIBarButtonItemStyle)style target:(id)target action:(SEL)action;</span><br><span class="line">- (id)initWithImage:(UIImage *)image landscapeImagePhone:(UIImage *)landscapeImagePhone style:(UIBarButtonItemStyle)style target:(id)target action:(SEL)action;</span><br><span class="line">- (id)initWithTitle:(NSString *)title style:(UIBarButtonItemStyle)style target:(id)target action:(SEL)action;</span><br><span class="line">- (id)initWithBarButtonSystemItem:(UIBarButtonSystemItem)systemItem target:(id)target action:(SEL)action;</span><br><span class="line">- (id)initWithCustomView:(UIView *)customView;</span><br><span class="line">- (void)setBackgroundImage:(UIImage *)backgroundImage forState:(UIControlState)state barMetrics:(UIBarMetrics)barMetrics;</span><br><span class="line">- (UIImage *)backgroundImageForState:(UIControlState)state barMetrics:(UIBarMetrics)barMetrics</span><br></pre></td></tr></table></figure>
+<h2 id="UITabBarItem"><a href="#UITabBarItem" class="headerlink" title="UITabBarItem"></a>UITabBarItem</h2><h4 id="常用属性-23"><a href="#常用属性-23" class="headerlink" title="常用属性"></a>常用属性</h4><p><strong>UIImage</strong> selectedImage;</p>
+<p><strong>NSString</strong>  badgeValue;</p>
+<h4 id="实例方法-25"><a href="#实例方法-25" class="headerlink" title="实例方法"></a>实例方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- (id)initWithTitle:(NSString *)title image:(UIImage *)image tag:(NSInteger)tag;</span><br><span class="line">- (instancetype)initWithTitle:(NSString *)title image:(UIImage *)image selectedImage:(UIImage *)selectedImage NS_AVAILABLE_IOS(7_0);</span><br><span class="line">- (id)initWithTabBarSystemItem:(UITabBarSystemItem)systemItem tag:(NSInteger)tag;</span><br></pre></td></tr></table></figure>
+<h1 id="UINavigationItem"><a href="#UINavigationItem" class="headerlink" title="UINavigationItem"></a>UINavigationItem</h1><h3 id="常用属性-24"><a href="#常用属性-24" class="headerlink" title="常用属性"></a>常用属性</h3><p><strong>NSSting</strong> *title;</p>
+<p><strong>UIBarButtonItem</strong>  *backBarButtonItem;</p>
+<p><strong>UIView</strong>  *titleView;</p>
+<p><strong>NSString</strong>    *prompt;</p>
+<p><strong>BOOL</strong>  hidesBackButton;</p>
+<p><strong>NSArray</strong>  *leftBarButtonItems;</p>
+<p><strong>NSArray</strong>  *rightBarButtonItems;</p>
+<p><strong>BOOL</strong>  leftItemsSupplementBackButton;</p>
+<p><strong>UIBarButtonItem</strong>   *leftBarButtonItem;</p>
+<p><strong>UIBarButtonItem</strong>  *rightBarButtonItem;</p>
+<h3 id="实例方法-26"><a href="#实例方法-26" class="headerlink" title="实例方法"></a>实例方法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">- (id)initWithTitle:(NSString *)title;</span><br><span class="line">- (void)setHidesBackButton:(BOOL)hidesBackButton animated:(BOOL)animated;</span><br><span class="line">- (void)setLeftBarButtonItems:(NSArray *)items animated:(BOOL)animated; </span><br><span class="line">- (void)setRightBarButtonItems:(NSArray *)items animated:(BOOL)animated;</span><br><span class="line">- (void)setLeftBarButtonItem:(UIBarButtonItem *)item animated:(BOOL)animated;</span><br><span class="line">- (void)setRightBarButtonItem:(UIBarButtonItem *)item animated:(BOOL)animated；</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2014/11/13/UI-notes/" data-id="cjezb8e8y0003ipm4sq5ojriy" class="article-share-link">Teilen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/UI-Notes/">UI_Notes</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">weiter &raquo;</a>
+  </nav>
 
 </section>
         
@@ -154,15 +1584,10 @@
 
   
     
-
-  
-    
-  
-    
   <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
+    <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/1106Xcode更新/">1106Xcode更新</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AFNetworking/">AFNetworking</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UI-Notes/">UI_Notes</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/XML-JSON/">XML&JSON</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/accelerator-key/">accelerator-key</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo指南/">hexo指南</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kinds-of-viewControllers/">kinds of viewControllers</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/程序又崩溃啦/">程序又崩溃啦</a></li></ul>
     </div>
   </div>
 
@@ -170,7 +1595,26 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/1106Xcode更新/" style="font-size: 10px;">1106Xcode更新</a> <a href="/tags/AFNetworking/" style="font-size: 10px;">AFNetworking</a> <a href="/tags/UI-Notes/" style="font-size: 10px;">UI_Notes</a> <a href="/tags/XML-JSON/" style="font-size: 10px;">XML&JSON</a> <a href="/tags/accelerator-key/" style="font-size: 10px;">accelerator-key</a> <a href="/tags/hexo指南/" style="font-size: 10px;">hexo指南</a> <a href="/tags/kinds-of-viewControllers/" style="font-size: 10px;">kinds of viewControllers</a> <a href="/tags/程序又崩溃啦/" style="font-size: 20px;">程序又崩溃啦</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">October 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09/">September 2014</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
     <div class="widget">
       <ul>
         
@@ -180,6 +1624,18 @@
         
           <li>
             <a href="/2018/03/20/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2015/01/24/常见面试题/">1124</a>
+          </li>
+        
+          <li>
+            <a href="/2015/01/17/viewController/">viewController</a>
+          </li>
+        
+          <li>
+            <a href="/2014/11/29/AFNetworking/">AFNetworking</a>
           </li>
         
       </ul>
