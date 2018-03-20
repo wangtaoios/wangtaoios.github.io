@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="NTFS," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="wt" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="********************************************************************     1:&amp;gt;&amp;gt;&amp;gt;  sudo mount | grep ntfs  &amp;lt;&amp;lt;&amp;lt;     2:会得到如下路径，第3条的命令根据该路径而变化     &amp;quot;/dev/disk1s1 on /Volumes/半片残枫 (ntfs">
+<meta name="keywords" content="NTFS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NTFS read-write">
+<meta property="og:url" content="https://weibo.com/wangtaoworld/uncategorized/2014/11/20/NTFS-read-write.html">
+<meta property="og:site_name" content="wt">
+<meta property="og:description" content="********************************************************************     1:&amp;gt;&amp;gt;&amp;gt;  sudo mount | grep ntfs  &amp;lt;&amp;lt;&amp;lt;     2:会得到如下路径，第3条的命令根据该路径而变化     &amp;quot;/dev/disk1s1 on /Volumes/半片残枫 (ntfs">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-03-20T08:26:21.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="NTFS read-write">
+<meta name="twitter:description" content="********************************************************************     1:&amp;gt;&amp;gt;&amp;gt;  sudo mount | grep ntfs  &amp;lt;&amp;lt;&amp;lt;     2:会得到如下路径，第3条的命令根据该路径而变化     &amp;quot;/dev/disk1s1 on /Volumes/半片残枫 (ntfs">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://weibo.com/wangtaoworld/uncategorized/2014/11/20/NTFS-read-write.html"/>
+
+
+
+
+
+  <title>NTFS read-write | wt</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">wt</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://weibo.com/wangtaoworld/uncategorized/2014/11/20/NTFS-read-write.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wangtao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="wt">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">NTFS read-write</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-11-20T09:06:21+08:00">
+                2014-11-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <pre><code>********************************************************************
+    1:&gt;&gt;&gt;  sudo mount | grep ntfs  &lt;&lt;&lt;
+    2:会得到如下路径，第3条的命令根据该路径而变化
+    &quot;/dev/disk1s1 on /Volumes/半片残枫 (ntfs, local, nodev, nosuid, read-only, noowners)&quot;
+    3:&gt;&gt;&gt;  sudo umount /dev/disk1s1  &lt;&lt;&lt;
+    4:&gt;&gt;&gt;  sudo mkdir -p /Volumes/wto  &lt;&lt;&lt;
+    5:&gt;&gt;&gt;  sudo mount_ntfs -o rw,auto,nobrowse,noowners,noatime /dev/disk1s1 /Volumes/wto  &lt;&lt;&lt;
+    //网上代码    &gt;&gt;&gt;  sudo mount_ntfs -o rw,auto,nobrowse,noowners,noatime  /dev/disk0s1 /Volumes/Win7boot
+       &lt;&lt;&lt;
+    6:&gt;&gt;&gt;  cd /Volumes  &lt;&lt;&lt;
+    7:&gt;&gt;&gt;  open .  &lt;&lt;&lt;
+    8:推出硬盘命令
+    &gt;&gt;&gt;  sudo umount /Volumes/wto  &lt;&lt;&lt;
+    或者在Finder中右键推出
+    *****此方法需要每次插入硬盘时执行该部分命令
+********************************************************************
+    http://www.memacx.com/forum.php?mod=viewthread&amp;tid=5482
+    //
+    在root下使用(建议使用此条)
+    &gt;&gt;&gt;   vi ~/.bashrc   &lt;&lt;&lt;
+    编辑添加： export EDITOR=vim
+    网上&gt;&gt;&gt;  echo export EDITOR=/usr/bin/vim &gt;&gt; ~/.bashrc
+    或者
+    //直接执行
+    &gt;&gt;&gt;  export EDITOR=vim
+    或者
+    //执行
+    &gt;&gt;&gt;  EDITOR=vim  &lt;&lt;&lt;
+    &gt;&gt;&gt;  export EDITOR  &lt;&lt;&lt;
+
+保存后即可和vim编译器一样编辑 /etc/fstab 下的内容：vim /etc/fstab,
+也就是可以直接执行 &gt;&gt;&gt;&gt;   vifs  &lt;&lt;&lt;命令
+然后直接像在vim中一样直接编辑添加
+//
+LABEL=半片残枫 none ntfs rw,nobrowse,noatime,nosuid
+//或
+LABEL=半片残枫 none ntfs rw,nobrowse,noowners,noatime,nosuid
+//
+******此方法即可在以后每次开机时自动执行该命令，自动会挂载NTFS格式硬盘半片残枫为读写格式的
+********************************************************************
+    /////////////////////////////////////////////////////////////
+    尤明大牛给的建议：
+    //1：
+    先执行
+    &gt;&gt;&gt;   sudo mount_ntfs -o rw,auto.nobrowse,noowners,noatime /dev/disk1s1 /Volumes/disk   &lt;&lt;&lt;
+    //其中disk为自己在  /Volmes/  下创建的文件，
+    //disk1s1为执行&gt;&gt;&gt;  sudo mount | grep ntfs  &lt;&lt;&lt;后查看到的文件
+    //此方法需要每次插入硬盘时都需要执行该部分命令
+    //2：
+    不行的话就在   /etc/fstab 下
+    vi fsatb
+    //
+    添加
+    LABEL=半片残枫 none ntfs rw
+    //
+    此方法即可每次开机自动将NTFS格式的硬盘挂载为读写格式的
+    ///////////////////////////////////////////////////////////////
+**********************************************************************
+    //链接
+    一般情况下，ubuntu终端下的默认编辑器为nano，我们直接编辑某个文件，默认就会打开nano。比如我们输入“crontab -e“的时候默认会打开nano编辑器。
+    对于熟悉VIM的朋友来说，都希望默认编辑器能使用vim，那么我们就需要修改ubuntu的默认编辑器。
+    修改ubuntu默认编辑器有三种方法：
+    一、直接在终端输入：
+
+echo export EDITOR=/usr/bin/vim &gt;&gt; ~/.bashrc
+二、使用系统管理工具update-alternatives来修改
+在终端输入：
+update-alternatives --config editor
+然后选择vim.basic这项即可
+三、如果系统中只剩下nano和vim两个编辑器，这个时候我们如果完全删除nano，那么系统会默认选择vim为默认编辑器
+在终端输入删除nano编辑器的命令：
+
+sudo apt-get remove nano
+
+修改完成之后我们输入：
+
+crontab -e
+看一看出现的是不是大家喜欢的vim编辑器呢。
+
+
+改变默认的程序来运行
+
+比如说，想给PDF文件换个默认的阅读工具，怎么弄呢？
+　　随便找个PDF文件，右击-&gt;使用其它程序打开，这样是可以选择不同的阅读器，可是如何指定为默认的阅读器呢？
+　　ubuntu中有两个文件，跟文件的默认打开方式有关：
+　　1./etc/gnome/defaults.list 保存了全局的打开方式
+　　2.~/.local/share/applications/mimeapps.list 保存了个人的打开方式
+
+    当两着有冲突，则优先采用局部的个人设置。举个例子：
+　　application/pdf=Foxit-Reader.desktop;
+    这样，系统就默认使用Foxit Reader作为PDF默认的阅读器，而不是系统自带的evince。注意格式，文件名要写对，后面有分号。
+　　文件名怎么写呢？其实，通过“右击-&gt;使用其它程序打开”，就会在mimeapps.list，产生一条记录，该记录就会显示你选中程序的文件名，这下该知道怎么做了吧
+</code></pre>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/NTFS/" rel="tag"># NTFS</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/uncategorized/2014/11/17/MacBook-Pro.html" rel="next" title="MacBook Pro">
+                <i class="fa fa-chevron-left"></i> MacBook Pro
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/uncategorized/2014/11/24/1124.html" rel="prev" title="1124">
+                1124 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">wangtao</p>
+              <p class="site-description motion-element" itemprop="description">技术交流</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">wangtao</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
