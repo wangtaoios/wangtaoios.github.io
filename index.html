@@ -1143,7 +1143,7 @@ date: 2014-06-06 20:00:00
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://weibo.com/wangtaoworld/文档/2018/03/21/MacDown_help.html">
+    <link itemprop="mainEntityOfPage" href="https://weibo.com/wangtaoworld/iOS/2018/03/20/Ulysses试用.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wangtao">
@@ -1162,7 +1162,7 @@ date: 2014-06-06 20:00:00
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/文档/2018/03/21/MacDown_help.html" itemprop="url">MacDown使用帮助文档</a></h1>
+                <a class="post-title-link" href="/iOS/2018/03/20/Ulysses试用.html" itemprop="url">test</a></h1>
         
 
         <div class="post-meta">
@@ -1174,8 +1174,8 @@ date: 2014-06-06 20:00:00
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-21T14:38:30+08:00">
-                2018-03-21
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-20T14:33:30+08:00">
+                2018-03-20
               </time>
             
 
@@ -1197,8 +1197,8 @@ date: 2014-06-06 20:00:00
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/文档/" itemprop="url" rel="index">
-                    <span itemprop="name">文档</span>
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
                   </a>
                 </span>
 
@@ -1236,207 +1236,17 @@ date: 2014-06-06 20:00:00
       
         
           
-            
-# MacDown
+            <h2 id="好吧，那我该怎么…"><a href="#好吧，那我该怎么…" class="headerlink" title="好吧，那我该怎么…?"></a>好吧，那我该怎么…?</h2><p>我们首先让您有个大概的了解。这是用户界面概览（从左到右）：</p>
+<ul>
+<li>文库</li>
+<li>文稿列表</li>
+<li>编辑器</li>
+</ul>
+<p>_文库_ 可以让您访问所有文本，它分为几个部分。取决于您是否已开启了 iCloud，您将在这里会看到不同的分段。</p>
+<p><em>文稿列表</em>包括了您所有的文本。</p>
+<p>然后是<em>编辑器</em>。</p>
+<p>请使用快捷键<code>⌘1</code>、<code>⌘2</code>和<code>⌘3</code>在三窗格（文库、文稿列表和编辑器）、两窗格（文稿列表和编辑器）和仅编辑器视图之间切换。您还可以最左侧的工具栏按钮切换视图。</p>
 
-![MacDown logo](http://macdown.uranusjr.com/static/images/logo-160.png)
-
-Hello there! I’m **MacDown**, the open source Markdown editor for OS X.
-
-Let me introduce myself.
-
-
-
-## Markdown and I
-
-**Markdown** is a plain text formatting syntax created by John Gruber, aiming to provide a easy-to-read and feasible markup. The original Markdown syntax specification can be found [here](http://daringfireball.net/projects/markdown/syntax).
-
-**MacDown** is created as a simple-to-use editor for Markdown documents. I render your Markdown contents real-time into HTML, and display them in a preview panel.
-
-![MacDown Screenshot](http://d.pr/i/10UGP+)
-
-I support all the original Markdown syntaxes. But I can do so much more! Various popular but non-standard syntaxes can be turned on/off from the [**Markdown** preference pane](#markdown-pane).
-
-You can specify extra HTML rendering options through the [**Rendering** preference pane](#rendering-pane).
-
-You can customize the editor window to you liking in the [**Editor** preferences pane](#editor-pane):
-
-You can configure various application (that's me!) behaviors in the [**General** preference pane](#general-pane).
-
-## The Basics
-Before I tell you about all the extra syntaxes and capabilities I have, I'll introduce you to the basics of standard markdown. If you already know markdown, and want to jump straight to learning about the fancier things I can do, I suggest you skip to the [**Markdown** preference pane](#markdown-pane). Lets jump right in.  
-
-### Line Breaks
-To force a line break, put two spaces and a newline (return) at the end of the line.
-
-* This two-line bullet 
-won't break
-
-* This two-line bullet  
-will break
-
-Here is the code:
-
-<figure class="highlight gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">* This two-<span class="keyword">line</span> bullet </span><br><span class="line">won't <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">* This two-<span class="keyword">line</span> bullet  </span><br><span class="line">will <span class="keyword">break</span></span><br></pre></td></tr></table></figure>
-
-### Strong and Emphasize
-
-**Strong**: `**Strong**` or `__Strong__` (Command-B)  
-*Emphasize*: `*Emphasize*` or `_Emphasize_`[^emphasize] (Command-I)
-
-### Headers (like this one!)
-
-	Header 1
-	========
-
-	Header 2
-	--------
-
-or
-
-	# Header 1
-	## Header 2
-	### Header 3
-	#### Header 4
-	##### Header 5
-	###### Header 6
-
-
-
-### Links and Email
-#### Inline
-Just put angle brackets around an email and it becomes clickable: <uranusjr@gmail.com>  
-`<uranusjr@gmail.com>`  
-
-Same thing with urls: <http: macdown.uranusjr.com="">  
-` <http: macdown.uranusjr.com="">`  
-
-Perhaps you want to some link text like this: [Macdown Website](http://macdown.uranusjr.com "Title")  
-`[Macdown Website](http://macdown.uranusjr.com "Title")` (The title is optional)  
-
-
-#### Reference style
-Sometimes it looks too messy to include big long urls inline, or you want to keep all your urls together.  
-
-Make [a link][arbitrary_id] `[a link][arbitrary_id]` then on it's own line anywhere else in the file:  
-`[arbitrary_id]: http://macdown.uranusjr.com "Title"`
-  
-If the link text itself would make a good id, you can link [like this][] `[like this][]`, then on it's own line anywhere else in the file:  
-`[like this]: http://macdown.uranusjr.com`  
-
-[arbitrary_id]: http://macdown.uranusjr.com "Title"
-[like this]: http://macdown.uranusjr.com  
-
-
-### Images
-#### Inline
-`![Alt Image Text](path/or/url/to.jpg "Optional Title")`
-#### Reference style
-`![Alt Image Text][image-id]`  
-on it's own line elsewhere:  
-`[image-id]: path/or/url/to.jpg "Optional Title"`
-
-
-### Lists
-
-* Lists must be preceded by a blank line (or block element)
-* Unordered lists start each item with a `*`
-- `-` works too
-	* Indent a level to make a nested list
-		1. Ordered lists are supported.
-		2. Start each item (number-period-space) like `1. `
-		42. It doesn't matter what number you use, I will render them sequentially
-		1. So you might want to start each line with `1.` and let me sort it out
-
-Here is the code:
-
-<figure class="highlight vbnet"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">* Lists must be preceded <span class="keyword">by</span> a blank line (<span class="keyword">or</span> block element)</span><br><span class="line">* Unordered lists start <span class="keyword">each</span> item <span class="keyword">with</span> a `*`</span><br><span class="line">- `-` works too</span><br><span class="line">	* Indent a level <span class="keyword">to</span> make a nested list</span><br><span class="line">		<span class="number">1.</span> Ordered lists are supported.</span><br><span class="line">		<span class="number">2.</span> Start <span class="keyword">each</span> item (number-period-space) <span class="keyword">like</span> `<span class="number">1.</span> `</span><br><span class="line">		<span class="number">42.</span> It doesn<span class="comment">'t matter what number you use, I will render them sequentially</span></span><br><span class="line">		<span class="number">1.</span> So you might want <span class="keyword">to</span> start <span class="keyword">each</span> line <span class="keyword">with</span> `<span class="number">1.</span>` <span class="keyword">and</span> <span class="keyword">let</span> <span class="keyword">me</span> sort it out</span><br></pre></td></tr></table></figure>
-
-### Block Quote
-
-> Angle brackets `>` are used for block quotes.  
-Technically not every line needs to start with a `>` as long as
-there are no empty lines between paragraphs.  
-> Looks kinda ugly though.
-> > Block quotes can be nested.  
-> > > Multiple Levels
->
-> Most markdown syntaxes work inside block quotes.
->
-> * Lists
-> * [Links][arbitrary_id]
-> * Etc.
-
-Here is the code:
-
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> Angle brackets `&gt;` are used <span class="keyword">for</span> block quotes.  </span></span><br><span class="line">Technically not every line needs to start with a `&gt;` as long as</span><br><span class="line">there are no empty lines between paragraphs.  </span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> Looks kinda ugly though.</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> &gt; Block quotes can be nested.  </span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> &gt; &gt; Multiple Levels</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"></span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> Most markdown syntaxes work inside block quotes.</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"></span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> * Lists</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> * [Links][arbitrary_id]</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> * Etc.</span></span><br></pre></td></tr></table></figure>
-
-  
-  
-### Inline Code
-`Inline code` is indicated by surrounding it with backticks:  
-`` `Inline code` ``
-
-If your ``code has `backticks` `` that need to be displayed, you can use double backticks:  
-<figure class="highlight plain"><figcaption><span>``Code with `backticks` `` ````  (mind the spaces preceding the final set of backticks)</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">### Block Code</span><br><span class="line">If you indent at least four spaces or one tab, I&apos;ll display a code block.</span><br><span class="line"></span><br><span class="line">	print(&apos;This is a code block&apos;)</span><br><span class="line">	print(&apos;The block must be preceded by a blank line&apos;)</span><br><span class="line">	print(&apos;Then indent at least 4 spaces or 1 tab&apos;)</span><br><span class="line">		print(&apos;Nesting does nothing. Your code is displayed Literally&apos;)</span><br><span class="line"></span><br><span class="line">I also know how to do something called [Fenced Code Blocks](#fenced-code-block) which I will tell you about later.</span><br><span class="line"></span><br><span class="line">### Horizontal Rules</span><br><span class="line">If you type three asterisks `***` or three dashes `---` on a line, I&apos;ll display a horizontal rule:</span><br><span class="line"></span><br><span class="line">***</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">## &lt;a name=&quot;markdown-pane&quot;&gt;&lt;/a&gt;The Markdown Preference Pane</span><br><span class="line">This is where I keep all preferences related to how I parse markdown into html.  </span><br><span class="line">![Markdown preferences pane](http://d.pr/i/RQEi+)</span><br><span class="line"></span><br><span class="line">### Document Formatting</span><br><span class="line">The ***Smartypants*** extension automatically transforms straight quotes (`&quot;` and `&apos;`) in your text into typographer’s quotes (`“`, `”`, `‘`, and `’`) according to the context. Very useful if you’re a typography freak like I am. Quote and Smartypants are syntactically incompatible. If both are enabled, Quote takes precedence.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### Block Formatting</span><br><span class="line"></span><br><span class="line">#### Table</span><br><span class="line"></span><br><span class="line">This is a table:</span><br><span class="line"></span><br><span class="line">First Header  | Second Header</span><br><span class="line">------------- | -------------</span><br><span class="line">Content Cell  | Content Cell</span><br><span class="line">Content Cell  | Content Cell</span><br><span class="line"></span><br><span class="line">You can align cell contents with syntax like this:</span><br><span class="line"></span><br><span class="line">| Left Aligned  | Center Aligned  | Right Aligned |</span><br><span class="line">|:------------- |:---------------:| -------------:|</span><br><span class="line">| col 3 is      | some wordy text |         $1600 |</span><br><span class="line">| col 2 is      | centered        |           $12 |</span><br><span class="line">| zebra stripes | are neat        |            $1 |</span><br><span class="line"></span><br><span class="line">The left- and right-most pipes (`|`) are only aesthetic, and can be omitted. The spaces don’t matter, either. Alignment depends solely on `:` marks.</span><br><span class="line"></span><br><span class="line">#### &lt;a name=&quot;fenced-code-block&quot;&gt;Fenced Code Block&lt;/a&gt;</span><br><span class="line"></span><br><span class="line">This is a fenced code block:</span><br></pre></td></tr></table></figure>
-
-print('Hello world!')
-<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">You can also <span class="keyword">use</span> waves (`~`) instead of back ticks (`` ` ``):</span><br><span class="line"></span><br><span class="line">~~~</span><br><span class="line"><span class="keyword">print</span>('Hello world!')</span><br><span class="line">~~~</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">You can add <span class="keyword">an</span> optional language ID at the end of the first <span class="keyword">line</span>. The language ID will only be used to highlight the code inside <span class="keyword">if</span> you tick the ***Enable highlighting <span class="keyword">in</span> code blocks*** option. This is what happens <span class="keyword">if</span> you enable it:</span><br><span class="line"></span><br><span class="line">![<span class="keyword">Syntax</span> highlighting example](http:<span class="comment">//d.pr/i/9HM6+)</span></span><br><span class="line"></span><br><span class="line">I support many popular languages <span class="keyword">as</span> well <span class="keyword">as</span> some generic <span class="keyword">syntax</span> descriptions that can be used <span class="keyword">if</span> your language of choice is not supported. See [relevant sections <span class="keyword">on</span> the official site](http:<span class="comment">//macdown.uranusjr.com/features/) for a full list of supported syntaxes.</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### Inline Formatting</span><br><span class="line"></span><br><span class="line">The following is a <span class="keyword">list</span> of optional inline markups supported:</span><br><span class="line"></span><br><span class="line">Option name         | Markup           | Result <span class="keyword">if</span> enabled     |</span><br><span class="line">--------------------|------------------|-----------------------|</span><br><span class="line">Intra-word emphasis | <span class="keyword">So</span> A\*maz\*ing   | <span class="keyword">So</span> A&lt;em&gt;maz&lt;/em&gt;ing   |</span><br><span class="line">Strikethrough       | \~~Much wow\~~   | &lt;del&gt;Much wow&lt;/del&gt;   |</span><br><span class="line">Underline [^under]  | \_So doge\_      | &lt;<span class="keyword">u</span>&gt;<span class="keyword">So</span> doge&lt;/<span class="keyword">u</span>&gt;        |</span><br><span class="line">Quote [^quote]      | \<span class="string">"Such editor\"</span>  | &lt;q&gt;Such editor&lt;/q&gt;    |</span><br><span class="line">Highlight           | \==<span class="keyword">So</span> good\==    | &lt;<span class="keyword">mark</span>&gt;<span class="keyword">So</span> good&lt;/<span class="keyword">mark</span>&gt;  |</span><br><span class="line">Superscript         | hoge\^(fuga)     | hoge&lt;sup&gt;fuga&lt;/sup&gt;   |</span><br><span class="line">Autolink            | http:<span class="comment">//t.co      | &lt;http://t.co&gt;         |</span></span><br><span class="line">Footnotes           | [\^4] and [\^4]: | [^4] and footnote 4   |</span><br><span class="line"></span><br><span class="line">[^4]: You don't have to <span class="keyword">use</span> a number. Arbitrary things like `[^footy note4]` and `[^footy note4]:` will also work. But they will *render* <span class="keyword">as</span> numbered footnotes. Also, <span class="keyword">no</span> need to <span class="keyword">keep</span> your footnotes <span class="keyword">in</span> <span class="keyword">order</span>, I will <span class="keyword">sort</span> <span class="keyword">out</span> the <span class="keyword">order</span> <span class="keyword">for</span> you <span class="keyword">so</span> they appear <span class="keyword">in</span> the same <span class="keyword">order</span> they were referenced <span class="keyword">in</span> the text body. You can even <span class="keyword">keep</span> some footnotes near where you referenced them, and collect others at the bottom of the <span class="keyword">file</span> <span class="keyword">in</span> the traditional place <span class="keyword">for</span> footnotes. </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">## &lt;a name=<span class="string">"rendering-pane"</span>&gt;&lt;/a&gt;The Rendering Preference Pane</span><br><span class="line">This is where I <span class="keyword">keep</span> preferences relating to how I render and style the parsed markdown <span class="keyword">in</span> the preview <span class="keyword">window</span>.  </span><br><span class="line">![Rendering preferences pane](http:<span class="comment">//d.pr/i/rT4d+)</span></span><br><span class="line"></span><br><span class="line">### CSS</span><br><span class="line">You can choose different css files <span class="keyword">for</span> me to <span class="keyword">use</span> to render your html. You can even customize or add your own custom css files.</span><br><span class="line"></span><br><span class="line">### <span class="keyword">Syntax</span> Highlighting</span><br><span class="line">You have already seen how I can <span class="keyword">syntax</span> highlight your fenced code blocks. See the [Fenced Code Block](#fenced-code-block) section <span class="keyword">if</span> you haven’t! You can also choose different themes <span class="keyword">for</span> <span class="keyword">syntax</span> highlighting.</span><br><span class="line"></span><br><span class="line">### TeX-like Math <span class="keyword">Syntax</span></span><br><span class="line">I can also render TeX-like math syntaxes, <span class="keyword">if</span> you allow me to.[^math] I can <span class="keyword">do</span> inline math like this: \\( 1 + 1 \\) or this (<span class="keyword">in</span> MathML): &lt;math&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;/math&gt;, and block math:</span><br><span class="line"></span><br><span class="line">\\[</span><br><span class="line">    A^T_S = B</span><br><span class="line">\\]</span><br><span class="line"></span><br><span class="line">or (<span class="keyword">in</span> MathML)</span><br><span class="line"></span><br><span class="line">&lt;math <span class="keyword">display</span>=<span class="string">"block"</span>&gt;</span><br><span class="line">    &lt;msubsup&gt;&lt;mi&gt;A&lt;/mi&gt; &lt;mi&gt;S&lt;/mi&gt; &lt;mi&gt;T&lt;/mi&gt;&lt;/msubsup&gt;</span><br><span class="line">    &lt;mo&gt;=&lt;/mo&gt;</span><br><span class="line">    &lt;mi&gt;B&lt;/mi&gt;</span><br><span class="line">&lt;/math&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### Task <span class="keyword">List</span> <span class="keyword">Syntax</span></span><br><span class="line">1. [x] I can render checkbox <span class="keyword">list</span> <span class="keyword">syntax</span></span><br><span class="line"><span class="comment">	* [x] I support nesting</span></span><br><span class="line"><span class="comment">	* [x] I support ordered *and* unordered lists</span></span><br><span class="line">2. [ ] I don't support clicking checkboxes directly <span class="keyword">in</span> the html <span class="keyword">window</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### Jekyll front-matter</span><br><span class="line"><span class="keyword">If</span> you like, I can <span class="keyword">display</span> Jekyll front-matter <span class="keyword">in</span> a nice <span class="keyword">table</span>. Just make sure you put the front-matter at the very beginning of the <span class="keyword">file</span>, and fence it with `---`. <span class="keyword">For</span> example:</span><br></pre></td></tr></table></figure>
-
----
-title: "Macdown is my friend"
-date: 2014-06-06 20:00:00
----
-```
-
-### Render newline literally
-Normally I require you to put two spaces and a newline (aka return) at the end of a line in order to create a line break. If you like, I can render a newline any time you end a line with a newline. However, if you enable this, markdown that looks lovely when I render it might look pretty funky when you let some *other* program render it.
-
-
-
-
-
-## <a name="general-pane"></a>The General Preferences Pane
-
-This is where I keep preferences related to application behavior.  
-![General preferences pane](http://d.pr/i/rvwu+)
-
-The General Preferences Pane allows you to tell me how you want me to behave. For example, do you want me to make sure there is a document open when I launch? You can also tell me if I should constantly update the preview window as you type, or wait for you to hit `command-R` instead. Maybe you prefer your editor window on the right? Or to see the word-count as you type. This is also the place to tell me if you are interested in pre-releases of me, or just want to stick to better-tested official releases.  
-
-## <a name="editor-pane"></a>The Editor Preference Pane
-This is where I keep preferences related to the behavior and styling of the editing window.  
-![Editor preferences pane](http://d.pr/i/6OL5+)
-
-
-### Styling
-
-My editor provides syntax highlighting. You can edit the base font and the coloring/sizing theme. I provided some default themes (courtesy of [Mou](http://mouapp.com)’s creator, Chen Luo) if you don’t know where to start.
-
-You can also edit, or even add new themes if you want to! Just click the ***Reveal*** button, and start moving things around. Remember to use the correct file extension (`.styles`), though. I’m picky about that.
-
-I offer auto-completion and other functions to ease your editing experience. If you don’t like it, however, you can turn them off.
-
-
-
-
-
-## Hack On
-
-That’s about it. Thanks for listening. I’ll be quiet from now on (unless there’s an update about the app—I’ll remind you for that!).
-
-Happy writing!
-
-
-[^emphasize]: If **Underlines** is turned on, `_this notation_` will render as underlined instead of emphasized 
-
-[^under]: If **Underline** is disabled `_this_` will be rendered as *emphasized* instead of being underlined.
-
-[^quote]: **Quote** replaces literal `"` characters with html `<q>` tags. **Quote** and **Smartypants** are syntactically incompatible. If both are enabled, **Quote** takes precedence. Note that **Quote** is different from *blockquote*, which is part of standard Markdown.
-
-[^math]: Internet connection required.
-
-
-</q></http:></http:></uranusjr@gmail.com></uranusjr@gmail.com>
           
         
       
@@ -1729,157 +1539,6 @@ Happy writing!
         
           
             <p>NSString<br>字符串</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://weibo.com/wangtaoworld/iOS/2018/03/20/Ulysses试用.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wangtao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="wt">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/iOS/2018/03/20/Ulysses试用.html" itemprop="url">test</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-20T14:33:30+08:00">
-                2018-03-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="好吧，那我该怎么…"><a href="#好吧，那我该怎么…" class="headerlink" title="好吧，那我该怎么…?"></a>好吧，那我该怎么…?</h2><p>我们首先让您有个大概的了解。这是用户界面概览（从左到右）：</p>
-<ul>
-<li>文库</li>
-<li>文稿列表</li>
-<li>编辑器</li>
-</ul>
-<p>_文库_ 可以让您访问所有文本，它分为几个部分。取决于您是否已开启了 iCloud，您将在这里会看到不同的分段。</p>
-<p><em>文稿列表</em>包括了您所有的文本。</p>
-<p>然后是<em>编辑器</em>。</p>
-<p>请使用快捷键<code>⌘1</code>、<code>⌘2</code>和<code>⌘3</code>在三窗格（文库、文稿列表和编辑器）、两窗格（文稿列表和编辑器）和仅编辑器视图之间切换。您还可以最左侧的工具栏按钮切换视图。</p>
 
           
         
@@ -3265,6 +2924,126 @@ NSArray *array = @[@&quot;不可达&quot;,@&quot;2G/3G/4G&quot;,@&quot;wi-fi&quo
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://weibo.com/wangtaoworld/uncategorized/2014/11/24/1124.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wangtao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="wt">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/uncategorized/2014/11/24/1124.html" itemprop="url">1124</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-11-24T09:36:56+08:00">
+                2014-11-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>蹦，崩</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
   </section>
 
   
@@ -3315,7 +3094,7 @@ NSArray *array = @[@&quot;不可达&quot;,@&quot;2G/3G/4G&quot;,@&quot;wi-fi&quo
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -3326,7 +3105,7 @@ NSArray *array = @[@&quot;不可达&quot;,@&quot;2G/3G/4G&quot;,@&quot;wi-fi&quo
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">1</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -3337,7 +3116,7 @@ NSArray *array = @[@&quot;不可达&quot;,@&quot;2G/3G/4G&quot;,@&quot;wi-fi&quo
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
