@@ -234,6 +234,438 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://weibo.com/wangtaoworld/uncategorized/2014/11/29/AFNetworking.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wangtao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="wt">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/uncategorized/2014/11/29/AFNetworking.html" itemprop="url">AFNetworking</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-11-29T21:55:09+08:00">
+                2014-11-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="下载AFNetworking开源代码"><a href="#下载AFNetworking开源代码" class="headerlink" title="下载AFNetworking开源代码"></a>下载AFNetworking开源代码</h2><p>点击链接：<a href="https://github.com/AFNetworking/AFNetworking/archive/master.zip" target="_blank" rel="noopener">AFNetworking</a></p>
+<h1 id="Architecture"><a href="#Architecture" class="headerlink" title="Architecture"></a>Architecture</h1><hr>
+<h2 id="NSURLConnection"><a href="#NSURLConnection" class="headerlink" title="NSURLConnection"></a>NSURLConnection</h2><ul>
+<li>AFURLConnectioinOperatioin</li>
+<li>AFHTTPRequestOperation</li>
+<li>AFHTTPRequestOperationManager</li>
+</ul>
+<h2 id="NSURLSession-iOS-7-Mac-OS-10-9"><a href="#NSURLSession-iOS-7-Mac-OS-10-9" class="headerlink" title="NSURLSession(iOS 7 /Mac OS 10.9)"></a>NSURLSession(iOS 7 /Mac OS 10.9)</h2><ul>
+<li>AFURLSessionManager</li>
+<li>AFHTTPSessionManager</li>
+</ul>
+<h2 id="Serialization"><a href="#Serialization" class="headerlink" title="Serialization"></a>Serialization</h2><ul>
+<li><p><strong>AFURLRequestSerialization</strong></p>
+<ul>
+<li><p>AFHTTPRequestSerialization</p>
+</li>
+<li><p>AFJSONRequestSerialization</p>
+</li>
+<li><p>AFPropertyListRequestSerialization</p>
+</li>
+</ul>
+</li>
+<li><p><strong>AFURLResponseSerialization</strong></p>
+<ul>
+<li><p>AFHTTPResponseSerialization</p>
+</li>
+<li><p>AFJSONResponseSerialization</p>
+</li>
+<li><p>AFXMLParserResponseSerialization</p>
+</li>
+<li><p>AFXMLDocumentResponseSerialization (<code>MAC OS X</code>)</p>
+</li>
+<li><p>AFPropertyListResponseSerialization</p>
+</li>
+<li><p>AFImageResponseSerializer</p>
+</li>
+<li><p>AFCompoundResponseSerializer</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="Additional-Functionality"><a href="#Additional-Functionality" class="headerlink" title="Additional Functionality"></a>Additional Functionality</h2><ul>
+<li>AFSecurityPolicy</li>
+<li>AFNetworkReachabilityManager</li>
+</ul>
+<hr>
+<h1 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h1><p>#define kBaseURL        @”<a href="http://afnetworking.sinaapp.com&quot;" target="_blank" rel="noopener">http://afnetworking.sinaapp.com&quot;</a></p>
+<hr>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">requestSerializer 默认是 [AFHTTPRequestSerializer serializer]<span class="comment">;</span></span><br><span class="line"></span><br><span class="line">responseSerializer 默认是 [AFJSONResponseSerializer serializer]<span class="comment">;</span></span><br></pre></td></tr></table></figure>
+<h2 id="AFHTTPRequestOperation"><a href="#AFHTTPRequestOperation" class="headerlink" title="AFHTTPRequestOperation"></a>AFHTTPRequestOperation</h2><pre><code>NSString *urlStr = [kBaseURL stringByAppendingPathComponent:@&quot;request_get.json&quot;];
+NSDictionary *parameters = @{@&quot;foo&quot;:@&quot;bar&quot;};
+NSURLRequest *request = [[AFHTTPRequestSerializer serializer] requestWithMethod:@&quot;GET&quot; URLString:urlStr parameters:parameters error:nil];
+AFHTTPRequestOperation *op = [[AFHTTPRequestOperation alloc]initWithRequest:request];
+op.responseSerializer = [AFJSONResponseSerializer serializer];
+[op setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+    NSLog(@&quot;response object : %@&quot;,responseObject);
+} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    NSLog(@&quot;Error : %@&quot;,error);
+}];
+[[NSOperationQueue mainQueue] addOperation:op];
+-----------------------------------------------------    
+结果：
+    Success:
+    response object : {
+        data =     {
+            foo = bar;
+        };
+        success = 1;
+    }
+    Error:{
+            &quot;errors&quot;:&quot;Parameter error!&quot;,
+            &quot;success&quot;:false
+    }
+-----------------------------------------------------    
+</code></pre><h2 id="AFHTTPRequestOperationManager"><a href="#AFHTTPRequestOperationManager" class="headerlink" title="AFHTTPRequestOperationManager"></a>AFHTTPRequestOperationManager</h2><h3 id="GET-Request"><a href="#GET-Request" class="headerlink" title="GET Request"></a><code>GET</code> Request</h3><pre><code>NSString *urlStr = [kBaseURL stringByAppendingPathComponent:@&quot;request_get.json&quot;];
+NSDictionary *parameters = @{@&quot;foo&quot;:@&quot;bar&quot;};
+AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+[manager GET:urlStr parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    NSLog(@&quot;response object : %@&quot;,responseObject);
+} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    NSLog(@&quot;Error : %@&quot;,error);
+}];
+-----------------------------------------------------    
+结果：
+    Success: 
+    response object : {
+        data =     {
+            foo = bar;
+        };
+        success = 1;
+    }
+    Error:{
+            &quot;errors&quot;:&quot;Parameter error!&quot;,
+            &quot;success&quot;:false
+    }
+-----------------------------------------------------        
+</code></pre><h3 id="POST-URL-Form-Request"><a href="#POST-URL-Form-Request" class="headerlink" title="POST URL-Form-Request"></a><code>POST</code> URL-Form-Request</h3><pre><code>NSString *httpUrlStr = [kBaseURL stringByAppendingPathComponent:@&quot;request_post_body_http.json&quot;];
+NSDictionary *parameters = @{@&quot;foo&quot;:@&quot;bar&quot;};
+AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+[manager POST:httpUrlStr parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    NSLog(@&quot;response object : %@&quot;,responseObject);
+} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    NSLog(@&quot;Error : %@&quot;,error);
+}];
+
+NSString *jsonUrlStr = [kBaseURL stringByAppendingPathComponent:@&quot;request_post_body_json.json&quot;];
+[manager POST:jsonUrlStr parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    NSLog(@&quot;Response object : %@&quot;,responseObject);
+} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    NSLog(@&quot;Error : %@&quot;,error);
+}];
+-----------------------------------------------------    
+结果：
+    Success: 
+    response object : {
+        data =     {
+            foo = bar;
+        };
+        success = 1;
+    }
+    Error:{
+            &quot;errors&quot;:&quot;Parameter error!&quot;,
+            &quot;success&quot;:false
+    }
+-----------------------------------------------------
+</code></pre><h3 id="POST-Multi-Part-Request"><a href="#POST-Multi-Part-Request" class="headerlink" title="POST Multi-Part-Request"></a><code>POST</code> Multi-Part-Request</h3><pre><code>NSString *urlStr = [kBaseURL stringByAppendingPathComponent:@&quot;upload2server.json&quot;];
+NSDictionary *parameters = @{@&quot;foo&quot;:@&quot;bar&quot;};
+AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+[manager POST:urlStr parameters:parameters constructingBodyWithBlock:^(id&lt;AFMultipartFormData&gt; formData) {
+    NSURL *fileURL = [[NSBundle mainBundle] URLForResource:@&quot;b_Aquarius&quot; withExtension:@&quot;jpg&quot;];
+    [formData appendPartWithFileURL:fileURL name:@&quot;image&quot; fileName:@&quot;constellation.jpg&quot; mimeType:@&quot;image/jpeg&quot; error:nil];
+    fileURL = [[NSBundle mainBundle] URLForResource:@&quot;b_Aries&quot; withExtension:@&quot;png&quot;];
+    [formData appendPartWithFileURL:fileURL name:@&quot;image&quot; fileName:@&quot;constellation.png&quot; mimeType:@&quot;image/png&quot; error:nil];
+} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    NSLog(@&quot;Response object : %@&quot;,responseObject);
+} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    NSLog(@&quot;Error : %@&quot;,error);
+}];
+-----------------------------------------------------
+结果：
+    Success: 
+    Response object : {
+        data =     (
+                    {
+                name = &quot;constellation.jpg&quot;;
+                url = &quot;http://afnetworking-userdomain.stor.sinaapp.com/constellation.jpg&quot;;
+            },
+                    {
+                name = &quot;constellation.png&quot;;
+                url = &quot;http://afnetworking-userdomain.stor.sinaapp.com/constellation.png&quot;;
+            }
+        );
+        success = 1;
+    }
+-----------------------------------------------------
+</code></pre><hr>
+<h2 id="AFURLSessionManager"><a href="#AFURLSessionManager" class="headerlink" title="AFURLSessionManager"></a>AFURLSessionManager</h2><h3 id="Creating-a-Download-Task"><a href="#Creating-a-Download-Task" class="headerlink" title="Creating a Download Task"></a>Creating a Download Task</h3><p>/#define kDownloadUrl             @”<a href="http://music.baidu.com/data/music/file?link=http://yinyueshiting.baidu.com/data2/music/346495/3464861417179661128.mp3?xcode=91aea20a92711d3d83f3f76a0952eb4b63b77ba183a87289&amp;song_id=346486&quot;" target="_blank" rel="noopener">http://music.baidu.com/data/music/file?link=http://yinyueshiting.baidu.com/data2/music/346495/3464861417179661128.mp3?xcode=91aea20a92711d3d83f3f76a0952eb4b63b77ba183a87289&amp;song_id=346486&quot;</a>  <code>kDownloadUrl 是下载链接</code></p>
+<pre><code>NSURL *url = [NSURL URLWithString:kDownloadUrl];
+NSURLRequest *request = [NSURLRequest requestWithURL:url];
+AFURLSessionManager *manager = [[AFURLSessionManager alloc]initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+NSProgress *progress = nil;
+NSURLSessionDownloadTask *downloadTask = [manager downloadTaskWithRequest:request progress:&amp;progress destination:^NSURL *(NSURL *targetPath, NSURLResponse *response) {
+    NSString *filePath = @&quot;/Users/qingyun/Desktop&quot;;
+    NSString *newFielPath = [filePath stringByAppendingPathComponent:response.suggestedFilename];
+    NSLog(@&quot;name : %@&quot;,response.suggestedFilename);
+    return [NSURL fileURLWithPath:newFielPath];
+} completionHandler:^(NSURLResponse *response, NSURL *filePath, NSError *error) {
+    if (error) {
+        NSLog(@&quot;Error : %@&quot;,error);
+    }else{
+        NSLog(@&quot;File path : %@&quot;,filePath);
+    }
+}];
+[downloadTask resume];
+-----------------------------------------------------
+结果：
+Success: File path : file:///Users/qingyun/Desktop/Only%20Love.mp3
+-----------------------------------------------------
+</code></pre><h3 id="Creation-a-Upload-Task"><a href="#Creation-a-Upload-Task" class="headerlink" title="Creation a Upload Task"></a>Creation a Upload Task</h3><pre><code>    NSString *urlStr = [kBaseURL stringByAppendingPathComponent:@&quot;upload2server.json&quot;];
+NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlStr]];
+AFURLSessionManager *manager = [[AFURLSessionManager alloc]initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+NSProgress *progress = nil;
+NSString *filePath = @&quot;file:///Users/qingyun/Desktop/xml&amp;json.pdf&quot;;
+NSURLSessionUploadTask *uploadTask = [manager uploadTaskWithRequest:request fromFile:[NSURL fileURLWithPath:filePath] progress:&amp;progress completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
+    if (error) {
+        NSLog(@&quot;Error : %@&quot;,error);
+    }else{
+        NSLog(@&quot;Response objecct : %@&quot;,responseObject);
+    }
+}];
+[uploadTask resume];
+-----------------------------------------------------    
+结果：
+  Success：Response objecct : {
+success = 1;
+}
+-----------------------------------------------------
+</code></pre><h3 id="Creation-a-Upload-Task-For-Multi-Part-Request-With-Progress"><a href="#Creation-a-Upload-Task-For-Multi-Part-Request-With-Progress" class="headerlink" title="Creation a Upload Task For Multi-Part Request, With Progress"></a>Creation a Upload Task For Multi-Part Request, With Progress</h3><pre><code>NSString *urlStr = [kBaseURL stringByAppendingPathComponent:@&quot;upload2server.json&quot;];
+NSURLRequest *request = [[AFHTTPRequestSerializer serializer] multipartFormRequestWithMethod:@&quot;POST&quot; URLString:urlStr parameters:nil constructingBodyWithBlock:^(id&lt;AFMultipartFormData&gt; formData) {
+    NSURL *fileURL = [[NSBundle mainBundle] URLForResource:@&quot;b_Cancer&quot; withExtension:@&quot;png&quot;];
+    [formData appendPartWithFileURL:fileURL name:@&quot;image&quot; fileName:@&quot;Cancer.png&quot; mimeType:@&quot;image/png&quot; error:nil];
+
+    fileURL = [NSURL URLWithString:@&quot;file://Users/qingyun/Desktop/xml&amp;json.pdf&quot;];
+    [formData appendPartWithFileURL:fileURL name:@&quot;image&quot; error:nil];
+} error:nil];
+NSProgress *progress = nil;
+AFURLSessionManager *manager = [[AFURLSessionManager alloc]initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+NSURLSessionUploadTask *uploadTask = [manager uploadTaskWithStreamedRequest:request progress:&amp;progress completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
+    if (error) {
+        NSLog(@&quot;Error : %@&quot;,error);
+    }else{
+        NSLog(@&quot;Response objecct : %@&quot;,responseObject);
+    }
+}];
+[uploadTask resume];
+-----------------------------------------------------    
+结果：
+Success:Response objecct : {
+        data =     (
+                    {
+                name = &quot;Cancer.png&quot;;
+                url = &quot;http://afnetworking-userdomain.stor.sinaapp.com/Cancer.png&quot;;
+            }
+        );
+        success = 1;
+    }
+-----------------------------------------------------
+</code></pre><h3 id="Creation-a-Data-Task"><a href="#Creation-a-Data-Task" class="headerlink" title="Creation a Data Task"></a>Creation a Data Task</h3><pre><code>NSURL *url = [NSURL URLWithString:[kBaseURL stringByAppendingPathComponent:@&quot;response.json&quot;]];
+NSURLRequest *request = [NSURLRequest requestWithURL:url];
+AFURLSessionManager *manager = [[AFURLSessionManager alloc]initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
+    if (error) {
+        NSLog(@&quot;Error : %@&quot;,error);
+    }else{
+        NSLog(@&quot;response object : %@&quot;,responseObject);
+    }
+}];
+[dataTask resume];
+-----------------------------------------------------
+结果：
+Success： response object : {
+data = &quot;This is a json data.&quot;;
+success = 1;
+}
+-----------------------------------------------------
+</code></pre><hr>
+<h2 id="AFHTTPSessionManager"><a href="#AFHTTPSessionManager" class="headerlink" title="AFHTTPSessionManager"></a>AFHTTPSessionManager</h2><h3 id="GET-Request-1"><a href="#GET-Request-1" class="headerlink" title="GET Request"></a><code>GET</code> Request</h3><pre><code>NSString *urlStr = [kBaseURL stringByAppendingPathComponent:@&quot;request_get.json&quot;];
+NSDictionary *parameters = @{@&quot;foo&quot;:@&quot;bar&quot;};
+AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+NSURLSessionDataTask *dataTask = [manager GET:urlStr parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
+    NSLog(@&quot;response object : %@&quot;,responseObject);
+} failure:^(NSURLSessionDataTask *task, NSError *error) {
+    NSLog(@&quot;Error : %@&quot;,error);
+}];
+[dataTask resume];
+----------------------------------------------------
+结果：
+Success :response object : {
+    data =     {
+        foo = bar;
+    };
+    success = 1;
+}
+----------------------------------------------------
+</code></pre><h3 id="POSTRequest"><a href="#POSTRequest" class="headerlink" title="POSTRequest"></a><code>POST</code>Request</h3><pre><code>NSString *urlStr = [kBaseURL stringByAppendingPathComponent:@&quot;request_post_body_http.json&quot;];
+NSDictionary *parameters = @{@&quot;foo&quot;:@&quot;bar&quot;};
+AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+NSURLSessionDataTask *dataTask = [manager POST:urlStr parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
+    NSLog(@&quot;response object : %@&quot;,responseObject);
+} failure:^(NSURLSessionDataTask *task, NSError *error) {
+    NSLog(@&quot;Error : %@&quot;,error);
+}];
+[dataTask resume];
+-----------------------------------------------------
+结果：
+Success:response object : {
+    data =     {
+        foo = bar;
+    };
+    success = 1;
+}
+-----------------------------------------------------
+</code></pre><h3 id="HEADRequest"><a href="#HEADRequest" class="headerlink" title="HEADRequest"></a><code>HEAD</code>Request</h3><pre><code>NSString *urlStr = [kBaseURL stringByAppendingPathComponent:@&quot;request_post_body_http.json&quot;];
+NSDictionary *parameters = @{@&quot;foo&quot;:@&quot;bar&quot;};
+AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+NSURLSessionDataTask *dataTask = [manager HEAD:urlStr parameters:parameters success:^(NSURLSessionDataTask *task) {
+    NSLog(@&quot;Task : %@&quot;,task);
+} failure:^(NSURLSessionDataTask *task, NSError *error) {
+    NSLog(@&quot;Task : %@ Error : %@&quot;,task,error);
+}];
+[dataTask resume];
+----------------------------------------------------
+结果：
+Success： Task : &lt;__NSCFLocalDataTask: 0x8d77b10&gt; { completed }
+----------------------------------------------------
+</code></pre><hr>
+<h2 id="AFNetworkReachabilityManager"><a href="#AFNetworkReachabilityManager" class="headerlink" title="AFNetworkReachabilityManager"></a>AFNetworkReachabilityManager</h2><pre><code>/*
+ *AFNetworkReachabilityStatusNotReachable     = 0,
+ *AFNetworkReachabilityStatusReachableViaWWAN = 1,
+ *AFNetworkReachabilityStatusReachableViaWiFi = 2
+ */
+NSArray *array = @[@&quot;不可达&quot;,@&quot;2G/3G/4G&quot;,@&quot;wi-fi&quot;];
+
+[AFNetworkReachabilityManager *manager = [AFNetworkReachabilityManager sharedManager];
+[self.manager setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@&quot;网络检测&quot; message:[NSString stringWithFormat:@&quot;%@&quot;,array[status]] delegate:nil cancelButtonTitle:@&quot;确定&quot; otherButtonTitles:nil, nil];
+    [alert show];
+
+}];
+
+-----
+[manager startMonitoring];
+[manager stopMonitoring];
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://weibo.com/wangtaoworld/uncategorized/2014/11/27/XML-JSON.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1894,130 +2326,6 @@ http://code4app.com/
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://weibo.com/wangtaoworld/uncategorized/2014/10/20/图片.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wangtao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="wt">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/uncategorized/2014/10/20/图片.html" itemprop="url">未命名</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-10-20T19:30:22+08:00">
-                2014-10-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>#图片<br>特种部队<img src="http://img.ivsky.com/img/tupian/pic/201011/26/tezhongbudui-019.jpg" alt="" title="Title here"><br>牛</p>
-<p>###1<br><a href="http://user.qzone.qq.com/1371231966" target="_blank" rel="noopener">敢不敢点我</a></p>
-<p>###2<br><a href="http://user.qzone.qq.com/1371231966" target="_blank" rel="noopener">有本事你点啊</a></p>
-<p>###3<br>[不要怂][id]<br>[id]:<a href="http://user.qzone.qq.com/1371231966" target="_blank" rel="noopener">http://user.qzone.qq.com/1371231966</a></p>
-<p>###4呵呵</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2068,7 +2376,7 @@ http://code4app.com/
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-count">28</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2090,7 +2398,7 @@ http://code4app.com/
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
