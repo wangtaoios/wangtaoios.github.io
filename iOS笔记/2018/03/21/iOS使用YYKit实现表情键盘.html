@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="hexo指南," />
+  <meta name="keywords" content="键盘,表情," />
 
 
 
@@ -81,18 +81,20 @@
 
 
 
-<meta name="description" content="####hexo指南// brew install   &amp;gt;&amp;gt;&amp;gt;&amp;gt;   brew.sh网站上 // ruby -e &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&amp;quot; // brew install wget // wget -qO- https">
-<meta name="keywords" content="hexo指南">
+<meta name="description" content="项目需求，APP发布内容的时候支持表情  需求：点击键盘的表情按钮，比如[微笑]，在输入框显示🙂，发布成功到服务器时候，服务器存[微笑]；请求下来数据在APP展示的时候，仍然显示🙂。 原理：点击键盘的表情按钮，比如[微笑]，此时将字符串[微笑]传到输入框，输入框使用YYTextView，设置YYTextView的textParser即可展示对应表情🙂。 关于textParser：12YYTe">
+<meta name="keywords" content="键盘,表情">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hexo指南">
-<meta property="og:url" content="https://weibo.com/wangtaoworld/uncategorized/2014/11/16/hexo.html">
+<meta property="og:title" content="iOS使用YYKit实现表情键盘">
+<meta property="og:url" content="https://weibo.com/wangtaoworld/iOS笔记/2018/03/21/iOS使用YYKit实现表情键盘.html">
 <meta property="og:site_name" content="wt">
-<meta property="og:description" content="####hexo指南// brew install   &amp;gt;&amp;gt;&amp;gt;&amp;gt;   brew.sh网站上 // ruby -e &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&amp;quot; // brew install wget // wget -qO- https">
+<meta property="og:description" content="项目需求，APP发布内容的时候支持表情  需求：点击键盘的表情按钮，比如[微笑]，在输入框显示🙂，发布成功到服务器时候，服务器存[微笑]；请求下来数据在APP展示的时候，仍然显示🙂。 原理：点击键盘的表情按钮，比如[微笑]，此时将字符串[微笑]传到输入框，输入框使用YYTextView，设置YYTextView的textParser即可展示对应表情🙂。 关于textParser：12YYTe">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2014-11-19T03:57:36.000Z">
+<meta property="og:image" content="https://user-images.githubusercontent.com/8953627/37701366-a87f81d4-2d29-11e8-859c-051ae52afdc4.gif">
+<meta property="og:updated_time" content="2018-03-21T09:04:39.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hexo指南">
-<meta name="twitter:description" content="####hexo指南// brew install   &amp;gt;&amp;gt;&amp;gt;&amp;gt;   brew.sh网站上 // ruby -e &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&amp;quot; // brew install wget // wget -qO- https">
+<meta name="twitter:title" content="iOS使用YYKit实现表情键盘">
+<meta name="twitter:description" content="项目需求，APP发布内容的时候支持表情  需求：点击键盘的表情按钮，比如[微笑]，在输入框显示🙂，发布成功到服务器时候，服务器存[微笑]；请求下来数据在APP展示的时候，仍然显示🙂。 原理：点击键盘的表情按钮，比如[微笑]，此时将字符串[微笑]传到输入框，输入框使用YYTextView，设置YYTextView的textParser即可展示对应表情🙂。 关于textParser：12YYTe">
+<meta name="twitter:image" content="https://user-images.githubusercontent.com/8953627/37701366-a87f81d4-2d29-11e8-859c-051ae52afdc4.gif">
 
 
 
@@ -122,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="https://weibo.com/wangtaoworld/uncategorized/2014/11/16/hexo.html"/>
+  <link rel="canonical" href="https://weibo.com/wangtaoworld/iOS笔记/2018/03/21/iOS使用YYKit实现表情键盘.html"/>
 
 
 
 
 
-  <title>hexo指南 | wt</title>
+  <title>iOS使用YYKit实现表情键盘 | wt</title>
   
 
 
@@ -235,7 +237,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://weibo.com/wangtaoworld/uncategorized/2014/11/16/hexo.html">
+    <link itemprop="mainEntityOfPage" href="https://weibo.com/wangtaoworld/iOS笔记/2018/03/21/iOS使用YYKit实现表情键盘.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wangtao">
@@ -252,7 +254,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">hexo指南</h1>
+          <h1 class="post-title" itemprop="name headline">iOS使用YYKit实现表情键盘</h1>
         
 
         <div class="post-meta">
@@ -264,8 +266,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-11-16T21:53:25+08:00">
-                2014-11-16
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-21T16:43:13+08:00">
+                2018-03-21
               </time>
             
 
@@ -274,6 +276,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -302,89 +326,30 @@
       
 
       
-        <h2 id="hexo指南"><a href="#hexo指南" class="headerlink" title="####hexo指南"></a>####hexo指南</h2><pre><code>//
-brew install   &gt;&gt;&gt;&gt;   brew.sh网站上
-//
-ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;
-//
-brew install wget
-//
-wget -qO- https://raw.github.com/creationix/nvm/master/install.sh | sh
-// 或者
-wget -qO- https://raw.github.com/creationix/nvm/master/install.sh
-//
-vi ~/.zshrc  &gt;&gt;&gt;将Users/后面改为wangtao
-//
-hostname
-//
-users
-//
-source ~/.zshrc
-//
-which nvm
-//
-nvm install 0.10
-//
-npm install -g hexo
-//
-hexo init hexo 
-//
-cd hexo
-//
-npm install  &gt;&gt;&gt;初始化
-//
-hexo g
-//vi 
-hexo s
-//
-//
-hehe
-//
-haha
-//
-hiahia
-//
-heihei
-//
-//
+        <p>项目需求，APP发布内容的时候支持表情</p>
+<p><img src="https://user-images.githubusercontent.com/8953627/37701366-a87f81d4-2d29-11e8-859c-051ae52afdc4.gif" alt="效果"></p>
+<h5 id="需求："><a href="#需求：" class="headerlink" title="需求："></a>需求：</h5><p>点击键盘的表情按钮，比如[微笑]，在输入框显示🙂，发布成功到服务器时候，服务器存[微笑]；请求下来数据在APP展示的时候，仍然显示🙂。</p>
+<h5 id="原理："><a href="#原理：" class="headerlink" title="原理："></a>原理：</h5><p>点击键盘的表情按钮，比如[微笑]，此时将字符串[微笑]传到输入框，输入框使用YYTextView，设置YYTextView的textParser即可展示对应表情🙂。</p>
+<h5 id="关于textParser："><a href="#关于textParser：" class="headerlink" title="关于textParser："></a>关于textParser：</h5><figure class="highlight ocaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">YYTextSimpleEmoticonParser</span> *<span class="keyword">parser</span> = [<span class="type">YYTextSimpleEmoticonParser</span> <span class="keyword">new</span>];</span><br><span class="line"><span class="keyword">parser</span>.emoticonMapper = mapper;</span><br></pre></td></tr></table></figure>
+<p>在YYTextSimpleEmoticonParser发现<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@property</span> (<span class="keyword">nullable</span>, <span class="keyword">copy</span>) <span class="built_in">NSDictionary</span>&lt;<span class="built_in">NSString</span> *, __kindof <span class="built_in">UIImage</span> *&gt; *emoticonMapper;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<ul>
+<li>parser.emoticonMapper 是字典，其中键：NSString；值：UIImage。</li>
+<li>本地有个plist文件，也就是字典，其中键：NSString，表情的汉字版（如：[微笑]）；值：NSString，图片名字。</li>
+<li>那么由本地plis文件生成对应的parser.emoticonMapper字典就可以设置YYTextView的textParser。<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSMutableDictionary</span> *mapper = [<span class="built_in">NSMutableDictionary</span> new];</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; [WTUtils getEmoticonData].allKeys.count; i ++) &#123;</span><br><span class="line">    <span class="built_in">NSString</span> *valueString = [<span class="built_in">NSString</span> stringWithFormat:<span class="string">@"%.0f"</span>, ((<span class="built_in">CGFloat</span>)i)];</span><br><span class="line">    [mapper setObject:[<span class="keyword">self</span> imageWithName:valueString]</span><br><span class="line">               forKey:[[WTUtils getEmoticonData] allKeysForObject:valueString][<span class="number">0</span>]];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</blockquote>
+<h5 id="关于键盘的自定义："><a href="#关于键盘的自定义：" class="headerlink" title="关于键盘的自定义："></a>关于键盘的自定义：</h5><p>点击切换按钮的时候，来切换键盘<br><figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (_textView.inputView) &#123;</span><br><span class="line">    _textView.<span class="attr">inputView</span> = nil;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    WTEmoticonInputView *<span class="attr">emoticonInputView</span> = [[WTEmoticonInputView alloc] initWithFrame:CGRectMake(<span class="number">0</span>, <span class="number">0</span>, kMainScreenWidth, <span class="number">300</span>)];</span><br><span class="line">    emoticonInputView.<span class="attr">delegate</span> = self;</span><br><span class="line">    _textView.<span class="attr">inputView</span> = emoticonInputView;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>WTEmoticonInputView即为自定义的表情键盘页面，整体是个UIScrollView，每一页表情是一个UIView，根据表情数量将这些UIView放到UIScrollView。设置相应的代理，将点击的表情按钮对应的字符串传到_textView即可。</p>
+</blockquote>
+<blockquote>
+<p>同理，从服务器请求的数据，展示的时候，将YYTextView换为YYLabel，设置相应的textParser即可。</p>
+</blockquote>
+<p>最后附上github地址，如果你觉得好就点击喜欢一下，如果你觉得非常好就github star支持一下~</p>
+<p><a href="https://github.com/wangtaoios/WTEmoticonDemo" target="_blank" rel="noopener">WTEmoticonDemo</a></p>
 
-//
-//
-在 /Users/wangtao下 
-///   cd .nvm  
-///   cd vo.10.33   
-///   cd bin   
-///   ls -a  查看是否有hexo node npm，有的话，就拷贝pwd目录
-
-/Users/wangtao/.nvm/v0.10.33/bin
-
-//
-在 /Users/wangtao  下vi  .zsfrc   &lt;&lt;&lt;
-export PATH=/Users/wangtao/.nvm/v0.10.33/bin:$PATH
-//
-在/Users/wangtao/hexo   下vi _config.yml
-//
-将title:        更改
-//
-deploy:
-  type: github
-  repository: https://github.com/wangtaoios/wangtaoios.github.io.git
-  branch: master
-//
-
-//
-hexo new &quot;biaoti&quot;
-//
-mou /Users/qingyun/hexo/source/_posts/biaoti.md
-//
-hexo g -d   ==   hexo g  和 hexo s
-// 
-//
-hexo g -d
-//
-在vi  .gitconfih
-//
-</code></pre>
       
     </div>
     
@@ -401,7 +366,9 @@ hexo g -d
       
         <div class="post-tags">
           
-            <a href="/tags/hexo指南/" rel="tag"># hexo指南</a>
+            <a href="/tags/键盘/" rel="tag"># 键盘</a>
+          
+            <a href="/tags/表情/" rel="tag"># 表情</a>
           
         </div>
       
@@ -414,8 +381,8 @@ hexo g -d
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/uncategorized/2014/11/13/UI-notes.html" rel="next" title="UI_notes">
-                <i class="fa fa-chevron-left"></i> UI_notes
+              <a href="/文档/2018/03/21/最高人民法院之重要司法解释.html" rel="next" title="中华人民共和国最高人民法院之重要司法解释">
+                <i class="fa fa-chevron-left"></i> 中华人民共和国最高人民法院之重要司法解释
               </a>
             
           </div>
@@ -423,10 +390,6 @@ hexo g -d
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/uncategorized/2014/11/17/MacBook-Pro.html" rel="prev" title="MacBook Pro">
-                MacBook Pro <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -565,7 +528,7 @@ hexo g -d
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#hexo指南"><span class="nav-number">1.</span> <span class="nav-text">####hexo指南</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#需求："><span class="nav-number">1.</span> <span class="nav-text">需求：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#原理："><span class="nav-number">2.</span> <span class="nav-text">原理：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#关于textParser："><span class="nav-number">3.</span> <span class="nav-text">关于textParser：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#关于键盘的自定义："><span class="nav-number">4.</span> <span class="nav-text">关于键盘的自定义：</span></a></li></ol></div>
             
 
           </div>

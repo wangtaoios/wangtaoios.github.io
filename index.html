@@ -234,6 +234,170 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://weibo.com/wangtaoworld/iOS笔记/2018/03/21/iOS使用YYKit实现表情键盘.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wangtao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="wt">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/iOS笔记/2018/03/21/iOS使用YYKit实现表情键盘.html" itemprop="url">iOS使用YYKit实现表情键盘</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-21T16:43:13+08:00">
+                2018-03-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>项目需求，APP发布内容的时候支持表情</p>
+<p><img src="https://user-images.githubusercontent.com/8953627/37701366-a87f81d4-2d29-11e8-859c-051ae52afdc4.gif" alt="效果"></p>
+<h5 id="需求："><a href="#需求：" class="headerlink" title="需求："></a>需求：</h5><p>点击键盘的表情按钮，比如[微笑]，在输入框显示🙂，发布成功到服务器时候，服务器存[微笑]；请求下来数据在APP展示的时候，仍然显示🙂。</p>
+<h5 id="原理："><a href="#原理：" class="headerlink" title="原理："></a>原理：</h5><p>点击键盘的表情按钮，比如[微笑]，此时将字符串[微笑]传到输入框，输入框使用YYTextView，设置YYTextView的textParser即可展示对应表情🙂。</p>
+<h5 id="关于textParser："><a href="#关于textParser：" class="headerlink" title="关于textParser："></a>关于textParser：</h5><figure class="highlight ocaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">YYTextSimpleEmoticonParser</span> *<span class="keyword">parser</span> = [<span class="type">YYTextSimpleEmoticonParser</span> <span class="keyword">new</span>];</span><br><span class="line"><span class="keyword">parser</span>.emoticonMapper = mapper;</span><br></pre></td></tr></table></figure>
+<p>在YYTextSimpleEmoticonParser发现<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@property</span> (<span class="keyword">nullable</span>, <span class="keyword">copy</span>) <span class="built_in">NSDictionary</span>&lt;<span class="built_in">NSString</span> *, __kindof <span class="built_in">UIImage</span> *&gt; *emoticonMapper;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<ul>
+<li>parser.emoticonMapper 是字典，其中键：NSString；值：UIImage。</li>
+<li>本地有个plist文件，也就是字典，其中键：NSString，表情的汉字版（如：[微笑]）；值：NSString，图片名字。</li>
+<li>那么由本地plis文件生成对应的parser.emoticonMapper字典就可以设置YYTextView的textParser。<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSMutableDictionary</span> *mapper = [<span class="built_in">NSMutableDictionary</span> new];</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; [WTUtils getEmoticonData].allKeys.count; i ++) &#123;</span><br><span class="line">    <span class="built_in">NSString</span> *valueString = [<span class="built_in">NSString</span> stringWithFormat:<span class="string">@"%.0f"</span>, ((<span class="built_in">CGFloat</span>)i)];</span><br><span class="line">    [mapper setObject:[<span class="keyword">self</span> imageWithName:valueString]</span><br><span class="line">               forKey:[[WTUtils getEmoticonData] allKeysForObject:valueString][<span class="number">0</span>]];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</blockquote>
+<h5 id="关于键盘的自定义："><a href="#关于键盘的自定义：" class="headerlink" title="关于键盘的自定义："></a>关于键盘的自定义：</h5><p>点击切换按钮的时候，来切换键盘<br><figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (_textView.inputView) &#123;</span><br><span class="line">    _textView.<span class="attr">inputView</span> = nil;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    WTEmoticonInputView *<span class="attr">emoticonInputView</span> = [[WTEmoticonInputView alloc] initWithFrame:CGRectMake(<span class="number">0</span>, <span class="number">0</span>, kMainScreenWidth, <span class="number">300</span>)];</span><br><span class="line">    emoticonInputView.<span class="attr">delegate</span> = self;</span><br><span class="line">    _textView.<span class="attr">inputView</span> = emoticonInputView;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>WTEmoticonInputView即为自定义的表情键盘页面，整体是个UIScrollView，每一页表情是一个UIView，根据表情数量将这些UIView放到UIScrollView。设置相应的代理，将点击的表情按钮对应的字符串传到_textView即可。</p>
+</blockquote>
+<blockquote>
+<p>同理，从服务器请求的数据，展示的时候，将YYTextView换为YYLabel，设置相应的textParser即可。</p>
+</blockquote>
+<p>最后附上github地址，如果你觉得好就点击喜欢一下，如果你觉得非常好就github star支持一下~</p>
+<p><a href="https://github.com/wangtaoios/WTEmoticonDemo" target="_blank" rel="noopener">WTEmoticonDemo</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://weibo.com/wangtaoworld/文档/2018/03/21/最高人民法院之重要司法解释.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -515,7 +679,7 @@ Header 2
 #### Header 4
 ##### Header 5
 ###### Header 6
-</code></pre><h3 id="Links-and-Email"><a href="#Links-and-Email" class="headerlink" title="Links and Email"></a>Links and Email</h3><h4 id="Inline"><a href="#Inline" class="headerlink" title="Inline"></a>Inline</h4><p>Just put angle brackets around an email and it becomes clickable: <a href="mailto:&#x75;&#114;&#x61;&#x6e;&#x75;&#115;&#x6a;&#114;&#64;&#x67;&#109;&#x61;&#x69;&#108;&#x2e;&#99;&#111;&#109;" target="_blank" rel="noopener">&#x75;&#114;&#x61;&#x6e;&#x75;&#115;&#x6a;&#114;&#64;&#x67;&#109;&#x61;&#x69;&#108;&#x2e;&#99;&#111;&#109;</a><br><code>&lt;uranusjr@gmail.com&gt;</code>  </p>
+</code></pre><h3 id="Links-and-Email"><a href="#Links-and-Email" class="headerlink" title="Links and Email"></a>Links and Email</h3><h4 id="Inline"><a href="#Inline" class="headerlink" title="Inline"></a>Inline</h4><p>Just put angle brackets around an email and it becomes clickable: <a href="mailto:&#x75;&#x72;&#97;&#110;&#x75;&#x73;&#x6a;&#114;&#64;&#x67;&#x6d;&#x61;&#105;&#x6c;&#x2e;&#x63;&#x6f;&#109;" target="_blank" rel="noopener">&#x75;&#x72;&#97;&#110;&#x75;&#x73;&#x6a;&#114;&#64;&#x67;&#x6d;&#x61;&#105;&#x6c;&#x2e;&#x63;&#x6f;&#109;</a><br><code>&lt;uranusjr@gmail.com&gt;</code>  </p>
 <p>Same thing with urls: <a href="http://macdown.uranusjr.com" target="_blank" rel="noopener">http://macdown.uranusjr.com</a><br><code>&lt;http://macdown.uranusjr.com&gt;</code>  </p>
 <p>Perhaps you want to some link text like this: <a href="http://macdown.uranusjr.com" title="Title" target="_blank" rel="noopener">Macdown Website</a><br><code>[Macdown Website](http://macdown.uranusjr.com &quot;Title&quot;)</code> (The title is optional)  </p>
 <h4 id="Reference-style"><a href="#Reference-style" class="headerlink" title="Reference style"></a>Reference style</h4><p>Sometimes it looks too messy to include big long urls inline, or you want to keep all your urls together.  </p>
@@ -2202,210 +2366,6 @@ NSArray *array = @[@&quot;不可达&quot;,@&quot;2G/3G/4G&quot;,@&quot;wi-fi&quo
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://weibo.com/wangtaoworld/uncategorized/2014/11/27/XML-JSON.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wangtao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="wt">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/uncategorized/2014/11/27/XML-JSON.html" itemprop="url">XML_JSON</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-11-27T21:16:13+08:00">
-                2014-11-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="XML"><a href="#XML" class="headerlink" title="XML"></a>XML</h2><h3 id="SAX解析"><a href="#SAX解析" class="headerlink" title="SAX解析"></a>SAX解析</h3><ol>
-<li><p>创建XML解析对象</p>
- <figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSURL</span> *url = [<span class="built_in">NSBundle</span> mainBundle] URLForResource:<span class="string">@"bookstore"</span> withExternsion:<span class="string">@"xml"</span>];</span><br><span class="line"><span class="built_in">NSXMLParser</span> *parser = [][<span class="built_in">NSXMLParser</span> alloc]initWithContentsOfURL:url];</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>设置XMLParser 对象的delegate</p>
- <figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">parser.delegate = self<span class="comment">;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>调用delegate的fangf</p>
- <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)<span class="string">parserDidStartDocument:</span>(NSXMLParser *)parser</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//当时开始解析的时候条用该方法，通常在这个方法里，		    		    创建模型数组</span></span><br><span class="line">&#125;</span><br><span class="line">- (<span class="keyword">void</span>)<span class="string">parser:</span>(NSXMLParser *)parser <span class="string">didStartElement:</span>(NSString *)elementName <span class="string">namespaceURI:</span>(NSString *)namespaceURI <span class="string">qualifiedName:</span>(NSString *)qName <span class="string">attributes:</span>(NSDictionary *)attributeDict</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//当开始解析，遇到元素的开始标签时，回调用这个方法，通常在这个方法里，创建模型对象，或解析标签中得属性并保存在模型对象中</span></span><br><span class="line">&#125;</span><br><span class="line">- (<span class="keyword">void</span>)<span class="string">parser:</span>(NSXMLParser *)parser <span class="string">foundCharacters:</span>(NSString *)string</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//当解析到xml标签的文本内容时，回调用这个方法，通常在这个方法里，暂存解析到的文本内容</span></span><br><span class="line">&#125;</span><br><span class="line">- (<span class="keyword">void</span>)<span class="string">parser:</span>(NSXMLParser *)parser <span class="string">didEndElement:</span>(NSString *)elementName <span class="string">namespaceURI:</span>(NSString *)namespaceURI <span class="string">qualifiedName:</span>(NSString *)qName</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//当解析xml内容遇到结束标签时，回调用这个方法，通常在这个方法里，需要将模型对象保存到数组中或把标签对应的文本内容解析出来，保存在模型对象中。（通过KVC赋值）</span></span><br><span class="line">&#125;</span><br><span class="line">- (<span class="keyword">void</span>)<span class="string">parserDidEndDocument:</span>(NSXMLParser *)parser</span><br><span class="line">&#123;</span><br><span class="line">	<span class="comment">//当整个xml解析完成条用这个方法，可以完成其他操作</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h3 id="DOM解析"><a href="#DOM解析" class="headerlink" title="DOM解析"></a>DOM解析</h3><p>以下以GDataXMLNode为例：</p>
-<pre><code><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">￼* <span class="tag">&lt;节点&gt;</span> (GDataXMLNode)￼* 根据 DOM,<span class="keyword">XML</span> <span class="title">⽂文档中的每个成分都是⼀一个节点。￼* DOM</span> 是这样规定的:￼* 整个⽂文档是⼀一个⽂文档节点￼* 每个 <span class="keyword">XML</span> <span class="title">标签是⼀一个元素节点￼* 包含在 XML</span> 元素中的⽂文本是⽂文本节点￼* 每⼀一个 <span class="keyword">XML</span> <span class="title">属性是⼀一个属性节点￼* 注释属于注释节点￼￼</span></span><br></pre></td></tr></table></figure>
-</code></pre><ol>
-<li><p>导入第三方库</p>
- <figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">导入第三方库时，首先编译检查是否可用，（头文件是否编译通过，头文件是否需要导入头文件路径，是否使用非ARC环境）</span><br><span class="line">1. 头文件编译未通过，添加文件搜索路径，头文件为系统头文件时：在<span class="keyword">Build</span> setting下的Header Search Paths 添加/usr/<span class="keyword">include</span>/libxml2</span><br><span class="line">	头文件为用户头文件时：在<span class="keyword">Build</span> setting下的<span class="keyword">User</span> Header Search Paths 添加/usr/<span class="keyword">include</span>/libxml2</span><br><span class="line"><span class="number">2.</span> 在<span class="keyword">Build</span> Phases 下的Link <span class="keyword">Binary</span> <span class="keyword">With</span> Libraries 添加libxml2.dylib,链接的动态库</span><br><span class="line"><span class="number">3.</span> 在<span class="keyword">Build</span> Phases 下的Compile Sources 将导入的编译文件设置为非ARC 即添加 -fno-objc-arc即可</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>创建GDataXMLDocument对象</p>
- <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">NSData *data = [[NSBundle mainBundle] <span class="string">URLForResource:</span>@<span class="string">"bokstore"</span> <span class="string">withExternsion:</span><span class="string">"xml"</span>];</span><br><span class="line">GDataXMLDocument *document = [[GDataXMLDocument alloc]<span class="string">initWithData:</span>data <span class="string">options:</span><span class="number">0</span> <span class="string">error:</span>nil];</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>获取根元素rootElement</p>
- <figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[document rootElement]</span><span class="comment">;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>由根元素，可以获取到根元素下的子元素，以及对子元素的属性赋值；</p>
- <figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">获取子元素的方法：</span><br><span class="line"><span class="bullet">- </span>(NSArray <span class="strong">*)elementsForName:(NSString *</span>)name;</span><br><span class="line">获取子元素属性的方法：</span><br><span class="line"><span class="bullet">- </span>(GDataXMLNode <span class="strong">*)attributeForName:(NSString *</span>)name;</span><br><span class="line">将GDataXMLNode对象转换为NSString对象的方法：</span><br><span class="line"><span class="bullet">- </span>(NSString <span class="strong">*)stringValue;</span></span><br></pre></td></tr></table></figure>
- <figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">for (GDataXMLElement *element in elements) &#123;￼// 创建图书对象￼YMBook *book = <span class="comment">[<span class="comment">[YMBook alloc]</span> init]</span>;￼// 根据属性名字,解析book元素的属性值￼book.category = <span class="comment">[<span class="comment">[element attributeForName:kCategory]</span>￼stringValue]</span>;￼// 解析book的⼦子元素包含的⽂文本内容及其⼦子元素的属性￼<span class="comment">[0]</span>;GDataXMLElement *titleElement = <span class="comment">[element elementsForName:kTitle]</span>￼￼book.title = <span class="comment">[titleElement stringValue]</span>;￼book.lang = <span class="comment">[<span class="comment">[titleElement attributeForName:kLanguage]</span>￼stringValue]</span>;￼GDataXMLElement *authorElement = <span class="comment">[element￼elementsForName:kAuthor]</span><span class="comment">[0]</span>;￼book.author = <span class="comment">[authorElement stringValue]</span>;￼GDataXMLElement *yearElement = <span class="comment">[element elementsForName:kYear]</span>￼<span class="comment">[0]</span>;￼book.year = <span class="comment">[yearElement stringValue]</span>;￼GDataXMLElement *priceElement = <span class="comment">[element elementsForName:kPrice]</span>￼<span class="comment">[0]</span>;￼book.price = <span class="comment">[priceElement stringValue]</span>;￼    <span class="comment">[_bookStore addObject:book]</span>;&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h2 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h2><p>1.数据分类<br>从结构上看,所有的数据(data)最终都可以分解成三种类型:</p>
-<pre><code>- 第一种类型是标量(scalar),也就是一个单独的字符串(string)或数字 (numbers),比如&quot;北京&quot;这个单独的词 
-
-- 第二种类型是序列(sequence),也就是若干个相关的数据按照一定顺序并列在一 起,又叫做数组(array)或列表(List),比如&quot;北京,上海&quot; 
-
-- 第三种类型是映射(mapping),也就是一个名/值对(Name/value),即数据有一个 名称,还有一个与之相对应的值,这又称作散列(hash)或字典(dictionary),比 如&quot;首都:北京&quot;
-</code></pre><p>Douglas Crockford发明了JSON,Json的规定非常简单:</p>
-<ol>
-<li><p>并列的数据之间用逗号(“, “)分隔 </p>
-</li>
-<li><p>映射用冒号(“: “)表示</p>
-</li>
-<li><p>并列数据的集合(数组)用方括号(“[]”)表示 </p>
-</li>
-<li><p>映射的集合(对象)用大括号(“{}”)表示</p>
-</li>
-</ol>
-<p>比如,下面这句话:</p>
-<p>“”北京市的⾯面积为16800平⽅方公⾥里,常住⼈人⼜⼝口1600万⼈人。上海市的⾯面积为6400平⽅方 公⾥里,常住⼈人⼜⼝口1800万。”</p>
-<p>写成JSON格式就是这样:</p>
-<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">￼  &#123;<span class="string">"城市"</span>:<span class="string">"北京"</span>,<span class="string">"⾯面积"</span>:<span class="number">16800</span>,<span class="string">"⼈人⼝口"</span>:<span class="number">1600</span>&#125;,￼  &#123;<span class="string">"城市"</span>:<span class="string">"上海"</span>,<span class="string">"⾯面积</span></span><br><span class="line">]</span><br><span class="line">```如果事先知道数据的结构,上面的写法还可以进一步简化:</span><br></pre></td></tr></table></figure>
-<p>[<br>    [“北京”,16800,1600],<br>    [“上海”,6400,1800]<br>]</p>
-<pre><code>&lt;www.json.org/json-zh.htm&gt;
-
-
-### NSJSONSerialization
-
-    <figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">	- 反序列</span><br><span class="line">	￼+ (<span class="keyword">id</span>)JSONObjectWithData:(<span class="built_in">NSData</span> *)data	                     error:(<span class="built_in">NSError</span> **)error	￼options:(<span class="built_in">NSJSONReadingOptions</span>)opt	￼error:(<span class="built_in">NSError</span> **)error</span><br><span class="line">	- 序列化	￼+ (<span class="built_in">NSData</span> *)dataWithJSONObject:(<span class="keyword">id</span>)obj	options:(<span class="built_in">NSJSONWritingOptions</span>)opt	￼￼</span><br><span class="line">	```<span class="meta">### JSONKit</span></span><br><span class="line"><span class="number">1.</span> 需要导入第三方库</span><br><span class="line">使用: `-fno-objc-arc`</span><br><span class="line">序列化: **<span class="built_in">NSArray</span>** **<span class="built_in">NSDictionary</span>** **<span class="built_in">NSString</span>**￼</span><br></pre></td></tr></table></figure>
-
-    – JSONData
-    ￼– JSONDataWithOptions:includeQuotes:error:
-    ￼-
-    ￼JSONDataWithOptions:serializeUnsupportedClassesUsingDelegate:selector:error:
-    ￼- JSONDataWithOptions:serializeUnsupportedClassesUsingBlock:error:
-    ￼– JSONString
-    ￼– JSONStringWithOptions:includeQuotes:error:
-    ￼-
-    ￼JSONStringWithOptions:serializeUnsupportedClassesUsingDelegate:selector:erro
-    ￼r:
-    ￼– JSONStringWithOptions:serializeUnsupportedClassesUsingBlock:error:
-    ￼
-    <figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">反序列化：*<span class="strong">*NSData*</span>* *<span class="strong">*NSString*</span><span class="strong">*</span></span><br></pre></td></tr></table></figure>
-
-    – objectFromJSONData
-    ￼– objectFromJSONDataWithParseOptions:
-    ￼– objectFromJSONDataWithParseOptions:error:
-    ￼– mutableObjectFromJSONData
-    ￼– mutableObjectFromJSONDataWithParseOptions:
-    ￼– mutableObjectFromJSONDataWithParseOptions:error:
-    ￼– objectFromJSONString
-    ￼– objectFromJSONStringWithParseOptions:
-    ￼– objectFromJSONStringWithParseOptions:error:
-    ￼– mutableObjectFromJSONString
-    ￼– mutableObjectFromJSONStringWithParseOptions:
-    ￼– mutableObjectFromJSONStringWithParseOptions:error:
-    ￼
-</code></pre><p>￼<br>￼</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2456,7 +2416,7 @@ NSArray *array = @[@&quot;不可达&quot;,@&quot;2G/3G/4G&quot;,@&quot;wi-fi&quo
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2467,7 +2427,7 @@ NSArray *array = @[@&quot;不可达&quot;,@&quot;2G/3G/4G&quot;,@&quot;wi-fi&quo
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -2478,7 +2438,7 @@ NSArray *array = @[@&quot;不可达&quot;,@&quot;2G/3G/4G&quot;,@&quot;wi-fi&quo
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
