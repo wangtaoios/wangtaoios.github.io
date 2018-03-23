@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="kinds of viewControllers," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="wt" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="1.UIViewController生命周期几种方法调用时机 - (id)initWithNibName:(NSString )nibNameOrNil bundle:(NSBundle )nibBundleOrNil;当UIViewController在初始化加载xib文件时，该方法被调用。 - (void)loadView;当每次访问UIViewController的view(比如contro">
+<meta name="keywords" content="kinds of viewControllers">
+<meta property="og:type" content="article">
+<meta property="og:title" content="viewController">
+<meta property="og:url" content="https://weibo.com/wangtaoworld/uncategorized/2015/01/17/iOS开发/viewController.html">
+<meta property="og:site_name" content="wt">
+<meta property="og:description" content="1.UIViewController生命周期几种方法调用时机 - (id)initWithNibName:(NSString )nibNameOrNil bundle:(NSBundle )nibBundleOrNil;当UIViewController在初始化加载xib文件时，该方法被调用。 - (void)loadView;当每次访问UIViewController的view(比如contro">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2015-01-17T07:42:06.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="viewController">
+<meta name="twitter:description" content="1.UIViewController生命周期几种方法调用时机 - (id)initWithNibName:(NSString )nibNameOrNil bundle:(NSBundle )nibBundleOrNil;当UIViewController在初始化加载xib文件时，该方法被调用。 - (void)loadView;当每次访问UIViewController的view(比如contro">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://weibo.com/wangtaoworld/uncategorized/2015/01/17/iOS开发/viewController.html"/>
+
+
+
+
+
+  <title>viewController | wt</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">wt</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://weibo.com/wangtaoworld/uncategorized/2015/01/17/iOS开发/viewController.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wangtao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="wt">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">viewController</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-01-17T13:43:19+08:00">
+                2015-01-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="1-UIViewController生命周期几种方法调用时机"><a href="#1-UIViewController生命周期几种方法调用时机" class="headerlink" title="1.UIViewController生命周期几种方法调用时机"></a>1.UIViewController生命周期几种方法调用时机</h2><ol>
+<li>- (id)initWithNibName:(NSString <em>)nibNameOrNil bundle:(NSBundle </em>)nibBundleOrNil;<br>当UIViewController在初始化加载xib文件时，该方法被调用。</li>
+<li>- (void)loadView;<br>当每次访问UIViewController的view(比如controller.view,self.view)并且view为nil，该方法就会被调用。</li>
+<li>- (void)viewWillUnload; </li>
+<li>- (void)viewDidUnload;</li>
+<li>- (void)viewDidLoad;<br>不管是通过xib文件还是重写loadView创建UIViewController的view，在view创建完毕后，最终都会调用该方法。</li>
+<li>- (void)viewWillAppear:(BOOL)animated;<br>当view将要呈现在UI界面上时会调用该方法。</li>
+<li>- (void)viewDidAppear:(BOOL)animated;<br>当view已经完全过渡到屏幕上时会调用该方法。</li>
+<li>- (void)viewWillDisappear:(BOOL)animated;<br>当view将要消失，或被覆盖、隐藏时会调用该方法。</li>
+<li>- (void)viewDidDisappear:(BOOL)animated;<br>当view已经完全消失，或被覆盖、隐藏时会调用该方法。</li>
+</ol>
+<h2 id="2-UIViewController-xib的加载过程"><a href="#2-UIViewController-xib的加载过程" class="headerlink" title="2.UIViewController xib的加载过程"></a>2.UIViewController xib的加载过程</h2><p>loadView默认实现就是在自定义的UIViewController类里不重写loadView方法，或者重写后只是在方法里简单实现[super loadView]。默认实现做了如下几个工作：</p>
+<ol>
+<li>它会先去查找与UIViewController相关联的xib文件，通过加载xib文件来创建UIViewController的view<br> 如果在初始化UIViewController指定了xib文件名，就会根据传入的xib文件名加载对应的xib文件<br> [[UIViewController alloc] initWithNibName:@”ViewController” bundle:nil];<br> 如果没有明显地传xib文件名，就会加载跟UIViewController同名的xib文件<br> [[UIViewController alloc] init]; // 加载UIViewController.xib </li>
+<li>如果没有找到相关联的xib文件，就会创建一个空白的UIView，然后赋值给UIViewController的view属性，大致如下：<br> self.view = [[[UIView alloc] initWithFrame:[UIScreen mainScreen].applicationFrame] autorelease];</li>
+</ol>
+<h2 id="3-几种控制器容器的优缺点"><a href="#3-几种控制器容器的优缺点" class="headerlink" title="3.几种控制器容器的优缺点"></a>3.几种控制器容器的优缺点</h2><h3 id="1-UITabBarController-Tabbar底部标签式-Instagram、微信、微博"><a href="#1-UITabBarController-Tabbar底部标签式-Instagram、微信、微博" class="headerlink" title="1.UITabBarController(Tabbar底部标签式:Instagram、微信、微博)"></a>1.UITabBarController(Tabbar底部标签式:Instagram、微信、微博)</h3><p>UITabBarController作为一种容器适合管理底部标签式（TabBar 如： Instagram、微信、微博）这种结构的APP</p>
+<h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><ol>
+<li>清楚当前所在的入口位置</li>
+<li>轻松在各入口间频繁跳转且不会迷失方向</li>
+<li>直接展现最重要入口的内容信息（默认首页）</li>
+</ol>
+<h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><p>功能入口过多时，该模式显得笨重不实用(超过5个的时候会将其他控制器添加到一个更多界面)</p>
+<h3 id="2-UINavigationController-Springboard跳板式-星巴克"><a href="#2-UINavigationController-Springboard跳板式-星巴克" class="headerlink" title="2.UINavigationController (Springboard跳板式:星巴克)"></a>2.UINavigationController (Springboard跳板式:星巴克)</h3><p>UINavigationController作为一种容器适合管理跳板式（SpringBoard 如： 星巴克）这种结构的APP</p>
+<h4 id="优点-1"><a href="#优点-1" class="headerlink" title="优点"></a>优点</h4><ol>
+<li>清晰展现各入口</li>
+<li>容易记住各入口位置，方便快速找到</li>
+</ol>
+<h4 id="确定"><a href="#确定" class="headerlink" title="确定"></a>确定</h4><ol>
+<li>无法在多入口间灵活跳转，不适合任务操作</li>
+<li>容易形成更深的路径</li>
+<li>不能直接展现入口内容</li>
+<li>不能显示太多入口次级内容</li>
+</ol>
+<h3 id="3-UINavigationController做整体，融合TabBarController（List-Menu列表式：知乎）"><a href="#3-UINavigationController做整体，融合TabBarController（List-Menu列表式：知乎）" class="headerlink" title="3.UINavigationController做整体，融合TabBarController（List Menu列表式：知乎）"></a>3.UINavigationController做整体，融合TabBarController（List Menu列表式：知乎）</h3><h4 id="优点-2"><a href="#优点-2" class="headerlink" title="优点"></a>优点</h4><ol>
+<li>层次展示清晰</li>
+<li>可展示内容较长的标题</li>
+<li>可展示标题的次级内容</li>
+</ol>
+<h4 id="缺点-1"><a href="#缺点-1" class="headerlink" title="缺点"></a>缺点</h4><ol>
+<li>同级内容过多时，用户浏览容易产生疲劳</li>
+<li>排版灵活性不是很高</li>
+<li>只能通过排列顺序、颜色来区分各入口重要程度</li>
+</ol>
+<h3 id="4-UIScrollvIewController融合pageControl-Carousel旋转木马式-豆瓣同城"><a href="#4-UIScrollvIewController融合pageControl-Carousel旋转木马式-豆瓣同城" class="headerlink" title="4.UIScrollvIewController融合pageControl (Carousel旋转木马式:豆瓣同城)"></a>4.UIScrollvIewController融合pageControl (Carousel旋转木马式:豆瓣同城)</h3><h4 id="优点-3"><a href="#优点-3" class="headerlink" title="优点"></a>优点</h4><ol>
+<li>单页面内容整体性强</li>
+<li>线性的浏览方式有顺畅感、方向感</li>
+</ol>
+<h4 id="缺点-2"><a href="#缺点-2" class="headerlink" title="缺点"></a>缺点</h4><ol>
+<li>不适合展示过多页面</li>
+<li>不能跳跃性地查看间隔的页面，只能按顺序查看相邻的页面</li>
+<li>由于各页面内容结构相似，容易忽略后面的内容</li>
+</ol>
+<h3 id="5-Drawer抽屉式：豆瓣小组"><a href="#5-Drawer抽屉式：豆瓣小组" class="headerlink" title="5. Drawer抽屉式：豆瓣小组"></a>5. Drawer抽屉式：豆瓣小组</h3><h4 id="优点-4"><a href="#优点-4" class="headerlink" title="优点"></a>优点</h4><ol>
+<li>兼容多种模式（页面内自有组织）</li>
+<li>扩展性好</li>
+</ol>
+<h4 id="缺点-3"><a href="#缺点-3" class="headerlink" title="缺点"></a>缺点</h4><ol>
+<li>隐藏框架中其他入口</li>
+<li>对入口交互的功能可见性(affordance)要求高</li>
+<li>对排版要求高</li>
+</ol>
+<h3 id="6-Plus点聚式：Path"><a href="#6-Plus点聚式：Path" class="headerlink" title="6. Plus点聚式：Path"></a>6. Plus点聚式：Path</h3><h4 id="优点-5"><a href="#优点-5" class="headerlink" title="优点"></a>优点</h4><ol>
+<li>灵活</li>
+<li>展示方式有趣</li>
+<li>使界面更开阔</li>
+</ol>
+<h4 id="缺点-4"><a href="#缺点-4" class="headerlink" title="缺点"></a>缺点</h4><ol>
+<li>隐藏框架中其他入口</li>
+<li>对入口交互的功能可见性(affordance)要求高</li>
+</ol>
+<h3 id="7-Gallery陈列馆式：多看，豆瓣电影"><a href="#7-Gallery陈列馆式：多看，豆瓣电影" class="headerlink" title="7.Gallery陈列馆式：多看，豆瓣电影"></a>7.Gallery陈列馆式：多看，豆瓣电影</h3><h4 id="优点-6"><a href="#优点-6" class="headerlink" title="优点"></a>优点</h4><ol>
+<li>直观展现各项内容</li>
+<li>方便浏览经常更新的内容</li>
+</ol>
+<h4 id="缺点-5"><a href="#缺点-5" class="headerlink" title="缺点"></a>缺点</h4><ol>
+<li>不适合展现顶层入口框架</li>
+<li>容易形成界面内容过多，显得杂乱</li>
+<li>设计效果容易呆板</li>
+</ol>
+<h3 id="8-Waterfall瀑布式"><a href="#8-Waterfall瀑布式" class="headerlink" title="8.Waterfall瀑布式"></a>8.Waterfall瀑布式</h3><h4 id="优点-7"><a href="#优点-7" class="headerlink" title="优点"></a>优点</h4><ol>
+<li>浏览时产生流畅体验</li>
+</ol>
+<h4 id="缺点-6"><a href="#缺点-6" class="headerlink" title="缺点"></a>缺点</h4><ol>
+<li>缺乏对整体内容的体积感，容易发生空间位置迷失</li>
+<li>浏览一段时间后，容易产生疲劳感</li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/kinds-of-viewControllers/" rel="tag"># kinds of viewControllers</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/uncategorized/2014/11/20/NTFS-read-write.html" rel="next" title="NTFS read-write">
+                <i class="fa fa-chevron-left"></i> NTFS read-write
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/面试/2015/01/24/法律/常见面试题.html" rel="prev" title="面试问题-01">
+                面试问题-01 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">wangtao</p>
+              <p class="site-description motion-element" itemprop="description">技术交流</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-UIViewController生命周期几种方法调用时机"><span class="nav-number">1.</span> <span class="nav-text">1.UIViewController生命周期几种方法调用时机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-UIViewController-xib的加载过程"><span class="nav-number">2.</span> <span class="nav-text">2.UIViewController xib的加载过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-几种控制器容器的优缺点"><span class="nav-number">3.</span> <span class="nav-text">3.几种控制器容器的优缺点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-UITabBarController-Tabbar底部标签式-Instagram、微信、微博"><span class="nav-number">3.1.</span> <span class="nav-text">1.UITabBarController(Tabbar底部标签式:Instagram、微信、微博)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#优点"><span class="nav-number">3.1.1.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#缺点"><span class="nav-number">3.1.2.</span> <span class="nav-text">缺点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-UINavigationController-Springboard跳板式-星巴克"><span class="nav-number">3.2.</span> <span class="nav-text">2.UINavigationController (Springboard跳板式:星巴克)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#优点-1"><span class="nav-number">3.2.1.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#确定"><span class="nav-number">3.2.2.</span> <span class="nav-text">确定</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-UINavigationController做整体，融合TabBarController（List-Menu列表式：知乎）"><span class="nav-number">3.3.</span> <span class="nav-text">3.UINavigationController做整体，融合TabBarController（List Menu列表式：知乎）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#优点-2"><span class="nav-number">3.3.1.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#缺点-1"><span class="nav-number">3.3.2.</span> <span class="nav-text">缺点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-UIScrollvIewController融合pageControl-Carousel旋转木马式-豆瓣同城"><span class="nav-number">3.4.</span> <span class="nav-text">4.UIScrollvIewController融合pageControl (Carousel旋转木马式:豆瓣同城)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#优点-3"><span class="nav-number">3.4.1.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#缺点-2"><span class="nav-number">3.4.2.</span> <span class="nav-text">缺点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-Drawer抽屉式：豆瓣小组"><span class="nav-number">3.5.</span> <span class="nav-text">5. Drawer抽屉式：豆瓣小组</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#优点-4"><span class="nav-number">3.5.1.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#缺点-3"><span class="nav-number">3.5.2.</span> <span class="nav-text">缺点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-Plus点聚式：Path"><span class="nav-number">3.6.</span> <span class="nav-text">6. Plus点聚式：Path</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#优点-5"><span class="nav-number">3.6.1.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#缺点-4"><span class="nav-number">3.6.2.</span> <span class="nav-text">缺点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-Gallery陈列馆式：多看，豆瓣电影"><span class="nav-number">3.7.</span> <span class="nav-text">7.Gallery陈列馆式：多看，豆瓣电影</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#优点-6"><span class="nav-number">3.7.1.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#缺点-5"><span class="nav-number">3.7.2.</span> <span class="nav-text">缺点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-Waterfall瀑布式"><span class="nav-number">3.8.</span> <span class="nav-text">8.Waterfall瀑布式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#优点-7"><span class="nav-number">3.8.1.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#缺点-6"><span class="nav-number">3.8.2.</span> <span class="nav-text">缺点</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">wangtao</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

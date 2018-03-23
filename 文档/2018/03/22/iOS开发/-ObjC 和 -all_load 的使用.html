@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="NTFS," />
+  <meta name="keywords" content="BUG," />
 
 
 
@@ -81,18 +81,18 @@
 
 
 
-<meta name="description" content="********************************************************************     1:&amp;gt;&amp;gt;&amp;gt;  sudo mount | grep ntfs  &amp;lt;&amp;lt;&amp;lt;     2:会得到如下路径，第3条的命令根据该路径而变化     &amp;quot;/dev/disk1s1 on /Volumes/半片残枫 (ntfs">
-<meta name="keywords" content="NTFS">
+<meta name="description" content="APP版本升级的时候遇到的BUG 2017年5月份上线时候，APP用的乐视云直播SDK4.5（2017.1.05），2017下半年时候发现，iOS11系统，播放有声音，无画面 APP新版本的时候就使用最新版本乐视云直播SDK4.6（2017.5.12），但是在SDK4.5里要求 122.4 设置Other Linker Flags 在TARGETS-&amp;gt;Build Settings-&amp;gt;O">
+<meta name="keywords" content="BUG">
 <meta property="og:type" content="article">
-<meta property="og:title" content="NTFS read-write">
-<meta property="og:url" content="https://weibo.com/wangtaoworld/uncategorized/2014/11/20/NTFS-read-write.html">
+<meta property="og:title" content="-ObjC 和 -all_load 的使用">
+<meta property="og:url" content="https://weibo.com/wangtaoworld/文档/2018/03/22/iOS开发/-ObjC 和 -all_load 的使用.html">
 <meta property="og:site_name" content="wt">
-<meta property="og:description" content="********************************************************************     1:&amp;gt;&amp;gt;&amp;gt;  sudo mount | grep ntfs  &amp;lt;&amp;lt;&amp;lt;     2:会得到如下路径，第3条的命令根据该路径而变化     &amp;quot;/dev/disk1s1 on /Volumes/半片残枫 (ntfs">
+<meta property="og:description" content="APP版本升级的时候遇到的BUG 2017年5月份上线时候，APP用的乐视云直播SDK4.5（2017.1.05），2017下半年时候发现，iOS11系统，播放有声音，无画面 APP新版本的时候就使用最新版本乐视云直播SDK4.6（2017.5.12），但是在SDK4.5里要求 122.4 设置Other Linker Flags 在TARGETS-&amp;gt;Build Settings-&amp;gt;O">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-20T08:26:21.000Z">
+<meta property="og:updated_time" content="2018-03-22T09:56:15.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="NTFS read-write">
-<meta name="twitter:description" content="********************************************************************     1:&amp;gt;&amp;gt;&amp;gt;  sudo mount | grep ntfs  &amp;lt;&amp;lt;&amp;lt;     2:会得到如下路径，第3条的命令根据该路径而变化     &amp;quot;/dev/disk1s1 on /Volumes/半片残枫 (ntfs">
+<meta name="twitter:title" content="-ObjC 和 -all_load 的使用">
+<meta name="twitter:description" content="APP版本升级的时候遇到的BUG 2017年5月份上线时候，APP用的乐视云直播SDK4.5（2017.1.05），2017下半年时候发现，iOS11系统，播放有声音，无画面 APP新版本的时候就使用最新版本乐视云直播SDK4.6（2017.5.12），但是在SDK4.5里要求 122.4 设置Other Linker Flags 在TARGETS-&amp;gt;Build Settings-&amp;gt;O">
 
 
 
@@ -122,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="https://weibo.com/wangtaoworld/uncategorized/2014/11/20/NTFS-read-write.html"/>
+  <link rel="canonical" href="https://weibo.com/wangtaoworld/文档/2018/03/22/iOS开发/-ObjC 和 -all_load 的使用.html"/>
 
 
 
 
 
-  <title>NTFS read-write | wt</title>
+  <title>-ObjC 和 -all_load 的使用 | wt</title>
   
 
 
@@ -235,7 +235,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://weibo.com/wangtaoworld/uncategorized/2014/11/20/NTFS-read-write.html">
+    <link itemprop="mainEntityOfPage" href="https://weibo.com/wangtaoworld/文档/2018/03/22/iOS开发/-ObjC 和 -all_load 的使用.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wangtao">
@@ -252,7 +252,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">NTFS read-write</h1>
+          <h1 class="post-title" itemprop="name headline">-ObjC 和 -all_load 的使用</h1>
         
 
         <div class="post-meta">
@@ -264,8 +264,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-11-20T09:06:21+08:00">
-                2014-11-20
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-22T17:20:17+08:00">
+                2018-03-22
               </time>
             
 
@@ -274,6 +274,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/文档/" itemprop="url" rel="index">
+                    <span itemprop="name">文档</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -302,99 +324,25 @@
       
 
       
-        <pre><code>********************************************************************
-    1:&gt;&gt;&gt;  sudo mount | grep ntfs  &lt;&lt;&lt;
-    2:会得到如下路径，第3条的命令根据该路径而变化
-    &quot;/dev/disk1s1 on /Volumes/半片残枫 (ntfs, local, nodev, nosuid, read-only, noowners)&quot;
-    3:&gt;&gt;&gt;  sudo umount /dev/disk1s1  &lt;&lt;&lt;
-    4:&gt;&gt;&gt;  sudo mkdir -p /Volumes/wto  &lt;&lt;&lt;
-    5:&gt;&gt;&gt;  sudo mount_ntfs -o rw,auto,nobrowse,noowners,noatime /dev/disk1s1 /Volumes/wto  &lt;&lt;&lt;
-    //网上代码    &gt;&gt;&gt;  sudo mount_ntfs -o rw,auto,nobrowse,noowners,noatime  /dev/disk0s1 /Volumes/Win7boot
-       &lt;&lt;&lt;
-    6:&gt;&gt;&gt;  cd /Volumes  &lt;&lt;&lt;
-    7:&gt;&gt;&gt;  open .  &lt;&lt;&lt;
-    8:推出硬盘命令
-    &gt;&gt;&gt;  sudo umount /Volumes/wto  &lt;&lt;&lt;
-    或者在Finder中右键推出
-    *****此方法需要每次插入硬盘时执行该部分命令
-********************************************************************
-    http://www.memacx.com/forum.php?mod=viewthread&amp;tid=5482
-    //
-    在root下使用(建议使用此条)
-    &gt;&gt;&gt;   vi ~/.bashrc   &lt;&lt;&lt;
-    编辑添加： export EDITOR=vim
-    网上&gt;&gt;&gt;  echo export EDITOR=/usr/bin/vim &gt;&gt; ~/.bashrc
-    或者
-    //直接执行
-    &gt;&gt;&gt;  export EDITOR=vim
-    或者
-    //执行
-    &gt;&gt;&gt;  EDITOR=vim  &lt;&lt;&lt;
-    &gt;&gt;&gt;  export EDITOR  &lt;&lt;&lt;
+        <p>APP版本升级的时候遇到的BUG</p>
+<p>2017年5月份上线时候，APP用的乐视云直播SDK4.5（2017.1.05），2017下半年时候发现，iOS11系统，播放有声音，无画面</p>
+<p>APP新版本的时候就使用最新版本乐视云直播SDK4.6（2017.5.12），但是在SDK4.5里要求</p>
+<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">2.4</span> 设置Other Linker Flags </span><br><span class="line">在TARGETS-&gt;Build Settings-&gt;Other Linker Flags中加 -ObjC和-all_load。</span><br></pre></td></tr></table></figure>
+<p>当我换为新SDK后，报错</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">duplicate symbol _zcfree <span class="string">in:</span></span><br><span class="line">    <span class="regexp">/Users/</span>wangtao<span class="regexp">/Documents/</span>wanzhong <span class="number">2</span><span class="regexp">/WZFilm/</span>WZFilm<span class="regexp">/Classes/</span>Resource<span class="regexp">/LESDK4.6/</span>Libs/libLECPlayerFoundation.a(zutil.o)</span><br><span class="line"><span class="string">ld:</span> <span class="number">1193</span> duplicate symbols <span class="keyword">for</span> architecture x86_64</span><br><span class="line"><span class="string">clang:</span> <span class="string">error:</span> linker command failed with exit code <span class="number">1</span> (use -v to see invocation)</span><br></pre></td></tr></table></figure>
+<p>1：查看 Build Settings -&gt; Library Search Paths<br>里面SDK路径没问题</p>
+<p>2：Build Settings —&gt; Other Linker Flags 里包含有<br>-ObjC 和 -all_load</p>
+<h4 id="最后将-all-load删掉，就可以了"><a href="#最后将-all-load删掉，就可以了" class="headerlink" title="最后将-all_load删掉，就可以了"></a><a name="fenced-code-block">最后将-all_load删掉，就可以了</a></h4><ul>
+<li><p>Library Search Paths：</p>
+<pre><code>附加到项目中的第三方Library(.a files)的搜索路径，Xcode会自动设置拖拽到Xcode中的.a文件的路径，为了便于移植或者是多人协作开发一般会手动设置。
+</code></pre></li>
+<li><p>Other Linker Flags</p>
+<pre><code>－ObjC：加了这个参数后，链接器就会把静态库中所有的Objective-C类和分类都加载到最后的可执行文件中。
+－all_load：会让链接器把所有找到的目标文件都加载到可执行文件中，但是千万不要随便使用这个参数！假如你使用了不止一个静态库文件，然后又使用了这个参数，那么你很有可能会遇到ld: duplicate symbol错误，因为不同的库文件里面可能会有相同的目标文件，所以建议在遇到-ObjC失效的情况下使用-force_load参数。
+-force_load：所做的事情跟-all_load其实是一样的，但是-force_load需要指定要进行全部加载的库文件的路径，这样的话，你就只是完全加载了一个库文件，不影响其余库文件的按需加载。
+</code></pre></li>
+</ul>
 
-保存后即可和vim编译器一样编辑 /etc/fstab 下的内容：vim /etc/fstab,
-也就是可以直接执行 &gt;&gt;&gt;&gt;   vifs  &lt;&lt;&lt;命令
-然后直接像在vim中一样直接编辑添加
-//
-LABEL=半片残枫 none ntfs rw,nobrowse,noatime,nosuid
-//或
-LABEL=半片残枫 none ntfs rw,nobrowse,noowners,noatime,nosuid
-//
-******此方法即可在以后每次开机时自动执行该命令，自动会挂载NTFS格式硬盘半片残枫为读写格式的
-********************************************************************
-    /////////////////////////////////////////////////////////////
-    尤明大牛给的建议：
-    //1：
-    先执行
-    &gt;&gt;&gt;   sudo mount_ntfs -o rw,auto.nobrowse,noowners,noatime /dev/disk1s1 /Volumes/disk   &lt;&lt;&lt;
-    //其中disk为自己在  /Volmes/  下创建的文件，
-    //disk1s1为执行&gt;&gt;&gt;  sudo mount | grep ntfs  &lt;&lt;&lt;后查看到的文件
-    //此方法需要每次插入硬盘时都需要执行该部分命令
-    //2：
-    不行的话就在   /etc/fstab 下
-    vi fsatb
-    //
-    添加
-    LABEL=半片残枫 none ntfs rw
-    //
-    此方法即可每次开机自动将NTFS格式的硬盘挂载为读写格式的
-    ///////////////////////////////////////////////////////////////
-**********************************************************************
-    //链接
-    一般情况下，ubuntu终端下的默认编辑器为nano，我们直接编辑某个文件，默认就会打开nano。比如我们输入“crontab -e“的时候默认会打开nano编辑器。
-    对于熟悉VIM的朋友来说，都希望默认编辑器能使用vim，那么我们就需要修改ubuntu的默认编辑器。
-    修改ubuntu默认编辑器有三种方法：
-    一、直接在终端输入：
-
-echo export EDITOR=/usr/bin/vim &gt;&gt; ~/.bashrc
-二、使用系统管理工具update-alternatives来修改
-在终端输入：
-update-alternatives --config editor
-然后选择vim.basic这项即可
-三、如果系统中只剩下nano和vim两个编辑器，这个时候我们如果完全删除nano，那么系统会默认选择vim为默认编辑器
-在终端输入删除nano编辑器的命令：
-
-sudo apt-get remove nano
-
-修改完成之后我们输入：
-
-crontab -e
-看一看出现的是不是大家喜欢的vim编辑器呢。
-
-
-改变默认的程序来运行
-
-比如说，想给PDF文件换个默认的阅读工具，怎么弄呢？
-　　随便找个PDF文件，右击-&gt;使用其它程序打开，这样是可以选择不同的阅读器，可是如何指定为默认的阅读器呢？
-　　ubuntu中有两个文件，跟文件的默认打开方式有关：
-　　1./etc/gnome/defaults.list 保存了全局的打开方式
-　　2.~/.local/share/applications/mimeapps.list 保存了个人的打开方式
-
-    当两着有冲突，则优先采用局部的个人设置。举个例子：
-　　application/pdf=Foxit-Reader.desktop;
-    这样，系统就默认使用Foxit Reader作为PDF默认的阅读器，而不是系统自带的evince。注意格式，文件名要写对，后面有分号。
-　　文件名怎么写呢？其实，通过“右击-&gt;使用其它程序打开”，就会在mimeapps.list，产生一条记录，该记录就会显示你选中程序的文件名，这下该知道怎么做了吧
-</code></pre>
       
     </div>
     
@@ -411,7 +359,7 @@ crontab -e
       
         <div class="post-tags">
           
-            <a href="/tags/NTFS/" rel="tag"># NTFS</a>
+            <a href="/tags/BUG/" rel="tag"># BUG</a>
           
         </div>
       
@@ -424,8 +372,8 @@ crontab -e
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/iOS/2014/11/16/iOS开发/hexo.html" rel="next" title="hexo指南">
-                <i class="fa fa-chevron-left"></i> hexo指南
+              <a href="/iOS/2018/03/21/iOS开发/iOS细节大杂烩.html" rel="next" title="iOS细节大杂烩">
+                <i class="fa fa-chevron-left"></i> iOS细节大杂烩
               </a>
             
           </div>
@@ -433,10 +381,6 @@ crontab -e
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/uncategorized/2015/01/17/iOS开发/viewController.html" rel="prev" title="viewController">
-                viewController <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -488,8 +432,17 @@ crontab -e
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -556,6 +509,22 @@ crontab -e
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#最后将-all-load删掉，就可以了"><span class="nav-number">1.</span> <span class="nav-text">最后将-all_load删掉，就可以了</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
