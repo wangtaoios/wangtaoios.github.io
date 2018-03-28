@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="帮助," />
+  <meta name="keywords" content="NTFS," />
 
 
 
@@ -81,20 +81,18 @@
 
 
 
-<meta name="description" content="Mac插好网线，访问局域网设置 $ networksetup -setv6off Ethernet $ networksetup -setmanual Ethernet 192.168.188.111 255.255.255.0 192.168.188.1">
-<meta name="keywords" content="帮助">
+<meta name="description" content="********************************************************************     1:&amp;gt;&amp;gt;&amp;gt;  sudo mount | grep ntfs  &amp;lt;&amp;lt;&amp;lt;     2:会得到如下路径，第3条的命令根据该路径而变化     &amp;quot;/dev/disk1s1 on /Volumes/半片残枫 (ntfs">
+<meta name="keywords" content="NTFS">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Mac访问局域网">
-<meta property="og:url" content="https://weibo.com/wangtaoworld/uncategorized/2018/03/28/iOS开发/Mac访问局域网.html">
+<meta property="og:title" content="NTFS read-write">
+<meta property="og:url" content="https://weibo.com/wangtaoworld/uncategorized/2014/11/20/Mac/NTFS-read-write.html">
 <meta property="og:site_name" content="wt">
-<meta property="og:description" content="Mac插好网线，访问局域网设置 $ networksetup -setv6off Ethernet $ networksetup -setmanual Ethernet 192.168.188.111 255.255.255.0 192.168.188.1">
+<meta property="og:description" content="********************************************************************     1:&amp;gt;&amp;gt;&amp;gt;  sudo mount | grep ntfs  &amp;lt;&amp;lt;&amp;lt;     2:会得到如下路径，第3条的命令根据该路径而变化     &amp;quot;/dev/disk1s1 on /Volumes/半片残枫 (ntfs">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://github.com/wangtaoios/images/blob/master/%E9%A1%B9%E7%9B%AEDemo%E5%9B%BE%E7%89%87/Mac_%E5%B1%80%E5%9F%9F%E7%BD%91_0328.png?raw=true">
-<meta property="og:updated_time" content="2018-03-28T07:38:44.000Z">
+<meta property="og:updated_time" content="2018-03-20T08:26:21.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Mac访问局域网">
-<meta name="twitter:description" content="Mac插好网线，访问局域网设置 $ networksetup -setv6off Ethernet $ networksetup -setmanual Ethernet 192.168.188.111 255.255.255.0 192.168.188.1">
-<meta name="twitter:image" content="https://github.com/wangtaoios/images/blob/master/%E9%A1%B9%E7%9B%AEDemo%E5%9B%BE%E7%89%87/Mac_%E5%B1%80%E5%9F%9F%E7%BD%91_0328.png?raw=true">
+<meta name="twitter:title" content="NTFS read-write">
+<meta name="twitter:description" content="********************************************************************     1:&amp;gt;&amp;gt;&amp;gt;  sudo mount | grep ntfs  &amp;lt;&amp;lt;&amp;lt;     2:会得到如下路径，第3条的命令根据该路径而变化     &amp;quot;/dev/disk1s1 on /Volumes/半片残枫 (ntfs">
 
 
 
@@ -124,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="https://weibo.com/wangtaoworld/uncategorized/2018/03/28/iOS开发/Mac访问局域网.html"/>
+  <link rel="canonical" href="https://weibo.com/wangtaoworld/uncategorized/2014/11/20/Mac/NTFS-read-write.html"/>
 
 
 
 
 
-  <title>Mac访问局域网 | wt</title>
+  <title>NTFS read-write | wt</title>
   
 
 
@@ -237,7 +235,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://weibo.com/wangtaoworld/uncategorized/2018/03/28/iOS开发/Mac访问局域网.html">
+    <link itemprop="mainEntityOfPage" href="https://weibo.com/wangtaoworld/uncategorized/2014/11/20/Mac/NTFS-read-write.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wangtao">
@@ -254,7 +252,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Mac访问局域网</h1>
+          <h1 class="post-title" itemprop="name headline">NTFS read-write</h1>
         
 
         <div class="post-meta">
@@ -266,8 +264,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-28T15:38:32+08:00">
-                2018-03-28
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-11-20T09:06:21+08:00">
+                2014-11-20
               </time>
             
 
@@ -304,11 +302,99 @@
       
 
       
-        <p>Mac插好网线，访问局域网设置</p>
-<pre><code>$ networksetup -setv6off Ethernet
-$ networksetup -setmanual Ethernet 192.168.188.111 255.255.255.0 192.168.188.1
-</code></pre><p><img src="https://github.com/wangtaoios/images/blob/master/%E9%A1%B9%E7%9B%AEDemo%E5%9B%BE%E7%89%87/Mac_%E5%B1%80%E5%9F%9F%E7%BD%91_0328.png?raw=true" alt="最后的效果"></p>
+        <pre><code>********************************************************************
+    1:&gt;&gt;&gt;  sudo mount | grep ntfs  &lt;&lt;&lt;
+    2:会得到如下路径，第3条的命令根据该路径而变化
+    &quot;/dev/disk1s1 on /Volumes/半片残枫 (ntfs, local, nodev, nosuid, read-only, noowners)&quot;
+    3:&gt;&gt;&gt;  sudo umount /dev/disk1s1  &lt;&lt;&lt;
+    4:&gt;&gt;&gt;  sudo mkdir -p /Volumes/wto  &lt;&lt;&lt;
+    5:&gt;&gt;&gt;  sudo mount_ntfs -o rw,auto,nobrowse,noowners,noatime /dev/disk1s1 /Volumes/wto  &lt;&lt;&lt;
+    //网上代码    &gt;&gt;&gt;  sudo mount_ntfs -o rw,auto,nobrowse,noowners,noatime  /dev/disk0s1 /Volumes/Win7boot
+       &lt;&lt;&lt;
+    6:&gt;&gt;&gt;  cd /Volumes  &lt;&lt;&lt;
+    7:&gt;&gt;&gt;  open .  &lt;&lt;&lt;
+    8:推出硬盘命令
+    &gt;&gt;&gt;  sudo umount /Volumes/wto  &lt;&lt;&lt;
+    或者在Finder中右键推出
+    *****此方法需要每次插入硬盘时执行该部分命令
+********************************************************************
+    http://www.memacx.com/forum.php?mod=viewthread&amp;tid=5482
+    //
+    在root下使用(建议使用此条)
+    &gt;&gt;&gt;   vi ~/.bashrc   &lt;&lt;&lt;
+    编辑添加： export EDITOR=vim
+    网上&gt;&gt;&gt;  echo export EDITOR=/usr/bin/vim &gt;&gt; ~/.bashrc
+    或者
+    //直接执行
+    &gt;&gt;&gt;  export EDITOR=vim
+    或者
+    //执行
+    &gt;&gt;&gt;  EDITOR=vim  &lt;&lt;&lt;
+    &gt;&gt;&gt;  export EDITOR  &lt;&lt;&lt;
 
+保存后即可和vim编译器一样编辑 /etc/fstab 下的内容：vim /etc/fstab,
+也就是可以直接执行 &gt;&gt;&gt;&gt;   vifs  &lt;&lt;&lt;命令
+然后直接像在vim中一样直接编辑添加
+//
+LABEL=半片残枫 none ntfs rw,nobrowse,noatime,nosuid
+//或
+LABEL=半片残枫 none ntfs rw,nobrowse,noowners,noatime,nosuid
+//
+******此方法即可在以后每次开机时自动执行该命令，自动会挂载NTFS格式硬盘半片残枫为读写格式的
+********************************************************************
+    /////////////////////////////////////////////////////////////
+    尤明大牛给的建议：
+    //1：
+    先执行
+    &gt;&gt;&gt;   sudo mount_ntfs -o rw,auto.nobrowse,noowners,noatime /dev/disk1s1 /Volumes/disk   &lt;&lt;&lt;
+    //其中disk为自己在  /Volmes/  下创建的文件，
+    //disk1s1为执行&gt;&gt;&gt;  sudo mount | grep ntfs  &lt;&lt;&lt;后查看到的文件
+    //此方法需要每次插入硬盘时都需要执行该部分命令
+    //2：
+    不行的话就在   /etc/fstab 下
+    vi fsatb
+    //
+    添加
+    LABEL=半片残枫 none ntfs rw
+    //
+    此方法即可每次开机自动将NTFS格式的硬盘挂载为读写格式的
+    ///////////////////////////////////////////////////////////////
+**********************************************************************
+    //链接
+    一般情况下，ubuntu终端下的默认编辑器为nano，我们直接编辑某个文件，默认就会打开nano。比如我们输入“crontab -e“的时候默认会打开nano编辑器。
+    对于熟悉VIM的朋友来说，都希望默认编辑器能使用vim，那么我们就需要修改ubuntu的默认编辑器。
+    修改ubuntu默认编辑器有三种方法：
+    一、直接在终端输入：
+
+echo export EDITOR=/usr/bin/vim &gt;&gt; ~/.bashrc
+二、使用系统管理工具update-alternatives来修改
+在终端输入：
+update-alternatives --config editor
+然后选择vim.basic这项即可
+三、如果系统中只剩下nano和vim两个编辑器，这个时候我们如果完全删除nano，那么系统会默认选择vim为默认编辑器
+在终端输入删除nano编辑器的命令：
+
+sudo apt-get remove nano
+
+修改完成之后我们输入：
+
+crontab -e
+看一看出现的是不是大家喜欢的vim编辑器呢。
+
+
+改变默认的程序来运行
+
+比如说，想给PDF文件换个默认的阅读工具，怎么弄呢？
+　　随便找个PDF文件，右击-&gt;使用其它程序打开，这样是可以选择不同的阅读器，可是如何指定为默认的阅读器呢？
+　　ubuntu中有两个文件，跟文件的默认打开方式有关：
+　　1./etc/gnome/defaults.list 保存了全局的打开方式
+　　2.~/.local/share/applications/mimeapps.list 保存了个人的打开方式
+
+    当两着有冲突，则优先采用局部的个人设置。举个例子：
+　　application/pdf=Foxit-Reader.desktop;
+    这样，系统就默认使用Foxit Reader作为PDF默认的阅读器，而不是系统自带的evince。注意格式，文件名要写对，后面有分号。
+　　文件名怎么写呢？其实，通过“右击-&gt;使用其它程序打开”，就会在mimeapps.list，产生一条记录，该记录就会显示你选中程序的文件名，这下该知道怎么做了吧
+</code></pre>
       
     </div>
     
@@ -325,7 +411,7 @@ $ networksetup -setmanual Ethernet 192.168.188.111 255.255.255.0 192.168.188.1
       
         <div class="post-tags">
           
-            <a href="/tags/帮助/" rel="tag"># 帮助</a>
+            <a href="/tags/NTFS/" rel="tag"># NTFS</a>
           
         </div>
       
@@ -338,8 +424,8 @@ $ networksetup -setmanual Ethernet 192.168.188.111 255.255.255.0 192.168.188.1
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/文档/2018/03/27/GitHub博客/上传项目到GitHub.html" rel="next" title="上传项目到GitHub">
-                <i class="fa fa-chevron-left"></i> 上传项目到GitHub
+              <a href="/iOS/2014/11/10/网址.html" rel="next" title="技术网址">
+                <i class="fa fa-chevron-left"></i> 技术网址
               </a>
             
           </div>
@@ -347,6 +433,10 @@ $ networksetup -setmanual Ethernet 192.168.188.111 255.255.255.0 192.168.188.1
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/uncategorized/2015/01/17/iOS开发/viewController.html" rel="prev" title="viewController">
+                viewController <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
