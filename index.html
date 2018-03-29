@@ -452,9 +452,11 @@ $ networksetup -setmanual Ethernet 192.168.188.111 255.255.255.0 192.168.188.1
         
           
             <p>1：在终端 </p>
-<pre><code>$ cd .ssh
-$ ssh-keygen
-</code></pre><p>出现<code>+----[SHA256]-----+</code>即成功</p>
+<p>如果本地没有<code>.ssh</code>文件，执行下面一行，有的话跳过此行</p>
+<pre><code>$ ssh-keygen -t rsa -C &quot;wangtaoios@163.com&quot;
+</code></pre><p>进入<code>.ssh</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> .ssh</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> ssh-keygen</span></span><br></pre></td></tr></table></figure>
+<p>出现<code>+----[SHA256]-----+</code>即成功</p>
 <pre><code>* 此过程要输入一个6位及以上的临时密码，在步骤4的“克隆”之前需要在弹框输入
 </code></pre><p>最后拷贝公钥</p>
 <pre><code>$ pbcopy &lt; id_rsa.pub
