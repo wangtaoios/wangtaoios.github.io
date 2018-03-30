@@ -234,6 +234,170 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://weibo.com/wangtaoworld/iOS/2018/03/21/iOS开发/iOS使用YYKit实现表情键盘.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wangtao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="wt">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/iOS/2018/03/21/iOS开发/iOS使用YYKit实现表情键盘.html" itemprop="url">iOS使用YYKit实现表情键盘</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-21T16:43:13+08:00">
+                2018-03-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>项目需求，APP发布内容的时候支持表情</p>
+<p><img src="https://github.com/wangtaoios/images/blob/master/%E9%A1%B9%E7%9B%AEDemo%E5%9B%BE%E7%89%87/fabu_0327.gif?raw=true" alt="效果"></p>
+<h5 id="需求："><a href="#需求：" class="headerlink" title="需求："></a>需求：</h5><p>点击键盘的表情按钮，比如[微笑]，在输入框显示🙂，发布成功到服务器时候，服务器存[微笑]；请求下来数据在APP展示的时候，仍然显示🙂。</p>
+<h5 id="原理："><a href="#原理：" class="headerlink" title="原理："></a>原理：</h5><p>点击键盘的表情按钮，比如[微笑]，此时将字符串[微笑]传到输入框，输入框使用YYTextView，设置YYTextView的textParser即可展示对应表情🙂。</p>
+<h5 id="关于textParser："><a href="#关于textParser：" class="headerlink" title="关于textParser："></a>关于textParser：</h5><figure class="highlight ocaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">YYTextSimpleEmoticonParser</span> *<span class="keyword">parser</span> = [<span class="type">YYTextSimpleEmoticonParser</span> <span class="keyword">new</span>];</span><br><span class="line"><span class="keyword">parser</span>.emoticonMapper = mapper;</span><br></pre></td></tr></table></figure>
+<p>在YYTextSimpleEmoticonParser发现<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@property</span> (<span class="keyword">nullable</span>, <span class="keyword">copy</span>) <span class="built_in">NSDictionary</span>&lt;<span class="built_in">NSString</span> *, __kindof <span class="built_in">UIImage</span> *&gt; *emoticonMapper;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<ul>
+<li>parser.emoticonMapper 是字典，其中键：NSString；值：UIImage。</li>
+<li>本地有个plist文件，也就是字典，其中键：NSString，表情的汉字版（如：[微笑]）；值：NSString，图片名字。</li>
+<li>那么由本地plis文件生成对应的parser.emoticonMapper字典就可以设置YYTextView的textParser。<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSMutableDictionary</span> *mapper = [<span class="built_in">NSMutableDictionary</span> new];</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; [WTUtils getEmoticonData].allKeys.count; i ++) &#123;</span><br><span class="line">    <span class="built_in">NSString</span> *valueString = [<span class="built_in">NSString</span> stringWithFormat:<span class="string">@"%.0f"</span>, ((<span class="built_in">CGFloat</span>)i)];</span><br><span class="line">    [mapper setObject:[<span class="keyword">self</span> imageWithName:valueString]</span><br><span class="line">               forKey:[[WTUtils getEmoticonData] allKeysForObject:valueString][<span class="number">0</span>]];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</blockquote>
+<h5 id="关于键盘的自定义："><a href="#关于键盘的自定义：" class="headerlink" title="关于键盘的自定义："></a>关于键盘的自定义：</h5><p>点击切换按钮的时候，来切换键盘<br><figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (_textView.inputView) &#123;</span><br><span class="line">    _textView.<span class="attr">inputView</span> = nil;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    WTEmoticonInputView *<span class="attr">emoticonInputView</span> = [[WTEmoticonInputView alloc] initWithFrame:CGRectMake(<span class="number">0</span>, <span class="number">0</span>, kMainScreenWidth, <span class="number">300</span>)];</span><br><span class="line">    emoticonInputView.<span class="attr">delegate</span> = self;</span><br><span class="line">    _textView.<span class="attr">inputView</span> = emoticonInputView;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>WTEmoticonInputView即为自定义的表情键盘页面，整体是个UIScrollView，每一页表情是一个UIView，根据表情数量将这些UIView放到UIScrollView。设置相应的代理，将点击的表情按钮对应的字符串传到_textView即可。</p>
+</blockquote>
+<blockquote>
+<p>同理，从服务器请求的数据，展示的时候，将YYTextView换为YYLabel，设置相应的textParser即可。</p>
+</blockquote>
+<p>最后附上github地址，如果你觉得好就点击喜欢一下，如果你觉得非常好就github star支持一下~</p>
+<p><a href="https://github.com/wangtaoios/WTEmoticonDemo" target="_blank" rel="noopener">WTEmoticonDemo</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://weibo.com/wangtaoworld/文档/2018/03/21/法律/最高人民法院之重要司法解释.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1972,220 +2136,6 @@ http://code4app.com/
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://weibo.com/wangtaoworld/iOS/2014/10/15/iOS开发/vimtutor.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wangtao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="wt">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/iOS/2014/10/15/iOS开发/vimtutor.html" itemprop="url">vim教程</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-10-15T10:40:30+08:00">
-                2014-10-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>===============================================================================</p>
-<h1 id="歡-迎-閱-讀-《-V-I-M-教-程-》-──-版本-1-5"><a href="#歡-迎-閱-讀-《-V-I-M-教-程-》-──-版本-1-5" class="headerlink" title="=      歡     迎     閱     讀   《 V I M  教  程 》   ──     版本 1.5      ="></a>=      歡     迎     閱     讀   《 V I M  教  程 》   ──     版本 1.5      =</h1><pre><code>vim 是一個具有很多命令的功能非常強大的編輯器。限于篇幅，在本教程當中
-不就詳細介紹了。本教程的設計目標是講述一些必要的基本命令，而掌握好這
-些命令，您就能夠很容易將vim當作一個通用的萬能編輯器來使用了。
-
-完成本教程的內容大約需要25-30分鐘，取決于您訓練的時間。
-
-每一節的命令操作將會更改本文。推薦您復制本文的一個副本，然後在副本上
-進行訓練(如果您是通過&quot;vimtutor&quot;來啟動教程的，那麼本文就已經是副本了)。
-
-切記一點︰本教程的設計思路是在使用中進行學習的。也就是說，您需要通過
-執行命令來學習它們本身的正確用法。如果您只是閱讀而不操作，那麼您可能
-會很快遺忘這些命令的！
-
-好了，現在請確定您的Shift-Lock(大小寫鎖定鍵)還沒有按下，然後按鍵盤上
-的字母鍵 j 足夠多的次數來移動光標，直到第一節的內容能夠完全充滿屏幕。
-</code></pre><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">			       第一講小結</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="number">1</span>. 光標在屏幕文本中的移動既可以用箭頭鍵，也可以使用 hjkl 字母鍵。</span><br><span class="line">	 h (左移)	<span class="keyword">j</span> (下行)       <span class="keyword">k</span> (上行)	    <span class="keyword">l</span> (右移)</span><br><span class="line"></span><br><span class="line">  <span class="number">2</span>. 欲進入<span class="keyword">vim</span>編輯器(從命令行提示符)，請輸入︰<span class="keyword">vim</span> 文件名 &lt;回車&gt;</span><br><span class="line"></span><br><span class="line">  <span class="number">3</span>. 欲退出<span class="keyword">vim</span>編輯器，請輸入以下命令放棄所有修改︰</span><br><span class="line"></span><br><span class="line">	<span class="symbol">&lt;ESC&gt;</span>   :q!	 &lt;回車&gt;</span><br><span class="line"></span><br><span class="line">     或者輸入以下命令保存所有修改︰</span><br><span class="line"></span><br><span class="line">	<span class="symbol">&lt;ESC&gt;</span>   :<span class="keyword">wq</span>	 &lt;回車&gt;</span><br><span class="line"></span><br><span class="line">  <span class="number">4</span>. 在正常模式下刪除光標所在位置的字符，請按︰ <span class="keyword">x</span></span><br><span class="line"></span><br><span class="line">  <span class="number">5</span>. 在正常模式下要在光標所在位置開始插入文本，請按︰</span><br><span class="line"></span><br><span class="line">	 i     輸入必要文本	<span class="symbol">&lt;ESC&gt;</span></span><br><span class="line"></span><br><span class="line">特別提示︰按下 <span class="symbol">&lt;ESC&gt;</span> 鍵會帶您回到正常模式或者取消一個不期望或者部分完成</span><br><span class="line">的命令。</span><br><span class="line"></span><br><span class="line">好了，第一講到此結束。下面接下來繼續第二講的內容。</span><br></pre></td></tr></table></figure>
-<pre><code>第二講小結
-</code></pre><ol>
-<li><p>欲從當前光標刪除至單字/單詞末尾，請輸入︰dw</p>
-</li>
-<li><p>欲從當前光標刪除至當前行末尾，請輸入︰d$</p>
-</li>
-<li><p>欲刪除整行，請輸入︰dd</p>
-</li>
-<li><p>在正常模式下一個命令的格式是︰</p>
-<p>  [number]   command   object     或者     command    [number]   object<br>其意是︰<br>  number - 代表的是命令執行的次數<br>  command - 代表要做的事情，比如 d 代表刪除<br>  object - 代表要操作的對象，比如 w 代表單字/單詞，$ 代表到行末等等。<br>   $ (to the end of line), etc.</p>
-</li>
-<li><p>欲撤消以前的操作，請輸入︰u (小寫的u)<br>欲撤消在一行中所做的改動，請輸入︰U (大寫的U)<br>欲撤消以前的撤消命令，恢復以前的操作結果，請輸入︰CTRL-R</p>
-</li>
-</ol>
-<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">			       第三講小結</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="number">1.</span> 要重新置入已經刪除的文本內容，請輸入小寫字母 p。該操作可以將已刪除</span><br><span class="line">     的文本內容置于光標之後。如果最後一次刪除的是一個整行，那麼該行將置</span><br><span class="line">     于當前光標所在行的下一行。</span><br><span class="line"></span><br><span class="line">  <span class="number">2.</span> 要替換光標所在位置的字符，請輸入小寫的 r 和要替換掉原位置字符的新字</span><br><span class="line">     符即可。</span><br><span class="line"></span><br><span class="line">  <span class="number">3.</span> 更改類命令允許您改變指定的對象，從當前光標所在位置直到對象的末尾。</span><br><span class="line">     比如輸入 cw 可以替換當前光標到單詞的末尾的內容；輸入 c$ 可以替換當</span><br><span class="line">     前光標到行末的內容。</span><br><span class="line"></span><br><span class="line">  <span class="number">4.</span> 更改類命令的格式是︰</span><br><span class="line"></span><br><span class="line">	 [number]   c	object	      或者	c   [number]   object</span><br><span class="line"></span><br><span class="line">下面我們繼續學習下一講。</span><br></pre></td></tr></table></figure>
-<pre><code>第四講小結
-</code></pre><ol>
-<li><p>Ctrl-g 用于顯示當前光標所在位置和文件狀態信息。Shift-G 用于將光標跳<br>轉至文件最後一行。先敲入一個行號然後按 Shift-G 則是將光標移動至該行<br>號代表的行。</p>
-</li>
-<li><p>輸入 / 然後緊隨一個字符串是則是在當前所編輯的文檔中向後查找該字符串。<br>輸入問號 ? 然後緊隨一個字符串是則是在當前所編輯的文檔中向前查找該字<br>符串。完成一次查找之後按 n 鍵則是重復上一次的命令，可在同一方向上查<br>找下一個字符串所在；或者按 Shift-N 向相反方向查找下該字符串所在。</p>
-</li>
-<li><p>如果光標當前位置是括號(、)、[、]、{、}，按 % 可以將光標移動到配對的<br>括號上。</p>
-</li>
-<li><p>在一行內替換頭一個字符串 old 為新的字符串 new，請輸入  :s/old/new<br>在一行內替換所有的字符串 old 為新的字符串 new，請輸入  :s/old/new/g<br>在兩行內替換所有的字符串 old 為新的字符串 new，請輸入  :#,#s/old/new/g<br>在文件內替換所有的字符串 old 為新的字符串 new，請輸入  :%s/old/new/g<br>進行全文替換時詢問用戶確認每個替換需添加 c 選項，請輸入 :%s/old/new/gc</p>
-</li>
-</ol>
-<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">	       第五講小結</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="number">1.</span> :!command 用于執行一個外部命令 command。</span><br><span class="line"></span><br><span class="line">   請看一些實際例子︰</span><br><span class="line">:!dir		-  用于顯示當前目錄的內容。</span><br><span class="line">:!rm FILENAME	-  用于刪除名為 FILENAME 的文件。</span><br><span class="line"></span><br><span class="line"><span class="number">2.</span> :w FILENAME  可將當前 VIM 中正在編輯的文件保存到名為 FILENAME</span><br><span class="line">   的文件中。</span><br><span class="line"></span><br><span class="line"><span class="number">3.</span> :#,#w FILENAME 可將當前編輯文件第 # 行至第 # 行的內容保存到文件</span><br><span class="line">   FILENAME 中。</span><br><span class="line"></span><br><span class="line"><span class="number">4.</span> :r FILENAME 可提取磁盤文件 FILENAME 並將其插入到當前文件的光標位置</span><br><span class="line">   後面。</span><br></pre></td></tr></table></figure>
-<pre><code>第六講小結
-</code></pre><ol>
-<li><p>輸入小寫的 o 可以在光標下方打開新的一行並將光標置于新開的行首，進入<br>插入模式。<br>輸入大寫的 O 可以在光標上方打開新的一行並將光標置于新開的行首，進入<br>插入模式。</p>
-</li>
-<li><p>輸入小寫的 a 可以在光標所在位置之後插入文本。<br>輸入大寫的 A 可以在光標所在行的行末之後插入文本。</p>
-</li>
-<li><p>輸入大寫的 R 將進入替換模式，直至按 <esc> 鍵退出替換模式而進入正常<br>模式。</esc></p>
-</li>
-<li><p>輸入 :set xxx 可以設置 xxx 選項。</p>
-</li>
-</ol>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">	       第七講︰在線幫助命令</span><br><span class="line"></span><br><span class="line">	      ** 使用在線幫助系統 **</span><br><span class="line"></span><br><span class="line"> Vim 擁有一個細致全面的在線幫助系統。要啟動該幫助系統，請選擇如下三種方</span><br><span class="line"> 法之一︰</span><br><span class="line">- 按下 <span class="symbol">&lt;HELP&gt;</span> 鍵 (如果鍵盤上有的話)</span><br><span class="line">- 按下 <span class="symbol">&lt;F1&gt;</span> 鍵 (如果鍵盤上有的話)</span><br><span class="line">- 輸入	:<span class="keyword">help</span> &lt;回車&gt;</span><br><span class="line"></span><br><span class="line"> 輸入 :q &lt;回車&gt; 可以關閉幫助窗口。</span><br><span class="line"></span><br><span class="line"> 提供一個正確的參數給<span class="string">":help"</span>命令，您可以找到關于該主題的幫助。請試驗以</span><br><span class="line"> 下參數(可別忘了按回車鍵哦。:)︰</span><br><span class="line"></span><br><span class="line">  :<span class="keyword">help</span> <span class="keyword">w</span> &lt;回車&gt;</span><br><span class="line">  :<span class="keyword">help</span> c_&lt;T &lt;回車&gt;</span><br><span class="line">  :<span class="keyword">help</span> <span class="keyword">insert</span>-<span class="built_in">index</span> &lt;回車&gt;</span><br><span class="line">  :<span class="keyword">help</span> user-manual &lt;回車&gt;</span><br></pre></td></tr></table></figure>
-<pre><code> 第八講︰創建一個啟動腳本
-
-** 啟用vim的功能 **
-</code></pre><p>  Vim的功能特性要比vi多得多，但大部分功能都沒有缺省激活。為了啟動更多的<br>  功能，您得創建一個vimrc文件。</p>
-<ol>
-<li><p>開始編輯vimrc文件，這取決于您所使用的操作系統︰</p>
-<p>:edit ~/.vimrc        這是Unix系統所使用的命令<br>:edit $VIM/_vimrc        這是Windows系統所使用的命令</p>
-</li>
-<li><p>接著導入vimrc范例文件︰</p>
-<p>:read $VIMRUNTIME/vimrc_example.vim</p>
-</li>
-<li><p>保存文件，命令為︰</p>
-<p>:write</p>
-<p>在下次您啟動vim的時候，編輯器就會有了語法高亮的功能。您可以繼續把您喜<br>歡的其它功能設置添加到這個vimrc文件中。</p>
-</li>
-</ol>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"> <span class="attribute">vim</span> 教程到此結束。本教程只是為了簡明地介紹一下vim編輯器，但已足以讓您</span><br><span class="line"> 很容易學會使用本編輯器了。毋庸質疑，vim還有很多很多的命令，本教程所介</span><br><span class="line"> 紹的還差得遠著呢。所以您要精通的話，還望繼續努力哦。下一步您可以閱讀</span><br><span class="line"> vim手冊，使用的命令是︰</span><br><span class="line">:help user-manual</span><br><span class="line"></span><br><span class="line"> 為了更進一步的參考和學習，以下這本書值得推薦︰</span><br><span class="line"></span><br><span class="line">Vim - Vi Improved - 作者︰Steve Oualline</span><br><span class="line">出版社︰New Riders</span><br><span class="line"></span><br><span class="line"> 這是第一本完全講解vim的書籍。對于初學者特別有用。其中還包含有大量實例</span><br><span class="line"> 和圖示。欲知詳情，請訪問 http://iccf-holland.org/click5.html</span><br><span class="line"></span><br><span class="line"> 以下這本書比較老了而且內容主要是vi而不是vim，但是也值得推薦︰</span><br><span class="line"></span><br><span class="line">Learning the Vi Editor - 作者︰Linda Lamb</span><br><span class="line">出版社︰O<span class="string">'Reilly &amp; Associates Inc.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"> 這是一本不錯的書，通過它您幾乎能夠了解到全部vi能夠做到的事情。此書的第</span></span><br><span class="line"><span class="string"> 六個版本也包含了一些關于vim的信息。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"> 本教程是由來自Calorado School of Minese的Michael C. Pierce、Robert K.</span></span><br><span class="line"><span class="string"> Ware 所編寫的，其中來自Colorado State University的Charles Smith提供了</span></span><br><span class="line"><span class="string"> 很多創意。編者通信地址是︰</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">bware<span class="variable">@mines</span>.colorado.edu</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"> 本教程已由Bram Moolenaar專為vim進行修訂。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"> 譯制者附言︰</span></span><br><span class="line"><span class="string"> ===========</span></span><br><span class="line"><span class="string">     簡體中文教程翻譯版之譯制者為梁昌泰 &lt;beos<span class="variable">@turbolinux</span>.com.cn&gt;，還有</span></span><br><span class="line"><span class="string">     另外一個聯系地址︰linuxrat<span class="variable">@gnuchina</span>.org。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">     繁體中文教程是從簡體中文教程翻譯版使用 Debian GNU/Linux 中文項目小</span></span><br><span class="line"><span class="string">     組的于廣輝先生編寫的中文漢字轉碼器  autoconvert 轉換而成的，並對轉</span></span><br><span class="line"><span class="string">     換的結果做了一些細節的改動。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"> 變更記錄︰</span></span><br><span class="line"><span class="string"> =========</span></span><br><span class="line"><span class="string">     2002年08月30日 梁昌泰 &lt;beos<span class="variable">@turbolinux</span>.com.cn&gt;</span></span><br><span class="line"><span class="string">     感謝 RMS<span class="variable">@SMTH</span> 的指正，將多處錯誤修正。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">     2002年04月22日 梁昌泰 &lt;linuxrat<span class="variable">@gnuchina</span>.org&gt;</span></span><br><span class="line"><span class="string">     感謝 xuandong<span class="variable">@sh163</span>.net 的指正，將兩處錯別字修正。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">     2002年03月18日 梁昌泰 &lt;linuxrat<span class="variable">@gnuchina</span>.org&gt;</span></span><br><span class="line"><span class="string">     根據Bram Molenaar先生在2002年03月16日的來信要求，將vimtutor1.4中譯</span></span><br><span class="line"><span class="string">     版升級到vimtutor1.5。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">     2001年11月15日 梁昌泰 &lt;linuxrat<span class="variable">@gnuchina</span>.org&gt;</span></span><br><span class="line"><span class="string">     將vimtutor1.4中譯版提交給Bram Molenaar和Sven Guckes。</span></span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2236,7 +2186,7 @@ http://code4app.com/
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2258,7 +2208,7 @@ http://code4app.com/
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

@@ -234,6 +234,151 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://weibo.com/wangtaoworld/iOS/2018/03/30/iOS开发/UITextField输入正整数和两位小数.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wangtao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="wt">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/iOS/2018/03/30/iOS开发/UITextField输入正整数和两位小数.html" itemprop="url">UITextField输入正整数和两位小数</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-30T14:53:26+08:00">
+                2018-03-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>#####A： 输出小数点后两位，小数点前面没有限制<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">    rightTextField.keyboardType = <span class="built_in">UIKeyboardTypeDecimalPad</span>;</span><br><span class="line"></span><br><span class="line">- (<span class="built_in">BOOL</span>)textField:(<span class="built_in">UITextField</span> *)textField shouldChangeCharactersInRange:(<span class="built_in">NSRange</span>)range replacementString:(<span class="built_in">NSString</span> *)string</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//删除处理</span></span><br><span class="line">    <span class="keyword">if</span> ([string isEqualToString:<span class="string">@""</span>]) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">YES</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//首位不能为.号</span></span><br><span class="line">    <span class="keyword">if</span> (range.location == <span class="number">0</span> &amp;&amp; [string isEqualToString:<span class="string">@"."</span>]) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">NO</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//判断只输出数字和.号</span></span><br><span class="line"><span class="comment">//    NSString *passWordRegex = @"[0-9\\.]";</span></span><br><span class="line"><span class="comment">//    NSPredicate *passWordPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",passWordRegex];</span></span><br><span class="line"><span class="comment">//    if (![passWordPredicate evaluateWithObject:string]) &#123;</span></span><br><span class="line"><span class="comment">//        return NO;</span></span><br><span class="line"><span class="comment">//    &#125;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//判断只输出数字和.号</span></span><br><span class="line">    <span class="keyword">if</span> (![<span class="string">@"0123456789."</span> rangeOfString:string].length) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">NO</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//逻辑处理</span></span><br><span class="line">    <span class="keyword">if</span> ([textField.text containsString:<span class="string">@"."</span>]) &#123;</span><br><span class="line">        <span class="keyword">if</span> ([string isEqualToString:<span class="string">@"."</span>]) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">NO</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">NSRange</span> subRange = [textField.text rangeOfString:<span class="string">@"."</span>];</span><br><span class="line">        <span class="keyword">if</span> (range.location - subRange.location &gt; <span class="number">2</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">NO</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//可在此处加小数点前面位数限制</span></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//可在此处加小数点前面位数限制</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">YES</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>#####B： 输出正整数<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">    rightTextField.keyboardType = UIKeyboardTypeNumberPad;</span><br><span class="line"></span><br><span class="line">- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)<span class="built_in">string</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> ([<span class="built_in">string</span> isEqualToString:@<span class="string">""</span>]) &#123;</span><br><span class="line"><span class="built_in">        return</span> YES;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">string</span>.<span class="built_in">length</span> != <span class="number">1</span>) &#123;</span><br><span class="line"><span class="built_in">        return</span> NO;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (![@<span class="string">"0123456789"</span> rangeOfString:<span class="built_in">string</span>].<span class="built_in">length</span>) &#123;</span><br><span class="line"><span class="built_in">        return</span> NO;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (textField.<span class="built_in">text</span>.<span class="built_in">length</span> == <span class="number">0</span>) &#123;</span><br><span class="line"><span class="built_in">        return</span> ![<span class="built_in">string</span> isEqualToString:@<span class="string">"0"</span>];</span><br><span class="line">    &#125;</span><br><span class="line"><span class="built_in">    return</span> YES;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://github.com/wangtaoios/images/blob/master/%E9%A1%B9%E7%9B%AEDemo%E5%9B%BE%E7%89%87/UITextField_00_0330.png?raw=true" alt="效果图"></p>
+<p><img src="https://github.com/wangtaoios/images/blob/master/%E9%A1%B9%E7%9B%AEDemo%E5%9B%BE%E7%89%87/UITextField_01_0330.png?raw=true" alt="效果图"></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://weibo.com/wangtaoworld/军事/2018/03/30/军事/2016年底中日军机对抗.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1678,170 +1823,6 @@ $ hexo d
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://weibo.com/wangtaoworld/iOS/2018/03/21/iOS开发/iOS使用YYKit实现表情键盘.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wangtao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="wt">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/iOS/2018/03/21/iOS开发/iOS使用YYKit实现表情键盘.html" itemprop="url">iOS使用YYKit实现表情键盘</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-21T16:43:13+08:00">
-                2018-03-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>项目需求，APP发布内容的时候支持表情</p>
-<p><img src="https://github.com/wangtaoios/images/blob/master/%E9%A1%B9%E7%9B%AEDemo%E5%9B%BE%E7%89%87/fabu_0327.gif?raw=true" alt="效果"></p>
-<h5 id="需求："><a href="#需求：" class="headerlink" title="需求："></a>需求：</h5><p>点击键盘的表情按钮，比如[微笑]，在输入框显示🙂，发布成功到服务器时候，服务器存[微笑]；请求下来数据在APP展示的时候，仍然显示🙂。</p>
-<h5 id="原理："><a href="#原理：" class="headerlink" title="原理："></a>原理：</h5><p>点击键盘的表情按钮，比如[微笑]，此时将字符串[微笑]传到输入框，输入框使用YYTextView，设置YYTextView的textParser即可展示对应表情🙂。</p>
-<h5 id="关于textParser："><a href="#关于textParser：" class="headerlink" title="关于textParser："></a>关于textParser：</h5><figure class="highlight ocaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">YYTextSimpleEmoticonParser</span> *<span class="keyword">parser</span> = [<span class="type">YYTextSimpleEmoticonParser</span> <span class="keyword">new</span>];</span><br><span class="line"><span class="keyword">parser</span>.emoticonMapper = mapper;</span><br></pre></td></tr></table></figure>
-<p>在YYTextSimpleEmoticonParser发现<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@property</span> (<span class="keyword">nullable</span>, <span class="keyword">copy</span>) <span class="built_in">NSDictionary</span>&lt;<span class="built_in">NSString</span> *, __kindof <span class="built_in">UIImage</span> *&gt; *emoticonMapper;</span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<ul>
-<li>parser.emoticonMapper 是字典，其中键：NSString；值：UIImage。</li>
-<li>本地有个plist文件，也就是字典，其中键：NSString，表情的汉字版（如：[微笑]）；值：NSString，图片名字。</li>
-<li>那么由本地plis文件生成对应的parser.emoticonMapper字典就可以设置YYTextView的textParser。<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSMutableDictionary</span> *mapper = [<span class="built_in">NSMutableDictionary</span> new];</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; [WTUtils getEmoticonData].allKeys.count; i ++) &#123;</span><br><span class="line">    <span class="built_in">NSString</span> *valueString = [<span class="built_in">NSString</span> stringWithFormat:<span class="string">@"%.0f"</span>, ((<span class="built_in">CGFloat</span>)i)];</span><br><span class="line">    [mapper setObject:[<span class="keyword">self</span> imageWithName:valueString]</span><br><span class="line">               forKey:[[WTUtils getEmoticonData] allKeysForObject:valueString][<span class="number">0</span>]];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</blockquote>
-<h5 id="关于键盘的自定义："><a href="#关于键盘的自定义：" class="headerlink" title="关于键盘的自定义："></a>关于键盘的自定义：</h5><p>点击切换按钮的时候，来切换键盘<br><figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (_textView.inputView) &#123;</span><br><span class="line">    _textView.<span class="attr">inputView</span> = nil;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    WTEmoticonInputView *<span class="attr">emoticonInputView</span> = [[WTEmoticonInputView alloc] initWithFrame:CGRectMake(<span class="number">0</span>, <span class="number">0</span>, kMainScreenWidth, <span class="number">300</span>)];</span><br><span class="line">    emoticonInputView.<span class="attr">delegate</span> = self;</span><br><span class="line">    _textView.<span class="attr">inputView</span> = emoticonInputView;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<p>WTEmoticonInputView即为自定义的表情键盘页面，整体是个UIScrollView，每一页表情是一个UIView，根据表情数量将这些UIView放到UIScrollView。设置相应的代理，将点击的表情按钮对应的字符串传到_textView即可。</p>
-</blockquote>
-<blockquote>
-<p>同理，从服务器请求的数据，展示的时候，将YYTextView换为YYLabel，设置相应的textParser即可。</p>
-</blockquote>
-<p>最后附上github地址，如果你觉得好就点击喜欢一下，如果你觉得非常好就github star支持一下~</p>
-<p><a href="https://github.com/wangtaoios/WTEmoticonDemo" target="_blank" rel="noopener">WTEmoticonDemo</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1892,7 +1873,7 @@ $ hexo d
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1914,7 +1895,7 @@ $ hexo d
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
