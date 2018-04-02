@@ -234,6 +234,485 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://weibo.com/wangtaoworld/iOS/2018/03/21/iOS开发/iOS实现搭建聊天页面.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wangtao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="wt">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/iOS/2018/03/21/iOS开发/iOS实现搭建聊天页面.html" itemprop="url">iOS实现搭建聊天页面</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-21T17:09:40+08:00">
+                2018-03-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>功能分析，模仿QQ聊天页面</p>
+<p>完整demo，欢迎star <a href="https://github.com/wangtaoios/WTChatDemo" target="_blank" rel="noopener">WTChatDemo</a></p>
+<ul>
+<li>输入框失去第一响应的情况：</li>
+<li>1：点击页面</li>
+<li>2：下滑页面</li>
+<li>输入框成为第一响应的情况：</li>
+<li>1：开始输入</li>
+<li>2：上滑页面最底部</li>
+</ul>
+<p><img src="https://github.com/wangtaoios/images/blob/master/%E9%A1%B9%E7%9B%AEDemo%E5%9B%BE%E7%89%87/qq_0327.gif?raw=true" alt="聊天.gif"></p>
+<p>控制器</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  WDPersonMessageDetailVC.m</span></span><br><span class="line"><span class="comment">//  WestDevelopment</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by wangtao on 2017/6/23.</span></span><br><span class="line"><span class="comment">//  Copyright © 2017年 xikaijinfu. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#import <span class="meta-string">"WDPersonMessageDetailVC.h"</span></span></span><br><span class="line"><span class="meta">#import <span class="meta-string">"WDPersonMessageDetailCell.h"</span></span></span><br><span class="line"><span class="meta">#import <span class="meta-string">"WDPersonMessageFooterCell.h"</span></span></span><br><span class="line"><span class="meta">#import <span class="meta-string">"WDPersonMessageDetailModel.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#import <span class="meta-string">&lt;IQKeyboardManager.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">WDPersonMessageDetailVC</span> ()</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">weak</span>) WDPersonMessageFooterCell *textfieldView;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">WDPersonMessageDetailVC</span></span></span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)scrollViewDidScroll:(<span class="built_in">UIScrollView</span> *)scrollView</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">CGFloat</span> contentOffsetY = scrollView.contentOffset.y;</span><br><span class="line">    </span><br><span class="line"><span class="comment">//    页面下滑，并且输入框还是第一响应的时候，控制器要失去第一响应</span></span><br><span class="line">    <span class="keyword">if</span> (contentOffsetY &gt; <span class="number">10</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">self</span>.textfieldView.isFirst) &#123;</span><br><span class="line">            [<span class="keyword">self</span> clickSelf];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//    页面上滑，控制器成为第一响应</span></span><br><span class="line">    <span class="keyword">if</span> (contentOffsetY &lt; - <span class="number">10</span>) &#123;</span><br><span class="line">        <span class="keyword">self</span>.textfieldView.isFirst = <span class="literal">YES</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)viewDidAppear:(<span class="built_in">BOOL</span>)animated</span><br><span class="line">&#123;</span><br><span class="line">    [<span class="keyword">super</span> viewDidAppear:animated];</span><br><span class="line"></span><br><span class="line"><span class="comment">//    关闭IQ键盘</span></span><br><span class="line">    [IQKeyboardManager sharedManager].enable = <span class="literal">NO</span>;</span><br><span class="line">    [IQKeyboardManager sharedManager].enableAutoToolbar = <span class="literal">NO</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)viewWillDisappear:(<span class="built_in">BOOL</span>)animated</span><br><span class="line">&#123;</span><br><span class="line">    [<span class="keyword">super</span> viewWillDisappear:animated];</span><br><span class="line">    [<span class="keyword">self</span>.view endEditing:<span class="literal">YES</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)viewDidDisappear:(<span class="built_in">BOOL</span>)animated</span><br><span class="line">&#123;</span><br><span class="line">    [<span class="keyword">super</span> viewDidDisappear:animated];</span><br><span class="line">    </span><br><span class="line">    [IQKeyboardManager sharedManager].enableAutoToolbar = <span class="literal">YES</span>;</span><br><span class="line">    [IQKeyboardManager sharedManager].enable = <span class="literal">YES</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)dealloc</span><br><span class="line">&#123;</span><br><span class="line">    [[<span class="built_in">NSNotificationCenter</span> defaultCenter] removeObserver:<span class="keyword">self</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)loadView</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">UIScrollView</span> *view = [[<span class="built_in">UIScrollView</span> alloc] init];</span><br><span class="line">    view.frame = <span class="built_in">CGRectMake</span>(<span class="number">0</span>, <span class="number">0</span>, kMainScreenWidth, kMainScreenHeight);</span><br><span class="line">    <span class="keyword">self</span>.view = view;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)viewDidLoad &#123;</span><br><span class="line">    [<span class="keyword">super</span> viewDidLoad];</span><br><span class="line">    <span class="comment">// Do any additional setup after loading the view.</span></span><br><span class="line">    </span><br><span class="line">    [IQKeyboardManager sharedManager].enable = <span class="literal">NO</span>;</span><br><span class="line">    [IQKeyboardManager sharedManager].enableAutoToolbar = <span class="literal">NO</span>;</span><br><span class="line"></span><br><span class="line">    [[<span class="built_in">NSNotificationCenter</span> defaultCenter] addObserver:<span class="keyword">self</span> selector:<span class="keyword">@selector</span>(keyboardWillShow:) name:<span class="built_in">UIKeyboardWillShowNotification</span> object:<span class="literal">nil</span>];</span><br><span class="line">    [[<span class="built_in">NSNotificationCenter</span> defaultCenter] addObserver:<span class="keyword">self</span> selector:<span class="keyword">@selector</span>(keyboardWillHide:) name:<span class="built_in">UIKeyboardWillHideNotification</span> object:<span class="literal">nil</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">//    旋转tableView</span></span><br><span class="line">    <span class="keyword">self</span>.tableView.transform = <span class="built_in">CGAffineTransformMakeScale</span> (<span class="number">1</span>, <span class="number">-1</span>);</span><br><span class="line">    <span class="keyword">self</span>.tableView.tableHeaderView.transform = <span class="built_in">CGAffineTransformMakeScale</span> (<span class="number">1</span>, <span class="number">-1</span>);</span><br><span class="line">    <span class="keyword">self</span>.tableView.tableFooterView.transform = <span class="built_in">CGAffineTransformMakeScale</span> (<span class="number">1</span>, <span class="number">-1</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">self</span>.view.backgroundColor = WTHexColor(<span class="number">0xeaeaea</span>);</span><br><span class="line">    <span class="keyword">self</span>.tableView.backgroundColor = WTHexColor(<span class="number">0xeaeaea</span>);</span><br><span class="line">    <span class="keyword">self</span>.tableView.scrollIndicatorInsets = <span class="built_in">UIEdgeInsetsMake</span>(<span class="number">50</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">    </span><br><span class="line">    [<span class="keyword">self</span>.tableView registerClass:[WDPersonMessageDetailCell <span class="keyword">class</span>] forCellReuseIdentifier:WDPersonMessageDetailCellID];</span><br><span class="line">    [<span class="keyword">self</span>.tableView registerClass:[WDPersonMessageFooterCell <span class="keyword">class</span>] forHeaderFooterViewReuseIdentifier:WDPersonMessageFooterCellID];</span><br><span class="line"></span><br><span class="line">    [<span class="keyword">self</span>.tableView wt_addTapTarget:<span class="keyword">self</span> action:<span class="keyword">@selector</span>(clickSelf)];</span><br><span class="line">    </span><br><span class="line">    [<span class="keyword">self</span> addFooter];</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//键盘弹出时把消息列表tableView的高度设为（屏幕高度 - 输入框高度 - 键盘高度），同时输入框上移；</span></span><br><span class="line"><span class="comment">//键盘消失时再把tableView的高度设为（屏幕高度 - 输入框的高度），同时输入框下移。</span></span><br><span class="line"><span class="comment">//这样可以完美解决聊天列表的上面的消息无法显示问题和键盘遮挡问题。</span></span><br><span class="line">- (<span class="keyword">void</span>)keyboardWillShow:(<span class="built_in">NSNotification</span>*)notification</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 0.取出键盘动画的时间</span></span><br><span class="line">    <span class="built_in">CGFloat</span> duration = [notification.userInfo[<span class="built_in">UIKeyboardAnimationDurationUserInfoKey</span>] doubleValue];</span><br><span class="line">    <span class="comment">// 1.取得键盘最后的frame</span></span><br><span class="line">    <span class="built_in">CGRect</span> keyboardFrame = [notification.userInfo[<span class="built_in">UIKeyboardFrameEndUserInfoKey</span>] <span class="built_in">CGRectValue</span>];</span><br><span class="line">    <span class="comment">// 2.计算控制器的view需要平移的距离</span></span><br><span class="line">    <span class="built_in">CGFloat</span> transformY = keyboardFrame.origin.y - <span class="keyword">self</span>.view.frame.size.height;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 3.执行动画</span></span><br><span class="line">    <span class="built_in">NSIndexPath</span> *indexPath = [<span class="built_in">NSIndexPath</span> indexPathForRow:<span class="number">0</span> inSection:<span class="number">0</span>];</span><br><span class="line">    [<span class="keyword">self</span>.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:<span class="built_in">UITableViewScrollPositionBottom</span> animated:<span class="literal">NO</span>];</span><br><span class="line"></span><br><span class="line">    WTWS(weakSelf);</span><br><span class="line">    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(<span class="number">.05</span> * <span class="built_in">NSEC_PER_SEC</span>)), dispatch_get_main_queue(), ^&#123;</span><br><span class="line">    </span><br><span class="line">        [<span class="built_in">UIView</span> animateWithDuration:duration animations:^&#123;</span><br><span class="line">            weakSelf.tableView.frame = <span class="built_in">CGRectMake</span>(<span class="number">0</span>, <span class="number">0</span>, kMainScreenWidth, kMainScreenHeight - keyboardFrame.size.height - <span class="number">64</span>);</span><br><span class="line">            weakSelf.inputView.transform = <span class="built_in">CGAffineTransformMakeTranslation</span>(<span class="number">0</span>, transformY);</span><br><span class="line">            </span><br><span class="line">        &#125;];</span><br><span class="line">    &#125;);</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)keyboardWillHide:(<span class="built_in">NSNotification</span>*)notification</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">CGFloat</span> duration = [notification.userInfo[<span class="built_in">UIKeyboardAnimationDurationUserInfoKey</span>] doubleValue];</span><br><span class="line">    [<span class="built_in">UIView</span> animateWithDuration:duration animations:^&#123;</span><br><span class="line">        <span class="keyword">self</span>.tableView.frame = <span class="built_in">CGRectMake</span>(<span class="number">0</span>, <span class="number">0</span>, kMainScreenWidth, kMainScreenHeight);</span><br><span class="line">        <span class="keyword">self</span>.view.transform = <span class="built_in">CGAffineTransformIdentity</span>;</span><br><span class="line"></span><br><span class="line">    &#125;];</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//失去第一响应</span></span><br><span class="line">- (<span class="keyword">void</span>)clickSelf</span><br><span class="line">&#123;</span><br><span class="line">    [[<span class="built_in">NSNotificationCenter</span> defaultCenter] postNotificationName:kMessageState object:@(<span class="literal">YES</span>)];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)addHeader</span><br><span class="line">&#123;</span><br><span class="line">    __<span class="keyword">unsafe_unretained</span> __<span class="keyword">typeof</span>(<span class="keyword">self</span>) weakSelf = <span class="keyword">self</span>;</span><br><span class="line">    <span class="keyword">self</span>.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^&#123;</span><br><span class="line">        [weakSelf loadData];</span><br><span class="line">    &#125;];</span><br><span class="line">    </span><br><span class="line">    [<span class="keyword">self</span>.tableView.mj_header beginRefreshing];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//关闭下拉和上拉控件的文字展示</span></span><br><span class="line">- (<span class="keyword">void</span>)addFooter</span><br><span class="line">&#123;</span><br><span class="line"><span class="comment">//    [self addHeader];</span></span><br><span class="line">    [<span class="keyword">self</span> loadData];</span><br><span class="line">    </span><br><span class="line">    MJRefreshAutoNormalFooter *footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:<span class="keyword">self</span> refreshingAction:<span class="keyword">@selector</span>(loadMoreData)];</span><br><span class="line"></span><br><span class="line">    [footer setTitle:<span class="string">@""</span> forState:MJRefreshStateIdle];</span><br><span class="line">    [footer setTitle:<span class="string">@""</span> forState:MJRefreshStatePulling];</span><br><span class="line">    [footer setTitle:<span class="string">@""</span> forState:MJRefreshStateRefreshing];</span><br><span class="line">    [footer setTitle:<span class="string">@""</span> forState:MJRefreshStateWillRefresh];</span><br><span class="line">    [footer setTitle:<span class="string">@""</span> forState:MJRefreshStateNoMoreData];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">self</span>.tableView.mj_footer = footer;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)loadData</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">self</span>.page = <span class="number">1</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">NSDictionary</span> *par = @&#123;</span><br><span class="line">                          kToken :          [WTAccount shareAccount].token,</span><br><span class="line">                          kUserId :         [WTAccount shareAccount].uid,</span><br><span class="line">                          kCurrentPage :    @(<span class="keyword">self</span>.page),</span><br><span class="line">                          kFriendId :       <span class="keyword">self</span>.friendId,</span><br><span class="line">                          &#125;;</span><br><span class="line">    </span><br><span class="line">    [WDNetwork postkMyMessageDetailPhoneWithParameters:par modelClass:[WDPersonMessageDetailModel <span class="keyword">class</span>] responseBlock:^(<span class="keyword">id</span> dataObject, <span class="built_in">NSError</span> *error) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!error &amp;&amp; [[dataObject <span class="keyword">class</span>] isSubclassOfClass:[<span class="built_in">NSArray</span> <span class="keyword">class</span>]]) &#123;</span><br><span class="line">            <span class="built_in">NSArray</span>* reversedArray = [[dataObject reverseObjectEnumerator] allObjects];</span><br><span class="line">            <span class="keyword">self</span>.dataArray = [<span class="built_in">NSMutableArray</span> arrayWithArray:reversedArray];</span><br><span class="line">            [<span class="keyword">self</span>.tableView reloadData];</span><br><span class="line">            <span class="keyword">self</span>.page ++;</span><br><span class="line">            <span class="keyword">if</span> ([dataObject count] &lt; <span class="number">20</span>) &#123;</span><br><span class="line">                [<span class="keyword">self</span>.tableView.mj_header endRefreshing];</span><br><span class="line">                [<span class="keyword">self</span>.tableView.mj_footer endRefreshingWithNoMoreData];</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                [<span class="keyword">self</span>.tableView.mj_header endRefreshing];</span><br><span class="line">                [<span class="keyword">self</span>.tableView.mj_footer endRefreshing];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            [<span class="keyword">self</span>.tableView.mj_header endRefreshing];</span><br><span class="line">            [<span class="keyword">self</span>.tableView.mj_footer endRefreshingWithNoMoreData];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)loadMoreData</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">NSDictionary</span> *par = @&#123;</span><br><span class="line">                          kToken :          [WTAccount shareAccount].token,</span><br><span class="line">                          kUserId :         [WTAccount shareAccount].uid,</span><br><span class="line">                          kCurrentPage :    @(<span class="keyword">self</span>.page),</span><br><span class="line">                          kFriendId :       <span class="keyword">self</span>.friendId,</span><br><span class="line">                          &#125;;</span><br><span class="line">    </span><br><span class="line">    [WDNetwork postkMyMessageDetailPhoneWithParameters:par modelClass:[WDPersonMessageDetailModel <span class="keyword">class</span>] responseBlock:^(<span class="keyword">id</span> dataObject, <span class="built_in">NSError</span> *error) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!error &amp;&amp; [[dataObject <span class="keyword">class</span>] isSubclassOfClass:[<span class="built_in">NSArray</span> <span class="keyword">class</span>]]) &#123;</span><br><span class="line">            <span class="built_in">NSArray</span>* reversedArray = [[dataObject reverseObjectEnumerator] allObjects];</span><br><span class="line">            [<span class="keyword">self</span>.dataArray addObjectsFromArray:reversedArray];</span><br><span class="line">            [<span class="keyword">self</span>.tableView reloadData];</span><br><span class="line">            <span class="keyword">self</span>.page ++;</span><br><span class="line">            <span class="keyword">if</span> ([dataObject count] &lt; <span class="number">20</span>) &#123;</span><br><span class="line">                [<span class="keyword">self</span>.tableView.mj_footer endRefreshingWithNoMoreData];</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                [<span class="keyword">self</span>.tableView.mj_footer endRefreshing];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            [<span class="keyword">self</span>.tableView.mj_footer endRefreshingWithNoMoreData];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="built_in">CGFloat</span>)tableView:(<span class="built_in">UITableView</span> *)tableView heightForHeaderInSection:(<span class="built_in">NSInteger</span>)section</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">50</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="built_in">CGFloat</span>)tableView:(<span class="built_in">UITableView</span> *)tableView heightForFooterInSection:(<span class="built_in">NSInteger</span>)section</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">CGFLOAT_MIN</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="built_in">UIView</span> *)tableView:(<span class="built_in">UITableView</span> *)tableView viewForHeaderInSection:(<span class="built_in">NSInteger</span>)section</span><br><span class="line">&#123;</span><br><span class="line">    WDPersonMessageFooterCell *footer = [tableView dequeueReusableHeaderFooterViewWithIdentifier:WDPersonMessageFooterCellID];</span><br><span class="line">    <span class="keyword">self</span>.textfieldView = footer;</span><br><span class="line">    footer.contentView.transform = <span class="built_in">CGAffineTransformMakeScale</span> (<span class="number">1</span>, <span class="number">-1</span>);</span><br><span class="line"></span><br><span class="line">    WTWS(weakSelf);</span><br><span class="line">    footer.clickSenderText = ^(<span class="built_in">NSString</span> *text) &#123;</span><br><span class="line">        <span class="built_in">NSDictionary</span> *par = @&#123;</span><br><span class="line">                              kToken :          [WTAccount shareAccount].token,</span><br><span class="line">                              kUserId :         [WTAccount shareAccount].uid,</span><br><span class="line">                              kComment :        text,</span><br><span class="line">                              kFlag :           @(<span class="number">11</span>),</span><br><span class="line">                              kFriendId :       weakSelf.friendId,</span><br><span class="line">                              &#125;;</span><br><span class="line">        [WDNetwork postkAddCommentPhoneWithParameters:par modelClass:[<span class="built_in">NSNull</span> <span class="keyword">class</span>] responseBlock:^(<span class="keyword">id</span> dataObject, <span class="built_in">NSError</span> *error) &#123;</span><br><span class="line">            <span class="keyword">if</span> (!error &amp;&amp; ([[dataObject objectForKey:kCode] integerValue] == <span class="number">200</span>)) &#123;</span><br><span class="line">                [weakSelf loadData];</span><br><span class="line">                weakSelf.textfieldView.sendSucceed = <span class="literal">YES</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (!error &amp;&amp; [dataObject objectForKey:kMsg]) &#123;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;];</span><br><span class="line">    &#125;;</span><br><span class="line">    </span><br><span class="line">    footer.resignFirstRes = ^&#123;</span><br><span class="line">        weakSelf.tableView.frame = <span class="built_in">CGRectMake</span>(<span class="number">0</span>, <span class="number">0</span>, kMainScreenWidth, kMainScreenHeight - <span class="number">64</span>);</span><br><span class="line">        weakSelf.view.transform = <span class="built_in">CGAffineTransformIdentity</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">return</span> footer;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="built_in">NSInteger</span>)numberOfSectionsInTableView:(<span class="built_in">UITableView</span> *)tableView</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="built_in">NSInteger</span>)tableView:(<span class="built_in">UITableView</span> *)tableView numberOfRowsInSection:(<span class="built_in">NSInteger</span>)section</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">self</span>.dataArray.count;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="built_in">CGFloat</span>)tableView:(<span class="built_in">UITableView</span> *)tableView heightForRowAtIndexPath:(<span class="built_in">NSIndexPath</span> *)indexPath</span><br><span class="line">&#123;</span><br><span class="line">    WDPersonMessageDetailModel *model = <span class="keyword">self</span>.dataArray[indexPath.row];</span><br><span class="line">    <span class="keyword">return</span> model.height;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="built_in">UITableViewCell</span> *)tableView:(<span class="built_in">UITableView</span> *)tableView cellForRowAtIndexPath:(<span class="built_in">NSIndexPath</span> *)indexPath</span><br><span class="line">&#123;</span><br><span class="line">    WDPersonMessageDetailCell *cell = [tableView dequeueReusableCellWithIdentifier:WDPersonMessageDetailCellID forIndexPath:indexPath];</span><br><span class="line">    cell.model = <span class="keyword">self</span>.dataArray[indexPath.row];</span><br><span class="line">    cell.contentView.transform = <span class="built_in">CGAffineTransformMakeScale</span> (<span class="number">1</span>, <span class="number">-1</span>);</span><br><span class="line">    <span class="keyword">return</span> cell;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)didReceiveMemoryWarning &#123;</span><br><span class="line">    [<span class="keyword">super</span> didReceiveMemoryWarning];</span><br><span class="line">    <span class="comment">// Dispose of any resources that can be recreated.</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">#pragma mark - Navigation</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">// In a storyboard-based application, you will often want to do a little preparation before navigation</span></span><br><span class="line"><span class="comment">- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender &#123;</span></span><br><span class="line"><span class="comment">    // Get the new view controller using [segue destinationViewController].</span></span><br><span class="line"><span class="comment">    // Pass the selected object to the new view controller.</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+<p>输入框 UITableViewHeaderFooterView</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  WDPersonMessageFooterCell.h</span></span><br><span class="line"><span class="comment">//  WestDevelopment</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by wangtao on 2017/6/26.</span></span><br><span class="line"><span class="comment">//  Copyright © 2017年 xikaijinfu. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#import <span class="meta-string">"WDBaseTVHeaderFooterView.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">void</span>(^ClickSender_t)(<span class="built_in">NSString</span> *text);</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">void</span>(^ResignFirstResponder)();</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">WDPersonMessageFooterCell</span> : <span class="title">WDBaseTVHeaderFooterView</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">copy</span>) ClickSender_t clickSenderText;</span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">copy</span>) ResignFirstResponder resignFirstRes;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">assign</span>) <span class="built_in">BOOL</span> isFirst;</span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">assign</span>) <span class="built_in">BOOL</span> sendSucceed;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  WDPersonMessageFooterCell.m</span></span><br><span class="line"><span class="comment">//  WestDevelopment</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by wangtao on 2017/6/26.</span></span><br><span class="line"><span class="comment">//  Copyright © 2017年 xikaijinfu. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#import <span class="meta-string">"WDPersonMessageFooterCell.h"</span></span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">WDPersonMessageFooterCell</span> () &lt;<span class="title">UITextFieldDelegate</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">weak</span>) <span class="built_in">UITextField</span> *textField;</span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">weak</span>) <span class="built_in">UIView</span> *line;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">WDPersonMessageFooterCell</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@synthesize</span> isFirst = _isFirst;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)setupAll</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">self</span>.contentView.backgroundColor = WTHexColor(<span class="number">0xf2f2f2</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">UITextField</span> *textField = [[<span class="built_in">UITextField</span> alloc] init];</span><br><span class="line">    textField.backgroundColor = kWhiteColor;</span><br><span class="line">    [<span class="keyword">self</span>.contentView addSubview:textField];</span><br><span class="line">    textField.delegate = <span class="keyword">self</span>;</span><br><span class="line">    <span class="keyword">self</span>.textField = textField;</span><br><span class="line">    textField.layer.cornerRadius = <span class="number">3</span>;</span><br><span class="line">    textField.layer.masksToBounds = <span class="literal">YES</span>;</span><br><span class="line"></span><br><span class="line">    textField.returnKeyType = <span class="built_in">UIReturnKeySend</span>;</span><br><span class="line">    </span><br><span class="line">    [[<span class="built_in">NSNotificationCenter</span> defaultCenter] addObserver:<span class="keyword">self</span> selector:<span class="keyword">@selector</span>(messageState:) name:kMessageState object:<span class="literal">nil</span>];</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">UIView</span> *line = [[<span class="built_in">UIView</span> alloc] init];</span><br><span class="line">    line.backgroundColor = WTHexColor(<span class="number">0xdddddd</span>);</span><br><span class="line">    [<span class="keyword">self</span>.contentView addSubview:line];</span><br><span class="line">    <span class="keyword">self</span>.line = line;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)messageState:(<span class="built_in">NSNotification</span> *)noti</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">NSInteger</span> state = [[noti object] boolValue];</span><br><span class="line">    <span class="keyword">if</span> (state) &#123;</span><br><span class="line">        [<span class="keyword">self</span>.textField resignFirstResponder];</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">self</span>.resignFirstRes) &#123;</span><br><span class="line">            <span class="keyword">self</span>.resignFirstRes();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="built_in">BOOL</span>)textFieldShouldReturn:(<span class="built_in">UITextField</span> *)textField</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">self</span>.clickSenderText) &#123;</span><br><span class="line">        <span class="keyword">self</span>.clickSenderText(<span class="keyword">self</span>.textField.text);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">YES</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)setIsFirst:(<span class="built_in">BOOL</span>)isFirst</span><br><span class="line">&#123;</span><br><span class="line">    _isFirst = isFirst;</span><br><span class="line">    <span class="keyword">if</span> (isFirst) &#123;</span><br><span class="line">        [<span class="keyword">self</span>.textField becomeFirstResponder];</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        [<span class="keyword">self</span>.textField resignFirstResponder];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="built_in">BOOL</span>)isFirst</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> ([<span class="keyword">self</span>.textField isFirstResponder]) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">YES</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">NO</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)setSendSucceed:(<span class="built_in">BOOL</span>)sendSucceed</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">self</span>.textField.text = <span class="string">@""</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)layoutSubviews</span><br><span class="line">&#123;</span><br><span class="line">    [<span class="keyword">super</span> layoutSubviews];</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">CGFloat</span> padding = <span class="number">10</span>;</span><br><span class="line">    <span class="keyword">self</span>.textField.frame = <span class="built_in">CGRectMake</span>(padding, padding, <span class="keyword">self</span>.wt_width - padding * <span class="number">2</span>, <span class="keyword">self</span>.wt_height - padding * <span class="number">2</span>);</span><br><span class="line">    <span class="keyword">self</span>.line.frame = <span class="built_in">CGRectMake</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="keyword">self</span>.wt_width, <span class="number">.5</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+<p>消息cell</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  WDPersonMessageDetailCell.m</span></span><br><span class="line"><span class="comment">//  WestDevelopment</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by wangtao on 2017/6/23.</span></span><br><span class="line"><span class="comment">//  Copyright © 2017年 xikaijinfu. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#import <span class="meta-string">"WDPersonMessageDetailCell.h"</span></span></span><br><span class="line"><span class="meta">#import <span class="meta-string">"WDPersonMessageDetailModel.h"</span></span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">WDPersonMessageDetailCell</span> ()</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">weak</span>) <span class="built_in">UILabel</span> *time;</span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">weak</span>) <span class="built_in">UIImageView</span> *icon;</span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">weak</span>) <span class="built_in">UILabel</span> *detail;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">weak</span>) <span class="built_in">UIView</span> *baseView;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">WDPersonMessageDetailCell</span></span></span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)setupAll</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">self</span>.selectionStyle = <span class="built_in">UITableViewCellSelectionStyleNone</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">self</span>.backgroundColor = WTHexColor(<span class="number">0xeaeaea</span>);</span><br><span class="line">    <span class="keyword">self</span>.contentView.backgroundColor = WTHexColor(<span class="number">0xeaeaea</span>);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">UILabel</span> *time = [<span class="built_in">UILabel</span> labelWithText:<span class="string">@""</span></span><br><span class="line">                                 textColor:WTHexColor(<span class="number">0xaaaaaa</span>)</span><br><span class="line">                             textAlignment:<span class="built_in">NSTextAlignmentCenter</span></span><br><span class="line">                                      font:<span class="number">12</span></span><br><span class="line">                           backgroundColor:kClearColor];</span><br><span class="line">    [<span class="keyword">self</span>.contentView addSubview:time];</span><br><span class="line">    <span class="keyword">self</span>.time = time;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">UIImageView</span> *icon = [[<span class="built_in">UIImageView</span> alloc] init];</span><br><span class="line">    [<span class="keyword">self</span>.contentView addSubview:icon];</span><br><span class="line">    icon.image = [<span class="built_in">UIImage</span> imageNamed:kDefault];</span><br><span class="line">    <span class="keyword">self</span>.icon = icon;</span><br><span class="line">    <span class="keyword">self</span>.icon.layer.cornerRadius = <span class="number">35</span> / <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">self</span>.icon.layer.masksToBounds = <span class="literal">YES</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">UIView</span> *baseView = [[<span class="built_in">UIView</span> alloc] init];</span><br><span class="line">    [<span class="keyword">self</span>.contentView addSubview:baseView];</span><br><span class="line">    <span class="keyword">self</span>.baseView = baseView;</span><br><span class="line">    baseView.layer.masksToBounds = <span class="literal">YES</span>;</span><br><span class="line">    baseView.layer.cornerRadius = <span class="number">4</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">UILabel</span> *detail = [<span class="built_in">UILabel</span> labelWithText:<span class="string">@""</span></span><br><span class="line">                                   textColor:kBlackColor</span><br><span class="line">                               textAlignment:<span class="built_in">NSTextAlignmentLeft</span></span><br><span class="line">                                        font:<span class="number">13</span></span><br><span class="line">                             backgroundColor:kClearColor];</span><br><span class="line">    [baseView addSubview:detail];</span><br><span class="line">    <span class="keyword">self</span>.detail = detail;</span><br><span class="line">    detail.numberOfLines = <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)setModel:(WDPersonMessageDetailModel *)model</span><br><span class="line">&#123;</span><br><span class="line">    _model = model;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> ([model.isShow isEqualToString:<span class="string">@"1"</span>]) &#123;</span><br><span class="line">        <span class="keyword">self</span>.time.text = model.addTime;</span><br><span class="line">        <span class="keyword">self</span>.time.hidden = <span class="literal">NO</span>;</span><br><span class="line">        <span class="keyword">self</span>.time.frame = <span class="built_in">CGRectMake</span>(<span class="number">0</span>, <span class="number">0</span>, kMainScreenWidth, <span class="number">20</span>);</span><br><span class="line"></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">self</span>.time.text = <span class="string">@""</span>;</span><br><span class="line">        <span class="keyword">self</span>.time.hidden = <span class="literal">YES</span>;</span><br><span class="line">        <span class="keyword">self</span>.time.frame = <span class="built_in">CGRectZero</span>;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">self</span>.time.text = model.addTime;</span><br><span class="line">    [<span class="keyword">self</span>.icon wt_setImageWithUrlString:model.headImg placeholderString:<span class="string">@"me_icon"</span>];</span><br><span class="line">    <span class="keyword">self</span>.detail.text = model.comment;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> ([model.userId isEqualToString:[WTAccount shareAccount].uid]) &#123;</span><br><span class="line">        <span class="keyword">self</span>.detail.textColor = kBlackColor;</span><br><span class="line">        <span class="keyword">self</span>.baseView.backgroundColor = kWhiteColor;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">self</span>.icon.frame = <span class="built_in">CGRectMake</span>(kPadding, <span class="keyword">self</span>.time.wt_bottom + kPadding, <span class="number">35</span>, <span class="number">35</span>);</span><br><span class="line">        <span class="keyword">self</span>.baseView.frame = <span class="built_in">CGRectMake</span>(<span class="keyword">self</span>.icon.wt_right + kPadding, <span class="keyword">self</span>.icon.wt_top, model.commentW, model.commentH);</span><br><span class="line">        <span class="keyword">self</span>.detail.frame = <span class="built_in">CGRectMake</span>(kPadding, kPadding, model.commentW - kPadding * <span class="number">2</span>, model.commentH - kPadding * <span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">self</span>.detail.textColor = kWhiteColor;</span><br><span class="line">        <span class="keyword">self</span>.baseView.backgroundColor = kHomeColor;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">self</span>.icon.frame = <span class="built_in">CGRectMake</span>(kMainScreenWidth - <span class="number">35</span> - kPadding, <span class="keyword">self</span>.time.wt_bottom + kPadding, <span class="number">35</span>, <span class="number">35</span>);</span><br><span class="line">        <span class="keyword">self</span>.baseView.frame = <span class="built_in">CGRectMake</span>(<span class="keyword">self</span>.icon.wt_left - kPadding - model.commentW, <span class="keyword">self</span>.icon.wt_top, model.commentW, model.commentH);</span><br><span class="line">        <span class="keyword">self</span>.detail.frame = <span class="built_in">CGRectMake</span>(kPadding, kPadding, model.commentW - kPadding * <span class="number">2</span>, model.commentH - kPadding * <span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+<p>模型</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  WDPersonMessageDetailModel.m</span></span><br><span class="line"><span class="comment">//  WestDevelopment</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by wangtao on 2017/6/23.</span></span><br><span class="line"><span class="comment">//  Copyright © 2017年 xikaijinfu. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#import <span class="meta-string">"WDPersonMessageDetailModel.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">WDPersonMessageDetailModel</span></span></span><br><span class="line"></span><br><span class="line">- (<span class="built_in">CGFloat</span>)commentW</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (_commentW == <span class="number">0</span>) &#123;</span><br><span class="line">        _commentW = [<span class="keyword">self</span>.comment wt_calculateStringSizeWithFontOfSize:<span class="number">13</span> maxWidth:kMainScreenWidth / <span class="number">2</span>].width + <span class="number">20</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> _commentW;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="built_in">CGFloat</span>)commentH</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (_commentH == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="built_in">CGFloat</span> textH = [<span class="keyword">self</span>.comment wt_calculateStringSizeWithFontOfSize:<span class="number">13</span> maxWidth:kMainScreenWidth / <span class="number">2</span>].height;</span><br><span class="line">        <span class="comment">// 一行字体是15高，一行的情况就和头像一样高</span></span><br><span class="line">        _commentH = (textH &lt; <span class="number">20</span>) ? <span class="number">35</span> : (textH + <span class="number">20</span>);        </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> _commentH;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="built_in">CGFloat</span>)height</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (_height == <span class="number">0</span>) &#123;</span><br><span class="line">        _height = <span class="keyword">self</span>.commentH + <span class="number">20</span>;</span><br><span class="line">        <span class="keyword">if</span> ([<span class="keyword">self</span>.isShow isEqualToString:<span class="string">@"1"</span>]) &#123;</span><br><span class="line">            _height += <span class="number">20</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> _height;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://weibo.com/wangtaoworld/iOS/2018/03/21/iOS开发/iOS使用YYKit实现表情键盘.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wangtao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="wt">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/iOS/2018/03/21/iOS开发/iOS使用YYKit实现表情键盘.html" itemprop="url">iOS使用YYKit实现表情键盘</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-21T16:43:13+08:00">
+                2018-03-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>项目需求，APP发布内容的时候支持表情</p>
+<p><img src="https://github.com/wangtaoios/images/blob/master/%E9%A1%B9%E7%9B%AEDemo%E5%9B%BE%E7%89%87/fabu_0327.gif?raw=true" alt="效果"></p>
+<h5 id="需求："><a href="#需求：" class="headerlink" title="需求："></a>需求：</h5><p>点击键盘的表情按钮，比如[微笑]，在输入框显示🙂，发布成功到服务器时候，服务器存[微笑]；请求下来数据在APP展示的时候，仍然显示🙂。</p>
+<h5 id="原理："><a href="#原理：" class="headerlink" title="原理："></a>原理：</h5><p>点击键盘的表情按钮，比如[微笑]，此时将字符串[微笑]传到输入框，输入框使用YYTextView，设置YYTextView的textParser即可展示对应表情🙂。</p>
+<h5 id="关于textParser："><a href="#关于textParser：" class="headerlink" title="关于textParser："></a>关于textParser：</h5><figure class="highlight ocaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">YYTextSimpleEmoticonParser</span> *<span class="keyword">parser</span> = [<span class="type">YYTextSimpleEmoticonParser</span> <span class="keyword">new</span>];</span><br><span class="line"><span class="keyword">parser</span>.emoticonMapper = mapper;</span><br></pre></td></tr></table></figure>
+<p>在YYTextSimpleEmoticonParser发现<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@property</span> (<span class="keyword">nullable</span>, <span class="keyword">copy</span>) <span class="built_in">NSDictionary</span>&lt;<span class="built_in">NSString</span> *, __kindof <span class="built_in">UIImage</span> *&gt; *emoticonMapper;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<ul>
+<li>parser.emoticonMapper 是字典，其中键：NSString；值：UIImage。</li>
+<li>本地有个plist文件，也就是字典，其中键：NSString，表情的汉字版（如：[微笑]）；值：NSString，图片名字。</li>
+<li>那么由本地plis文件生成对应的parser.emoticonMapper字典就可以设置YYTextView的textParser。<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSMutableDictionary</span> *mapper = [<span class="built_in">NSMutableDictionary</span> new];</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; [WTUtils getEmoticonData].allKeys.count; i ++) &#123;</span><br><span class="line">    <span class="built_in">NSString</span> *valueString = [<span class="built_in">NSString</span> stringWithFormat:<span class="string">@"%.0f"</span>, ((<span class="built_in">CGFloat</span>)i)];</span><br><span class="line">    [mapper setObject:[<span class="keyword">self</span> imageWithName:valueString]</span><br><span class="line">               forKey:[[WTUtils getEmoticonData] allKeysForObject:valueString][<span class="number">0</span>]];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</blockquote>
+<h5 id="关于键盘的自定义："><a href="#关于键盘的自定义：" class="headerlink" title="关于键盘的自定义："></a>关于键盘的自定义：</h5><p>点击切换按钮的时候，来切换键盘<br><figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (_textView.inputView) &#123;</span><br><span class="line">    _textView.<span class="attr">inputView</span> = nil;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    WTEmoticonInputView *<span class="attr">emoticonInputView</span> = [[WTEmoticonInputView alloc] initWithFrame:CGRectMake(<span class="number">0</span>, <span class="number">0</span>, kMainScreenWidth, <span class="number">300</span>)];</span><br><span class="line">    emoticonInputView.<span class="attr">delegate</span> = self;</span><br><span class="line">    _textView.<span class="attr">inputView</span> = emoticonInputView;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>WTEmoticonInputView即为自定义的表情键盘页面，整体是个UIScrollView，每一页表情是一个UIView，根据表情数量将这些UIView放到UIScrollView。设置相应的代理，将点击的表情按钮对应的字符串传到_textView即可。</p>
+</blockquote>
+<blockquote>
+<p>同理，从服务器请求的数据，展示的时候，将YYTextView换为YYLabel，设置相应的textParser即可。</p>
+</blockquote>
+<p>最后附上github地址，如果你觉得好就点击喜欢一下，如果你觉得非常好就github star支持一下~</p>
+<p><a href="https://github.com/wangtaoios/WTEmoticonDemo" target="_blank" rel="noopener">WTEmoticonDemo</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://weibo.com/wangtaoworld/文档/2018/03/21/法律/最高人民法院之重要司法解释.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wangtao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="wt">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/文档/2018/03/21/法律/最高人民法院之重要司法解释.html" itemprop="url">中华人民共和国最高人民法院之重要司法解释</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-21T16:28:53+08:00">
+                2018-03-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/文档/" itemprop="url" rel="index">
+                    <span itemprop="name">文档</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h5 id="1：最高人民法院关于修改关于适用《中华人民共和国公司法》若干问题的规定的决定"><a href="#1：最高人民法院关于修改关于适用《中华人民共和国公司法》若干问题的规定的决定" class="headerlink" title="1：最高人民法院关于修改关于适用《中华人民共和国公司法》若干问题的规定的决定"></a>1：最高人民法院关于修改关于适用《中华人民共和国公司法》若干问题的规定的决定</h5><p>2014-02-27<br><a href="http://www.court.gov.cn/fabu-xiangqing-6135.html" target="_blank" rel="noopener">http://www.court.gov.cn/fabu-xiangqing-6135.html</a></p>
+<blockquote>
+<p>第十三条 股东未履行或者未全面履行出资义务，公司或者其他股东请求其向公司依法全面履行出资义务的，人民法院应予支持。<br>公司债权人请求未履行或者未全面履行出资义务的股东在未出资本息范围内对公司债务不能清偿的部分承担补充赔偿责任的，人民法院应予支持；未履行或者未全面履行出资义务的股东已经承担上述责任，其他债权人提出相同请求的，人民法院不予支持。<br>股东在公司设立时未履行或者未全面履行出资义务，依照本条第一款或者第二款提起诉讼的原告，请求公司的发起人与被告股东承担连带责任的，人民法院应予支持；公司的发起人承担责任后，可以向被告股东追偿。<br>股东在公司增资时未履行或者未全面履行出资义务，依照本条第一款或者第二款提起诉讼的原告，请求未尽公司法第一百四十七条第一款规定的义务而使出资未缴足的董事、高级管理人员承担相应责任的，人民法院应予支持；董事、高级管理人员承担责任后，可以向被告股东追偿。</p>
+</blockquote>
+<h5 id="2：最高人民法院关于民事执行中变更、追加当事人若干问题的规定"><a href="#2：最高人民法院关于民事执行中变更、追加当事人若干问题的规定" class="headerlink" title="2：最高人民法院关于民事执行中变更、追加当事人若干问题的规定"></a>2：最高人民法院关于民事执行中变更、追加当事人若干问题的规定</h5><p>2016-11-09<br><a href="http://www.court.gov.cn/fabu-xiangqing-30091.html" target="_blank" rel="noopener">http://www.court.gov.cn/fabu-xiangqing-30091.html</a></p>
+<blockquote>
+<p>　　  第十七条作为被执行人的企业法人，财产不足以清偿生效法律文书确定的债务，申请执行人申请变更、追加未缴纳或未足额缴纳出资的股东、出资人或依公司法规定对该出资承担连带责任的发起人为被执行人，在尚未缴纳出资的范围内依法承担责任的，人民法院应予支持。<br>　　第十八条作为被执行人的企业法人，财产不足以清偿生效法律文书确定的债务，申请执行人申请变更、追加抽逃出资的股东、出资人为被执行人，在抽逃出资的范围内承担责任的，人民法院应予支持。<br>　　第十九条作为被执行人的公司，财产不足以清偿生效法律文书确定的债务，其股东未依法履行出资义务即转让股权，申请执行人申请变更、追加该原股东或依公司法规定对该出资承担连带责任的发起人为被执行人，在未依法出资的范围内承担责任的，人民法院应予支持。<br>　　第二十条作为被执行人的一人有限责任公司，财产不足以清偿生效法律文书确定的债务，股东不能证明公司财产独立于自己的财产，申请执行人申请变更、追加该股东为被执行人，对公司债务承担连带责任的，人民法院应予支持。<br>　　第二十一条作为被执行人的公司，未经清算即办理注销登记，导致公司无法进行清算，申请执行人申请变更、追加有限责任公司的股东、股份有限公司的董事和控股股东为被执行人，对公司债务承担连带清偿责任的，人民法院应予支持。<br>　　第二十二条作为被执行人的法人或其他组织，被注销或出现被吊销营业执照、被撤销、被责令关闭、歇业等解散事由后，其股东、出资人或主管部门无偿接受其财产，致使该被执行人无遗留财产或遗留财产不足以清偿债务，申请执行人申请变更、追加该股东、出资人或主管部门为被执行人，在接受的财产范围内承担责任的，人民法院应予支持。准许。<br>　　第三十二条被申请人或申请人对执行法院依据本规定第十四条第二款、第十七条至第二十一条规定作出的变更、追加裁定或驳回申请裁定不服的，可以自裁定书送达之日起十五日内，向执行法院提起执行异议之诉。<br>　　被申请人提起执行异议之诉的，以申请人为被告。申请人提起执行异议之诉的，以被申请人为被告。</p>
+</blockquote>
+<h5 id="3：最高人民法院关于人民法院执行工作若干问题的规定-试行"><a href="#3：最高人民法院关于人民法院执行工作若干问题的规定-试行" class="headerlink" title="3：最高人民法院关于人民法院执行工作若干问题的规定(试行)"></a>3：最高人民法院关于人民法院执行工作若干问题的规定(试行)</h5><p>1998年6月11日<br><a href="http://www.yaancourt.gov.cn/html/2015/10158.html" target="_blank" rel="noopener">http://www.yaancourt.gov.cn/html/2015/10158.html</a></p>
+<blockquote>
+<p>80．被执行人无财产清偿债务，如果其开办单位对其开办时投入的注 册资金不实或抽逃注册资金，可以裁定变更或追加其开办单位为被执行人 ，在注册资金不实或抽逃注册资金的范围内，对申请执行人承担责任。</p>
+</blockquote>
+<h5 id="4：中华人民共和国公司法"><a href="#4：中华人民共和国公司法" class="headerlink" title="4：中华人民共和国公司法"></a>4：中华人民共和国公司法</h5><p>2014年03月01日<br><a href="http://www.saic.gov.cn/zw/zcfg/fl/201402/t20140227_215555.html" target="_blank" rel="noopener">http://www.saic.gov.cn/zw/zcfg/fl/201402/t20140227_215555.html</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://weibo.com/wangtaoworld/iOS/2018/03/20/Mac/重装Mac系统.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -465,6 +944,148 @@
 <p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
 <h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://weibo.com/wangtaoworld/iOS/2015/11/16/iOS开发/开篇-First blood.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wangtao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="wt">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/iOS/2015/11/16/iOS开发/开篇-First blood.html" itemprop="url">开篇-First blood</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-11-16T15:15:09+08:00">
+                2015-11-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在iOS行业这两年来，参考过不计其数的前辈的技术博客，觉得分享是快乐的，分享是互赢的，现在开始书写自己的博客，也是整理自己的技术，也是分享一下，更希望可以和更多的技术人员交流，共同成长。本人邮箱：<a href="mailto:**wangtaoios@163.com" target="_blank" rel="noopener">**wangtaoios@163.com</a>**，欢迎调戏。</p>
 
           
         
@@ -1484,676 +2105,6 @@ http://code4app.com/
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://weibo.com/wangtaoworld/iOS/2014/11/06/iOS开发/xcode更换版本经验.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wangtao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="wt">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/iOS/2014/11/06/iOS开发/xcode更换版本经验.html" itemprop="url">Xcode更换版本经验</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-11-06T14:33:30+08:00">
-                2014-11-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>####Xcode更换版本经验</p>
-<p>####在iMac上安装软件时，可以直接在其他电脑上，将Finder中的应用程序，拷贝到自己电脑的应用程序中，进行安装。但是，这对于小型的软件还行，像Xcode这种软件不可以，一般情况下，不建议此方法。须下载dmg格式的文件安装。</p>
-<p>####【1】 删除软件。</p>
-<p>######1.1 在应用程序中，将Xcode移到废纸篓。</p>
-<p>######1.2 在Dock中将Xcode和iOS模拟器移除。</p>
-<p>######1.3 进入/Users/qingyun/Library/Application Support，将iPhone Simulator删除。</p>
-<p>######1.4 进入/Users/qingyun/Library/Developer，将Xcode删除（如果有2个Xcode，都要删掉）。</p>
-<p>####*1.5 可在Spotlight检查是否还有未删除的Xcode程序文件，一定要做这个步骤。</p>
-<p>######1.6 清倒废纸篓。</p>
-<p>####【2】 下载软件</p>
-<p>######如果安装最新的版本，在AppStore上面下载，其它版本只能自己搜，这里分享一种<a href="http://pan.baidu.com/s/1hqra42w" target="_blank" rel="noopener">Xcode Version 5.1.1 (5B1008)</a>，2.13G，就是我们现在用的版本，此文件为dmg格式，将文件拖动到应用程序中即可安装。</p>
-<p>####【3】 其它</p>
-<h6 id="如果安装有问题，可以在删除软件后和安装之后两个时刻，分别先关机在开机（据说与重启有一定区别）。删除软件时，可进入到资源库中删除，咱们老师一直是在shell中操作，所以作为未来的大牛，大家就多用shell吧。"><a href="#如果安装有问题，可以在删除软件后和安装之后两个时刻，分别先关机在开机（据说与重启有一定区别）。删除软件时，可进入到资源库中删除，咱们老师一直是在shell中操作，所以作为未来的大牛，大家就多用shell吧。" class="headerlink" title="如果安装有问题，可以在删除软件后和安装之后两个时刻，分别先关机在开机（据说与重启有一定区别）。删除软件时，可进入到资源库中删除，咱们老师一直是在shell中操作，所以作为未来的大牛，大家就多用shell吧。"></a>如果安装有问题，可以在删除软件后和安装之后两个时刻，分别先关机在开机（据说与重启有一定区别）。删除软件时，可进入到资源库中删除，咱们老师一直是在shell中操作，所以作为未来的大牛，大家就多用shell吧。</h6>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://weibo.com/wangtaoworld/iOS/2014/10/20/Mac/苹果电脑快捷键.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wangtao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="wt">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/iOS/2014/10/20/Mac/苹果电脑快捷键.html" itemprop="url">苹果电脑快捷键</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-10-20T19:06:05+08:00">
-                2014-10-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Base-Key"><a href="#Base-Key" class="headerlink" title="Base Key"></a>Base Key</h2><p>command + c : 复制选中的内容</p>
-<p>command + v : 粘贴已复制的内容</p>
-<p>command + X : 剪贴已选中的内容</p>
-<p>command + z : 撤销最近一次执行放入操作</p>
-<p>command + / : 选中多行，一次注释多行</p>
-<h2 id="Move-Key"><a href="#Move-Key" class="headerlink" title="Move Key"></a>Move Key</h2><p>ctrl + a : 移动光标到行首</p>
-<p>ctrl + e : 移动光标到行尾</p>
-<p>ctrl + p : 向上移动光标</p>
-<p>ctrl + n : 向下移动光标</p>
-<p>ctrl + b : 向左按字符移动光标</p>
-<p>ctrl + f : 向右按字符移动光标</p>
-<p>ctrl + option + b :  向左按符移动光标</p>
-<p>ctrl + option + f :  向右按符移动光标</p>
-<h2 id="Select-Key"><a href="#Select-Key" class="headerlink" title="Select Key"></a>Select Key</h2><p>ctrl + shift + b : 从光标处向左按字符选中</p>
-<p>ctrl + shift + f : 从光标处向右按字符选中</p>
-<p>ctrl + shift + p : 从光标处向上按行选中</p>
-<p>ctrl + shift + n : 从光标处按行向上选中</p>
-<h2 id="Delete-Key"><a href="#Delete-Key" class="headerlink" title="Delete Key"></a>Delete Key</h2><p>ctrl + d : 删除贯标右边的字符，按字符删除</p>
-<p>ctrl + h : 删除贯标左边的字符，按字符删除</p>
-<p>ctrl + k : 删除光标所在位置之后的所有内容</p>
-<h2 id="Key-–-XCode"><a href="#Key-–-XCode" class="headerlink" title="Key – XCode"></a>Key – XCode</h2><p>command + shift + 0 :  打开官方文档</p>
-<p>command + shift + n : 创建一个工程</p>
-<p>commanf + n : 创建一个类、协议、类别、累扩展等</p>
-<p>command + b : 编译代码</p>
-<p>command + r : 运行生成的代码</p>
-<p>command + shift + k : 清空XCode之前的编译</p>
-<p>command + shift + -&gt;/&lt;-;(左方向键) : 切换页面</p>
-<p>commang + f : 在官方文档中调出搜索栏</p>
-<p>comand + option + enter : 分栏</p>
-<p>command + enter  : 回到一栏</p>
-<p>command + ctrl +左右键 : 不同页面的切换</p>
-<p>shift + tab : 选中上一个</p>
-<p>tab : 选中下一个</p>
-<h2 id="other-key"><a href="#other-key" class="headerlink" title="other key"></a>other key</h2><p>command + ctrl + f  : 切换当前应用程序界面的大小，同时将桌面背景消失，只显示当前应用程序</p>
-<p>command + option + “+” : vim终端界面的大小切换 </p>
-<p>ctrl + 左右键 : 桌面快速切换</p>
-<p>ctrl + 上键 : 已开应用程序，分布呈现在当前桌面</p>
-<p>ctrl + 下键 : 呈现当前应用程序已开启的所有窗口，以及使用当前应用程序开启的历史文件</p>
-<p>command + tab : 快速向后选择桌面已开启的应用程序</p>
-<p>command + tab + shift : 快速向前选择桌面已开启的应用程序</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://weibo.com/wangtaoworld/iOS/2014/10/15/iOS开发/vimtutor.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wangtao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="wt">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/iOS/2014/10/15/iOS开发/vimtutor.html" itemprop="url">vim教程</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-10-15T10:40:30+08:00">
-                2014-10-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>===============================================================================</p>
-<h1 id="歡-迎-閱-讀-《-V-I-M-教-程-》-──-版本-1-5"><a href="#歡-迎-閱-讀-《-V-I-M-教-程-》-──-版本-1-5" class="headerlink" title="=      歡     迎     閱     讀   《 V I M  教  程 》   ──     版本 1.5      ="></a>=      歡     迎     閱     讀   《 V I M  教  程 》   ──     版本 1.5      =</h1><pre><code>vim 是一個具有很多命令的功能非常強大的編輯器。限于篇幅，在本教程當中
-不就詳細介紹了。本教程的設計目標是講述一些必要的基本命令，而掌握好這
-些命令，您就能夠很容易將vim當作一個通用的萬能編輯器來使用了。
-
-完成本教程的內容大約需要25-30分鐘，取決于您訓練的時間。
-
-每一節的命令操作將會更改本文。推薦您復制本文的一個副本，然後在副本上
-進行訓練(如果您是通過&quot;vimtutor&quot;來啟動教程的，那麼本文就已經是副本了)。
-
-切記一點︰本教程的設計思路是在使用中進行學習的。也就是說，您需要通過
-執行命令來學習它們本身的正確用法。如果您只是閱讀而不操作，那麼您可能
-會很快遺忘這些命令的！
-
-好了，現在請確定您的Shift-Lock(大小寫鎖定鍵)還沒有按下，然後按鍵盤上
-的字母鍵 j 足夠多的次數來移動光標，直到第一節的內容能夠完全充滿屏幕。
-</code></pre><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">			       第一講小結</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="number">1</span>. 光標在屏幕文本中的移動既可以用箭頭鍵，也可以使用 hjkl 字母鍵。</span><br><span class="line">	 h (左移)	<span class="keyword">j</span> (下行)       <span class="keyword">k</span> (上行)	    <span class="keyword">l</span> (右移)</span><br><span class="line"></span><br><span class="line">  <span class="number">2</span>. 欲進入<span class="keyword">vim</span>編輯器(從命令行提示符)，請輸入︰<span class="keyword">vim</span> 文件名 &lt;回車&gt;</span><br><span class="line"></span><br><span class="line">  <span class="number">3</span>. 欲退出<span class="keyword">vim</span>編輯器，請輸入以下命令放棄所有修改︰</span><br><span class="line"></span><br><span class="line">	<span class="symbol">&lt;ESC&gt;</span>   :q!	 &lt;回車&gt;</span><br><span class="line"></span><br><span class="line">     或者輸入以下命令保存所有修改︰</span><br><span class="line"></span><br><span class="line">	<span class="symbol">&lt;ESC&gt;</span>   :<span class="keyword">wq</span>	 &lt;回車&gt;</span><br><span class="line"></span><br><span class="line">  <span class="number">4</span>. 在正常模式下刪除光標所在位置的字符，請按︰ <span class="keyword">x</span></span><br><span class="line"></span><br><span class="line">  <span class="number">5</span>. 在正常模式下要在光標所在位置開始插入文本，請按︰</span><br><span class="line"></span><br><span class="line">	 i     輸入必要文本	<span class="symbol">&lt;ESC&gt;</span></span><br><span class="line"></span><br><span class="line">特別提示︰按下 <span class="symbol">&lt;ESC&gt;</span> 鍵會帶您回到正常模式或者取消一個不期望或者部分完成</span><br><span class="line">的命令。</span><br><span class="line"></span><br><span class="line">好了，第一講到此結束。下面接下來繼續第二講的內容。</span><br></pre></td></tr></table></figure>
-<pre><code>第二講小結
-</code></pre><ol>
-<li><p>欲從當前光標刪除至單字/單詞末尾，請輸入︰dw</p>
-</li>
-<li><p>欲從當前光標刪除至當前行末尾，請輸入︰d$</p>
-</li>
-<li><p>欲刪除整行，請輸入︰dd</p>
-</li>
-<li><p>在正常模式下一個命令的格式是︰</p>
-<p>  [number]   command   object     或者     command    [number]   object<br>其意是︰<br>  number - 代表的是命令執行的次數<br>  command - 代表要做的事情，比如 d 代表刪除<br>  object - 代表要操作的對象，比如 w 代表單字/單詞，$ 代表到行末等等。<br>   $ (to the end of line), etc.</p>
-</li>
-<li><p>欲撤消以前的操作，請輸入︰u (小寫的u)<br>欲撤消在一行中所做的改動，請輸入︰U (大寫的U)<br>欲撤消以前的撤消命令，恢復以前的操作結果，請輸入︰CTRL-R</p>
-</li>
-</ol>
-<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">			       第三講小結</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="number">1.</span> 要重新置入已經刪除的文本內容，請輸入小寫字母 p。該操作可以將已刪除</span><br><span class="line">     的文本內容置于光標之後。如果最後一次刪除的是一個整行，那麼該行將置</span><br><span class="line">     于當前光標所在行的下一行。</span><br><span class="line"></span><br><span class="line">  <span class="number">2.</span> 要替換光標所在位置的字符，請輸入小寫的 r 和要替換掉原位置字符的新字</span><br><span class="line">     符即可。</span><br><span class="line"></span><br><span class="line">  <span class="number">3.</span> 更改類命令允許您改變指定的對象，從當前光標所在位置直到對象的末尾。</span><br><span class="line">     比如輸入 cw 可以替換當前光標到單詞的末尾的內容；輸入 c$ 可以替換當</span><br><span class="line">     前光標到行末的內容。</span><br><span class="line"></span><br><span class="line">  <span class="number">4.</span> 更改類命令的格式是︰</span><br><span class="line"></span><br><span class="line">	 [number]   c	object	      或者	c   [number]   object</span><br><span class="line"></span><br><span class="line">下面我們繼續學習下一講。</span><br></pre></td></tr></table></figure>
-<pre><code>第四講小結
-</code></pre><ol>
-<li><p>Ctrl-g 用于顯示當前光標所在位置和文件狀態信息。Shift-G 用于將光標跳<br>轉至文件最後一行。先敲入一個行號然後按 Shift-G 則是將光標移動至該行<br>號代表的行。</p>
-</li>
-<li><p>輸入 / 然後緊隨一個字符串是則是在當前所編輯的文檔中向後查找該字符串。<br>輸入問號 ? 然後緊隨一個字符串是則是在當前所編輯的文檔中向前查找該字<br>符串。完成一次查找之後按 n 鍵則是重復上一次的命令，可在同一方向上查<br>找下一個字符串所在；或者按 Shift-N 向相反方向查找下該字符串所在。</p>
-</li>
-<li><p>如果光標當前位置是括號(、)、[、]、{、}，按 % 可以將光標移動到配對的<br>括號上。</p>
-</li>
-<li><p>在一行內替換頭一個字符串 old 為新的字符串 new，請輸入  :s/old/new<br>在一行內替換所有的字符串 old 為新的字符串 new，請輸入  :s/old/new/g<br>在兩行內替換所有的字符串 old 為新的字符串 new，請輸入  :#,#s/old/new/g<br>在文件內替換所有的字符串 old 為新的字符串 new，請輸入  :%s/old/new/g<br>進行全文替換時詢問用戶確認每個替換需添加 c 選項，請輸入 :%s/old/new/gc</p>
-</li>
-</ol>
-<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">	       第五講小結</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="number">1.</span> :!command 用于執行一個外部命令 command。</span><br><span class="line"></span><br><span class="line">   請看一些實際例子︰</span><br><span class="line">:!dir		-  用于顯示當前目錄的內容。</span><br><span class="line">:!rm FILENAME	-  用于刪除名為 FILENAME 的文件。</span><br><span class="line"></span><br><span class="line"><span class="number">2.</span> :w FILENAME  可將當前 VIM 中正在編輯的文件保存到名為 FILENAME</span><br><span class="line">   的文件中。</span><br><span class="line"></span><br><span class="line"><span class="number">3.</span> :#,#w FILENAME 可將當前編輯文件第 # 行至第 # 行的內容保存到文件</span><br><span class="line">   FILENAME 中。</span><br><span class="line"></span><br><span class="line"><span class="number">4.</span> :r FILENAME 可提取磁盤文件 FILENAME 並將其插入到當前文件的光標位置</span><br><span class="line">   後面。</span><br></pre></td></tr></table></figure>
-<pre><code>第六講小結
-</code></pre><ol>
-<li><p>輸入小寫的 o 可以在光標下方打開新的一行並將光標置于新開的行首，進入<br>插入模式。<br>輸入大寫的 O 可以在光標上方打開新的一行並將光標置于新開的行首，進入<br>插入模式。</p>
-</li>
-<li><p>輸入小寫的 a 可以在光標所在位置之後插入文本。<br>輸入大寫的 A 可以在光標所在行的行末之後插入文本。</p>
-</li>
-<li><p>輸入大寫的 R 將進入替換模式，直至按 <esc> 鍵退出替換模式而進入正常<br>模式。</esc></p>
-</li>
-<li><p>輸入 :set xxx 可以設置 xxx 選項。</p>
-</li>
-</ol>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">	       第七講︰在線幫助命令</span><br><span class="line"></span><br><span class="line">	      ** 使用在線幫助系統 **</span><br><span class="line"></span><br><span class="line"> Vim 擁有一個細致全面的在線幫助系統。要啟動該幫助系統，請選擇如下三種方</span><br><span class="line"> 法之一︰</span><br><span class="line">- 按下 <span class="symbol">&lt;HELP&gt;</span> 鍵 (如果鍵盤上有的話)</span><br><span class="line">- 按下 <span class="symbol">&lt;F1&gt;</span> 鍵 (如果鍵盤上有的話)</span><br><span class="line">- 輸入	:<span class="keyword">help</span> &lt;回車&gt;</span><br><span class="line"></span><br><span class="line"> 輸入 :q &lt;回車&gt; 可以關閉幫助窗口。</span><br><span class="line"></span><br><span class="line"> 提供一個正確的參數給<span class="string">":help"</span>命令，您可以找到關于該主題的幫助。請試驗以</span><br><span class="line"> 下參數(可別忘了按回車鍵哦。:)︰</span><br><span class="line"></span><br><span class="line">  :<span class="keyword">help</span> <span class="keyword">w</span> &lt;回車&gt;</span><br><span class="line">  :<span class="keyword">help</span> c_&lt;T &lt;回車&gt;</span><br><span class="line">  :<span class="keyword">help</span> <span class="keyword">insert</span>-<span class="built_in">index</span> &lt;回車&gt;</span><br><span class="line">  :<span class="keyword">help</span> user-manual &lt;回車&gt;</span><br></pre></td></tr></table></figure>
-<pre><code> 第八講︰創建一個啟動腳本
-
-** 啟用vim的功能 **
-</code></pre><p>  Vim的功能特性要比vi多得多，但大部分功能都沒有缺省激活。為了啟動更多的<br>  功能，您得創建一個vimrc文件。</p>
-<ol>
-<li><p>開始編輯vimrc文件，這取決于您所使用的操作系統︰</p>
-<p>:edit ~/.vimrc        這是Unix系統所使用的命令<br>:edit $VIM/_vimrc        這是Windows系統所使用的命令</p>
-</li>
-<li><p>接著導入vimrc范例文件︰</p>
-<p>:read $VIMRUNTIME/vimrc_example.vim</p>
-</li>
-<li><p>保存文件，命令為︰</p>
-<p>:write</p>
-<p>在下次您啟動vim的時候，編輯器就會有了語法高亮的功能。您可以繼續把您喜<br>歡的其它功能設置添加到這個vimrc文件中。</p>
-</li>
-</ol>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"> <span class="attribute">vim</span> 教程到此結束。本教程只是為了簡明地介紹一下vim編輯器，但已足以讓您</span><br><span class="line"> 很容易學會使用本編輯器了。毋庸質疑，vim還有很多很多的命令，本教程所介</span><br><span class="line"> 紹的還差得遠著呢。所以您要精通的話，還望繼續努力哦。下一步您可以閱讀</span><br><span class="line"> vim手冊，使用的命令是︰</span><br><span class="line">:help user-manual</span><br><span class="line"></span><br><span class="line"> 為了更進一步的參考和學習，以下這本書值得推薦︰</span><br><span class="line"></span><br><span class="line">Vim - Vi Improved - 作者︰Steve Oualline</span><br><span class="line">出版社︰New Riders</span><br><span class="line"></span><br><span class="line"> 這是第一本完全講解vim的書籍。對于初學者特別有用。其中還包含有大量實例</span><br><span class="line"> 和圖示。欲知詳情，請訪問 http://iccf-holland.org/click5.html</span><br><span class="line"></span><br><span class="line"> 以下這本書比較老了而且內容主要是vi而不是vim，但是也值得推薦︰</span><br><span class="line"></span><br><span class="line">Learning the Vi Editor - 作者︰Linda Lamb</span><br><span class="line">出版社︰O<span class="string">'Reilly &amp; Associates Inc.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"> 這是一本不錯的書，通過它您幾乎能夠了解到全部vi能夠做到的事情。此書的第</span></span><br><span class="line"><span class="string"> 六個版本也包含了一些關于vim的信息。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"> 本教程是由來自Calorado School of Minese的Michael C. Pierce、Robert K.</span></span><br><span class="line"><span class="string"> Ware 所編寫的，其中來自Colorado State University的Charles Smith提供了</span></span><br><span class="line"><span class="string"> 很多創意。編者通信地址是︰</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">bware<span class="variable">@mines</span>.colorado.edu</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"> 本教程已由Bram Moolenaar專為vim進行修訂。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"> 譯制者附言︰</span></span><br><span class="line"><span class="string"> ===========</span></span><br><span class="line"><span class="string">     簡體中文教程翻譯版之譯制者為梁昌泰 &lt;beos<span class="variable">@turbolinux</span>.com.cn&gt;，還有</span></span><br><span class="line"><span class="string">     另外一個聯系地址︰linuxrat<span class="variable">@gnuchina</span>.org。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">     繁體中文教程是從簡體中文教程翻譯版使用 Debian GNU/Linux 中文項目小</span></span><br><span class="line"><span class="string">     組的于廣輝先生編寫的中文漢字轉碼器  autoconvert 轉換而成的，並對轉</span></span><br><span class="line"><span class="string">     換的結果做了一些細節的改動。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"> 變更記錄︰</span></span><br><span class="line"><span class="string"> =========</span></span><br><span class="line"><span class="string">     2002年08月30日 梁昌泰 &lt;beos<span class="variable">@turbolinux</span>.com.cn&gt;</span></span><br><span class="line"><span class="string">     感謝 RMS<span class="variable">@SMTH</span> 的指正，將多處錯誤修正。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">     2002年04月22日 梁昌泰 &lt;linuxrat<span class="variable">@gnuchina</span>.org&gt;</span></span><br><span class="line"><span class="string">     感謝 xuandong<span class="variable">@sh163</span>.net 的指正，將兩處錯別字修正。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">     2002年03月18日 梁昌泰 &lt;linuxrat<span class="variable">@gnuchina</span>.org&gt;</span></span><br><span class="line"><span class="string">     根據Bram Molenaar先生在2002年03月16日的來信要求，將vimtutor1.4中譯</span></span><br><span class="line"><span class="string">     版升級到vimtutor1.5。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">     2001年11月15日 梁昌泰 &lt;linuxrat<span class="variable">@gnuchina</span>.org&gt;</span></span><br><span class="line"><span class="string">     將vimtutor1.4中譯版提交給Bram Molenaar和Sven Guckes。</span></span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://weibo.com/wangtaoworld/uncategorized/2014/10/04/上传第二个文件.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wangtao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="wt">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/uncategorized/2014/10/04/上传第二个文件.html" itemprop="url">上传第二个文件</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-10-04T12:56:17+08:00">
-                2014-10-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>我刚吃完饭，回来上课拉，哈哈哈</p>
-<p>嘿嘿嘿</p>
-<p>呵呵呵</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2204,7 +2155,7 @@ http://code4app.com/
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-count">35</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2226,7 +2177,7 @@ http://code4app.com/
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
