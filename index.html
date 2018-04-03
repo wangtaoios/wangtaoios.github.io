@@ -1520,6 +1520,170 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://weibo.com/wangtaoworld/iOS/2018/03/30/iOS开发/iOS_identifierForVendor_UUID_供应商标识[biāo zhì]符_通用唯一识别码.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wangtao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="wt">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/iOS/2018/03/30/iOS开发/iOS_identifierForVendor_UUID_供应商标识[biāo zhì]符_通用唯一识别码.html" itemprop="url">iOS_identifierForVendor_UUID_供应商标识[biāo zhì]符_通用唯一识别码</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-30T15:52:05+08:00">
+                2018-03-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>使用方式</p>
+<pre><code>NSString *deviceUUID = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
+</code></pre><blockquote>
+<p>An alphanumeric string that uniquely identifies a device to the app’s vendor. (read-only)</p>
+</blockquote>
+<p>用于唯一标示设备的字母数字字符串，每一个供应商都不同呀</p>
+<p>Declaration</p>
+<blockquote>
+<p>@property(nonatomic, readonly, strong) NSUUID *identifierForVendor</p>
+</blockquote>
+<p>Discussion</p>
+<blockquote>
+<p>The value of this property is the same for apps that come from the same vendor running on the same device. A different value is returned for apps on the same device that come from different vendors, and for apps on different devices regardless of vendor.</p>
+</blockquote>
+<p>对于运行于同一个设备，并且来自同一个供应商的所有App，这个值都是相同的。对于一个设备上来自不同供应商的app，这个值不同；不同设备的app，无论供应商相同与否，这个值都不同。</p>
+<blockquote>
+<p>If the value is nil, wait and get the value again later. This happens, for example, after the device has been restarted but before the user has unlocked the device.</p>
+</blockquote>
+<p>如果此值为空，等一会再去获取。用户锁定设备后，再重启设备，此时获取为空，需要解锁。</p>
+<blockquote>
+<p>The value in this property remains the same while the app (or another app from the same vendor) is installed on the iOS device. The value changes when the user deletes all of that vendor’s apps from the device and subsequently reinstalls one or more of them. </p>
+</blockquote>
+<p>当在设备上安装来自同一个供应商的不同App时，此值保持不变。如果你删除了来自某个供应商的所有app，再重新安装时，此值会改变。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://weibo.com/wangtaoworld/iOS/2018/03/30/iOS开发/iOS导出xls.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1657,170 +1821,6 @@
 <blockquote>
 <p>提示</p>
 </blockquote>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://weibo.com/wangtaoworld/iOS/2018/03/30/iOS开发/iOS_identifierForVendor_UUID_供应商标识[biāo zhì]符_通用唯一识别码.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wangtao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="wt">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/iOS/2018/03/30/iOS开发/iOS_identifierForVendor_UUID_供应商标识[biāo zhì]符_通用唯一识别码.html" itemprop="url">iOS_identifierForVendor_UUID_供应商标识[biāo zhì]符_通用唯一识别码</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-30T15:52:05+08:00">
-                2018-03-30
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>使用方式</p>
-<pre><code>NSString *deviceUUID = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
-</code></pre><blockquote>
-<p>An alphanumeric string that uniquely identifies a device to the app’s vendor. (read-only)</p>
-</blockquote>
-<p>用于唯一标示设备的字母数字字符串，每一个供应商都不同呀</p>
-<p>Declaration</p>
-<blockquote>
-<p>@property(nonatomic, readonly, strong) NSUUID *identifierForVendor</p>
-</blockquote>
-<p>Discussion</p>
-<blockquote>
-<p>The value of this property is the same for apps that come from the same vendor running on the same device. A different value is returned for apps on the same device that come from different vendors, and for apps on different devices regardless of vendor.</p>
-</blockquote>
-<p>对于运行于同一个设备，并且来自同一个供应商的所有App，这个值都是相同的。对于一个设备上来自不同供应商的app，这个值不同；不同设备的app，无论供应商相同与否，这个值都不同。</p>
-<blockquote>
-<p>If the value is nil, wait and get the value again later. This happens, for example, after the device has been restarted but before the user has unlocked the device.</p>
-</blockquote>
-<p>如果此值为空，等一会再去获取。用户锁定设备后，再重启设备，此时获取为空，需要解锁。</p>
-<blockquote>
-<p>The value in this property remains the same while the app (or another app from the same vendor) is installed on the iOS device. The value changes when the user deletes all of that vendor’s apps from the device and subsequently reinstalls one or more of them. </p>
-</blockquote>
-<p>当在设备上安装来自同一个供应商的不同App时，此值保持不变。如果你删除了来自某个供应商的所有app，再重新安装时，此值会改变。</p>
 
           
         
