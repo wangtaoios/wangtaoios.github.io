@@ -234,6 +234,160 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://weibo.com/wangtaoworld/iOS/2018/03/21/iOS开发/iOS细节大杂烩.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wangtao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="wt">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/iOS/2018/03/21/iOS开发/iOS细节大杂烩.html" itemprop="url">iOS细节大杂烩</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-21T17:43:47+08:00">
+                2018-03-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong><em>1：关于UIWebView</em></strong></p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">UIWebView的下面有黑线，iPhone7plus没有，iPhone6和iPhone6plus有，加上</span><br><span class="line">    webView.<span class="keyword">backgroundColor </span>= [UIColor clearColor]<span class="comment">;</span></span><br><span class="line">    webView.opaque = NO<span class="comment">;</span></span><br><span class="line">解决</span><br><span class="line"></span><br><span class="line">不检测网页上的任何内容</span><br><span class="line">    webView.dataDetectorTypes = UIDataDetectorTypeNone<span class="comment">;</span></span><br></pre></td></tr></table></figure>
+<p><strong><em>2：关于UICollectionReusableView</em></strong></p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="built_in">UICollectionReusableView</span> *)collectionView:(<span class="built_in">UICollectionView</span> *)collectionView viewForSupplementaryElementOfKind:(<span class="built_in">NSString</span> *)kind atIndexPath:(<span class="built_in">NSIndexPath</span> *)indexPath</span><br><span class="line">如果对应的 section 不需要页眉和页脚，就返回<span class="literal">nil</span>，但一定在</span><br><span class="line">- (<span class="built_in">CGSize</span>)collectionView:(<span class="built_in">UICollectionView</span> *)collectionView layout:(<span class="built_in">UICollectionViewLayout</span> *)collectionViewLayout referenceSizeForHeaderInSection:(<span class="built_in">NSInteger</span>)section</span><br><span class="line">和</span><br><span class="line">- (<span class="built_in">CGSize</span>)collectionView:(<span class="built_in">UICollectionView</span> *)collectionView layout:(<span class="built_in">UICollectionViewLayout</span> *)collectionViewLayout referenceSizeForFooterInSection:(<span class="built_in">NSInteger</span>)section</span><br><span class="line">对应的 section </span><br><span class="line"> <span class="keyword">return</span> <span class="built_in">CGSizeZero</span></span><br><span class="line">否则 crash</span><br></pre></td></tr></table></figure>
+<p><strong><em>3：关于UICollectionView</em></strong></p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">self</span>.collectionView.alwaysBounceVertical = <span class="literal">YES</span>;</span><br><span class="line">即使<span class="built_in">UICollectionView</span>没有超过一屏，仍可弹性滑动</span><br></pre></td></tr></table></figure>
+<p><strong><em>4：关于YYLabel</em></strong></p>
+<p><a href="https://github.com/ibireme/YYText/issues/529" target="_blank" rel="noopener">https://github.com/ibireme/YYText/issues/529</a></p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">使用YYLabel的<span class="keyword">BUG，行间距变小</span></span><br><span class="line"><span class="keyword">左侧UILabel，右侧YYLabel</span></span><br><span class="line"><span class="keyword">换用TTTAttributedLabel仍有相同问题</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://github.com/wangtaoios/images/blob/master/%E9%A1%B9%E7%9B%AEDemo%E5%9B%BE%E7%89%87/YYLabel_BUG_0327.png?raw=true" alt="对比"></p>
+<p><strong><em>5：关于第三方登录</em></strong></p>
+<p>为了PC和APP的登录同步，需要使用微信和QQ的unionid参数，来进行第三方登录，如果单纯的考虑APP功能的话，unionid和openid均可</p>
+<p><img src="https://github.com/wangtaoios/images/blob/master/%E9%A1%B9%E7%9B%AEDemo%E5%9B%BE%E7%89%87/share_0330.png?raw=true" alt="UM"></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://weibo.com/wangtaoworld/iOS/2018/03/21/iOS开发/iOS实现搭建聊天页面.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1939,172 +2093,6 @@ crontab -e
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://weibo.com/wangtaoworld/iOS/2014/11/10/网址.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wangtao">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="wt">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/iOS/2014/11/10/网址.html" itemprop="url">技术网址</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-11-10T21:16:29+08:00">
-                2014-11-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <pre><code>//
-http://cnfeat.com/2014/05/10/2014-05-11-how-to-build-a-blog/
-//
-http://www.oschina.net
-//
-http://stackoverflow.com
-//
-http://scottchacon.com/
-//
-http://www.cocoachina.com/
-//
-http://gitref.org/
-//
-http://www.ihref.com/read-16369.html
-//
-http://www.cocoachina.com/ios/20111026/3422.html
-//
-http://bbs.feng.com/
-//
-http://v.163.com/movie/2010/1/N/5/M6LDTAPTU_M6LFRIHN5.html
-
-
-//
-http://code4app.com/
-//
-</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2155,7 +2143,7 @@ http://code4app.com/
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-count">36</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2177,7 +2165,7 @@ http://code4app.com/
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-count">24</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
