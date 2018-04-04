@@ -1,249 +1,270 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  
 
-  
-  <title>iOS_证书和描述文件 | wt</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="A：无推送功能的应用121：创建App ID，开发测试可使用通配符2：添加设备 开发测试123：创建测试证书，Development下的iOS App Development4：配置测试描述文件，Development下面的iOS App Development 发布测试123：创建发布证书，Production下的App Store and Ad Hoc4：配置发布测试描述文件，Distribu">
+
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head prefix="og: http://ogp.me/ns#">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="description" content="技术交流">
+    <title>iOS_证书和描述文件 | wt</title>
+
+    <!-- Open Graph -->
+    <meta name="description" content="A&amp;#xFF1A;&amp;#x65E0;&amp;#x63A8;&amp;#x9001;&amp;#x529F;&amp;#x80FD;&amp;#x7684;&amp;#x5E94;&amp;#x7528;121&amp;#xFF1A;&amp;#x521B;&amp;#x5EFA;App ID&amp;#xFF0C;&amp;#x5F00;&amp;#x53D1;&amp;#x6D4B;&amp;#x8BD5;&amp;#x53EF;&amp;#x4F7F;&amp;#x7528;&amp;#x901A;&amp;#x914D;&amp;#x7B26;2&amp;#xFF">
 <meta name="keywords" content="证书">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS_证书和描述文件">
 <meta property="og:url" content="https://weibo.com/wangtaoworld/iOS/2018/04/02/iOS开发/iOS_证书和描述文件.html">
 <meta property="og:site_name" content="wt">
-<meta property="og:description" content="A：无推送功能的应用121：创建App ID，开发测试可使用通配符2：添加设备 开发测试123：创建测试证书，Development下的iOS App Development4：配置测试描述文件，Development下面的iOS App Development 发布测试123：创建发布证书，Production下的App Store and Ad Hoc4：配置发布测试描述文件，Distribu">
+<meta property="og:description" content="A&amp;#xFF1A;&amp;#x65E0;&amp;#x63A8;&amp;#x9001;&amp;#x529F;&amp;#x80FD;&amp;#x7684;&amp;#x5E94;&amp;#x7528;121&amp;#xFF1A;&amp;#x521B;&amp;#x5EFA;App ID&amp;#xFF0C;&amp;#x5F00;&amp;#x53D1;&amp;#x6D4B;&amp;#x8BD5;&amp;#x53EF;&amp;#x4F7F;&amp;#x7528;&amp;#x901A;&amp;#x914D;&amp;#x7B26;2&amp;#xFF">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2018-04-02T05:42:12.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS_证书和描述文件">
-<meta name="twitter:description" content="A：无推送功能的应用121：创建App ID，开发测试可使用通配符2：添加设备 开发测试123：创建测试证书，Development下的iOS App Development4：配置测试描述文件，Development下面的iOS App Development 发布测试123：创建发布证书，Production下的App Store and Ad Hoc4：配置发布测试描述文件，Distribu">
-  
-    <link rel="alternate" href="/atom.xml" title="wt" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  <link rel="stylesheet" href="/css/style.css">
+<meta name="twitter:description" content="A&amp;#xFF1A;&amp;#x65E0;&amp;#x63A8;&amp;#x9001;&amp;#x529F;&amp;#x80FD;&amp;#x7684;&amp;#x5E94;&amp;#x7528;121&amp;#xFF1A;&amp;#x521B;&amp;#x5EFA;App ID&amp;#xFF0C;&amp;#x5F00;&amp;#x53D1;&amp;#x6D4B;&amp;#x8BD5;&amp;#x53EF;&amp;#x4F7F;&amp;#x7528;&amp;#x901A;&amp;#x914D;&amp;#x7B26;2&amp;#xFF">
+
+    <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Person",
+  "email": "mailto:",
+  "image": "",
+  "name": "wangtao",
+  "url": "https://weibo.com/wangtaoworld"
+}
+</script>
+    <script>
+    var algoliaEnabled = false;
+    
+</script>
+
+    
+
+    
+    
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+    
+    
+    
+        <!-- stylesheets list from config.yml -->
+        
+        <link rel="stylesheet" href="/css/aloha.css">
+        
+        <link rel="stylesheet" href="//cdn.bootcss.com/semantic-ui/2.2.4/semantic.min.css">
+        
+        <link rel="stylesheet" href="//cdn.bootcss.com/magnific-popup.js/1.1.0/magnific-popup.min.css">
+        
+    
+
 </head>
+<body id="body" style="margin-bottom: 0;" class="pushable">
 
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">wt</a>
-      </h1>
-      
-        <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">博客</a>
-        </h2>
-      
+    <div class="ui top fixed menu">
+        <a class="item" id="menu-icon"><i class="sidebar icon"></i></a>
     </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://weibo.com/wangtaoworld"></form>
-      </div>
+
+    <div id="menu-sidebar" class="ui left vertical sidebar menu">
+
+    <div id="sidebar-top">
+        <div class="content">
+            <h3>wt</h3>
+        </div>
     </div>
-  </div>
-</header>
-      <div class="outer">
-        <section id="main"><article id="post-iOS开发/iOS_证书和描述文件" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/iOS/2018/04/02/iOS开发/iOS_证书和描述文件.html" class="article-date">
-  <time datetime="2018-04-02T05:40:11.000Z" itemprop="datePublished">2018-04-02</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/iOS/">iOS</a>
-  </div>
+    <div class="ui container sidebar-card">
+    <div class="ui people shape content">
+        <div class="active side">
+            <div class="ui card">
+                <div class="image">
+                    <img class="ui medium bordered image" src="/images/avatar.jpg">
+                </div>
+                <div class="content">
+                    <a class="header">wangtao</a>
+                    
+                </div>
+                <div class="extra content">
+                    <div class="ui list">
+                        
+                        
+                    </div>
 
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      iOS_证书和描述文件
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="A：无推送功能的应用"><a href="#A：无推送功能的应用" class="headerlink" title="A：无推送功能的应用"></a>A：无推送功能的应用</h3><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>：创建App ID，开发测试可使用通配符</span><br><span class="line"><span class="number">2</span>：添加设备</span><br></pre></td></tr></table></figure>
-<h6 id="开发测试"><a href="#开发测试" class="headerlink" title="开发测试"></a>开发测试</h6><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">3</span>：创建测试证书，Development下的iOS App Development</span><br><span class="line"><span class="number">4</span>：配置测试描述文件，Development下面的iOS App Development</span><br></pre></td></tr></table></figure>
-<h6 id="发布测试"><a href="#发布测试" class="headerlink" title="发布测试"></a>发布测试</h6><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">3</span>：创建发布证书，Production下的App Store and Ad Hoc</span><br><span class="line"><span class="number">4</span>：配置发布测试描述文件，Distribution下面的Ad Hoc</span><br></pre></td></tr></table></figure>
-<h6 id="发布上线"><a href="#发布上线" class="headerlink" title="发布上线"></a>发布上线</h6><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">3</span>：创建发布证书，Production下的App Store and Ad Hoc</span><br><span class="line"><span class="number">4</span>：配置发布AppStore描述文件，Distribution下面的App Store</span><br></pre></td></tr></table></figure>
-<h3 id="B：有推送功能的应用"><a href="#B：有推送功能的应用" class="headerlink" title="B：有推送功能的应用"></a>B：有推送功能的应用</h3><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>：创建App ID，App ID 不能使用通配符，且勾选Push Notifications</span><br><span class="line"><span class="number">2</span>：添加设备</span><br></pre></td></tr></table></figure>
-<h6 id="开发测试-1"><a href="#开发测试-1" class="headerlink" title="开发测试"></a>开发测试</h6><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">3：创建测试证书，Development下的Apple Push Notification<span class="built_in"> service </span>SSL (Sandbox)</span><br><span class="line">4：配置测试描述文件，Development下面的iOS App Development</span><br></pre></td></tr></table></figure>
-<h6 id="发布测试-1"><a href="#发布测试-1" class="headerlink" title="发布测试"></a>发布测试</h6><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">3：创建发布证书，Production下的Apple Push Notification<span class="built_in"> service </span>SSL (Sandbox &amp; Production)</span><br><span class="line">4：配置发布测试描述文件，Distribution下面的Ad Hoc</span><br></pre></td></tr></table></figure>
-<h6 id="发布上线-1"><a href="#发布上线-1" class="headerlink" title="发布上线"></a>发布上线</h6><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">3：创建发布证书，Production下的Apple Push Notification<span class="built_in"> service </span>SSL (Sandbox &amp; Production)</span><br><span class="line">4：配置发布AppStore描述文件，Distribution下面的App Store</span><br></pre></td></tr></table></figure>
-      
+                </div>
+                <div class="extra content">
+                    <div class="ui list">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <footer class="article-footer">
-      <a data-url="https://weibo.com/wangtaoworld/iOS/2018/04/02/iOS开发/iOS_证书和描述文件.html" data-id="cjfkp81my001gmm23r015mx1c" class="article-share-link">Teilen</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/证书/">证书</a></li></ul>
 
-    </footer>
-  </div>
-  
+
+</div>
+
     
-<nav id="article-nav">
-  
-    <a href="/iOS/2018/04/02/工作项目/巧手快修.html" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Neuer</strong>
-      <div class="article-nav-title">
-        
-          巧手快修
-        
-      </div>
+    
+
+    
+
+    
+    <a href="/index.html" class="item" >
+        <i class="home icon"></i>
+        HOME
     </a>
-  
-  
-    <a href="/iOS/2018/03/30/iOS开发/iOS_identifierForVendor_UUID_供应商标识符_通用唯一识别码.html" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Älter</strong>
-      <div class="article-nav-title">iOS_identifierForVendor_UUID_供应商标识[biāo zhì]符_通用唯一识别码</div>
-    </a>
-  
-</nav>
 
-  
-</article>
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Kategorien</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/军事/">军事</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/文档/">文档</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/面试/">面试</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/BUG/">BUG</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IP/">IP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NTFS/">NTFS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UITextField/">UITextField</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UUID/">UUID</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/demo/">demo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/json/">json</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kinds-of-viewControllers/">kinds of viewControllers</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xls/">xls</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/上线/">上线</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/即时通讯/">即时通讯</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/字符串/">字符串</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/帮助/">帮助</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/手机型号/">手机型号</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/技术点/">技术点</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/搭建博客/">搭建博客</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/文档/">文档</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/检测/">检测</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/法律/">法律</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/表情/">表情</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/证书/">证书</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/键盘/">键盘</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面试/">面试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/飞机/">飞机</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/BUG/" style="font-size: 10px;">BUG</a> <a href="/tags/IP/" style="font-size: 10px;">IP</a> <a href="/tags/NTFS/" style="font-size: 10px;">NTFS</a> <a href="/tags/UITextField/" style="font-size: 10px;">UITextField</a> <a href="/tags/UUID/" style="font-size: 10px;">UUID</a> <a href="/tags/demo/" style="font-size: 10px;">demo</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/kinds-of-viewControllers/" style="font-size: 10px;">kinds of viewControllers</a> <a href="/tags/xls/" style="font-size: 10px;">xls</a> <a href="/tags/上线/" style="font-size: 17.5px;">上线</a> <a href="/tags/即时通讯/" style="font-size: 10px;">即时通讯</a> <a href="/tags/字符串/" style="font-size: 10px;">字符串</a> <a href="/tags/帮助/" style="font-size: 15px;">帮助</a> <a href="/tags/手机型号/" style="font-size: 12.5px;">手机型号</a> <a href="/tags/技术点/" style="font-size: 10px;">技术点</a> <a href="/tags/搭建博客/" style="font-size: 10px;">搭建博客</a> <a href="/tags/文档/" style="font-size: 20px;">文档</a> <a href="/tags/检测/" style="font-size: 10px;">检测</a> <a href="/tags/法律/" style="font-size: 10px;">法律</a> <a href="/tags/表情/" style="font-size: 10px;">表情</a> <a href="/tags/证书/" style="font-size: 10px;">证书</a> <a href="/tags/键盘/" style="font-size: 10px;">键盘</a> <a href="/tags/面试/" style="font-size: 10px;">面试</a> <a href="/tags/飞机/" style="font-size: 10px;">飞机</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archiv</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">October 2014</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">letzter Beitrag</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/iOS/2018/04/03/GitHub博客/购买域名和GitHubPages博客的绑定三部曲.html">购买域名和GitHubPages博客的绑定三部曲</a>
-          </li>
-        
-          <li>
-            <a href="/iOS/2018/04/02/iOS开发/iOS_获取手机型号.html">iOS_获取手机型号</a>
-          </li>
-        
-          <li>
-            <a href="/iOS/2018/04/02/iOS开发/iOS_获取IP地址.html">iOS_获取IP地址</a>
-          </li>
-        
-          <li>
-            <a href="/iOS/2018/04/02/iOS开发/iOS_检测当前网络类型和运营商.html">iOS_检测当前网络类型和运营商</a>
-          </li>
-        
-          <li>
-            <a href="/iOS/2018/04/02/工作项目/广益云课堂.html">广益云课堂</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2018 wangtao<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
     
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+</div>
+
+    <div class="pusher body-content">
+        <div id="content" class="ui main container">
+            <!--<div class="ui one column grid">-->
+                <!--<div class="column">-->
+                    <!--<div class="ui main container">-->
+                        <div id="post-iOS开发/iOS_证书和描述文件" class="ui main container article-type-post">
+
+    
+
+    <div class="ui divided grid">
+
+        <div class="two column row" id="article-content">
+
+            <div class="thirteen wide computer thirteen wide tablet sixteen wide mobile column">
+                
+
+<h1 class="ui header">
+    
+    iOS_证书和描述文件
+</h1>
 
 
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+                <div class="article-inner">
+
+                    <div class="article-entry" itemprop="articleBody">
+                        
+                        <h3 id="A&#xFF1A;&#x65E0;&#x63A8;&#x9001;&#x529F;&#x80FD;&#x7684;&#x5E94;&#x7528;"><a href="#A&#xFF1A;&#x65E0;&#x63A8;&#x9001;&#x529F;&#x80FD;&#x7684;&#x5E94;&#x7528;" class="headerlink" title="A&#xFF1A;&#x65E0;&#x63A8;&#x9001;&#x529F;&#x80FD;&#x7684;&#x5E94;&#x7528;"></a>A&#xFF1A;&#x65E0;&#x63A8;&#x9001;&#x529F;&#x80FD;&#x7684;&#x5E94;&#x7528;</h3><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>&#xFF1A;&#x521B;&#x5EFA;App ID&#xFF0C;&#x5F00;&#x53D1;&#x6D4B;&#x8BD5;&#x53EF;&#x4F7F;&#x7528;&#x901A;&#x914D;&#x7B26;</span><br><span class="line"><span class="number">2</span>&#xFF1A;&#x6DFB;&#x52A0;&#x8BBE;&#x5907;</span><br></pre></td></tr></table></figure>
+<h6 id="&#x5F00;&#x53D1;&#x6D4B;&#x8BD5;"><a href="#&#x5F00;&#x53D1;&#x6D4B;&#x8BD5;" class="headerlink" title="&#x5F00;&#x53D1;&#x6D4B;&#x8BD5;"></a>&#x5F00;&#x53D1;&#x6D4B;&#x8BD5;</h6><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">3</span>&#xFF1A;&#x521B;&#x5EFA;&#x6D4B;&#x8BD5;&#x8BC1;&#x4E66;&#xFF0C;Development&#x4E0B;&#x7684;iOS App Development</span><br><span class="line"><span class="number">4</span>&#xFF1A;&#x914D;&#x7F6E;&#x6D4B;&#x8BD5;&#x63CF;&#x8FF0;&#x6587;&#x4EF6;&#xFF0C;Development&#x4E0B;&#x9762;&#x7684;iOS App Development</span><br></pre></td></tr></table></figure>
+<h6 id="&#x53D1;&#x5E03;&#x6D4B;&#x8BD5;"><a href="#&#x53D1;&#x5E03;&#x6D4B;&#x8BD5;" class="headerlink" title="&#x53D1;&#x5E03;&#x6D4B;&#x8BD5;"></a>&#x53D1;&#x5E03;&#x6D4B;&#x8BD5;</h6><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">3</span>&#xFF1A;&#x521B;&#x5EFA;&#x53D1;&#x5E03;&#x8BC1;&#x4E66;&#xFF0C;Production&#x4E0B;&#x7684;App Store and Ad Hoc</span><br><span class="line"><span class="number">4</span>&#xFF1A;&#x914D;&#x7F6E;&#x53D1;&#x5E03;&#x6D4B;&#x8BD5;&#x63CF;&#x8FF0;&#x6587;&#x4EF6;&#xFF0C;Distribution&#x4E0B;&#x9762;&#x7684;Ad Hoc</span><br></pre></td></tr></table></figure>
+<h6 id="&#x53D1;&#x5E03;&#x4E0A;&#x7EBF;"><a href="#&#x53D1;&#x5E03;&#x4E0A;&#x7EBF;" class="headerlink" title="&#x53D1;&#x5E03;&#x4E0A;&#x7EBF;"></a>&#x53D1;&#x5E03;&#x4E0A;&#x7EBF;</h6><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">3</span>&#xFF1A;&#x521B;&#x5EFA;&#x53D1;&#x5E03;&#x8BC1;&#x4E66;&#xFF0C;Production&#x4E0B;&#x7684;App Store and Ad Hoc</span><br><span class="line"><span class="number">4</span>&#xFF1A;&#x914D;&#x7F6E;&#x53D1;&#x5E03;AppStore&#x63CF;&#x8FF0;&#x6587;&#x4EF6;&#xFF0C;Distribution&#x4E0B;&#x9762;&#x7684;App Store</span><br></pre></td></tr></table></figure>
+<h3 id="B&#xFF1A;&#x6709;&#x63A8;&#x9001;&#x529F;&#x80FD;&#x7684;&#x5E94;&#x7528;"><a href="#B&#xFF1A;&#x6709;&#x63A8;&#x9001;&#x529F;&#x80FD;&#x7684;&#x5E94;&#x7528;" class="headerlink" title="B&#xFF1A;&#x6709;&#x63A8;&#x9001;&#x529F;&#x80FD;&#x7684;&#x5E94;&#x7528;"></a>B&#xFF1A;&#x6709;&#x63A8;&#x9001;&#x529F;&#x80FD;&#x7684;&#x5E94;&#x7528;</h3><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>&#xFF1A;&#x521B;&#x5EFA;App ID&#xFF0C;App ID &#x4E0D;&#x80FD;&#x4F7F;&#x7528;&#x901A;&#x914D;&#x7B26;&#xFF0C;&#x4E14;&#x52FE;&#x9009;Push Notifications</span><br><span class="line"><span class="number">2</span>&#xFF1A;&#x6DFB;&#x52A0;&#x8BBE;&#x5907;</span><br></pre></td></tr></table></figure>
+<h6 id="&#x5F00;&#x53D1;&#x6D4B;&#x8BD5;-1"><a href="#&#x5F00;&#x53D1;&#x6D4B;&#x8BD5;-1" class="headerlink" title="&#x5F00;&#x53D1;&#x6D4B;&#x8BD5;"></a>&#x5F00;&#x53D1;&#x6D4B;&#x8BD5;</h6><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">3&#xFF1A;&#x521B;&#x5EFA;&#x6D4B;&#x8BD5;&#x8BC1;&#x4E66;&#xFF0C;Development&#x4E0B;&#x7684;Apple Push Notification<span class="built_in"> service </span>SSL (Sandbox)</span><br><span class="line">4&#xFF1A;&#x914D;&#x7F6E;&#x6D4B;&#x8BD5;&#x63CF;&#x8FF0;&#x6587;&#x4EF6;&#xFF0C;Development&#x4E0B;&#x9762;&#x7684;iOS App Development</span><br></pre></td></tr></table></figure>
+<h6 id="&#x53D1;&#x5E03;&#x6D4B;&#x8BD5;-1"><a href="#&#x53D1;&#x5E03;&#x6D4B;&#x8BD5;-1" class="headerlink" title="&#x53D1;&#x5E03;&#x6D4B;&#x8BD5;"></a>&#x53D1;&#x5E03;&#x6D4B;&#x8BD5;</h6><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">3&#xFF1A;&#x521B;&#x5EFA;&#x53D1;&#x5E03;&#x8BC1;&#x4E66;&#xFF0C;Production&#x4E0B;&#x7684;Apple Push Notification<span class="built_in"> service </span>SSL (Sandbox &amp; Production)</span><br><span class="line">4&#xFF1A;&#x914D;&#x7F6E;&#x53D1;&#x5E03;&#x6D4B;&#x8BD5;&#x63CF;&#x8FF0;&#x6587;&#x4EF6;&#xFF0C;Distribution&#x4E0B;&#x9762;&#x7684;Ad Hoc</span><br></pre></td></tr></table></figure>
+<h6 id="&#x53D1;&#x5E03;&#x4E0A;&#x7EBF;-1"><a href="#&#x53D1;&#x5E03;&#x4E0A;&#x7EBF;-1" class="headerlink" title="&#x53D1;&#x5E03;&#x4E0A;&#x7EBF;"></a>&#x53D1;&#x5E03;&#x4E0A;&#x7EBF;</h6><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">3&#xFF1A;&#x521B;&#x5EFA;&#x53D1;&#x5E03;&#x8BC1;&#x4E66;&#xFF0C;Production&#x4E0B;&#x7684;Apple Push Notification<span class="built_in"> service </span>SSL (Sandbox &amp; Production)</span><br><span class="line">4&#xFF1A;&#x914D;&#x7F6E;&#x53D1;&#x5E03;AppStore&#x63CF;&#x8FF0;&#x6587;&#x4EF6;&#xFF0C;Distribution&#x4E0B;&#x9762;&#x7684;App Store</span><br></pre></td></tr></table></figure>
+                        
+                    </div>
+
+                    
+                    
+                    
+
+                    <div class="description post-description">
+    <span class="post-description-item">
+        <time datetime="2018-04-02T05:40:11.000Z" itemprop="datePublished">2018-04-02</time>
+
+    </span>
+    <span class="post-description-item">
+        
+
+    <span>
+        <i class="tags icon"></i>
+    </span>
+
+    
+    <span class="ui tiny label">
+        <a href="/tags/证书/">证书</a>
+    </span>
+
+    
+
+    </span>
+</div>
+
+                </div>
+                
+                <div id="pagination" class="nav-web ui text container pagination">
+
+    <div class="ui stackable two column divided grid container">
+        <div class="row">
+            <div class="column nav-left">
+                
+
+                <a href="/iOS/2018/04/02/工作项目/巧手快修.html" class="ui tiny button">
+
+                    <i class="angle left icon"></i>
+                    
+                    巧手快修
+                    
+
+                </a>
+
+                
+            </div>
+            <div class="column nav-right">
+                
+
+                <a href="/iOS/2018/03/30/iOS开发/iOS_identifierForVendor_UUID_供应商标识符_通用唯一识别码.html" class="ui tiny button">
+                    
+                    iOS_identifierForVendor_UUID_供应商标识[biāo zhì]符_通用唯一识别码
+                    
+                    <i class="angle right icon"></i></a>
+                
+            </div>
+        </div>
+    </div>
+
+</div>
+                
+            </div>
+
+            
+            <div class="three wide computer three wide tablet column">
+
+                <div class="ui sticky article-toc" id="article-toc">
+                    <!-- toc -->
+                    <ol class="ui ordered list"><li><a href="#A：无推送功能的应用"><span>A：无推送功能的应用</span></a><ol><li><a href="#开发测试"><span>开发测试</span></a></li><li><a href="#发布测试"><span>发布测试</span></a></li><li><a href="#发布上线"><span>发布上线</span></a></li></ol></li></ol></li></ol></li><li><a href="#B：有推送功能的应用"><span>B：有推送功能的应用</span></a><ol><li><a href="#开发测试-1"><span>开发测试</span></a></li><li><a href="#发布测试-1"><span>发布测试</span></a></li><li><a href="#发布上线-1"><span>发布上线</span></a></li></ol></li></ol></li></ol></li></ol>
+                </div>
+
+            </div>
+            
+
+        </div>
+    </div>
+</div>
 
 
-<script src="/js/script.js"></script>
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        </div>
+        <div class="ui vertical footer segment">
+    <div class="ui center aligned container">
+        <div class="ui inverted section divider"></div>
+        &copy; 2018 <a href="/">wangtao</a>,
+        Powered by <a href="https://github.com/henryhuang/hexo-theme-aloha" target="_blank">Aloha</a> and <a
+                href="http://hexo.io/" target="_blank">Hexo</a>.
+    </div>
+</div>
+
+    </div>
 
 
 
-  </div>
+
+<!-- scripts list from theme config.yml -->
+
+<script src="//cdn.bootcss.com/jquery/3.1.0/jquery.min.js"></script>
+
+<script src="//cdn.bootcss.com/semantic-ui/2.2.4/semantic.min.js"></script>
+
+<script src="//cdn.bootcss.com/algoliasearch/3.18.1/algoliasearch.min.js"></script>
+
+<script src="//cdn.bootcss.com/algoliasearch-helper-js/2.13.0/algoliasearch.helper.min.js"></script>
+
+<script src="/js/semantic-ui-algolia.js"></script>
+
+<script src="/js/aloha-events.js"></script>
+
+
+
 </body>
 </html>

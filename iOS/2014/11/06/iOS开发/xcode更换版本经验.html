@@ -1,254 +1,275 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  
 
-  
-  <title>Xcode更换版本经验 | wt</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="####Xcode更换版本经验 ####在iMac上安装软件时，可以直接在其他电脑上，将Finder中的应用程序，拷贝到自己电脑的应用程序中，进行安装。但是，这对于小型的软件还行，像Xcode这种软件不可以，一般情况下，不建议此方法。须下载dmg格式的文件安装。 ####【1】 删除软件。 ######1.1 在应用程序中，将Xcode移到废纸篓。 ######1.2 在Dock中将Xcode和i">
+
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head prefix="og: http://ogp.me/ns#">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="description" content="技术交流">
+    <title>Xcode更换版本经验 | wt</title>
+
+    <!-- Open Graph -->
+    <meta name="description" content="####Xcode&amp;#x66F4;&amp;#x6362;&amp;#x7248;&amp;#x672C;&amp;#x7ECF;&amp;#x9A8C; ####&amp;#x5728;iMac&amp;#x4E0A;&amp;#x5B89;&amp;#x88C5;&amp;#x8F6F;&amp;#x4EF6;&amp;#x65F6;&amp;#xFF0C;&amp;#x53EF;&amp;#x4EE5;&amp;#x76F4;&amp;#x63A5;&amp;#x5728;&amp;#x5176;&amp;#x4ED6;&amp;#x7535;&amp;#x811">
 <meta name="keywords" content="文档">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Xcode更换版本经验">
 <meta property="og:url" content="https://weibo.com/wangtaoworld/iOS/2014/11/06/iOS开发/xcode更换版本经验.html">
 <meta property="og:site_name" content="wt">
-<meta property="og:description" content="####Xcode更换版本经验 ####在iMac上安装软件时，可以直接在其他电脑上，将Finder中的应用程序，拷贝到自己电脑的应用程序中，进行安装。但是，这对于小型的软件还行，像Xcode这种软件不可以，一般情况下，不建议此方法。须下载dmg格式的文件安装。 ####【1】 删除软件。 ######1.1 在应用程序中，将Xcode移到废纸篓。 ######1.2 在Dock中将Xcode和i">
+<meta property="og:description" content="####Xcode&amp;#x66F4;&amp;#x6362;&amp;#x7248;&amp;#x672C;&amp;#x7ECF;&amp;#x9A8C; ####&amp;#x5728;iMac&amp;#x4E0A;&amp;#x5B89;&amp;#x88C5;&amp;#x8F6F;&amp;#x4EF6;&amp;#x65F6;&amp;#xFF0C;&amp;#x53EF;&amp;#x4EE5;&amp;#x76F4;&amp;#x63A5;&amp;#x5728;&amp;#x5176;&amp;#x4ED6;&amp;#x7535;&amp;#x811">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2018-03-23T08:30:46.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Xcode更换版本经验">
-<meta name="twitter:description" content="####Xcode更换版本经验 ####在iMac上安装软件时，可以直接在其他电脑上，将Finder中的应用程序，拷贝到自己电脑的应用程序中，进行安装。但是，这对于小型的软件还行，像Xcode这种软件不可以，一般情况下，不建议此方法。须下载dmg格式的文件安装。 ####【1】 删除软件。 ######1.1 在应用程序中，将Xcode移到废纸篓。 ######1.2 在Dock中将Xcode和i">
-  
-    <link rel="alternate" href="/atom.xml" title="wt" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  <link rel="stylesheet" href="/css/style.css">
+<meta name="twitter:description" content="####Xcode&amp;#x66F4;&amp;#x6362;&amp;#x7248;&amp;#x672C;&amp;#x7ECF;&amp;#x9A8C; ####&amp;#x5728;iMac&amp;#x4E0A;&amp;#x5B89;&amp;#x88C5;&amp;#x8F6F;&amp;#x4EF6;&amp;#x65F6;&amp;#xFF0C;&amp;#x53EF;&amp;#x4EE5;&amp;#x76F4;&amp;#x63A5;&amp;#x5728;&amp;#x5176;&amp;#x4ED6;&amp;#x7535;&amp;#x811">
+
+    <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Person",
+  "email": "mailto:",
+  "image": "",
+  "name": "wangtao",
+  "url": "https://weibo.com/wangtaoworld"
+}
+</script>
+    <script>
+    var algoliaEnabled = false;
+    
+</script>
+
+    
+
+    
+    
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+    
+    
+    
+        <!-- stylesheets list from config.yml -->
+        
+        <link rel="stylesheet" href="/css/aloha.css">
+        
+        <link rel="stylesheet" href="//cdn.bootcss.com/semantic-ui/2.2.4/semantic.min.css">
+        
+        <link rel="stylesheet" href="//cdn.bootcss.com/magnific-popup.js/1.1.0/magnific-popup.min.css">
+        
+    
+
 </head>
+<body id="body" style="margin-bottom: 0;" class="pushable">
 
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">wt</a>
-      </h1>
-      
-        <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">博客</a>
-        </h2>
-      
+    <div class="ui top fixed menu">
+        <a class="item" id="menu-icon"><i class="sidebar icon"></i></a>
     </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://weibo.com/wangtaoworld"></form>
-      </div>
+
+    <div id="menu-sidebar" class="ui left vertical sidebar menu">
+
+    <div id="sidebar-top">
+        <div class="content">
+            <h3>wt</h3>
+        </div>
     </div>
-  </div>
-</header>
-      <div class="outer">
-        <section id="main"><article id="post-iOS开发/xcode更换版本经验" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/iOS/2014/11/06/iOS开发/xcode更换版本经验.html" class="article-date">
-  <time datetime="2014-11-06T06:33:30.000Z" itemprop="datePublished">2014-11-06</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/iOS/">iOS</a>
-  </div>
+    <div class="ui container sidebar-card">
+    <div class="ui people shape content">
+        <div class="active side">
+            <div class="ui card">
+                <div class="image">
+                    <img class="ui medium bordered image" src="/images/avatar.jpg">
+                </div>
+                <div class="content">
+                    <a class="header">wangtao</a>
+                    
+                </div>
+                <div class="extra content">
+                    <div class="ui list">
+                        
+                        
+                    </div>
 
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      Xcode更换版本经验
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>####Xcode更换版本经验</p>
-<p>####在iMac上安装软件时，可以直接在其他电脑上，将Finder中的应用程序，拷贝到自己电脑的应用程序中，进行安装。但是，这对于小型的软件还行，像Xcode这种软件不可以，一般情况下，不建议此方法。须下载dmg格式的文件安装。</p>
-<p>####【1】 删除软件。</p>
-<p>######1.1 在应用程序中，将Xcode移到废纸篓。</p>
-<p>######1.2 在Dock中将Xcode和iOS模拟器移除。</p>
-<p>######1.3 进入/Users/qingyun/Library/Application Support，将iPhone Simulator删除。</p>
-<p>######1.4 进入/Users/qingyun/Library/Developer，将Xcode删除（如果有2个Xcode，都要删掉）。</p>
-<p>####*1.5 可在Spotlight检查是否还有未删除的Xcode程序文件，一定要做这个步骤。</p>
-<p>######1.6 清倒废纸篓。</p>
-<p>####【2】 下载软件</p>
-<p>######如果安装最新的版本，在AppStore上面下载，其它版本只能自己搜，这里分享一种<a href="http://pan.baidu.com/s/1hqra42w" target="_blank" rel="noopener">Xcode Version 5.1.1 (5B1008)</a>，2.13G，就是我们现在用的版本，此文件为dmg格式，将文件拖动到应用程序中即可安装。</p>
-<p>####【3】 其它</p>
-<h6 id="如果安装有问题，可以在删除软件后和安装之后两个时刻，分别先关机在开机（据说与重启有一定区别）。删除软件时，可进入到资源库中删除，咱们老师一直是在shell中操作，所以作为未来的大牛，大家就多用shell吧。"><a href="#如果安装有问题，可以在删除软件后和安装之后两个时刻，分别先关机在开机（据说与重启有一定区别）。删除软件时，可进入到资源库中删除，咱们老师一直是在shell中操作，所以作为未来的大牛，大家就多用shell吧。" class="headerlink" title="如果安装有问题，可以在删除软件后和安装之后两个时刻，分别先关机在开机（据说与重启有一定区别）。删除软件时，可进入到资源库中删除，咱们老师一直是在shell中操作，所以作为未来的大牛，大家就多用shell吧。"></a>如果安装有问题，可以在删除软件后和安装之后两个时刻，分别先关机在开机（据说与重启有一定区别）。删除软件时，可进入到资源库中删除，咱们老师一直是在shell中操作，所以作为未来的大牛，大家就多用shell吧。</h6>
-      
+                </div>
+                <div class="extra content">
+                    <div class="ui list">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <footer class="article-footer">
-      <a data-url="https://weibo.com/wangtaoworld/iOS/2014/11/06/iOS开发/xcode更换版本经验.html" data-id="cjfkp81n90024mm23c36ruinf" class="article-share-link">Teilen</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/文档/">文档</a></li></ul>
 
-    </footer>
-  </div>
-  
+
+</div>
+
     
-<nav id="article-nav">
-  
-    <a href="/iOS/2014/11/10/网址.html" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Neuer</strong>
-      <div class="article-nav-title">
-        
-          技术网址
-        
-      </div>
+    
+
+    
+
+    
+    <a href="/index.html" class="item" >
+        <i class="home icon"></i>
+        HOME
     </a>
-  
-  
-    <a href="/iOS/2014/10/20/Mac/苹果电脑快捷键.html" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Älter</strong>
-      <div class="article-nav-title">苹果电脑快捷键</div>
-    </a>
-  
-</nav>
 
-  
-</article>
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Kategorien</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/军事/">军事</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/文档/">文档</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/面试/">面试</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/BUG/">BUG</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IP/">IP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NTFS/">NTFS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UITextField/">UITextField</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UUID/">UUID</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/demo/">demo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/json/">json</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kinds-of-viewControllers/">kinds of viewControllers</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xls/">xls</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/上线/">上线</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/即时通讯/">即时通讯</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/字符串/">字符串</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/帮助/">帮助</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/手机型号/">手机型号</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/技术点/">技术点</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/搭建博客/">搭建博客</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/文档/">文档</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/检测/">检测</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/法律/">法律</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/表情/">表情</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/证书/">证书</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/键盘/">键盘</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面试/">面试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/飞机/">飞机</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/BUG/" style="font-size: 10px;">BUG</a> <a href="/tags/IP/" style="font-size: 10px;">IP</a> <a href="/tags/NTFS/" style="font-size: 10px;">NTFS</a> <a href="/tags/UITextField/" style="font-size: 10px;">UITextField</a> <a href="/tags/UUID/" style="font-size: 10px;">UUID</a> <a href="/tags/demo/" style="font-size: 10px;">demo</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/kinds-of-viewControllers/" style="font-size: 10px;">kinds of viewControllers</a> <a href="/tags/xls/" style="font-size: 10px;">xls</a> <a href="/tags/上线/" style="font-size: 17.5px;">上线</a> <a href="/tags/即时通讯/" style="font-size: 10px;">即时通讯</a> <a href="/tags/字符串/" style="font-size: 10px;">字符串</a> <a href="/tags/帮助/" style="font-size: 15px;">帮助</a> <a href="/tags/手机型号/" style="font-size: 12.5px;">手机型号</a> <a href="/tags/技术点/" style="font-size: 10px;">技术点</a> <a href="/tags/搭建博客/" style="font-size: 10px;">搭建博客</a> <a href="/tags/文档/" style="font-size: 20px;">文档</a> <a href="/tags/检测/" style="font-size: 10px;">检测</a> <a href="/tags/法律/" style="font-size: 10px;">法律</a> <a href="/tags/表情/" style="font-size: 10px;">表情</a> <a href="/tags/证书/" style="font-size: 10px;">证书</a> <a href="/tags/键盘/" style="font-size: 10px;">键盘</a> <a href="/tags/面试/" style="font-size: 10px;">面试</a> <a href="/tags/飞机/" style="font-size: 10px;">飞机</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archiv</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">October 2014</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">letzter Beitrag</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/iOS/2018/04/03/GitHub博客/购买域名和GitHubPages博客的绑定三部曲.html">购买域名和GitHubPages博客的绑定三部曲</a>
-          </li>
-        
-          <li>
-            <a href="/iOS/2018/04/02/iOS开发/iOS_获取手机型号.html">iOS_获取手机型号</a>
-          </li>
-        
-          <li>
-            <a href="/iOS/2018/04/02/iOS开发/iOS_获取IP地址.html">iOS_获取IP地址</a>
-          </li>
-        
-          <li>
-            <a href="/iOS/2018/04/02/iOS开发/iOS_检测当前网络类型和运营商.html">iOS_检测当前网络类型和运营商</a>
-          </li>
-        
-          <li>
-            <a href="/iOS/2018/04/02/工作项目/广益云课堂.html">广益云课堂</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2018 wangtao<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
     
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+</div>
+
+    <div class="pusher body-content">
+        <div id="content" class="ui main container">
+            <!--<div class="ui one column grid">-->
+                <!--<div class="column">-->
+                    <!--<div class="ui main container">-->
+                        <div id="post-iOS开发/xcode更换版本经验" class="ui main container article-type-post">
+
+    
+
+    <div class="ui divided grid">
+
+        <div class="two column row" id="article-content">
+
+            <div class="thirteen wide computer thirteen wide tablet sixteen wide mobile column">
+                
+
+<h1 class="ui header">
+    
+    Xcode更换版本经验
+</h1>
 
 
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+                <div class="article-inner">
+
+                    <div class="article-entry" itemprop="articleBody">
+                        
+                        <p>####Xcode&#x66F4;&#x6362;&#x7248;&#x672C;&#x7ECF;&#x9A8C;</p>
+<p>####&#x5728;iMac&#x4E0A;&#x5B89;&#x88C5;&#x8F6F;&#x4EF6;&#x65F6;&#xFF0C;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x5728;&#x5176;&#x4ED6;&#x7535;&#x8111;&#x4E0A;&#xFF0C;&#x5C06;Finder&#x4E2D;&#x7684;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#xFF0C;&#x62F7;&#x8D1D;&#x5230;&#x81EA;&#x5DF1;&#x7535;&#x8111;&#x7684;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x4E2D;&#xFF0C;&#x8FDB;&#x884C;&#x5B89;&#x88C5;&#x3002;&#x4F46;&#x662F;&#xFF0C;&#x8FD9;&#x5BF9;&#x4E8E;&#x5C0F;&#x578B;&#x7684;&#x8F6F;&#x4EF6;&#x8FD8;&#x884C;&#xFF0C;&#x50CF;Xcode&#x8FD9;&#x79CD;&#x8F6F;&#x4EF6;&#x4E0D;&#x53EF;&#x4EE5;&#xFF0C;&#x4E00;&#x822C;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x4E0D;&#x5EFA;&#x8BAE;&#x6B64;&#x65B9;&#x6CD5;&#x3002;&#x987B;&#x4E0B;&#x8F7D;dmg&#x683C;&#x5F0F;&#x7684;&#x6587;&#x4EF6;&#x5B89;&#x88C5;&#x3002;</p>
+<p>####&#x3010;1&#x3011; &#x5220;&#x9664;&#x8F6F;&#x4EF6;&#x3002;</p>
+<p>######1.1 &#x5728;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x4E2D;&#xFF0C;&#x5C06;Xcode&#x79FB;&#x5230;&#x5E9F;&#x7EB8;&#x7BD3;&#x3002;</p>
+<p>######1.2 &#x5728;Dock&#x4E2D;&#x5C06;Xcode&#x548C;iOS&#x6A21;&#x62DF;&#x5668;&#x79FB;&#x9664;&#x3002;</p>
+<p>######1.3 &#x8FDB;&#x5165;/Users/qingyun/Library/Application Support&#xFF0C;&#x5C06;iPhone Simulator&#x5220;&#x9664;&#x3002;</p>
+<p>######1.4 &#x8FDB;&#x5165;/Users/qingyun/Library/Developer&#xFF0C;&#x5C06;Xcode&#x5220;&#x9664;&#xFF08;&#x5982;&#x679C;&#x6709;2&#x4E2A;Xcode&#xFF0C;&#x90FD;&#x8981;&#x5220;&#x6389;&#xFF09;&#x3002;</p>
+<p>####*1.5 &#x53EF;&#x5728;Spotlight&#x68C0;&#x67E5;&#x662F;&#x5426;&#x8FD8;&#x6709;&#x672A;&#x5220;&#x9664;&#x7684;Xcode&#x7A0B;&#x5E8F;&#x6587;&#x4EF6;&#xFF0C;&#x4E00;&#x5B9A;&#x8981;&#x505A;&#x8FD9;&#x4E2A;&#x6B65;&#x9AA4;&#x3002;</p>
+<p>######1.6 &#x6E05;&#x5012;&#x5E9F;&#x7EB8;&#x7BD3;&#x3002;</p>
+<p>####&#x3010;2&#x3011; &#x4E0B;&#x8F7D;&#x8F6F;&#x4EF6;</p>
+<p>######&#x5982;&#x679C;&#x5B89;&#x88C5;&#x6700;&#x65B0;&#x7684;&#x7248;&#x672C;&#xFF0C;&#x5728;AppStore&#x4E0A;&#x9762;&#x4E0B;&#x8F7D;&#xFF0C;&#x5176;&#x5B83;&#x7248;&#x672C;&#x53EA;&#x80FD;&#x81EA;&#x5DF1;&#x641C;&#xFF0C;&#x8FD9;&#x91CC;&#x5206;&#x4EAB;&#x4E00;&#x79CD;<a href="http://pan.baidu.com/s/1hqra42w" target="_blank" rel="noopener">Xcode Version 5.1.1 (5B1008)</a>&#xFF0C;2.13G&#xFF0C;&#x5C31;&#x662F;&#x6211;&#x4EEC;&#x73B0;&#x5728;&#x7528;&#x7684;&#x7248;&#x672C;&#xFF0C;&#x6B64;&#x6587;&#x4EF6;&#x4E3A;dmg&#x683C;&#x5F0F;&#xFF0C;&#x5C06;&#x6587;&#x4EF6;&#x62D6;&#x52A8;&#x5230;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x4E2D;&#x5373;&#x53EF;&#x5B89;&#x88C5;&#x3002;</p>
+<p>####&#x3010;3&#x3011; &#x5176;&#x5B83;</p>
+<h6 id="&#x5982;&#x679C;&#x5B89;&#x88C5;&#x6709;&#x95EE;&#x9898;&#xFF0C;&#x53EF;&#x4EE5;&#x5728;&#x5220;&#x9664;&#x8F6F;&#x4EF6;&#x540E;&#x548C;&#x5B89;&#x88C5;&#x4E4B;&#x540E;&#x4E24;&#x4E2A;&#x65F6;&#x523B;&#xFF0C;&#x5206;&#x522B;&#x5148;&#x5173;&#x673A;&#x5728;&#x5F00;&#x673A;&#xFF08;&#x636E;&#x8BF4;&#x4E0E;&#x91CD;&#x542F;&#x6709;&#x4E00;&#x5B9A;&#x533A;&#x522B;&#xFF09;&#x3002;&#x5220;&#x9664;&#x8F6F;&#x4EF6;&#x65F6;&#xFF0C;&#x53EF;&#x8FDB;&#x5165;&#x5230;&#x8D44;&#x6E90;&#x5E93;&#x4E2D;&#x5220;&#x9664;&#xFF0C;&#x54B1;&#x4EEC;&#x8001;&#x5E08;&#x4E00;&#x76F4;&#x662F;&#x5728;shell&#x4E2D;&#x64CD;&#x4F5C;&#xFF0C;&#x6240;&#x4EE5;&#x4F5C;&#x4E3A;&#x672A;&#x6765;&#x7684;&#x5927;&#x725B;&#xFF0C;&#x5927;&#x5BB6;&#x5C31;&#x591A;&#x7528;shell&#x5427;&#x3002;"><a href="#&#x5982;&#x679C;&#x5B89;&#x88C5;&#x6709;&#x95EE;&#x9898;&#xFF0C;&#x53EF;&#x4EE5;&#x5728;&#x5220;&#x9664;&#x8F6F;&#x4EF6;&#x540E;&#x548C;&#x5B89;&#x88C5;&#x4E4B;&#x540E;&#x4E24;&#x4E2A;&#x65F6;&#x523B;&#xFF0C;&#x5206;&#x522B;&#x5148;&#x5173;&#x673A;&#x5728;&#x5F00;&#x673A;&#xFF08;&#x636E;&#x8BF4;&#x4E0E;&#x91CD;&#x542F;&#x6709;&#x4E00;&#x5B9A;&#x533A;&#x522B;&#xFF09;&#x3002;&#x5220;&#x9664;&#x8F6F;&#x4EF6;&#x65F6;&#xFF0C;&#x53EF;&#x8FDB;&#x5165;&#x5230;&#x8D44;&#x6E90;&#x5E93;&#x4E2D;&#x5220;&#x9664;&#xFF0C;&#x54B1;&#x4EEC;&#x8001;&#x5E08;&#x4E00;&#x76F4;&#x662F;&#x5728;shell&#x4E2D;&#x64CD;&#x4F5C;&#xFF0C;&#x6240;&#x4EE5;&#x4F5C;&#x4E3A;&#x672A;&#x6765;&#x7684;&#x5927;&#x725B;&#xFF0C;&#x5927;&#x5BB6;&#x5C31;&#x591A;&#x7528;shell&#x5427;&#x3002;" class="headerlink" title="&#x5982;&#x679C;&#x5B89;&#x88C5;&#x6709;&#x95EE;&#x9898;&#xFF0C;&#x53EF;&#x4EE5;&#x5728;&#x5220;&#x9664;&#x8F6F;&#x4EF6;&#x540E;&#x548C;&#x5B89;&#x88C5;&#x4E4B;&#x540E;&#x4E24;&#x4E2A;&#x65F6;&#x523B;&#xFF0C;&#x5206;&#x522B;&#x5148;&#x5173;&#x673A;&#x5728;&#x5F00;&#x673A;&#xFF08;&#x636E;&#x8BF4;&#x4E0E;&#x91CD;&#x542F;&#x6709;&#x4E00;&#x5B9A;&#x533A;&#x522B;&#xFF09;&#x3002;&#x5220;&#x9664;&#x8F6F;&#x4EF6;&#x65F6;&#xFF0C;&#x53EF;&#x8FDB;&#x5165;&#x5230;&#x8D44;&#x6E90;&#x5E93;&#x4E2D;&#x5220;&#x9664;&#xFF0C;&#x54B1;&#x4EEC;&#x8001;&#x5E08;&#x4E00;&#x76F4;&#x662F;&#x5728;shell&#x4E2D;&#x64CD;&#x4F5C;&#xFF0C;&#x6240;&#x4EE5;&#x4F5C;&#x4E3A;&#x672A;&#x6765;&#x7684;&#x5927;&#x725B;&#xFF0C;&#x5927;&#x5BB6;&#x5C31;&#x591A;&#x7528;shell&#x5427;&#x3002;"></a>&#x5982;&#x679C;&#x5B89;&#x88C5;&#x6709;&#x95EE;&#x9898;&#xFF0C;&#x53EF;&#x4EE5;&#x5728;&#x5220;&#x9664;&#x8F6F;&#x4EF6;&#x540E;&#x548C;&#x5B89;&#x88C5;&#x4E4B;&#x540E;&#x4E24;&#x4E2A;&#x65F6;&#x523B;&#xFF0C;&#x5206;&#x522B;&#x5148;&#x5173;&#x673A;&#x5728;&#x5F00;&#x673A;&#xFF08;&#x636E;&#x8BF4;&#x4E0E;&#x91CD;&#x542F;&#x6709;&#x4E00;&#x5B9A;&#x533A;&#x522B;&#xFF09;&#x3002;&#x5220;&#x9664;&#x8F6F;&#x4EF6;&#x65F6;&#xFF0C;&#x53EF;&#x8FDB;&#x5165;&#x5230;&#x8D44;&#x6E90;&#x5E93;&#x4E2D;&#x5220;&#x9664;&#xFF0C;&#x54B1;&#x4EEC;&#x8001;&#x5E08;&#x4E00;&#x76F4;&#x662F;&#x5728;shell&#x4E2D;&#x64CD;&#x4F5C;&#xFF0C;&#x6240;&#x4EE5;&#x4F5C;&#x4E3A;&#x672A;&#x6765;&#x7684;&#x5927;&#x725B;&#xFF0C;&#x5927;&#x5BB6;&#x5C31;&#x591A;&#x7528;shell&#x5427;&#x3002;</h6>
+                        
+                    </div>
+
+                    
+                    
+                    
+
+                    <div class="description post-description">
+    <span class="post-description-item">
+        <time datetime="2014-11-06T06:33:30.000Z" itemprop="datePublished">2014-11-06</time>
+
+    </span>
+    <span class="post-description-item">
+        
+
+    <span>
+        <i class="tags icon"></i>
+    </span>
+
+    
+    <span class="ui tiny label">
+        <a href="/tags/文档/">文档</a>
+    </span>
+
+    
+
+    </span>
+</div>
+
+                </div>
+                
+                <div id="pagination" class="nav-web ui text container pagination">
+
+    <div class="ui stackable two column divided grid container">
+        <div class="row">
+            <div class="column nav-left">
+                
+
+                <a href="/iOS/2014/11/10/网址.html" class="ui tiny button">
+
+                    <i class="angle left icon"></i>
+                    
+                    技术网址
+                    
+
+                </a>
+
+                
+            </div>
+            <div class="column nav-right">
+                
+
+                <a href="/iOS/2014/10/20/Mac/苹果电脑快捷键.html" class="ui tiny button">
+                    
+                    苹果电脑快捷键
+                    
+                    <i class="angle right icon"></i></a>
+                
+            </div>
+        </div>
+    </div>
+
+</div>
+                
+            </div>
+
+            
+            <div class="three wide computer three wide tablet column">
+
+                <div class="ui sticky article-toc" id="article-toc">
+                    <!-- toc -->
+                    <ol class="ui ordered list"><li><a href="#如果安装有问题，可以在删除软件后和安装之后两个时刻，分别先关机在开机（据说与重启有一定区别）。删除软件时，可进入到资源库中删除，咱们老师一直是在shell中操作，所以作为未来的大牛，大家就多用shell吧。"><span>如果安装有问题，可以在删除软件后和安装之后两个时刻，分别先关机在开机（据说与重启有一定区别）。删除软件时，可进入到资源库中删除，咱们老师一直是在shell中操作，所以作为未来的大牛，大家就多用shell吧。</span></a></li></ol>
+                </div>
+
+            </div>
+            
+
+        </div>
+    </div>
+</div>
 
 
-<script src="/js/script.js"></script>
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        </div>
+        <div class="ui vertical footer segment">
+    <div class="ui center aligned container">
+        <div class="ui inverted section divider"></div>
+        &copy; 2018 <a href="/">wangtao</a>,
+        Powered by <a href="https://github.com/henryhuang/hexo-theme-aloha" target="_blank">Aloha</a> and <a
+                href="http://hexo.io/" target="_blank">Hexo</a>.
+    </div>
+</div>
+
+    </div>
 
 
 
-  </div>
+
+<!-- scripts list from theme config.yml -->
+
+<script src="//cdn.bootcss.com/jquery/3.1.0/jquery.min.js"></script>
+
+<script src="//cdn.bootcss.com/semantic-ui/2.2.4/semantic.min.js"></script>
+
+<script src="//cdn.bootcss.com/algoliasearch/3.18.1/algoliasearch.min.js"></script>
+
+<script src="//cdn.bootcss.com/algoliasearch-helper-js/2.13.0/algoliasearch.helper.min.js"></script>
+
+<script src="/js/semantic-ui-algolia.js"></script>
+
+<script src="/js/aloha-events.js"></script>
+
+
+
 </body>
 </html>

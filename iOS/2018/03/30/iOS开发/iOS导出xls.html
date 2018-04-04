@@ -1,19 +1,21 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  
 
-  
-  <title>iOS导出xls | wt</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1 系统的方法1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677@interface BYResultManager : NSObject@property (">
+
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head prefix="og: http://ogp.me/ns#">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="description" content="技术交流">
+    <title>iOS导出xls | wt</title>
+
+    <!-- Open Graph -->
+    <meta name="description" content="1 &amp;#x7CFB;&amp;#x7EDF;&amp;#x7684;&amp;#x65B9;&amp;#x6CD5;1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677@interface BY">
 <meta name="keywords" content="xls">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS导出xls">
 <meta property="og:url" content="https://weibo.com/wangtaoworld/iOS/2018/03/30/iOS开发/iOS导出xls.html">
 <meta property="og:site_name" content="wt">
-<meta property="og:description" content="1 系统的方法1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677@interface BYResultManager : NSObject@property (">
+<meta property="og:description" content="1 &amp;#x7CFB;&amp;#x7EDF;&amp;#x7684;&amp;#x65B9;&amp;#x6CD5;1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677@interface BY">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://github.com/wangtaoios/images/blob/master/%E9%A1%B9%E7%9B%AEDemo%E5%9B%BE%E7%89%87/xls_0330_00.png?raw=true">
 <meta property="og:image" content="https://github.com/wangtaoios/images/blob/master/%E9%A1%B9%E7%9B%AEDemo%E5%9B%BE%E7%89%87/xls_0330_01.png?raw=true">
@@ -28,270 +30,289 @@
 <meta property="og:updated_time" content="2018-03-30T08:20:57.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS导出xls">
-<meta name="twitter:description" content="1 系统的方法1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677@interface BYResultManager : NSObject@property (">
+<meta name="twitter:description" content="1 &amp;#x7CFB;&amp;#x7EDF;&amp;#x7684;&amp;#x65B9;&amp;#x6CD5;1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677@interface BY">
 <meta name="twitter:image" content="https://github.com/wangtaoios/images/blob/master/%E9%A1%B9%E7%9B%AEDemo%E5%9B%BE%E7%89%87/xls_0330_00.png?raw=true">
-  
-    <link rel="alternate" href="/atom.xml" title="wt" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  <link rel="stylesheet" href="/css/style.css">
+
+    <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Person",
+  "email": "mailto:",
+  "image": "",
+  "name": "wangtao",
+  "url": "https://weibo.com/wangtaoworld"
+}
+</script>
+    <script>
+    var algoliaEnabled = false;
+    
+</script>
+
+    
+
+    
+    
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+    
+    
+    
+        <!-- stylesheets list from config.yml -->
+        
+        <link rel="stylesheet" href="/css/aloha.css">
+        
+        <link rel="stylesheet" href="//cdn.bootcss.com/semantic-ui/2.2.4/semantic.min.css">
+        
+        <link rel="stylesheet" href="//cdn.bootcss.com/magnific-popup.js/1.1.0/magnific-popup.min.css">
+        
+    
+
 </head>
+<body id="body" style="margin-bottom: 0;" class="pushable">
 
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">wt</a>
-      </h1>
-      
-        <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">博客</a>
-        </h2>
-      
+    <div class="ui top fixed menu">
+        <a class="item" id="menu-icon"><i class="sidebar icon"></i></a>
     </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://weibo.com/wangtaoworld"></form>
-      </div>
+
+    <div id="menu-sidebar" class="ui left vertical sidebar menu">
+
+    <div id="sidebar-top">
+        <div class="content">
+            <h3>wt</h3>
+        </div>
     </div>
-  </div>
-</header>
-      <div class="outer">
-        <section id="main"><article id="post-iOS开发/iOS导出xls" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/iOS/2018/03/30/iOS开发/iOS导出xls.html" class="article-date">
-  <time datetime="2018-03-30T07:52:05.000Z" itemprop="datePublished">2018-03-30</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/iOS/">iOS</a>
-  </div>
+    <div class="ui container sidebar-card">
+    <div class="ui people shape content">
+        <div class="active side">
+            <div class="ui card">
+                <div class="image">
+                    <img class="ui medium bordered image" src="/images/avatar.jpg">
+                </div>
+                <div class="content">
+                    <a class="header">wangtao</a>
+                    
+                </div>
+                <div class="extra content">
+                    <div class="ui list">
+                        
+                        
+                    </div>
 
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      iOS导出xls
-    </h1>
-  
+                </div>
+                <div class="extra content">
+                    <div class="ui list">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-      </header>
+
+</div>
+
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="1-系统的方法"><a href="#1-系统的方法" class="headerlink" title="1 系统的方法"></a>1 系统的方法</h4><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">BYResultManager</span> : <span class="title">NSObject</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">copy</span>) <span class="built_in">NSString</span> *answer_score;</span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">copy</span>) <span class="built_in">NSString</span> *class_id;</span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">copy</span>) <span class="built_in">NSString</span> *pic;</span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">copy</span>) <span class="built_in">NSString</span> *s_uid;</span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">copy</span>) <span class="built_in">NSString</span> *sign_score;</span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">copy</span>) <span class="built_in">NSString</span> *total_score;</span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">copy</span>) <span class="built_in">NSString</span> *username;</span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">copy</span>) <span class="built_in">NSString</span> *work_score;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">BYResultManagerVC</span> () &lt;<span class="title">UIDocumentInteractionControllerDelegate</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">strong</span>) <span class="built_in">NSMutableArray</span> *dataArray;</span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">assign</span>) <span class="built_in">NSInteger</span> page;</span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">weak</span>) <span class="built_in">UIButton</span> *signinButton;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">strong</span>) <span class="built_in">UIDocumentInteractionController</span> *documentInteractionController;</span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)clickDerive</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//创建可变数组，存储数据用</span></span><br><span class="line">    <span class="built_in">NSMutableArray</span> * contentArray = [[<span class="built_in">NSMutableArray</span> alloc] init];</span><br><span class="line">    <span class="comment">//逐个添加第一行内容</span></span><br><span class="line">    [contentArray addObject:<span class="string">@""</span>];</span><br><span class="line">    [contentArray addObject:<span class="string">@"姓名"</span>];</span><br><span class="line">    [contentArray addObject:<span class="string">@"签到"</span>];</span><br><span class="line">    [contentArray addObject:<span class="string">@"应答"</span>];</span><br><span class="line">    [contentArray addObject:<span class="string">@"作业"</span>];</span><br><span class="line">    [contentArray addObject:<span class="string">@"总分"</span>];</span><br><span class="line">    <span class="comment">//添加回车键（换行）</span></span><br><span class="line">    [contentArray addObject:<span class="string">@"\n"</span>];</span><br><span class="line">    <span class="comment">//先前把获取的数据存入数组，这里循环添加到可变数组contents中</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="keyword">self</span>.dataArray.count; i ++) &#123;</span><br><span class="line">        BYResultManager *model = <span class="keyword">self</span>.dataArray[i];</span><br><span class="line">        <span class="keyword">if</span> (model.username &amp;&amp;(model.username.length &gt; <span class="number">0</span>)) &#123;</span><br><span class="line">            [contentArray addObject:model.username];</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            [contentArray addObject:<span class="string">@"1"</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        [contentArray addObject:model.sign_score];</span><br><span class="line">        [contentArray addObject:model.answer_score];</span><br><span class="line">        [contentArray addObject:model.work_score];</span><br><span class="line">        [contentArray addObject:model.total_score];</span><br><span class="line">        [contentArray addObject:<span class="string">@"\n"</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//重点在这里：把可变数据以'\t'字符切割，在xls文件中就会以列显示</span></span><br><span class="line">    <span class="built_in">NSString</span> * fileContent = [contentArray componentsJoinedByString:<span class="string">@"\t"</span>];</span><br><span class="line">    <span class="comment">//创建文件</span></span><br><span class="line">    <span class="built_in">NSFileManager</span> *fileManager = [[<span class="built_in">NSFileManager</span> alloc] init];</span><br><span class="line">    <span class="comment">//使用UTF16才能显示汉字</span></span><br><span class="line">    <span class="built_in">NSData</span> * fileData = [fileContent dataUsingEncoding:<span class="built_in">NSUTF8StringEncoding</span>];</span><br><span class="line">    <span class="comment">//文件位置</span></span><br><span class="line">    <span class="built_in">NSArray</span> * paths = <span class="built_in">NSSearchPathForDirectoriesInDomains</span>(<span class="built_in">NSDocumentDirectory</span>, <span class="built_in">NSUserDomainMask</span>, <span class="literal">YES</span>);</span><br><span class="line">    <span class="built_in">NSString</span> * documentsDirectory = [paths objectAtIndex:<span class="number">0</span>];</span><br><span class="line">    <span class="comment">//文件的完整路径</span></span><br><span class="line">    <span class="built_in">NSString</span> * filePath= [documentsDirectory stringByAppendingPathComponent:<span class="string">@"成绩单.xls"</span>];</span><br><span class="line">    <span class="comment">//生成xls文件</span></span><br><span class="line">    [fileManager createFileAtPath:filePath contents:fileData attributes:<span class="literal">nil</span>];</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//导出xls文件</span></span><br><span class="line">    <span class="keyword">self</span>.documentInteractionController = [<span class="built_in">UIDocumentInteractionController</span> interactionControllerWithURL:[<span class="built_in">NSURL</span> fileURLWithPath:filePath]];</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">self</span>.documentInteractionController.delegate = <span class="keyword">self</span>;</span><br><span class="line">    [<span class="keyword">self</span>.documentInteractionController presentPreviewAnimated:<span class="literal">YES</span>];</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- ( <span class="built_in">UIViewController</span> *)documentInteractionControllerViewControllerForPreview:( <span class="built_in">UIDocumentInteractionController</span> *)interactionController</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">self</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="https://github.com/wangtaoios/images/blob/master/%E9%A1%B9%E7%9B%AEDemo%E5%9B%BE%E7%89%87/xls_0330_00.png?raw=true" alt="准备导出为xls"></p>
+    
+
+    
+
+    
+    <a href="/index.html" class="item" >
+        <i class="home icon"></i>
+        HOME
+    </a>
+
+    
+
+    
+</div>
+
+    <div class="pusher body-content">
+        <div id="content" class="ui main container">
+            <!--<div class="ui one column grid">-->
+                <!--<div class="column">-->
+                    <!--<div class="ui main container">-->
+                        <div id="post-iOS开发/iOS导出xls" class="ui main container article-type-post">
+
+    
+
+    <div class="ui divided grid">
+
+        <div class="two column row" id="article-content">
+
+            <div class="thirteen wide computer thirteen wide tablet sixteen wide mobile column">
+                
+
+<h1 class="ui header">
+    
+    iOS导出xls
+</h1>
+
+
+
+                <div class="article-inner">
+
+                    <div class="article-entry" itemprop="articleBody">
+                        
+                        <h4 id="1-&#x7CFB;&#x7EDF;&#x7684;&#x65B9;&#x6CD5;"><a href="#1-&#x7CFB;&#x7EDF;&#x7684;&#x65B9;&#x6CD5;" class="headerlink" title="1 &#x7CFB;&#x7EDF;&#x7684;&#x65B9;&#x6CD5;"></a>1 &#x7CFB;&#x7EDF;&#x7684;&#x65B9;&#x6CD5;</h4><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">BYResultManager</span> : <span class="title">NSObject</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">copy</span>) <span class="built_in">NSString</span> *answer_score;</span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">copy</span>) <span class="built_in">NSString</span> *class_id;</span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">copy</span>) <span class="built_in">NSString</span> *pic;</span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">copy</span>) <span class="built_in">NSString</span> *s_uid;</span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">copy</span>) <span class="built_in">NSString</span> *sign_score;</span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">copy</span>) <span class="built_in">NSString</span> *total_score;</span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">copy</span>) <span class="built_in">NSString</span> *username;</span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">copy</span>) <span class="built_in">NSString</span> *work_score;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">BYResultManagerVC</span> () &lt;<span class="title">UIDocumentInteractionControllerDelegate</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">strong</span>) <span class="built_in">NSMutableArray</span> *dataArray;</span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">assign</span>) <span class="built_in">NSInteger</span> page;</span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">weak</span>) <span class="built_in">UIButton</span> *signinButton;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">strong</span>) <span class="built_in">UIDocumentInteractionController</span> *documentInteractionController;</span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)clickDerive</span><br><span class="line">{</span><br><span class="line">&#xA0; &#xA0; <span class="comment">//&#x521B;&#x5EFA;&#x53EF;&#x53D8;&#x6570;&#x7EC4;&#xFF0C;&#x5B58;&#x50A8;&#x6570;&#x636E;&#x7528;</span></span><br><span class="line">&#xA0; &#xA0; <span class="built_in">NSMutableArray</span> * contentArray = [[<span class="built_in">NSMutableArray</span> alloc] init];</span><br><span class="line">&#xA0; &#xA0; <span class="comment">//&#x9010;&#x4E2A;&#x6DFB;&#x52A0;&#x7B2C;&#x4E00;&#x884C;&#x5185;&#x5BB9;</span></span><br><span class="line">&#xA0; &#xA0; [contentArray addObject:<span class="string">@&quot;&quot;</span>];</span><br><span class="line">&#xA0; &#xA0; [contentArray addObject:<span class="string">@&quot;&#x59D3;&#x540D;&quot;</span>];</span><br><span class="line">&#xA0; &#xA0; [contentArray addObject:<span class="string">@&quot;&#x7B7E;&#x5230;&quot;</span>];</span><br><span class="line">&#xA0; &#xA0; [contentArray addObject:<span class="string">@&quot;&#x5E94;&#x7B54;&quot;</span>];</span><br><span class="line">&#xA0; &#xA0; [contentArray addObject:<span class="string">@&quot;&#x4F5C;&#x4E1A;&quot;</span>];</span><br><span class="line">&#xA0; &#xA0; [contentArray addObject:<span class="string">@&quot;&#x603B;&#x5206;&quot;</span>];</span><br><span class="line">&#xA0; &#xA0; <span class="comment">//&#x6DFB;&#x52A0;&#x56DE;&#x8F66;&#x952E;&#xFF08;&#x6362;&#x884C;&#xFF09;</span></span><br><span class="line">&#xA0; &#xA0; [contentArray addObject:<span class="string">@&quot;\n&quot;</span>];</span><br><span class="line">&#xA0; &#xA0; <span class="comment">//&#x5148;&#x524D;&#x628A;&#x83B7;&#x53D6;&#x7684;&#x6570;&#x636E;&#x5B58;&#x5165;&#x6570;&#x7EC4;&#xFF0C;&#x8FD9;&#x91CC;&#x5FAA;&#x73AF;&#x6DFB;&#x52A0;&#x5230;&#x53EF;&#x53D8;&#x6570;&#x7EC4;contents&#x4E2D;</span></span><br><span class="line">&#xA0;&#xA0; &#xA0;</span><br><span class="line">&#xA0; &#xA0; <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="keyword">self</span>.dataArray.count; i ++) {</span><br><span class="line">&#xA0; &#xA0; &#xA0; &#xA0; BYResultManager *model = <span class="keyword">self</span>.dataArray[i];</span><br><span class="line">&#xA0; &#xA0; &#xA0; &#xA0; <span class="keyword">if</span> (model.username &amp;&amp;(model.username.length &gt; <span class="number">0</span>)) {</span><br><span class="line">&#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; [contentArray addObject:model.username];</span><br><span class="line">&#xA0; &#xA0; &#xA0; &#xA0; } <span class="keyword">else</span> {</span><br><span class="line">&#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; [contentArray addObject:<span class="string">@&quot;1&quot;</span>];</span><br><span class="line">&#xA0; &#xA0; &#xA0; &#xA0; }</span><br><span class="line">&#xA0; &#xA0; &#xA0; &#xA0; [contentArray addObject:model.sign_score];</span><br><span class="line">&#xA0; &#xA0; &#xA0; &#xA0; [contentArray addObject:model.answer_score];</span><br><span class="line">&#xA0; &#xA0; &#xA0; &#xA0; [contentArray addObject:model.work_score];</span><br><span class="line">&#xA0; &#xA0; &#xA0; &#xA0; [contentArray addObject:model.total_score];</span><br><span class="line">&#xA0; &#xA0; &#xA0; &#xA0; [contentArray addObject:<span class="string">@&quot;\n&quot;</span>];</span><br><span class="line">&#xA0; &#xA0; }</span><br><span class="line">&#xA0;&#xA0; &#xA0;</span><br><span class="line">&#xA0; &#xA0; <span class="comment">//&#x91CD;&#x70B9;&#x5728;&#x8FD9;&#x91CC;&#xFF1A;&#x628A;&#x53EF;&#x53D8;&#x6570;&#x636E;&#x4EE5;&apos;\t&apos;&#x5B57;&#x7B26;&#x5207;&#x5272;&#xFF0C;&#x5728;xls&#x6587;&#x4EF6;&#x4E2D;&#x5C31;&#x4F1A;&#x4EE5;&#x5217;&#x663E;&#x793A;</span></span><br><span class="line">&#xA0; &#xA0; <span class="built_in">NSString</span> * fileContent = [contentArray componentsJoinedByString:<span class="string">@&quot;\t&quot;</span>];</span><br><span class="line">&#xA0; &#xA0; <span class="comment">//&#x521B;&#x5EFA;&#x6587;&#x4EF6;</span></span><br><span class="line">&#xA0; &#xA0; <span class="built_in">NSFileManager</span> *fileManager = [[<span class="built_in">NSFileManager</span> alloc] init];</span><br><span class="line">&#xA0; &#xA0; <span class="comment">//&#x4F7F;&#x7528;UTF16&#x624D;&#x80FD;&#x663E;&#x793A;&#x6C49;&#x5B57;</span></span><br><span class="line">&#xA0; &#xA0; <span class="built_in">NSData</span> * fileData = [fileContent dataUsingEncoding:<span class="built_in">NSUTF8StringEncoding</span>];</span><br><span class="line">&#xA0; &#xA0; <span class="comment">//&#x6587;&#x4EF6;&#x4F4D;&#x7F6E;</span></span><br><span class="line">&#xA0; &#xA0; <span class="built_in">NSArray</span> * paths = <span class="built_in">NSSearchPathForDirectoriesInDomains</span>(<span class="built_in">NSDocumentDirectory</span>, <span class="built_in">NSUserDomainMask</span>, <span class="literal">YES</span>);</span><br><span class="line">&#xA0; &#xA0; <span class="built_in">NSString</span> * documentsDirectory = [paths objectAtIndex:<span class="number">0</span>];</span><br><span class="line">&#xA0; &#xA0; <span class="comment">//&#x6587;&#x4EF6;&#x7684;&#x5B8C;&#x6574;&#x8DEF;&#x5F84;</span></span><br><span class="line">&#xA0; &#xA0; <span class="built_in">NSString</span> * filePath= [documentsDirectory stringByAppendingPathComponent:<span class="string">@&quot;&#x6210;&#x7EE9;&#x5355;.xls&quot;</span>];</span><br><span class="line">&#xA0; &#xA0; <span class="comment">//&#x751F;&#x6210;xls&#x6587;&#x4EF6;</span></span><br><span class="line">&#xA0; &#xA0; [fileManager createFileAtPath:filePath contents:fileData attributes:<span class="literal">nil</span>];</span><br><span class="line">&#xA0;&#xA0; &#xA0;</span><br><span class="line">&#xA0; &#xA0; <span class="comment">//&#x5BFC;&#x51FA;xls&#x6587;&#x4EF6;</span></span><br><span class="line">&#xA0; &#xA0; <span class="keyword">self</span>.documentInteractionController = [<span class="built_in">UIDocumentInteractionController</span> interactionControllerWithURL:[<span class="built_in">NSURL</span> fileURLWithPath:filePath]];</span><br><span class="line">&#xA0;&#xA0; &#xA0;</span><br><span class="line">&#xA0; &#xA0; <span class="keyword">self</span>.documentInteractionController.delegate = <span class="keyword">self</span>;</span><br><span class="line">&#xA0; &#xA0; [<span class="keyword">self</span>.documentInteractionController presentPreviewAnimated:<span class="literal">YES</span>];</span><br><span class="line">&#xA0;&#xA0; &#xA0;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">- ( <span class="built_in">UIViewController</span> *)documentInteractionControllerViewControllerForPreview:( <span class="built_in">UIDocumentInteractionController</span> *)interactionController</span><br><span class="line">{</span><br><span class="line">&#xA0; &#xA0; <span class="keyword">return</span> <span class="keyword">self</span>;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<p><a class="magnific-img" href="https://github.com/wangtaoios/images/blob/master/%E9%A1%B9%E7%9B%AEDemo%E5%9B%BE%E7%89%87/xls_0330_00.png?raw=true"><img src="https://github.com/wangtaoios/images/blob/master/%E9%A1%B9%E7%9B%AEDemo%E5%9B%BE%E7%89%87/xls_0330_00.png?raw=true" alt="&#x51C6;&#x5907;&#x5BFC;&#x51FA;&#x4E3A;xls" class="ui centered image"></a></p>
 <blockquote>
-<p>准备导出为xls</p>
+<p>&#x51C6;&#x5907;&#x5BFC;&#x51FA;&#x4E3A;xls</p>
 </blockquote>
-<p><img src="https://github.com/wangtaoios/images/blob/master/%E9%A1%B9%E7%9B%AEDemo%E5%9B%BE%E7%89%87/xls_0330_01.png?raw=true" alt="生成xls"></p>
+<p><a class="magnific-img" href="https://github.com/wangtaoios/images/blob/master/%E9%A1%B9%E7%9B%AEDemo%E5%9B%BE%E7%89%87/xls_0330_01.png?raw=true"><img src="https://github.com/wangtaoios/images/blob/master/%E9%A1%B9%E7%9B%AEDemo%E5%9B%BE%E7%89%87/xls_0330_01.png?raw=true" alt="&#x751F;&#x6210;xls" class="ui centered image"></a></p>
 <blockquote>
-<p>生成xls</p>
+<p>&#x751F;&#x6210;xls</p>
 </blockquote>
-<p><img src="https://github.com/wangtaoios/images/blob/master/%E9%A1%B9%E7%9B%AEDemo%E5%9B%BE%E7%89%87/xls_0330_02.png?raw=true" alt="分享到QQ打开失败"></p>
+<p><a class="magnific-img" href="https://github.com/wangtaoios/images/blob/master/%E9%A1%B9%E7%9B%AEDemo%E5%9B%BE%E7%89%87/xls_0330_02.png?raw=true"><img src="https://github.com/wangtaoios/images/blob/master/%E9%A1%B9%E7%9B%AEDemo%E5%9B%BE%E7%89%87/xls_0330_02.png?raw=true" alt="&#x5206;&#x4EAB;&#x5230;QQ&#x6253;&#x5F00;&#x5931;&#x8D25;" class="ui centered image"></a></p>
 <blockquote>
-<p>分享到QQ打开失败</p>
+<p>&#x5206;&#x4EAB;&#x5230;QQ&#x6253;&#x5F00;&#x5931;&#x8D25;</p>
 </blockquote>
-<p><img src="https://github.com/wangtaoios/images/blob/master/%E9%A1%B9%E7%9B%AEDemo%E5%9B%BE%E7%89%87/xls_0330_03.png?raw=true" alt="分享到电脑使用Numbers打开成功"></p>
+<p><a class="magnific-img" href="https://github.com/wangtaoios/images/blob/master/%E9%A1%B9%E7%9B%AEDemo%E5%9B%BE%E7%89%87/xls_0330_03.png?raw=true"><img src="https://github.com/wangtaoios/images/blob/master/%E9%A1%B9%E7%9B%AEDemo%E5%9B%BE%E7%89%87/xls_0330_03.png?raw=true" alt="&#x5206;&#x4EAB;&#x5230;&#x7535;&#x8111;&#x4F7F;&#x7528;Numbers&#x6253;&#x5F00;&#x6210;&#x529F;" class="ui centered image"></a></p>
 <blockquote>
-<p>分享到电脑使用Numbers打开成功</p>
+<p>&#x5206;&#x4EAB;&#x5230;&#x7535;&#x8111;&#x4F7F;&#x7528;Numbers&#x6253;&#x5F00;&#x6210;&#x529F;</p>
 </blockquote>
-<h4 id="2-使用LibXL-framework"><a href="#2-使用LibXL-framework" class="headerlink" title="2 使用LibXL.framework"></a>2 使用LibXL.framework</h4><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#include <span class="meta-string">"LibXL/libxl.h"</span></span></span><br><span class="line"><span class="comment">// 下载链接 http://www.libxl.com/download.html</span></span><br><span class="line"><span class="comment">// 下载 LibXL.framework</span></span><br><span class="line"><span class="comment">// Other  Linker flags   加    -lstdc++</span></span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)clickDerive</span><br><span class="line">&#123;</span><br><span class="line">    BookHandle book = xlCreateBook(); <span class="comment">// use xlCreateXMLBook() for working with xlsx files</span></span><br><span class="line">    </span><br><span class="line">    SheetHandle sheet = xlBookAddSheet(book, <span class="string">"Sheet1"</span>, <span class="literal">NULL</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//设置表格字体，颜色等</span></span><br><span class="line">    FontHandle font = xlBookAddFont(book, <span class="number">0</span>);</span><br><span class="line">    xlFontSetColor(font, COLOR_RED);</span><br><span class="line">    xlFontSetBold(font, <span class="literal">true</span>);</span><br><span class="line">    FormatHandle boldFormat = xlBookAddFormat(book, <span class="number">0</span>);</span><br><span class="line">    xlFormatSetFont(boldFormat, font);</span><br><span class="line">    </span><br><span class="line">    xlSheetSetCol(sheet, <span class="number">0</span>, <span class="number">4</span>, <span class="number">10</span>, <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">    </span><br><span class="line">    xlSheetSetRow(sheet, <span class="number">1</span>, <span class="number">20</span>, <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">    <span class="comment">//第一个参数代表插入哪个表，第二个是第几行（默认从0开始），第三个是第几列（默认从0开始）</span></span><br><span class="line">    xlSheetWriteStr(sheet, <span class="number">1</span>, <span class="number">0</span>, <span class="string">"姓名"</span>, <span class="number">0</span>);</span><br><span class="line">    xlSheetWriteStr(sheet, <span class="number">1</span>, <span class="number">1</span>, <span class="string">"签到"</span>, <span class="number">0</span>);</span><br><span class="line">    xlSheetWriteStr(sheet, <span class="number">1</span>, <span class="number">2</span>, <span class="string">"应答"</span>, <span class="number">0</span>);</span><br><span class="line">    xlSheetWriteStr(sheet, <span class="number">1</span>, <span class="number">3</span>, <span class="string">"作业"</span>, <span class="number">0</span>);</span><br><span class="line">    xlSheetWriteStr(sheet, <span class="number">1</span>, <span class="number">4</span>, <span class="string">"总分"</span>, <span class="number">0</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="keyword">self</span>.dataArray.count; i ++) &#123;</span><br><span class="line">        BYResultManager *model = <span class="keyword">self</span>.dataArray[i];</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> (model.username &amp;&amp;(model.username.length &gt; <span class="number">0</span>)) &#123;</span><br><span class="line">            <span class="keyword">const</span> <span class="keyword">char</span> *username        = [model.username UTF8String];</span><br><span class="line">            xlSheetWriteStr(sheet, <span class="number">2</span> + i, <span class="number">0</span>, username, <span class="number">0</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">const</span> <span class="keyword">char</span> *username        = [<span class="string">@""</span> UTF8String];</span><br><span class="line">            xlSheetWriteStr(sheet, <span class="number">2</span> + i, <span class="number">0</span>, username, <span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">const</span> <span class="keyword">char</span> *sign_score      = [model.sign_score UTF8String];</span><br><span class="line">        <span class="keyword">const</span> <span class="keyword">char</span> *answer_score    = [model.answer_score UTF8String];</span><br><span class="line">        <span class="keyword">const</span> <span class="keyword">char</span> *work_score      = [model.work_score UTF8String];</span><br><span class="line">        <span class="keyword">const</span> <span class="keyword">char</span> *total_score     = [model.total_score UTF8String];</span><br><span class="line">        </span><br><span class="line">        xlSheetWriteStr(sheet, <span class="number">2</span> + i, <span class="number">1</span>, sign_score, <span class="number">0</span>);</span><br><span class="line">        xlSheetWriteStr(sheet, <span class="number">2</span> + i, <span class="number">2</span>, answer_score, <span class="number">0</span>);</span><br><span class="line">        xlSheetWriteStr(sheet, <span class="number">2</span> + i, <span class="number">3</span>, work_score, <span class="number">0</span>);</span><br><span class="line">        xlSheetWriteStr(sheet, <span class="number">2</span> + i, <span class="number">4</span>, total_score, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">NSString</span> *documentPath =</span><br><span class="line">    [<span class="built_in">NSSearchPathForDirectoriesInDomains</span>(<span class="built_in">NSDocumentDirectory</span>,<span class="built_in">NSUserDomainMask</span>, <span class="literal">YES</span>) objectAtIndex:<span class="number">0</span>];</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">NSFileManager</span> *fileManager = [<span class="built_in">NSFileManager</span> defaultManager];</span><br><span class="line">    <span class="built_in">NSString</span> *achievementDirectory = [documentPath stringByAppendingPathComponent:<span class="string">@"achievement"</span>];</span><br><span class="line">    <span class="built_in">BOOL</span> isCreateDirectorySuccess = [fileManager createDirectoryAtPath:achievementDirectory withIntermediateDirectories:<span class="literal">YES</span> attributes:<span class="literal">nil</span> error:<span class="literal">nil</span>];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!isCreateDirectorySuccess) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">NSString</span> *filePath = [achievementDirectory stringByAppendingPathComponent:<span class="string">@"成绩单.xls"</span>];</span><br><span class="line"></span><br><span class="line">    xlBookSave(book, [filePath UTF8String]);</span><br><span class="line">    xlBookRelease(book);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//导出xls文件</span></span><br><span class="line">    <span class="keyword">self</span>.documentInteractionController = [<span class="built_in">UIDocumentInteractionController</span> interactionControllerWithURL:[<span class="built_in">NSURL</span> fileURLWithPath:filePath]];</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">self</span>.documentInteractionController.delegate = <span class="keyword">self</span>;</span><br><span class="line">    [<span class="keyword">self</span>.documentInteractionController presentPreviewAnimated:<span class="literal">YES</span>];</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="https://github.com/wangtaoios/images/blob/master/%E9%A1%B9%E7%9B%AEDemo%E5%9B%BE%E7%89%87/xls_0330_04.png?raw=true" alt="准备生成xls"></p>
+<h4 id="2-&#x4F7F;&#x7528;LibXL-framework"><a href="#2-&#x4F7F;&#x7528;LibXL-framework" class="headerlink" title="2 &#x4F7F;&#x7528;LibXL.framework"></a>2 &#x4F7F;&#x7528;LibXL.framework</h4><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#include <span class="meta-string">&quot;LibXL/libxl.h&quot;</span></span></span><br><span class="line"><span class="comment">// &#x4E0B;&#x8F7D;&#x94FE;&#x63A5; http://www.libxl.com/download.html</span></span><br><span class="line"><span class="comment">// &#x4E0B;&#x8F7D; LibXL.framework</span></span><br><span class="line"><span class="comment">// Other  Linker flags   &#x52A0;    -lstdc++</span></span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)clickDerive</span><br><span class="line">{</span><br><span class="line">&#xA0; &#xA0; BookHandle book = xlCreateBook(); <span class="comment">// use xlCreateXMLBook() for working with xlsx files</span></span><br><span class="line">&#xA0;&#xA0; &#xA0;</span><br><span class="line">&#xA0; &#xA0; SheetHandle sheet = xlBookAddSheet(book, <span class="string">&quot;Sheet1&quot;</span>, <span class="literal">NULL</span>);</span><br><span class="line">&#xA0;&#xA0; &#xA0;</span><br><span class="line">&#xA0; &#xA0; <span class="comment">//&#x8BBE;&#x7F6E;&#x8868;&#x683C;&#x5B57;&#x4F53;&#xFF0C;&#x989C;&#x8272;&#x7B49;</span></span><br><span class="line">&#xA0; &#xA0; FontHandle font = xlBookAddFont(book, <span class="number">0</span>);</span><br><span class="line">&#xA0; &#xA0; xlFontSetColor(font, COLOR_RED);</span><br><span class="line">&#xA0; &#xA0; xlFontSetBold(font, <span class="literal">true</span>);</span><br><span class="line">&#xA0; &#xA0; FormatHandle boldFormat = xlBookAddFormat(book, <span class="number">0</span>);</span><br><span class="line">&#xA0; &#xA0; xlFormatSetFont(boldFormat, font);</span><br><span class="line">&#xA0;&#xA0; &#xA0;</span><br><span class="line">&#xA0; &#xA0; xlSheetSetCol(sheet, <span class="number">0</span>, <span class="number">4</span>, <span class="number">10</span>, <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">&#xA0;&#xA0; &#xA0;</span><br><span class="line">&#xA0; &#xA0; xlSheetSetRow(sheet, <span class="number">1</span>, <span class="number">20</span>, <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">&#xA0; &#xA0; <span class="comment">//&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x4EE3;&#x8868;&#x63D2;&#x5165;&#x54EA;&#x4E2A;&#x8868;&#xFF0C;&#x7B2C;&#x4E8C;&#x4E2A;&#x662F;&#x7B2C;&#x51E0;&#x884C;&#xFF08;&#x9ED8;&#x8BA4;&#x4ECE;0&#x5F00;&#x59CB;&#xFF09;&#xFF0C;&#x7B2C;&#x4E09;&#x4E2A;&#x662F;&#x7B2C;&#x51E0;&#x5217;&#xFF08;&#x9ED8;&#x8BA4;&#x4ECE;0&#x5F00;&#x59CB;&#xFF09;</span></span><br><span class="line">&#xA0; &#xA0; xlSheetWriteStr(sheet, <span class="number">1</span>, <span class="number">0</span>, <span class="string">&quot;&#x59D3;&#x540D;&quot;</span>, <span class="number">0</span>);</span><br><span class="line">&#xA0; &#xA0; xlSheetWriteStr(sheet, <span class="number">1</span>, <span class="number">1</span>, <span class="string">&quot;&#x7B7E;&#x5230;&quot;</span>, <span class="number">0</span>);</span><br><span class="line">&#xA0; &#xA0; xlSheetWriteStr(sheet, <span class="number">1</span>, <span class="number">2</span>, <span class="string">&quot;&#x5E94;&#x7B54;&quot;</span>, <span class="number">0</span>);</span><br><span class="line">&#xA0; &#xA0; xlSheetWriteStr(sheet, <span class="number">1</span>, <span class="number">3</span>, <span class="string">&quot;&#x4F5C;&#x4E1A;&quot;</span>, <span class="number">0</span>);</span><br><span class="line">&#xA0; &#xA0; xlSheetWriteStr(sheet, <span class="number">1</span>, <span class="number">4</span>, <span class="string">&quot;&#x603B;&#x5206;&quot;</span>, <span class="number">0</span>);</span><br><span class="line">&#xA0;&#xA0; &#xA0;</span><br><span class="line">&#xA0; &#xA0; <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="keyword">self</span>.dataArray.count; i ++) {</span><br><span class="line">&#xA0; &#xA0; &#xA0; &#xA0; BYResultManager *model = <span class="keyword">self</span>.dataArray[i];</span><br><span class="line">&#xA0;&#xA0; &#xA0; &#xA0; &#xA0;</span><br><span class="line">&#xA0; &#xA0; &#xA0; &#xA0; <span class="keyword">if</span> (model.username &amp;&amp;(model.username.length &gt; <span class="number">0</span>)) {</span><br><span class="line">&#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; <span class="keyword">const</span> <span class="keyword">char</span> *username&#xA0; &#xA0; &#xA0; &#xA0; = [model.username UTF8String];</span><br><span class="line">&#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; xlSheetWriteStr(sheet, <span class="number">2</span> + i, <span class="number">0</span>, username, <span class="number">0</span>);</span><br><span class="line">&#xA0; &#xA0; &#xA0; &#xA0; } <span class="keyword">else</span> {</span><br><span class="line">&#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; <span class="keyword">const</span> <span class="keyword">char</span> *username&#xA0; &#xA0; &#xA0; &#xA0; = [<span class="string">@&quot;&quot;</span> UTF8String];</span><br><span class="line">&#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; xlSheetWriteStr(sheet, <span class="number">2</span> + i, <span class="number">0</span>, username, <span class="number">0</span>);</span><br><span class="line">&#xA0; &#xA0; &#xA0; &#xA0; }</span><br><span class="line">&#xA0;&#xA0; &#xA0; &#xA0; &#xA0;</span><br><span class="line">&#xA0; &#xA0; &#xA0; &#xA0; <span class="keyword">const</span> <span class="keyword">char</span> *sign_score&#xA0; &#xA0; &#xA0; = [model.sign_score UTF8String];</span><br><span class="line">&#xA0; &#xA0; &#xA0; &#xA0; <span class="keyword">const</span> <span class="keyword">char</span> *answer_score&#xA0; &#xA0; = [model.answer_score UTF8String];</span><br><span class="line">&#xA0; &#xA0; &#xA0; &#xA0; <span class="keyword">const</span> <span class="keyword">char</span> *work_score&#xA0; &#xA0; &#xA0; = [model.work_score UTF8String];</span><br><span class="line">&#xA0; &#xA0; &#xA0; &#xA0; <span class="keyword">const</span> <span class="keyword">char</span> *total_score &#xA0; &#xA0; = [model.total_score UTF8String];</span><br><span class="line">&#xA0;&#xA0; &#xA0; &#xA0; &#xA0;</span><br><span class="line">&#xA0; &#xA0; &#xA0; &#xA0; xlSheetWriteStr(sheet, <span class="number">2</span> + i, <span class="number">1</span>, sign_score, <span class="number">0</span>);</span><br><span class="line">&#xA0; &#xA0; &#xA0; &#xA0; xlSheetWriteStr(sheet, <span class="number">2</span> + i, <span class="number">2</span>, answer_score, <span class="number">0</span>);</span><br><span class="line">&#xA0; &#xA0; &#xA0; &#xA0; xlSheetWriteStr(sheet, <span class="number">2</span> + i, <span class="number">3</span>, work_score, <span class="number">0</span>);</span><br><span class="line">&#xA0; &#xA0; &#xA0; &#xA0; xlSheetWriteStr(sheet, <span class="number">2</span> + i, <span class="number">4</span>, total_score, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">&#xA0; &#xA0; }</span><br><span class="line">&#xA0;&#xA0; &#xA0;</span><br><span class="line">&#xA0; &#xA0; <span class="built_in">NSString</span> *documentPath =</span><br><span class="line">&#xA0; &#xA0; [<span class="built_in">NSSearchPathForDirectoriesInDomains</span>(<span class="built_in">NSDocumentDirectory</span>,<span class="built_in">NSUserDomainMask</span>, <span class="literal">YES</span>) objectAtIndex:<span class="number">0</span>];</span><br><span class="line">&#xA0;&#xA0; &#xA0;</span><br><span class="line">&#xA0; &#xA0; <span class="built_in">NSFileManager</span> *fileManager = [<span class="built_in">NSFileManager</span> defaultManager];</span><br><span class="line">&#xA0; &#xA0; <span class="built_in">NSString</span> *achievementDirectory = [documentPath stringByAppendingPathComponent:<span class="string">@&quot;achievement&quot;</span>];</span><br><span class="line">&#xA0; &#xA0; <span class="built_in">BOOL</span> isCreateDirectorySuccess = [fileManager createDirectoryAtPath:achievementDirectory withIntermediateDirectories:<span class="literal">YES</span> attributes:<span class="literal">nil</span> error:<span class="literal">nil</span>];</span><br><span class="line"></span><br><span class="line">&#xA0; &#xA0; <span class="keyword">if</span> (!isCreateDirectorySuccess) {</span><br><span class="line">&#xA0; &#xA0; &#xA0; &#xA0; <span class="keyword">return</span>;</span><br><span class="line">&#xA0; &#xA0; }</span><br><span class="line">&#xA0;&#xA0; &#xA0;</span><br><span class="line">&#xA0; &#xA0; <span class="built_in">NSString</span> *filePath = [achievementDirectory stringByAppendingPathComponent:<span class="string">@&quot;&#x6210;&#x7EE9;&#x5355;.xls&quot;</span>];</span><br><span class="line"></span><br><span class="line">&#xA0; &#xA0; xlBookSave(book, [filePath UTF8String]);</span><br><span class="line">&#xA0; &#xA0; xlBookRelease(book);</span><br><span class="line">&#xA0;&#xA0; &#xA0;</span><br><span class="line">&#xA0; &#xA0; <span class="comment">//&#x5BFC;&#x51FA;xls&#x6587;&#x4EF6;</span></span><br><span class="line">&#xA0; &#xA0; <span class="keyword">self</span>.documentInteractionController = [<span class="built_in">UIDocumentInteractionController</span> interactionControllerWithURL:[<span class="built_in">NSURL</span> fileURLWithPath:filePath]];</span><br><span class="line">&#xA0;&#xA0; &#xA0;</span><br><span class="line">&#xA0; &#xA0; <span class="keyword">self</span>.documentInteractionController.delegate = <span class="keyword">self</span>;</span><br><span class="line">&#xA0; &#xA0; [<span class="keyword">self</span>.documentInteractionController presentPreviewAnimated:<span class="literal">YES</span>];</span><br><span class="line">&#xA0;&#xA0; &#xA0;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<p><a class="magnific-img" href="https://github.com/wangtaoios/images/blob/master/%E9%A1%B9%E7%9B%AEDemo%E5%9B%BE%E7%89%87/xls_0330_04.png?raw=true"><img src="https://github.com/wangtaoios/images/blob/master/%E9%A1%B9%E7%9B%AEDemo%E5%9B%BE%E7%89%87/xls_0330_04.png?raw=true" alt="&#x51C6;&#x5907;&#x751F;&#x6210;xls" class="ui centered image"></a></p>
 <blockquote>
-<p>准备生成xls</p>
+<p>&#x51C6;&#x5907;&#x751F;&#x6210;xls</p>
 </blockquote>
-<p><img src="https://github.com/wangtaoios/images/blob/master/%E9%A1%B9%E7%9B%AEDemo%E5%9B%BE%E7%89%87/xls_0330_05.png?raw=true" alt="生成xls成功"></p>
+<p><a class="magnific-img" href="https://github.com/wangtaoios/images/blob/master/%E9%A1%B9%E7%9B%AEDemo%E5%9B%BE%E7%89%87/xls_0330_05.png?raw=true"><img src="https://github.com/wangtaoios/images/blob/master/%E9%A1%B9%E7%9B%AEDemo%E5%9B%BE%E7%89%87/xls_0330_05.png?raw=true" alt="&#x751F;&#x6210;xls&#x6210;&#x529F;" class="ui centered image"></a></p>
 <blockquote>
-<p>生成xls成功</p>
+<p>&#x751F;&#x6210;xls&#x6210;&#x529F;</p>
 </blockquote>
-<p><img src="https://github.com/wangtaoios/images/blob/master/%E9%A1%B9%E7%9B%AEDemo%E5%9B%BE%E7%89%87/xls_0330_06.png?raw=true" alt="分享"></p>
+<p><a class="magnific-img" href="https://github.com/wangtaoios/images/blob/master/%E9%A1%B9%E7%9B%AEDemo%E5%9B%BE%E7%89%87/xls_0330_06.png?raw=true"><img src="https://github.com/wangtaoios/images/blob/master/%E9%A1%B9%E7%9B%AEDemo%E5%9B%BE%E7%89%87/xls_0330_06.png?raw=true" alt="&#x5206;&#x4EAB;" class="ui centered image"></a></p>
 <blockquote>
-<p>分享</p>
+<p>&#x5206;&#x4EAB;</p>
 </blockquote>
-<p><img src="https://github.com/wangtaoios/images/blob/master/%E9%A1%B9%E7%9B%AEDemo%E5%9B%BE%E7%89%87/xls_0330_07.png?raw=true" alt="QQ可以打开"></p>
+<p><a class="magnific-img" href="https://github.com/wangtaoios/images/blob/master/%E9%A1%B9%E7%9B%AEDemo%E5%9B%BE%E7%89%87/xls_0330_07.png?raw=true"><img src="https://github.com/wangtaoios/images/blob/master/%E9%A1%B9%E7%9B%AEDemo%E5%9B%BE%E7%89%87/xls_0330_07.png?raw=true" alt="QQ&#x53EF;&#x4EE5;&#x6253;&#x5F00;" class="ui centered image"></a></p>
 <blockquote>
-<p>QQ可以打开</p>
+<p>QQ&#x53EF;&#x4EE5;&#x6253;&#x5F00;</p>
 </blockquote>
-<p><img src="https://github.com/wangtaoios/images/blob/master/%E9%A1%B9%E7%9B%AEDemo%E5%9B%BE%E7%89%87/xls_0330_08.png?raw=true" alt="电脑可以打开"></p>
+<p><a class="magnific-img" href="https://github.com/wangtaoios/images/blob/master/%E9%A1%B9%E7%9B%AEDemo%E5%9B%BE%E7%89%87/xls_0330_08.png?raw=true"><img src="https://github.com/wangtaoios/images/blob/master/%E9%A1%B9%E7%9B%AEDemo%E5%9B%BE%E7%89%87/xls_0330_08.png?raw=true" alt="&#x7535;&#x8111;&#x53EF;&#x4EE5;&#x6253;&#x5F00;" class="ui centered image"></a></p>
 <blockquote>
-<p>电脑可以打开</p>
+<p>&#x7535;&#x8111;&#x53EF;&#x4EE5;&#x6253;&#x5F00;</p>
 </blockquote>
 <p>Created by LibXL trial version. Please buy the LibXL full version for removing this message.</p>
 <p><a href="http://www.cnblogs.com/lightwind/p/4824896.html" target="_blank" rel="noopener">http://www.cnblogs.com/lightwind/p/4824896.html</a></p>
-<p><img src="https://github.com/wangtaoios/images/blob/master/%E9%A1%B9%E7%9B%AEDemo%E5%9B%BE%E7%89%87/xls_0330_09.png?raw=true" alt="提示"></p>
+<p><a class="magnific-img" href="https://github.com/wangtaoios/images/blob/master/%E9%A1%B9%E7%9B%AEDemo%E5%9B%BE%E7%89%87/xls_0330_09.png?raw=true"><img src="https://github.com/wangtaoios/images/blob/master/%E9%A1%B9%E7%9B%AEDemo%E5%9B%BE%E7%89%87/xls_0330_09.png?raw=true" alt="&#x63D0;&#x793A;" class="ui centered image"></a></p>
 <blockquote>
-<p>提示</p>
+<p>&#x63D0;&#x793A;</p>
 </blockquote>
 
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://weibo.com/wangtaoworld/iOS/2018/03/30/iOS开发/iOS导出xls.html" data-id="cjfkp81n3001smm239afkq5as" class="article-share-link">Teilen</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/xls/">xls</a></li></ul>
+                        
+                    </div>
 
-    </footer>
-  </div>
-  
+                    
+                    
+                    
+
+                    <div class="description post-description">
+    <span class="post-description-item">
+        <time datetime="2018-03-30T07:52:05.000Z" itemprop="datePublished">2018-03-30</time>
+
+    </span>
+    <span class="post-description-item">
+        
+
+    <span>
+        <i class="tags icon"></i>
+    </span>
+
     
-<nav id="article-nav">
-  
-    <a href="/iOS/2018/03/30/iOS开发/iOS_identifierForVendor_UUID_供应商标识符_通用唯一识别码.html" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Neuer</strong>
-      <div class="article-nav-title">
-        
-          iOS_identifierForVendor_UUID_供应商标识[biāo zhì]符_通用唯一识别码
-        
-      </div>
-    </a>
-  
-  
-    <a href="/iOS/2018/03/30/iOS开发/去掉json字符串中的\n \r \t.html" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Älter</strong>
-      <div class="article-nav-title">去掉json字符串中的\n，\r，\t</div>
-    </a>
-  
-</nav>
+    <span class="ui tiny label">
+        <a href="/tags/xls/">xls</a>
+    </span>
 
-  
-</article>
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Kategorien</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/军事/">军事</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/文档/">文档</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/面试/">面试</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/BUG/">BUG</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IP/">IP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NTFS/">NTFS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UITextField/">UITextField</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UUID/">UUID</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/demo/">demo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/json/">json</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kinds-of-viewControllers/">kinds of viewControllers</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xls/">xls</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/上线/">上线</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/即时通讯/">即时通讯</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/字符串/">字符串</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/帮助/">帮助</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/手机型号/">手机型号</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/技术点/">技术点</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/搭建博客/">搭建博客</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/文档/">文档</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/检测/">检测</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/法律/">法律</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/表情/">表情</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/证书/">证书</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/键盘/">键盘</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面试/">面试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/飞机/">飞机</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/BUG/" style="font-size: 10px;">BUG</a> <a href="/tags/IP/" style="font-size: 10px;">IP</a> <a href="/tags/NTFS/" style="font-size: 10px;">NTFS</a> <a href="/tags/UITextField/" style="font-size: 10px;">UITextField</a> <a href="/tags/UUID/" style="font-size: 10px;">UUID</a> <a href="/tags/demo/" style="font-size: 10px;">demo</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/kinds-of-viewControllers/" style="font-size: 10px;">kinds of viewControllers</a> <a href="/tags/xls/" style="font-size: 10px;">xls</a> <a href="/tags/上线/" style="font-size: 17.5px;">上线</a> <a href="/tags/即时通讯/" style="font-size: 10px;">即时通讯</a> <a href="/tags/字符串/" style="font-size: 10px;">字符串</a> <a href="/tags/帮助/" style="font-size: 15px;">帮助</a> <a href="/tags/手机型号/" style="font-size: 12.5px;">手机型号</a> <a href="/tags/技术点/" style="font-size: 10px;">技术点</a> <a href="/tags/搭建博客/" style="font-size: 10px;">搭建博客</a> <a href="/tags/文档/" style="font-size: 20px;">文档</a> <a href="/tags/检测/" style="font-size: 10px;">检测</a> <a href="/tags/法律/" style="font-size: 10px;">法律</a> <a href="/tags/表情/" style="font-size: 10px;">表情</a> <a href="/tags/证书/" style="font-size: 10px;">证书</a> <a href="/tags/键盘/" style="font-size: 10px;">键盘</a> <a href="/tags/面试/" style="font-size: 10px;">面试</a> <a href="/tags/飞机/" style="font-size: 10px;">飞机</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archiv</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">October 2014</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">letzter Beitrag</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/iOS/2018/04/03/GitHub博客/购买域名和GitHubPages博客的绑定三部曲.html">购买域名和GitHubPages博客的绑定三部曲</a>
-          </li>
-        
-          <li>
-            <a href="/iOS/2018/04/02/iOS开发/iOS_获取手机型号.html">iOS_获取手机型号</a>
-          </li>
-        
-          <li>
-            <a href="/iOS/2018/04/02/iOS开发/iOS_获取IP地址.html">iOS_获取IP地址</a>
-          </li>
-        
-          <li>
-            <a href="/iOS/2018/04/02/iOS开发/iOS_检测当前网络类型和运营商.html">iOS_检测当前网络类型和运营商</a>
-          </li>
-        
-          <li>
-            <a href="/iOS/2018/04/02/工作项目/广益云课堂.html">广益云课堂</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2018 wangtao<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
     
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    </span>
+</div>
+
+                </div>
+                
+                <div id="pagination" class="nav-web ui text container pagination">
+
+    <div class="ui stackable two column divided grid container">
+        <div class="row">
+            <div class="column nav-left">
+                
+
+                <a href="/iOS/2018/03/30/iOS开发/iOS_identifierForVendor_UUID_供应商标识符_通用唯一识别码.html" class="ui tiny button">
+
+                    <i class="angle left icon"></i>
+                    
+                    iOS_identifierForVendor_UUID_供应商标识[biāo zhì]符_通用唯一识别码
+                    
+
+                </a>
+
+                
+            </div>
+            <div class="column nav-right">
+                
+
+                <a href="/iOS/2018/03/30/iOS开发/去掉json字符串中的\n \r \t.html" class="ui tiny button">
+                    
+                    去掉json字符串中的\n，\r，\t
+                    
+                    <i class="angle right icon"></i></a>
+                
+            </div>
+        </div>
+    </div>
+
+</div>
+                
+            </div>
+
+            
+            <div class="three wide computer three wide tablet column">
+
+                <div class="ui sticky article-toc" id="article-toc">
+                    <!-- toc -->
+                    <ol class="ui ordered list"><li><a href="#1-系统的方法"><span>1 系统的方法</span></a></li><li><a href="#2-使用LibXL-framework"><span>2 使用LibXL.framework</span></a></li></ol>
+                </div>
+
+            </div>
+            
+
+        </div>
+    </div>
+</div>
 
 
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        </div>
+        <div class="ui vertical footer segment">
+    <div class="ui center aligned container">
+        <div class="ui inverted section divider"></div>
+        &copy; 2018 <a href="/">wangtao</a>,
+        Powered by <a href="https://github.com/henryhuang/hexo-theme-aloha" target="_blank">Aloha</a> and <a
+                href="http://hexo.io/" target="_blank">Hexo</a>.
+    </div>
+</div>
+
+    </div>
 
 
-<script src="/js/script.js"></script>
+
+
+<!-- scripts list from theme config.yml -->
+
+<script src="//cdn.bootcss.com/jquery/3.1.0/jquery.min.js"></script>
+
+<script src="//cdn.bootcss.com/semantic-ui/2.2.4/semantic.min.js"></script>
+
+<script src="//cdn.bootcss.com/algoliasearch/3.18.1/algoliasearch.min.js"></script>
+
+<script src="//cdn.bootcss.com/algoliasearch-helper-js/2.13.0/algoliasearch.helper.min.js"></script>
+
+<script src="/js/semantic-ui-algolia.js"></script>
+
+<script src="/js/aloha-events.js"></script>
 
 
 
-  </div>
 </body>
 </html>
