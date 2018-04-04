@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>wt</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="技术交流">
+<meta property="og:type" content="website">
+<meta property="og:title" content="wt">
+<meta property="og:url" content="https://weibo.com/wangtaoworld/page/3/index.html">
+<meta property="og:site_name" content="wt">
+<meta property="og:description" content="技术交流">
+<meta property="og:locale" content="zh-Hans">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="wt">
+<meta name="twitter:description" content="技术交流">
+  
+    <link rel="alternate" href="/atom.xml" title="wt" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">wt</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">博客</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://weibo.com/wangtaoworld"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-iOS开发/iOS细节大杂烩" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/iOS/2018/03/21/iOS开发/iOS细节大杂烩.html" class="article-date">
+  <time datetime="2018-03-21T09:43:47.000Z" itemprop="datePublished">2018-03-21</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/iOS/">iOS</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/iOS/2018/03/21/iOS开发/iOS细节大杂烩.html">iOS细节大杂烩</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong><em>1：关于UIWebView</em></strong></p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">UIWebView的下面有黑线，iPhone7plus没有，iPhone6和iPhone6plus有，加上</span><br><span class="line">    webView.<span class="keyword">backgroundColor </span>= [UIColor clearColor]<span class="comment">;</span></span><br><span class="line">    webView.opaque = NO<span class="comment">;</span></span><br><span class="line">解决</span><br><span class="line"></span><br><span class="line">不检测网页上的任何内容</span><br><span class="line">    webView.dataDetectorTypes = UIDataDetectorTypeNone<span class="comment">;</span></span><br></pre></td></tr></table></figure>
+<p><strong><em>2：关于UICollectionReusableView</em></strong></p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="built_in">UICollectionReusableView</span> *)collectionView:(<span class="built_in">UICollectionView</span> *)collectionView viewForSupplementaryElementOfKind:(<span class="built_in">NSString</span> *)kind atIndexPath:(<span class="built_in">NSIndexPath</span> *)indexPath</span><br><span class="line">如果对应的 section 不需要页眉和页脚，就返回<span class="literal">nil</span>，但一定在</span><br><span class="line">- (<span class="built_in">CGSize</span>)collectionView:(<span class="built_in">UICollectionView</span> *)collectionView layout:(<span class="built_in">UICollectionViewLayout</span> *)collectionViewLayout referenceSizeForHeaderInSection:(<span class="built_in">NSInteger</span>)section</span><br><span class="line">和</span><br><span class="line">- (<span class="built_in">CGSize</span>)collectionView:(<span class="built_in">UICollectionView</span> *)collectionView layout:(<span class="built_in">UICollectionViewLayout</span> *)collectionViewLayout referenceSizeForFooterInSection:(<span class="built_in">NSInteger</span>)section</span><br><span class="line">对应的 section </span><br><span class="line"> <span class="keyword">return</span> <span class="built_in">CGSizeZero</span></span><br><span class="line">否则 crash</span><br></pre></td></tr></table></figure>
+<p><strong><em>3：关于UICollectionView</em></strong></p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">self</span>.collectionView.alwaysBounceVertical = <span class="literal">YES</span>;</span><br><span class="line">即使<span class="built_in">UICollectionView</span>没有超过一屏，仍可弹性滑动</span><br></pre></td></tr></table></figure>
+<p><strong><em>4：关于YYLabel</em></strong></p>
+<p><a href="https://github.com/ibireme/YYText/issues/529" target="_blank" rel="noopener">https://github.com/ibireme/YYText/issues/529</a></p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">使用YYLabel的<span class="keyword">BUG，行间距变小</span></span><br><span class="line"><span class="keyword">左侧UILabel，右侧YYLabel</span></span><br><span class="line"><span class="keyword">换用TTTAttributedLabel仍有相同问题</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://github.com/wangtaoios/images/blob/master/%E9%A1%B9%E7%9B%AEDemo%E5%9B%BE%E7%89%87/YYLabel_BUG_0327.png?raw=true" alt="对比"></p>
+<p><strong><em>5：关于第三方登录</em></strong></p>
+<p>为了PC和APP的登录同步，需要使用微信和QQ的unionid参数，来进行第三方登录，如果单纯的考虑APP功能的话，unionid和openid均可</p>
+<p><img src="https://github.com/wangtaoios/images/blob/master/%E9%A1%B9%E7%9B%AEDemo%E5%9B%BE%E7%89%87/share_0330.png?raw=true" alt="UM"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://weibo.com/wangtaoworld/iOS/2018/03/21/iOS开发/iOS细节大杂烩.html" data-id="cjfkp6gqd001rm123eh6y5zm8" class="article-share-link">Teilen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技术点/">技术点</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-iOS开发/iOS实现搭建聊天页面" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/iOS/2018/03/21/iOS开发/iOS实现搭建聊天页面.html" class="article-date">
+  <time datetime="2018-03-21T09:09:40.000Z" itemprop="datePublished">2018-03-21</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/iOS/">iOS</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/iOS/2018/03/21/iOS开发/iOS实现搭建聊天页面.html">iOS实现搭建聊天页面</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>功能分析，模仿QQ聊天页面</p>
+<p>完整demo，欢迎star <a href="https://github.com/wangtaoios/WTChatDemo" target="_blank" rel="noopener">WTChatDemo</a></p>
+<ul>
+<li>输入框失去第一响应的情况：</li>
+<li>1：点击页面</li>
+<li>2：下滑页面</li>
+<li>输入框成为第一响应的情况：</li>
+<li>1：开始输入</li>
+<li>2：上滑页面最底部</li>
+</ul>
+<p><img src="https://github.com/wangtaoios/images/blob/master/%E9%A1%B9%E7%9B%AEDemo%E5%9B%BE%E7%89%87/qq_0327.gif?raw=true" alt="聊天.gif"></p>
+<p>控制器</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  WDPersonMessageDetailVC.m</span></span><br><span class="line"><span class="comment">//  WestDevelopment</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by wangtao on 2017/6/23.</span></span><br><span class="line"><span class="comment">//  Copyright © 2017年 xikaijinfu. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#import <span class="meta-string">"WDPersonMessageDetailVC.h"</span></span></span><br><span class="line"><span class="meta">#import <span class="meta-string">"WDPersonMessageDetailCell.h"</span></span></span><br><span class="line"><span class="meta">#import <span class="meta-string">"WDPersonMessageFooterCell.h"</span></span></span><br><span class="line"><span class="meta">#import <span class="meta-string">"WDPersonMessageDetailModel.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#import <span class="meta-string">&lt;IQKeyboardManager.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">WDPersonMessageDetailVC</span> ()</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">weak</span>) WDPersonMessageFooterCell *textfieldView;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">WDPersonMessageDetailVC</span></span></span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)scrollViewDidScroll:(<span class="built_in">UIScrollView</span> *)scrollView</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">CGFloat</span> contentOffsetY = scrollView.contentOffset.y;</span><br><span class="line">    </span><br><span class="line"><span class="comment">//    页面下滑，并且输入框还是第一响应的时候，控制器要失去第一响应</span></span><br><span class="line">    <span class="keyword">if</span> (contentOffsetY &gt; <span class="number">10</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">self</span>.textfieldView.isFirst) &#123;</span><br><span class="line">            [<span class="keyword">self</span> clickSelf];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//    页面上滑，控制器成为第一响应</span></span><br><span class="line">    <span class="keyword">if</span> (contentOffsetY &lt; - <span class="number">10</span>) &#123;</span><br><span class="line">        <span class="keyword">self</span>.textfieldView.isFirst = <span class="literal">YES</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)viewDidAppear:(<span class="built_in">BOOL</span>)animated</span><br><span class="line">&#123;</span><br><span class="line">    [<span class="keyword">super</span> viewDidAppear:animated];</span><br><span class="line"></span><br><span class="line"><span class="comment">//    关闭IQ键盘</span></span><br><span class="line">    [IQKeyboardManager sharedManager].enable = <span class="literal">NO</span>;</span><br><span class="line">    [IQKeyboardManager sharedManager].enableAutoToolbar = <span class="literal">NO</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)viewWillDisappear:(<span class="built_in">BOOL</span>)animated</span><br><span class="line">&#123;</span><br><span class="line">    [<span class="keyword">super</span> viewWillDisappear:animated];</span><br><span class="line">    [<span class="keyword">self</span>.view endEditing:<span class="literal">YES</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)viewDidDisappear:(<span class="built_in">BOOL</span>)animated</span><br><span class="line">&#123;</span><br><span class="line">    [<span class="keyword">super</span> viewDidDisappear:animated];</span><br><span class="line">    </span><br><span class="line">    [IQKeyboardManager sharedManager].enableAutoToolbar = <span class="literal">YES</span>;</span><br><span class="line">    [IQKeyboardManager sharedManager].enable = <span class="literal">YES</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)dealloc</span><br><span class="line">&#123;</span><br><span class="line">    [[<span class="built_in">NSNotificationCenter</span> defaultCenter] removeObserver:<span class="keyword">self</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)loadView</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">UIScrollView</span> *view = [[<span class="built_in">UIScrollView</span> alloc] init];</span><br><span class="line">    view.frame = <span class="built_in">CGRectMake</span>(<span class="number">0</span>, <span class="number">0</span>, kMainScreenWidth, kMainScreenHeight);</span><br><span class="line">    <span class="keyword">self</span>.view = view;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)viewDidLoad &#123;</span><br><span class="line">    [<span class="keyword">super</span> viewDidLoad];</span><br><span class="line">    <span class="comment">// Do any additional setup after loading the view.</span></span><br><span class="line">    </span><br><span class="line">    [IQKeyboardManager sharedManager].enable = <span class="literal">NO</span>;</span><br><span class="line">    [IQKeyboardManager sharedManager].enableAutoToolbar = <span class="literal">NO</span>;</span><br><span class="line"></span><br><span class="line">    [[<span class="built_in">NSNotificationCenter</span> defaultCenter] addObserver:<span class="keyword">self</span> selector:<span class="keyword">@selector</span>(keyboardWillShow:) name:<span class="built_in">UIKeyboardWillShowNotification</span> object:<span class="literal">nil</span>];</span><br><span class="line">    [[<span class="built_in">NSNotificationCenter</span> defaultCenter] addObserver:<span class="keyword">self</span> selector:<span class="keyword">@selector</span>(keyboardWillHide:) name:<span class="built_in">UIKeyboardWillHideNotification</span> object:<span class="literal">nil</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">//    旋转tableView</span></span><br><span class="line">    <span class="keyword">self</span>.tableView.transform = <span class="built_in">CGAffineTransformMakeScale</span> (<span class="number">1</span>, <span class="number">-1</span>);</span><br><span class="line">    <span class="keyword">self</span>.tableView.tableHeaderView.transform = <span class="built_in">CGAffineTransformMakeScale</span> (<span class="number">1</span>, <span class="number">-1</span>);</span><br><span class="line">    <span class="keyword">self</span>.tableView.tableFooterView.transform = <span class="built_in">CGAffineTransformMakeScale</span> (<span class="number">1</span>, <span class="number">-1</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">self</span>.view.backgroundColor = WTHexColor(<span class="number">0xeaeaea</span>);</span><br><span class="line">    <span class="keyword">self</span>.tableView.backgroundColor = WTHexColor(<span class="number">0xeaeaea</span>);</span><br><span class="line">    <span class="keyword">self</span>.tableView.scrollIndicatorInsets = <span class="built_in">UIEdgeInsetsMake</span>(<span class="number">50</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">    </span><br><span class="line">    [<span class="keyword">self</span>.tableView registerClass:[WDPersonMessageDetailCell <span class="keyword">class</span>] forCellReuseIdentifier:WDPersonMessageDetailCellID];</span><br><span class="line">    [<span class="keyword">self</span>.tableView registerClass:[WDPersonMessageFooterCell <span class="keyword">class</span>] forHeaderFooterViewReuseIdentifier:WDPersonMessageFooterCellID];</span><br><span class="line"></span><br><span class="line">    [<span class="keyword">self</span>.tableView wt_addTapTarget:<span class="keyword">self</span> action:<span class="keyword">@selector</span>(clickSelf)];</span><br><span class="line">    </span><br><span class="line">    [<span class="keyword">self</span> addFooter];</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//键盘弹出时把消息列表tableView的高度设为（屏幕高度 - 输入框高度 - 键盘高度），同时输入框上移；</span></span><br><span class="line"><span class="comment">//键盘消失时再把tableView的高度设为（屏幕高度 - 输入框的高度），同时输入框下移。</span></span><br><span class="line"><span class="comment">//这样可以完美解决聊天列表的上面的消息无法显示问题和键盘遮挡问题。</span></span><br><span class="line">- (<span class="keyword">void</span>)keyboardWillShow:(<span class="built_in">NSNotification</span>*)notification</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 0.取出键盘动画的时间</span></span><br><span class="line">    <span class="built_in">CGFloat</span> duration = [notification.userInfo[<span class="built_in">UIKeyboardAnimationDurationUserInfoKey</span>] doubleValue];</span><br><span class="line">    <span class="comment">// 1.取得键盘最后的frame</span></span><br><span class="line">    <span class="built_in">CGRect</span> keyboardFrame = [notification.userInfo[<span class="built_in">UIKeyboardFrameEndUserInfoKey</span>] <span class="built_in">CGRectValue</span>];</span><br><span class="line">    <span class="comment">// 2.计算控制器的view需要平移的距离</span></span><br><span class="line">    <span class="built_in">CGFloat</span> transformY = keyboardFrame.origin.y - <span class="keyword">self</span>.view.frame.size.height;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 3.执行动画</span></span><br><span class="line">    <span class="built_in">NSIndexPath</span> *indexPath = [<span class="built_in">NSIndexPath</span> indexPathForRow:<span class="number">0</span> inSection:<span class="number">0</span>];</span><br><span class="line">    [<span class="keyword">self</span>.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:<span class="built_in">UITableViewScrollPositionBottom</span> animated:<span class="literal">NO</span>];</span><br><span class="line"></span><br><span class="line">    WTWS(weakSelf);</span><br><span class="line">    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(<span class="number">.05</span> * <span class="built_in">NSEC_PER_SEC</span>)), dispatch_get_main_queue(), ^&#123;</span><br><span class="line">    </span><br><span class="line">        [<span class="built_in">UIView</span> animateWithDuration:duration animations:^&#123;</span><br><span class="line">            weakSelf.tableView.frame = <span class="built_in">CGRectMake</span>(<span class="number">0</span>, <span class="number">0</span>, kMainScreenWidth, kMainScreenHeight - keyboardFrame.size.height - <span class="number">64</span>);</span><br><span class="line">            weakSelf.inputView.transform = <span class="built_in">CGAffineTransformMakeTranslation</span>(<span class="number">0</span>, transformY);</span><br><span class="line">            </span><br><span class="line">        &#125;];</span><br><span class="line">    &#125;);</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)keyboardWillHide:(<span class="built_in">NSNotification</span>*)notification</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">CGFloat</span> duration = [notification.userInfo[<span class="built_in">UIKeyboardAnimationDurationUserInfoKey</span>] doubleValue];</span><br><span class="line">    [<span class="built_in">UIView</span> animateWithDuration:duration animations:^&#123;</span><br><span class="line">        <span class="keyword">self</span>.tableView.frame = <span class="built_in">CGRectMake</span>(<span class="number">0</span>, <span class="number">0</span>, kMainScreenWidth, kMainScreenHeight);</span><br><span class="line">        <span class="keyword">self</span>.view.transform = <span class="built_in">CGAffineTransformIdentity</span>;</span><br><span class="line"></span><br><span class="line">    &#125;];</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//失去第一响应</span></span><br><span class="line">- (<span class="keyword">void</span>)clickSelf</span><br><span class="line">&#123;</span><br><span class="line">    [[<span class="built_in">NSNotificationCenter</span> defaultCenter] postNotificationName:kMessageState object:@(<span class="literal">YES</span>)];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)addHeader</span><br><span class="line">&#123;</span><br><span class="line">    __<span class="keyword">unsafe_unretained</span> __<span class="keyword">typeof</span>(<span class="keyword">self</span>) weakSelf = <span class="keyword">self</span>;</span><br><span class="line">    <span class="keyword">self</span>.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^&#123;</span><br><span class="line">        [weakSelf loadData];</span><br><span class="line">    &#125;];</span><br><span class="line">    </span><br><span class="line">    [<span class="keyword">self</span>.tableView.mj_header beginRefreshing];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//关闭下拉和上拉控件的文字展示</span></span><br><span class="line">- (<span class="keyword">void</span>)addFooter</span><br><span class="line">&#123;</span><br><span class="line"><span class="comment">//    [self addHeader];</span></span><br><span class="line">    [<span class="keyword">self</span> loadData];</span><br><span class="line">    </span><br><span class="line">    MJRefreshAutoNormalFooter *footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:<span class="keyword">self</span> refreshingAction:<span class="keyword">@selector</span>(loadMoreData)];</span><br><span class="line"></span><br><span class="line">    [footer setTitle:<span class="string">@""</span> forState:MJRefreshStateIdle];</span><br><span class="line">    [footer setTitle:<span class="string">@""</span> forState:MJRefreshStatePulling];</span><br><span class="line">    [footer setTitle:<span class="string">@""</span> forState:MJRefreshStateRefreshing];</span><br><span class="line">    [footer setTitle:<span class="string">@""</span> forState:MJRefreshStateWillRefresh];</span><br><span class="line">    [footer setTitle:<span class="string">@""</span> forState:MJRefreshStateNoMoreData];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">self</span>.tableView.mj_footer = footer;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)loadData</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">self</span>.page = <span class="number">1</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">NSDictionary</span> *par = @&#123;</span><br><span class="line">                          kToken :          [WTAccount shareAccount].token,</span><br><span class="line">                          kUserId :         [WTAccount shareAccount].uid,</span><br><span class="line">                          kCurrentPage :    @(<span class="keyword">self</span>.page),</span><br><span class="line">                          kFriendId :       <span class="keyword">self</span>.friendId,</span><br><span class="line">                          &#125;;</span><br><span class="line">    </span><br><span class="line">    [WDNetwork postkMyMessageDetailPhoneWithParameters:par modelClass:[WDPersonMessageDetailModel <span class="keyword">class</span>] responseBlock:^(<span class="keyword">id</span> dataObject, <span class="built_in">NSError</span> *error) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!error &amp;&amp; [[dataObject <span class="keyword">class</span>] isSubclassOfClass:[<span class="built_in">NSArray</span> <span class="keyword">class</span>]]) &#123;</span><br><span class="line">            <span class="built_in">NSArray</span>* reversedArray = [[dataObject reverseObjectEnumerator] allObjects];</span><br><span class="line">            <span class="keyword">self</span>.dataArray = [<span class="built_in">NSMutableArray</span> arrayWithArray:reversedArray];</span><br><span class="line">            [<span class="keyword">self</span>.tableView reloadData];</span><br><span class="line">            <span class="keyword">self</span>.page ++;</span><br><span class="line">            <span class="keyword">if</span> ([dataObject count] &lt; <span class="number">20</span>) &#123;</span><br><span class="line">                [<span class="keyword">self</span>.tableView.mj_header endRefreshing];</span><br><span class="line">                [<span class="keyword">self</span>.tableView.mj_footer endRefreshingWithNoMoreData];</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                [<span class="keyword">self</span>.tableView.mj_header endRefreshing];</span><br><span class="line">                [<span class="keyword">self</span>.tableView.mj_footer endRefreshing];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            [<span class="keyword">self</span>.tableView.mj_header endRefreshing];</span><br><span class="line">            [<span class="keyword">self</span>.tableView.mj_footer endRefreshingWithNoMoreData];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)loadMoreData</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">NSDictionary</span> *par = @&#123;</span><br><span class="line">                          kToken :          [WTAccount shareAccount].token,</span><br><span class="line">                          kUserId :         [WTAccount shareAccount].uid,</span><br><span class="line">                          kCurrentPage :    @(<span class="keyword">self</span>.page),</span><br><span class="line">                          kFriendId :       <span class="keyword">self</span>.friendId,</span><br><span class="line">                          &#125;;</span><br><span class="line">    </span><br><span class="line">    [WDNetwork postkMyMessageDetailPhoneWithParameters:par modelClass:[WDPersonMessageDetailModel <span class="keyword">class</span>] responseBlock:^(<span class="keyword">id</span> dataObject, <span class="built_in">NSError</span> *error) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!error &amp;&amp; [[dataObject <span class="keyword">class</span>] isSubclassOfClass:[<span class="built_in">NSArray</span> <span class="keyword">class</span>]]) &#123;</span><br><span class="line">            <span class="built_in">NSArray</span>* reversedArray = [[dataObject reverseObjectEnumerator] allObjects];</span><br><span class="line">            [<span class="keyword">self</span>.dataArray addObjectsFromArray:reversedArray];</span><br><span class="line">            [<span class="keyword">self</span>.tableView reloadData];</span><br><span class="line">            <span class="keyword">self</span>.page ++;</span><br><span class="line">            <span class="keyword">if</span> ([dataObject count] &lt; <span class="number">20</span>) &#123;</span><br><span class="line">                [<span class="keyword">self</span>.tableView.mj_footer endRefreshingWithNoMoreData];</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                [<span class="keyword">self</span>.tableView.mj_footer endRefreshing];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            [<span class="keyword">self</span>.tableView.mj_footer endRefreshingWithNoMoreData];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="built_in">CGFloat</span>)tableView:(<span class="built_in">UITableView</span> *)tableView heightForHeaderInSection:(<span class="built_in">NSInteger</span>)section</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">50</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="built_in">CGFloat</span>)tableView:(<span class="built_in">UITableView</span> *)tableView heightForFooterInSection:(<span class="built_in">NSInteger</span>)section</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">CGFLOAT_MIN</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="built_in">UIView</span> *)tableView:(<span class="built_in">UITableView</span> *)tableView viewForHeaderInSection:(<span class="built_in">NSInteger</span>)section</span><br><span class="line">&#123;</span><br><span class="line">    WDPersonMessageFooterCell *footer = [tableView dequeueReusableHeaderFooterViewWithIdentifier:WDPersonMessageFooterCellID];</span><br><span class="line">    <span class="keyword">self</span>.textfieldView = footer;</span><br><span class="line">    footer.contentView.transform = <span class="built_in">CGAffineTransformMakeScale</span> (<span class="number">1</span>, <span class="number">-1</span>);</span><br><span class="line"></span><br><span class="line">    WTWS(weakSelf);</span><br><span class="line">    footer.clickSenderText = ^(<span class="built_in">NSString</span> *text) &#123;</span><br><span class="line">        <span class="built_in">NSDictionary</span> *par = @&#123;</span><br><span class="line">                              kToken :          [WTAccount shareAccount].token,</span><br><span class="line">                              kUserId :         [WTAccount shareAccount].uid,</span><br><span class="line">                              kComment :        text,</span><br><span class="line">                              kFlag :           @(<span class="number">11</span>),</span><br><span class="line">                              kFriendId :       weakSelf.friendId,</span><br><span class="line">                              &#125;;</span><br><span class="line">        [WDNetwork postkAddCommentPhoneWithParameters:par modelClass:[<span class="built_in">NSNull</span> <span class="keyword">class</span>] responseBlock:^(<span class="keyword">id</span> dataObject, <span class="built_in">NSError</span> *error) &#123;</span><br><span class="line">            <span class="keyword">if</span> (!error &amp;&amp; ([[dataObject objectForKey:kCode] integerValue] == <span class="number">200</span>)) &#123;</span><br><span class="line">                [weakSelf loadData];</span><br><span class="line">                weakSelf.textfieldView.sendSucceed = <span class="literal">YES</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (!error &amp;&amp; [dataObject objectForKey:kMsg]) &#123;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;];</span><br><span class="line">    &#125;;</span><br><span class="line">    </span><br><span class="line">    footer.resignFirstRes = ^&#123;</span><br><span class="line">        weakSelf.tableView.frame = <span class="built_in">CGRectMake</span>(<span class="number">0</span>, <span class="number">0</span>, kMainScreenWidth, kMainScreenHeight - <span class="number">64</span>);</span><br><span class="line">        weakSelf.view.transform = <span class="built_in">CGAffineTransformIdentity</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">return</span> footer;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="built_in">NSInteger</span>)numberOfSectionsInTableView:(<span class="built_in">UITableView</span> *)tableView</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="built_in">NSInteger</span>)tableView:(<span class="built_in">UITableView</span> *)tableView numberOfRowsInSection:(<span class="built_in">NSInteger</span>)section</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">self</span>.dataArray.count;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="built_in">CGFloat</span>)tableView:(<span class="built_in">UITableView</span> *)tableView heightForRowAtIndexPath:(<span class="built_in">NSIndexPath</span> *)indexPath</span><br><span class="line">&#123;</span><br><span class="line">    WDPersonMessageDetailModel *model = <span class="keyword">self</span>.dataArray[indexPath.row];</span><br><span class="line">    <span class="keyword">return</span> model.height;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="built_in">UITableViewCell</span> *)tableView:(<span class="built_in">UITableView</span> *)tableView cellForRowAtIndexPath:(<span class="built_in">NSIndexPath</span> *)indexPath</span><br><span class="line">&#123;</span><br><span class="line">    WDPersonMessageDetailCell *cell = [tableView dequeueReusableCellWithIdentifier:WDPersonMessageDetailCellID forIndexPath:indexPath];</span><br><span class="line">    cell.model = <span class="keyword">self</span>.dataArray[indexPath.row];</span><br><span class="line">    cell.contentView.transform = <span class="built_in">CGAffineTransformMakeScale</span> (<span class="number">1</span>, <span class="number">-1</span>);</span><br><span class="line">    <span class="keyword">return</span> cell;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)didReceiveMemoryWarning &#123;</span><br><span class="line">    [<span class="keyword">super</span> didReceiveMemoryWarning];</span><br><span class="line">    <span class="comment">// Dispose of any resources that can be recreated.</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">#pragma mark - Navigation</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">// In a storyboard-based application, you will often want to do a little preparation before navigation</span></span><br><span class="line"><span class="comment">- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender &#123;</span></span><br><span class="line"><span class="comment">    // Get the new view controller using [segue destinationViewController].</span></span><br><span class="line"><span class="comment">    // Pass the selected object to the new view controller.</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+<p>输入框 UITableViewHeaderFooterView</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  WDPersonMessageFooterCell.h</span></span><br><span class="line"><span class="comment">//  WestDevelopment</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by wangtao on 2017/6/26.</span></span><br><span class="line"><span class="comment">//  Copyright © 2017年 xikaijinfu. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#import <span class="meta-string">"WDBaseTVHeaderFooterView.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">void</span>(^ClickSender_t)(<span class="built_in">NSString</span> *text);</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">void</span>(^ResignFirstResponder)();</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">WDPersonMessageFooterCell</span> : <span class="title">WDBaseTVHeaderFooterView</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">copy</span>) ClickSender_t clickSenderText;</span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">copy</span>) ResignFirstResponder resignFirstRes;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">assign</span>) <span class="built_in">BOOL</span> isFirst;</span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">assign</span>) <span class="built_in">BOOL</span> sendSucceed;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  WDPersonMessageFooterCell.m</span></span><br><span class="line"><span class="comment">//  WestDevelopment</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by wangtao on 2017/6/26.</span></span><br><span class="line"><span class="comment">//  Copyright © 2017年 xikaijinfu. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#import <span class="meta-string">"WDPersonMessageFooterCell.h"</span></span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">WDPersonMessageFooterCell</span> () &lt;<span class="title">UITextFieldDelegate</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">weak</span>) <span class="built_in">UITextField</span> *textField;</span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">weak</span>) <span class="built_in">UIView</span> *line;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">WDPersonMessageFooterCell</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@synthesize</span> isFirst = _isFirst;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)setupAll</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">self</span>.contentView.backgroundColor = WTHexColor(<span class="number">0xf2f2f2</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">UITextField</span> *textField = [[<span class="built_in">UITextField</span> alloc] init];</span><br><span class="line">    textField.backgroundColor = kWhiteColor;</span><br><span class="line">    [<span class="keyword">self</span>.contentView addSubview:textField];</span><br><span class="line">    textField.delegate = <span class="keyword">self</span>;</span><br><span class="line">    <span class="keyword">self</span>.textField = textField;</span><br><span class="line">    textField.layer.cornerRadius = <span class="number">3</span>;</span><br><span class="line">    textField.layer.masksToBounds = <span class="literal">YES</span>;</span><br><span class="line"></span><br><span class="line">    textField.returnKeyType = <span class="built_in">UIReturnKeySend</span>;</span><br><span class="line">    </span><br><span class="line">    [[<span class="built_in">NSNotificationCenter</span> defaultCenter] addObserver:<span class="keyword">self</span> selector:<span class="keyword">@selector</span>(messageState:) name:kMessageState object:<span class="literal">nil</span>];</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">UIView</span> *line = [[<span class="built_in">UIView</span> alloc] init];</span><br><span class="line">    line.backgroundColor = WTHexColor(<span class="number">0xdddddd</span>);</span><br><span class="line">    [<span class="keyword">self</span>.contentView addSubview:line];</span><br><span class="line">    <span class="keyword">self</span>.line = line;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)messageState:(<span class="built_in">NSNotification</span> *)noti</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">NSInteger</span> state = [[noti object] boolValue];</span><br><span class="line">    <span class="keyword">if</span> (state) &#123;</span><br><span class="line">        [<span class="keyword">self</span>.textField resignFirstResponder];</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">self</span>.resignFirstRes) &#123;</span><br><span class="line">            <span class="keyword">self</span>.resignFirstRes();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="built_in">BOOL</span>)textFieldShouldReturn:(<span class="built_in">UITextField</span> *)textField</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">self</span>.clickSenderText) &#123;</span><br><span class="line">        <span class="keyword">self</span>.clickSenderText(<span class="keyword">self</span>.textField.text);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">YES</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)setIsFirst:(<span class="built_in">BOOL</span>)isFirst</span><br><span class="line">&#123;</span><br><span class="line">    _isFirst = isFirst;</span><br><span class="line">    <span class="keyword">if</span> (isFirst) &#123;</span><br><span class="line">        [<span class="keyword">self</span>.textField becomeFirstResponder];</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        [<span class="keyword">self</span>.textField resignFirstResponder];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="built_in">BOOL</span>)isFirst</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> ([<span class="keyword">self</span>.textField isFirstResponder]) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">YES</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">NO</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)setSendSucceed:(<span class="built_in">BOOL</span>)sendSucceed</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">self</span>.textField.text = <span class="string">@""</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)layoutSubviews</span><br><span class="line">&#123;</span><br><span class="line">    [<span class="keyword">super</span> layoutSubviews];</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">CGFloat</span> padding = <span class="number">10</span>;</span><br><span class="line">    <span class="keyword">self</span>.textField.frame = <span class="built_in">CGRectMake</span>(padding, padding, <span class="keyword">self</span>.wt_width - padding * <span class="number">2</span>, <span class="keyword">self</span>.wt_height - padding * <span class="number">2</span>);</span><br><span class="line">    <span class="keyword">self</span>.line.frame = <span class="built_in">CGRectMake</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="keyword">self</span>.wt_width, <span class="number">.5</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+<p>消息cell</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  WDPersonMessageDetailCell.m</span></span><br><span class="line"><span class="comment">//  WestDevelopment</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by wangtao on 2017/6/23.</span></span><br><span class="line"><span class="comment">//  Copyright © 2017年 xikaijinfu. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#import <span class="meta-string">"WDPersonMessageDetailCell.h"</span></span></span><br><span class="line"><span class="meta">#import <span class="meta-string">"WDPersonMessageDetailModel.h"</span></span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">WDPersonMessageDetailCell</span> ()</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">weak</span>) <span class="built_in">UILabel</span> *time;</span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">weak</span>) <span class="built_in">UIImageView</span> *icon;</span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">weak</span>) <span class="built_in">UILabel</span> *detail;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">weak</span>) <span class="built_in">UIView</span> *baseView;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">WDPersonMessageDetailCell</span></span></span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)setupAll</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">self</span>.selectionStyle = <span class="built_in">UITableViewCellSelectionStyleNone</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">self</span>.backgroundColor = WTHexColor(<span class="number">0xeaeaea</span>);</span><br><span class="line">    <span class="keyword">self</span>.contentView.backgroundColor = WTHexColor(<span class="number">0xeaeaea</span>);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">UILabel</span> *time = [<span class="built_in">UILabel</span> labelWithText:<span class="string">@""</span></span><br><span class="line">                                 textColor:WTHexColor(<span class="number">0xaaaaaa</span>)</span><br><span class="line">                             textAlignment:<span class="built_in">NSTextAlignmentCenter</span></span><br><span class="line">                                      font:<span class="number">12</span></span><br><span class="line">                           backgroundColor:kClearColor];</span><br><span class="line">    [<span class="keyword">self</span>.contentView addSubview:time];</span><br><span class="line">    <span class="keyword">self</span>.time = time;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">UIImageView</span> *icon = [[<span class="built_in">UIImageView</span> alloc] init];</span><br><span class="line">    [<span class="keyword">self</span>.contentView addSubview:icon];</span><br><span class="line">    icon.image = [<span class="built_in">UIImage</span> imageNamed:kDefault];</span><br><span class="line">    <span class="keyword">self</span>.icon = icon;</span><br><span class="line">    <span class="keyword">self</span>.icon.layer.cornerRadius = <span class="number">35</span> / <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">self</span>.icon.layer.masksToBounds = <span class="literal">YES</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">UIView</span> *baseView = [[<span class="built_in">UIView</span> alloc] init];</span><br><span class="line">    [<span class="keyword">self</span>.contentView addSubview:baseView];</span><br><span class="line">    <span class="keyword">self</span>.baseView = baseView;</span><br><span class="line">    baseView.layer.masksToBounds = <span class="literal">YES</span>;</span><br><span class="line">    baseView.layer.cornerRadius = <span class="number">4</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">UILabel</span> *detail = [<span class="built_in">UILabel</span> labelWithText:<span class="string">@""</span></span><br><span class="line">                                   textColor:kBlackColor</span><br><span class="line">                               textAlignment:<span class="built_in">NSTextAlignmentLeft</span></span><br><span class="line">                                        font:<span class="number">13</span></span><br><span class="line">                             backgroundColor:kClearColor];</span><br><span class="line">    [baseView addSubview:detail];</span><br><span class="line">    <span class="keyword">self</span>.detail = detail;</span><br><span class="line">    detail.numberOfLines = <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)setModel:(WDPersonMessageDetailModel *)model</span><br><span class="line">&#123;</span><br><span class="line">    _model = model;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> ([model.isShow isEqualToString:<span class="string">@"1"</span>]) &#123;</span><br><span class="line">        <span class="keyword">self</span>.time.text = model.addTime;</span><br><span class="line">        <span class="keyword">self</span>.time.hidden = <span class="literal">NO</span>;</span><br><span class="line">        <span class="keyword">self</span>.time.frame = <span class="built_in">CGRectMake</span>(<span class="number">0</span>, <span class="number">0</span>, kMainScreenWidth, <span class="number">20</span>);</span><br><span class="line"></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">self</span>.time.text = <span class="string">@""</span>;</span><br><span class="line">        <span class="keyword">self</span>.time.hidden = <span class="literal">YES</span>;</span><br><span class="line">        <span class="keyword">self</span>.time.frame = <span class="built_in">CGRectZero</span>;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">self</span>.time.text = model.addTime;</span><br><span class="line">    [<span class="keyword">self</span>.icon wt_setImageWithUrlString:model.headImg placeholderString:<span class="string">@"me_icon"</span>];</span><br><span class="line">    <span class="keyword">self</span>.detail.text = model.comment;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> ([model.userId isEqualToString:[WTAccount shareAccount].uid]) &#123;</span><br><span class="line">        <span class="keyword">self</span>.detail.textColor = kBlackColor;</span><br><span class="line">        <span class="keyword">self</span>.baseView.backgroundColor = kWhiteColor;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">self</span>.icon.frame = <span class="built_in">CGRectMake</span>(kPadding, <span class="keyword">self</span>.time.wt_bottom + kPadding, <span class="number">35</span>, <span class="number">35</span>);</span><br><span class="line">        <span class="keyword">self</span>.baseView.frame = <span class="built_in">CGRectMake</span>(<span class="keyword">self</span>.icon.wt_right + kPadding, <span class="keyword">self</span>.icon.wt_top, model.commentW, model.commentH);</span><br><span class="line">        <span class="keyword">self</span>.detail.frame = <span class="built_in">CGRectMake</span>(kPadding, kPadding, model.commentW - kPadding * <span class="number">2</span>, model.commentH - kPadding * <span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">self</span>.detail.textColor = kWhiteColor;</span><br><span class="line">        <span class="keyword">self</span>.baseView.backgroundColor = kHomeColor;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">self</span>.icon.frame = <span class="built_in">CGRectMake</span>(kMainScreenWidth - <span class="number">35</span> - kPadding, <span class="keyword">self</span>.time.wt_bottom + kPadding, <span class="number">35</span>, <span class="number">35</span>);</span><br><span class="line">        <span class="keyword">self</span>.baseView.frame = <span class="built_in">CGRectMake</span>(<span class="keyword">self</span>.icon.wt_left - kPadding - model.commentW, <span class="keyword">self</span>.icon.wt_top, model.commentW, model.commentH);</span><br><span class="line">        <span class="keyword">self</span>.detail.frame = <span class="built_in">CGRectMake</span>(kPadding, kPadding, model.commentW - kPadding * <span class="number">2</span>, model.commentH - kPadding * <span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+<p>模型</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  WDPersonMessageDetailModel.m</span></span><br><span class="line"><span class="comment">//  WestDevelopment</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by wangtao on 2017/6/23.</span></span><br><span class="line"><span class="comment">//  Copyright © 2017年 xikaijinfu. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#import <span class="meta-string">"WDPersonMessageDetailModel.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">WDPersonMessageDetailModel</span></span></span><br><span class="line"></span><br><span class="line">- (<span class="built_in">CGFloat</span>)commentW</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (_commentW == <span class="number">0</span>) &#123;</span><br><span class="line">        _commentW = [<span class="keyword">self</span>.comment wt_calculateStringSizeWithFontOfSize:<span class="number">13</span> maxWidth:kMainScreenWidth / <span class="number">2</span>].width + <span class="number">20</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> _commentW;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="built_in">CGFloat</span>)commentH</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (_commentH == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="built_in">CGFloat</span> textH = [<span class="keyword">self</span>.comment wt_calculateStringSizeWithFontOfSize:<span class="number">13</span> maxWidth:kMainScreenWidth / <span class="number">2</span>].height;</span><br><span class="line">        <span class="comment">// 一行字体是15高，一行的情况就和头像一样高</span></span><br><span class="line">        _commentH = (textH &lt; <span class="number">20</span>) ? <span class="number">35</span> : (textH + <span class="number">20</span>);        </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> _commentH;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="built_in">CGFloat</span>)height</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (_height == <span class="number">0</span>) &#123;</span><br><span class="line">        _height = <span class="keyword">self</span>.commentH + <span class="number">20</span>;</span><br><span class="line">        <span class="keyword">if</span> ([<span class="keyword">self</span>.isShow isEqualToString:<span class="string">@"1"</span>]) &#123;</span><br><span class="line">            _height += <span class="number">20</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> _height;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://weibo.com/wangtaoworld/iOS/2018/03/21/iOS开发/iOS实现搭建聊天页面.html" data-id="cjfkp6gqc001om123j5e2j07c" class="article-share-link">Teilen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/即时通讯/">即时通讯</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-iOS开发/iOS使用YYKit实现表情键盘" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/iOS/2018/03/21/iOS开发/iOS使用YYKit实现表情键盘.html" class="article-date">
+  <time datetime="2018-03-21T08:43:13.000Z" itemprop="datePublished">2018-03-21</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/iOS/">iOS</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/iOS/2018/03/21/iOS开发/iOS使用YYKit实现表情键盘.html">iOS使用YYKit实现表情键盘</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>项目需求，APP发布内容的时候支持表情</p>
+<p><img src="https://github.com/wangtaoios/images/blob/master/%E9%A1%B9%E7%9B%AEDemo%E5%9B%BE%E7%89%87/fabu_0327.gif?raw=true" alt="效果"></p>
+<h5 id="需求："><a href="#需求：" class="headerlink" title="需求："></a>需求：</h5><p>点击键盘的表情按钮，比如[微笑]，在输入框显示🙂，发布成功到服务器时候，服务器存[微笑]；请求下来数据在APP展示的时候，仍然显示🙂。</p>
+<h5 id="原理："><a href="#原理：" class="headerlink" title="原理："></a>原理：</h5><p>点击键盘的表情按钮，比如[微笑]，此时将字符串[微笑]传到输入框，输入框使用YYTextView，设置YYTextView的textParser即可展示对应表情🙂。</p>
+<h5 id="关于textParser："><a href="#关于textParser：" class="headerlink" title="关于textParser："></a>关于textParser：</h5><figure class="highlight ocaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">YYTextSimpleEmoticonParser</span> *<span class="keyword">parser</span> = [<span class="type">YYTextSimpleEmoticonParser</span> <span class="keyword">new</span>];</span><br><span class="line"><span class="keyword">parser</span>.emoticonMapper = mapper;</span><br></pre></td></tr></table></figure>
+<p>在YYTextSimpleEmoticonParser发现<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@property</span> (<span class="keyword">nullable</span>, <span class="keyword">copy</span>) <span class="built_in">NSDictionary</span>&lt;<span class="built_in">NSString</span> *, __kindof <span class="built_in">UIImage</span> *&gt; *emoticonMapper;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<ul>
+<li>parser.emoticonMapper 是字典，其中键：NSString；值：UIImage。</li>
+<li>本地有个plist文件，也就是字典，其中键：NSString，表情的汉字版（如：[微笑]）；值：NSString，图片名字。</li>
+<li>那么由本地plis文件生成对应的parser.emoticonMapper字典就可以设置YYTextView的textParser。<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSMutableDictionary</span> *mapper = [<span class="built_in">NSMutableDictionary</span> new];</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; [WTUtils getEmoticonData].allKeys.count; i ++) &#123;</span><br><span class="line">    <span class="built_in">NSString</span> *valueString = [<span class="built_in">NSString</span> stringWithFormat:<span class="string">@"%.0f"</span>, ((<span class="built_in">CGFloat</span>)i)];</span><br><span class="line">    [mapper setObject:[<span class="keyword">self</span> imageWithName:valueString]</span><br><span class="line">               forKey:[[WTUtils getEmoticonData] allKeysForObject:valueString][<span class="number">0</span>]];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</blockquote>
+<h5 id="关于键盘的自定义："><a href="#关于键盘的自定义：" class="headerlink" title="关于键盘的自定义："></a>关于键盘的自定义：</h5><p>点击切换按钮的时候，来切换键盘<br><figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (_textView.inputView) &#123;</span><br><span class="line">    _textView.<span class="attr">inputView</span> = nil;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    WTEmoticonInputView *<span class="attr">emoticonInputView</span> = [[WTEmoticonInputView alloc] initWithFrame:CGRectMake(<span class="number">0</span>, <span class="number">0</span>, kMainScreenWidth, <span class="number">300</span>)];</span><br><span class="line">    emoticonInputView.<span class="attr">delegate</span> = self;</span><br><span class="line">    _textView.<span class="attr">inputView</span> = emoticonInputView;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>WTEmoticonInputView即为自定义的表情键盘页面，整体是个UIScrollView，每一页表情是一个UIView，根据表情数量将这些UIView放到UIScrollView。设置相应的代理，将点击的表情按钮对应的字符串传到_textView即可。</p>
+</blockquote>
+<blockquote>
+<p>同理，从服务器请求的数据，展示的时候，将YYTextView换为YYLabel，设置相应的textParser即可。</p>
+</blockquote>
+<p>最后附上github地址，如果你觉得好就点击喜欢一下，如果你觉得非常好就github star支持一下~</p>
+<p><a href="https://github.com/wangtaoios/WTEmoticonDemo" target="_blank" rel="noopener">WTEmoticonDemo</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://weibo.com/wangtaoworld/iOS/2018/03/21/iOS开发/iOS使用YYKit实现表情键盘.html" data-id="cjfkp6gqb001mm123dm6wo46h" class="article-share-link">Teilen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/表情/">表情</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/键盘/">键盘</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-法律/最高人民法院之重要司法解释" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/文档/2018/03/21/法律/最高人民法院之重要司法解释.html" class="article-date">
+  <time datetime="2018-03-21T08:28:53.000Z" itemprop="datePublished">2018-03-21</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/文档/">文档</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/文档/2018/03/21/法律/最高人民法院之重要司法解释.html">中华人民共和国最高人民法院之重要司法解释</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h5 id="1：最高人民法院关于修改关于适用《中华人民共和国公司法》若干问题的规定的决定"><a href="#1：最高人民法院关于修改关于适用《中华人民共和国公司法》若干问题的规定的决定" class="headerlink" title="1：最高人民法院关于修改关于适用《中华人民共和国公司法》若干问题的规定的决定"></a>1：最高人民法院关于修改关于适用《中华人民共和国公司法》若干问题的规定的决定</h5><p>2014-02-27<br><a href="http://www.court.gov.cn/fabu-xiangqing-6135.html" target="_blank" rel="noopener">http://www.court.gov.cn/fabu-xiangqing-6135.html</a></p>
+<blockquote>
+<p>第十三条 股东未履行或者未全面履行出资义务，公司或者其他股东请求其向公司依法全面履行出资义务的，人民法院应予支持。<br>公司债权人请求未履行或者未全面履行出资义务的股东在未出资本息范围内对公司债务不能清偿的部分承担补充赔偿责任的，人民法院应予支持；未履行或者未全面履行出资义务的股东已经承担上述责任，其他债权人提出相同请求的，人民法院不予支持。<br>股东在公司设立时未履行或者未全面履行出资义务，依照本条第一款或者第二款提起诉讼的原告，请求公司的发起人与被告股东承担连带责任的，人民法院应予支持；公司的发起人承担责任后，可以向被告股东追偿。<br>股东在公司增资时未履行或者未全面履行出资义务，依照本条第一款或者第二款提起诉讼的原告，请求未尽公司法第一百四十七条第一款规定的义务而使出资未缴足的董事、高级管理人员承担相应责任的，人民法院应予支持；董事、高级管理人员承担责任后，可以向被告股东追偿。</p>
+</blockquote>
+<h5 id="2：最高人民法院关于民事执行中变更、追加当事人若干问题的规定"><a href="#2：最高人民法院关于民事执行中变更、追加当事人若干问题的规定" class="headerlink" title="2：最高人民法院关于民事执行中变更、追加当事人若干问题的规定"></a>2：最高人民法院关于民事执行中变更、追加当事人若干问题的规定</h5><p>2016-11-09<br><a href="http://www.court.gov.cn/fabu-xiangqing-30091.html" target="_blank" rel="noopener">http://www.court.gov.cn/fabu-xiangqing-30091.html</a></p>
+<blockquote>
+<p>　　  第十七条作为被执行人的企业法人，财产不足以清偿生效法律文书确定的债务，申请执行人申请变更、追加未缴纳或未足额缴纳出资的股东、出资人或依公司法规定对该出资承担连带责任的发起人为被执行人，在尚未缴纳出资的范围内依法承担责任的，人民法院应予支持。<br>　　第十八条作为被执行人的企业法人，财产不足以清偿生效法律文书确定的债务，申请执行人申请变更、追加抽逃出资的股东、出资人为被执行人，在抽逃出资的范围内承担责任的，人民法院应予支持。<br>　　第十九条作为被执行人的公司，财产不足以清偿生效法律文书确定的债务，其股东未依法履行出资义务即转让股权，申请执行人申请变更、追加该原股东或依公司法规定对该出资承担连带责任的发起人为被执行人，在未依法出资的范围内承担责任的，人民法院应予支持。<br>　　第二十条作为被执行人的一人有限责任公司，财产不足以清偿生效法律文书确定的债务，股东不能证明公司财产独立于自己的财产，申请执行人申请变更、追加该股东为被执行人，对公司债务承担连带责任的，人民法院应予支持。<br>　　第二十一条作为被执行人的公司，未经清算即办理注销登记，导致公司无法进行清算，申请执行人申请变更、追加有限责任公司的股东、股份有限公司的董事和控股股东为被执行人，对公司债务承担连带清偿责任的，人民法院应予支持。<br>　　第二十二条作为被执行人的法人或其他组织，被注销或出现被吊销营业执照、被撤销、被责令关闭、歇业等解散事由后，其股东、出资人或主管部门无偿接受其财产，致使该被执行人无遗留财产或遗留财产不足以清偿债务，申请执行人申请变更、追加该股东、出资人或主管部门为被执行人，在接受的财产范围内承担责任的，人民法院应予支持。准许。<br>　　第三十二条被申请人或申请人对执行法院依据本规定第十四条第二款、第十七条至第二十一条规定作出的变更、追加裁定或驳回申请裁定不服的，可以自裁定书送达之日起十五日内，向执行法院提起执行异议之诉。<br>　　被申请人提起执行异议之诉的，以申请人为被告。申请人提起执行异议之诉的，以被申请人为被告。</p>
+</blockquote>
+<h5 id="3：最高人民法院关于人民法院执行工作若干问题的规定-试行"><a href="#3：最高人民法院关于人民法院执行工作若干问题的规定-试行" class="headerlink" title="3：最高人民法院关于人民法院执行工作若干问题的规定(试行)"></a>3：最高人民法院关于人民法院执行工作若干问题的规定(试行)</h5><p>1998年6月11日<br><a href="http://www.yaancourt.gov.cn/html/2015/10158.html" target="_blank" rel="noopener">http://www.yaancourt.gov.cn/html/2015/10158.html</a></p>
+<blockquote>
+<p>80．被执行人无财产清偿债务，如果其开办单位对其开办时投入的注 册资金不实或抽逃注册资金，可以裁定变更或追加其开办单位为被执行人 ，在注册资金不实或抽逃注册资金的范围内，对申请执行人承担责任。</p>
+</blockquote>
+<h5 id="4：中华人民共和国公司法"><a href="#4：中华人民共和国公司法" class="headerlink" title="4：中华人民共和国公司法"></a>4：中华人民共和国公司法</h5><p>2014年03月01日<br><a href="http://www.saic.gov.cn/zw/zcfg/fl/201402/t20140227_215555.html" target="_blank" rel="noopener">http://www.saic.gov.cn/zw/zcfg/fl/201402/t20140227_215555.html</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://weibo.com/wangtaoworld/文档/2018/03/21/法律/最高人民法院之重要司法解释.html" data-id="cjfkp6gqw002sm1232dl9ip8z" class="article-share-link">Teilen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/法律/">法律</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Mac/重装Mac系统" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/iOS/2018/03/20/Mac/重装Mac系统.html" class="article-date">
+  <time datetime="2018-03-20T06:33:30.000Z" itemprop="datePublished">2018-03-20</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/iOS/">iOS</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/iOS/2018/03/20/Mac/重装Mac系统.html">重装Mac系统</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="好吧，那我该怎么…"><a href="#好吧，那我该怎么…" class="headerlink" title="好吧，那我该怎么…?"></a>好吧，那我该怎么…?</h2><p>我们首先让您有个大概的了解。这是用户界面概览（从左到右）：</p>
+<ul>
+<li>文库</li>
+<li>文稿列表</li>
+<li>编辑器</li>
+</ul>
+<p>_文库_ 可以让您访问所有文本，它分为几个部分。取决于您是否已开启了 iCloud，您将在这里会看到不同的分段。</p>
+<p><em>文稿列表</em>包括了您所有的文本。</p>
+<p>然后是<em>编辑器</em>。</p>
+<p>请使用快捷键<code>⌘1</code>、<code>⌘2</code>和<code>⌘3</code>在三窗格（文库、文稿列表和编辑器）、两窗格（文稿列表和编辑器）和仅编辑器视图之间切换。您还可以最左侧的工具栏按钮切换视图。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://weibo.com/wangtaoworld/iOS/2018/03/20/Mac/重装Mac系统.html" data-id="cjfkp6gpw000sm123bv9avgtn" class="article-share-link">Teilen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/字符串/">字符串</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-GitHub博客/hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/uncategorized/2018/03/20/GitHub博客/hello-world.html" class="article-date">
+  <time datetime="2018-03-20T06:31:08.000Z" itemprop="datePublished">2018-03-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/uncategorized/2018/03/20/GitHub博客/hello-world.html">Hello World</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://weibo.com/wangtaoworld/uncategorized/2018/03/20/GitHub博客/hello-world.html" data-id="cjfkp6gpq000hm1235x0wegtl" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-iOS开发/开篇-First blood" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/iOS/2015/11/16/iOS开发/开篇-First blood.html" class="article-date">
+  <time datetime="2015-11-16T07:15:09.000Z" itemprop="datePublished">2015-11-16</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/iOS/">iOS</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/iOS/2015/11/16/iOS开发/开篇-First blood.html">开篇-First blood</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在iOS行业这两年来，参考过不计其数的前辈的技术博客，觉得分享是快乐的，分享是互赢的，现在开始书写自己的博客，也是整理自己的技术，也是分享一下，更希望可以和更多的技术人员交流，共同成长。本人邮箱：<a href="mailto:**wangtaoios@163.com" target="_blank" rel="noopener">**wangtaoios@163.com</a>**，欢迎调戏。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://weibo.com/wangtaoworld/iOS/2015/11/16/iOS开发/开篇-First blood.html" data-id="cjfkp6gqi0023m123kap1jx61" class="article-share-link">Teilen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/手机型号/">手机型号</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-常见面试题" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/面试/2015/01/24/常见面试题.html" class="article-date">
+  <time datetime="2015-01-24T11:26:36.000Z" itemprop="datePublished">2015-01-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/面试/">面试</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/面试/2015/01/24/常见面试题.html">面试问题-01</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#谈谈你对MVC的理解#</p>
+<p>###1.概括：###<br>    MVC是一种设计模式，这种设计模式用于分离代码的不同模块，用于提高代码的健壮性和复用性</p>
+<pre><code>M：modal 指的是程序的数据相关，
+
+V：View  凡事在界面上看到的内容都是View 换句话说就是如何显示具体的内容
+
+C：controller 如果M与V有过多的关联，那么一定会影响代码的复用性。如果要有很好的复用性，就必须让代码模块之间具备很好的独立性。但是他们之间还是要有联系的。controller就是起到一个中间协调的作用，另外controller还需要处理业务逻辑，并根据业务逻辑来改变modal view
+</code></pre><p>###2.讲述MVC之间的联系###<br>    M(Modal)和C(Controller)控制器可以通过Notifacation和KVO的形式对模型数据进行访问，modal不能访问控制器</p>
+<pre><code>M(Modal)和C(Controller)不存在任何形式的通讯，彼此之间不能直接访问，只能通过controller控制器
+
+V(view)和C(Controller)控制器可以直接访问view  view可以通过设置delegate，datasource，或者target(在控制器上)&lt;&lt;----action(在view上)的形式来访问控制器
+</code></pre><p>##import跟#include的区别是什么?#import&lt;&gt;#import””的区别是什么？@class的作用是什么#</p>
+<p>##1.#import跟#include的区别是什么?<br>    这两个指令都是预处理指令，都是在预处理阶段执行，功能都是用于包含头文件。两者的区别是:单独使用#include时，会出现重复包含头文件的问题，为了解决重复包含的问题，c语言提供了头文件卫士的预处理指令。ex:</p>
+<pre><code>#ifndef XXX
+#define XXX
+#include&lt;XXX.h&gt;...(要包含的头文件)
+#else
+(要处理的其他操作)
+#endif    
+#import这个预处理指令，内部解决了重复包含头文件的功能，所以＃import是＃include的升级版本
+</code></pre><p>##import&lt; &gt;#import” “的区别是什么？</p>
+<pre><code>#import&lt;&gt;用于包含系统头文件，＃import“ ”用于包含工程内的自定义的头文件
+</code></pre><p>#@class的作用是?<br>    @class的作用是前向声明，主要是当一个类，只是要知道另外一个类的描述信息，可以使用前向声明，来表达这个意思。</p>
+<pre><code>使用的原因：解决文件依赖关系,依赖关系是指两个实体之间的关系，1.依赖关系可以存在于两个类之间（例如 A类继承了B类，如果B类发生了变化，例如添加了一个实例变量，那么A类就必须重新编译来适应这个变化。2.依赖关系也可以存在于两个或多个文件之间(例如：##p77明天继续##)。），
+</code></pre><p>#什么是浅拷贝 什么是深拷贝<br>    my<br>    浅拷贝是：指针拷贝 不可变的数组 字典 字符串类型都是浅拷贝<br>    深拷贝：内存拷贝 可变的（Mutable）数组，字典 字符串类型都是深拷贝<br>    teacher<br>    浅拷贝相当于是仅仅拷贝了指针，新的指针指向的还是同一块内存空间，深拷贝是重新想操作系统申请了相同的内存，并把原来的数据复制一份。浅拷贝相当于对于原指针引用计数器加1 深拷贝的主要区别 主要是 重新分配内存空间 真正意义存在了两个对象。实际，深拷贝是我们一般理解的拷贝</p>
+<p>#id声明的对象有什么特性<br>    id是一种通用的指针类型，可以指向任意的数据对象类型，通俗的理解，可以认为它是万能指针，他最大的特点就是具有动态特性（重点），需要注意的是使用id声明对象时，不要再添加<em>号 其本身就是一个指针，所以修饰的对象不需要指针</em>修饰</p>
+<p>#声明一个属性实际上做了三件事<br>    1.声明了一个成员变量 2.声明了一个set方法 3.声明一个get方法</p>
+<p>#手动管理内存基本原则是什么？在使用@property的时候，如何避免内存泄露？<br>    1.内存管理的原则：如果使用了new alloc copy方法得到了一个对象，就必须使用释放或自动释放该对象</p>
+<pre><code>2.当你通过其他方法获得一个对象时，假设该对象的引用计数器是1，并且已经被设置成自动释放，那么你不需要执行任何操作来确保该对象得到清理。如果你打算在一段时间内持有该对象，则需要保留它，并在操作完成的时候释放他。
+
+3.如果你保留了某个对象（调用retain消息），那么就必须负责释放或者自动释放这个对象，注意要保证retain和relaese的次数相等
+总结：如果我使用了new alloc copy方法获得了一个对象，那我就释放或者自动释放该对象。无论什么时候拥有一个对象，有两件事必须明确，1.怎样获得该对象（alloc\new\copy 或者其他方法 ） 2 打算持有多长时间
+
+在使用property的时候，如果用到retain copy关键字，那么在初始化的时候，不要使用点语法，如果是手动管理内存就必须重写dealloc方法，并在dealloc方法里面释放成员变量，如果在ARC的环境下，必须在dealloc方法将该成员变量指针置nil
+</code></pre><p>#在iOS的平台里，出现过Nil,nil,NULL,NSNull他们分别表达的意思是什么？有什么区别<br>    my<br>    nil用于将一个实例对象置空，Nil用于将一个类置空，NULL用于将一个基本数据类型置空，NSNULL用于集合类型中，用于代表一个空对象（在集合中不允许使用nil为对象赋值，nil代表着集合的结束）<br>    teacher</p>
+<pre><code>NULL定义在#include&lt;stddef.h&gt; 
+#define NULL (void *)0 
+所以NULL本质就是（void *）0
+
+Nil 在系统的定义里面 
+#define Nil __DARWIN_NULL
+#define __DARWIN_NULL ((void *)0)
+所以在oc里面 Nil的本质还是 ((void *)0)
+
+nil的本质是 ((void *)0)
+
+NSNull本质上就是OC中的一个类
+@interface NSNull : NSObject &lt;NSCopying, NSSecureCoding&gt;
++ (NSNull *)null;
+@end
+
+NULL用于表示C语言里面的指针中的空值  
+nil用于表示OC语言里面对象的空值，
+Nil用于表示OC语言中类类型(class)值为空的情况
+总结：
+不管是NULL、nil、Nil 本质都是（void *）0 只是写法不同 这样做的意义是为了区分不同的数据类型，增强代码的可读性。举个例子：当看到一个变量赋值给NULL，就能明白这是C语言定义的指针类型，看到nil这个变量是oc的对象指针。。。。。
+</code></pre><p>2014年8月29日    </p>
+<h1 id="什么是类别？类别的主要作用，请列出三点"><a href="#什么是类别？类别的主要作用，请列出三点" class="headerlink" title="什么是类别？类别的主要作用，请列出三点"></a>什么是类别？类别的主要作用，请列出三点</h1><pre><code>类别是一种为现有类添加新方法的方式 它是利用OC的动态运行时分配机制，为现有的类添加新的方法
+类别的主要作用
+1 将类的实现代码分散到多个不同的文件或者框架中 
+2 创建对私有方法的前向引用 
+3 向对象添加非正式协议(实现方式：向NSObject中添加方法)
+类别的缺陷
+1 可以在类别中添加属性，但是属性必须是@dynamic类型，但是无法向类中添加新的实例变量，类别没有空间容纳实例变量。
+2 名称冲突，也就是类别中的方法与现有的方法重名。当名称发生冲突时，类别具有更高的优先级，类别方法会完全取代初始方法（添加前缀是个解决重名的好方法）。
+
+类扩展是一种特殊的类别 
+特点：1.不需要名字 
+2 可以在包含你的源代码的类(也就是你自己的类)中使用它 
+3 你可以添加实例变量 
+4 你可以将只读权限改成读写权限 
+5 创建的数量不限 
+teacher
+作用：1 类别为 **已经存在** 的类添加方法，包括系统定义的类，也包括自己或者第三方定义的类
+2 可以将类的实现分散到不同的文件或者多个不同的框架中实现
+3 可以向对象添加非正式协议：（非正式协议：采用类别来实现的）
+4 创建对私有方法的前向引用
+类别的局限性：
+1 无法向已存在的类中添加实例变量，因为类别没有位置容纳实例变量
+2 容易造成命名冲突，根据类别的特性，通过类别向类中添加方法后会与原始的类中定义的方法重名（冲突），类别的方法优先级比原始类中的高，所以当冲突时候，类别的方法会取代原是类的方法，这样会导致错误的方法。
+</code></pre><p>#内存管理<br>    对象的生命周期<br>    1 诞生（通过alloc new方法实现）<br>    2 生存（接受消息并执行操作）<br>    3 交友（通过复合以及向方法传递参数）<br>    4 死去 （被释放掉）</p>
+<p>###引用计数<br>    Cocoa通过采用引用计数的方式（reference counting）每个对象都有一个与之相关联的整数，被称为引用计数器，当某段代码段需要访问一个对象时，这个代码段就将保留计数器加1 当访问结束后，将该对象的保留计数器减1.当一个对象的保留计数器归0时，OC会自动向对象发送一条dealloc消息。（注意dealloc消息不能直接调用，OC会在需要销毁对象的时候自动调用它）</p>
+<pre><code>- （id）retain；（注意返回值类型是id 这样做的好处是 可以再接受其他消息的同时进行retain操作，增加对象的保留计数器的值并要求对象完成某种操作。例如 [[car retain] setTire:tire]） 表示要求car对象的保留计数器加1并执行setTire操作
+- （void）release；
+- （NSInterger）retainCount
+</code></pre><p>###对象所有权的问题<br>    定义：如果一个对象（假设这个对象是car）内有指向其他对象的实例变量（假设是engine），则称该对象拥有这些对象。同样，如果一个函数（假设是main函数）创建了一个对象，则称该函数拥有该对象。<br>    问题：对象的所有权是谁，谁负责当对象不再使用的时候向对象发送release消息 因为car可能正在使用engine，所以不可能有main函数，也有可能main函数在随后要用到engine，所以不能是car发送release<br>    解决问题的办法：让car类保留engine对象，car类应该在setEngine:方法中保留engine对象（将其引用计数器加1 变成2）这是因为car和main两个实体都在使用engine对象，而main函数负责释放engine对象。然后当car类完成其任务后在释放engine对象（在他的dealloc方法中）最后engine被回收<br>    由此牵引出另一个问题：访问方法中的保留与释放</p>
+<p>###访问方法中的保留与释放</p>
+<pre><code>- （void）setEngine：（Engine *）newEngine
+{
+    engine = [newEngine retain];
+}//bad code 
+在main函数中
+Engine *engine1 = [Engine new];//count = 1
+[car setEngine:engine1];// count = 2
+[engine1 release];//count = 1;
+
+Engine *engine2 = [Engine new];//count = 1
+[car setEngine:engine2];//count = 2
+此时出现的问题是 engine1的应用计数器还是1 不能被回收 造成内存泄露
+改进1
+- （void）setEngine：（Engine *）newEngine
+{
+    [engine release];
+
+    engine = [newEngine retain];
+}//bad code 
+可以修复前一个例子的问题，但是当newEngine对象和engin（原来的）是同一个对象时，会出问题
+Engine *engine = [Engine new];//engine count = 1
+Car *car1 = [Car new];
+Car *car2 = [Car new];
+[car1 setEngine:engine];//engine count = 2
+[engine release];//main函数对engine对象进行释放 count = 1
+
+[car2 setEngine:engine];//由于engine的set方法先对engine对象进行release操作，所以engine的count = 0 ，并释放掉这块内存，所以在执行下面的操作engine = [newEngine retain];会出现错误（访问了一块bad Acess）
+改进2
+- （void）setEngine：（newEngine）
+{
+    [newEngine retain];//先保留新的engine
+    [engine release];//释放
+    engine = newEngine;
+}    //解决
+上一个问题比较好解决的原因就是因为我们知道什么时候这个对象不再使用。接下来的问题是当我们不知道什么时候不在使用一个对象时怎么办
+引出下一个问题：对象的自动释放
+</code></pre><p>###对象的自动释放<br>    例子：</p>
+<pre><code>- (NSString *)description
+{
+    NSString *desc;
+    desc = [[NSString alloc] initWithFormat:@&quot;i am %d years old&quot;,4];
+    return desc;
+}
+在这个例子中我们创建了一个字符串对象，但是由谁来负责销毁它呢。首先不能是description方法 因为如果先释放掉字符串对象再返回它，则保留计数器归零 对象会马上被销毁。
+可以这样做
+NSString *desc = [someobject description];
+....//操作
+[desc release]; //但是不方便  还有更好的的方法 自动释放池
+</code></pre><p>###自动释放池<br>    概念：一个用来存放对象的池子（集合），当该自动释放池要被销毁时，会向池子中的所有对象发送release消息，所有的对象的引用计数器都会减一（但不一定对象会被回收）<br>    所以上面的例子可以这么写：</p>
+<pre><code>- (NSString *)description
+{
+    NSString *desc;
+    desc = [[NSString alloc] initWithFormat:@&quot;i am %d years old&quot;,4];
+    return [desc autorelease];//加入到自动释放池
+}
+</code></pre><p>#tcp协议的三次握手 四次挥手</p>
+<p>#手势识别的过程<br>    事件分发：<br>    1.首先用户触发事件,操作系统产生硬件中断响应，ios操作系统识别并捕捉到touch，motion，remote control事件，并将该事件封装成UIEvent(UIEvent 包含三种事件 touch motion remote_control(远端控制))事件，并将该事件放入到应用程序的事件队列中，该事件队列由UIApplication管理<br>    2.UIApplication对象开始管理事件队列，并从事件队列中的最上层取出事件，并分发下去处理<br>    3.分发下去的事件首先交给key window，然后key window再将事件分发给其它初始化对象<br>    4.UIWindow实例对象会首先在他的内容视图上通过调用hit-Test:WithEvent:  此方法会在其视图层次结构中的每个视图上调用pointInside:withEvent:(该方法用来判断点击事件发生的位置是否处于当前视图的范围之内，以确定用户是不是点击了当前的视图)，如果pointInside:(withEvent):方法返回YES 则继续逐级调用直到找到touch操作发生的位置 这个视图也就是要找的hit-test View<br>    hitTest:withEvent:方法处理的流程：<br>    hitTest:withEvent:方法根据已经获得的CGPOint和UIEVent事件返回hitTestView，hitTest:withEvent:方法通过调用自身的PointInside:(withEvent):方法，如果传递到hitTest:withEvent:方法中的Point在他的bounce之内，就返回YES ，然后，这个方法在每个返回YES的子视图中重复调用，直到找到最后一个在bounce内的子视图</p>
+<pre><code>1 调用当前视图的PointInside:(withEvent):方法判断触摸点是否在当前视图
+2 若返回NO 则hitTest:(withEvent):返回nil 说明不再当前视图
+3 若返回YES 则向当前的视图的所有子视图(subViews)发送hitTest:withEvent:消息，所有子视图的遍历顺序是从最顶层视图一直到最底层视图，即subViews数组的末尾向前遍历，直到有子视图返回非空对象或者全部子视图遍历完毕；
+4 如果第一次有子视图返回非空对象，则hit:(withEvent:)方法返回此对象，处理结束 如果所有子视图返回非，则hitTest:(withEvent):返回自身self
+
+处理逻辑：
+根据响应者链,如果当前view是否可以处理当前事件，如果不能处理，就将事件转发给该视图的视图控制器，如果该视图控制器仍不能处理，就将该事件转发给当前视图的父视图，依次类推，如果到keyWindow事件仍然没有得到处理，那么keyWindow就将事件转发给UIApplication对象，如果仍然不能处理，就将该事件丢弃。
+起始于window的初始化对象(hitTestView)，结束于UIApplication对象
+所谓的响应者对象就是指可以响应并且处理事件的对象。响应者链就是一系列的响应者对象构成的一个层次结构
+第一响应者指的就是当前正在响应事件的对象。
+</code></pre><p>#方法签名<br>    方法在声明的时候，方法的名字。<br>    button有3种方法签名<br>    1 没有参数 2 有一个参数UIButton 3 有两个参数 UIButton和 触发事件 参数<br>    手势有两种事件签名<br>    1 没有参数 2 有一个UIGestureRecognizer类型的参数</p>
+<p>#main函数的作用<br>    main函数是程序的启动入口，在ios app中，main函数的功能被最小化，他的主要工作交给了UIKit framework</p>
+<pre><code>#import &lt;UIKit/UIKit.h&gt;
+#import &quot;QYAppDelegate.h&quot;
+int main(int argc, char * argv[])
+{
+    @autoreleasepool {
+        return UIApplicationMain(argc, argv, nil, NSStringFromClass([QYAppDelegate class]));
+    }
+}
+在main函数里面执行了一个UIApplicationMain函数。
+argc, argv,直接交给UIapplicationMain进行相关处理即可。第三个参数确定主要应用程序类的名称，如果这个参数是nil，这样就会使用UIApplication类创建对象。第四个参数是程序自定义的代理类名
+理解：UIApplicationMain的三件事：
+1 根据第三个参数创建UIApplication对象 
+2 根据第四个参数确定应用程序的delegate 
+3 设置主事件循环(main event loop 可以认为这是一个死循环，他不断的检测事件队列中是否有事件需要处理，当他监听到系统事件时，就会通知UIApplication对象的代理delegate对象)包括application的run loop，同时开始处理事件 当程序加载完毕后调用（只调用一次）application：didFinishLaunchingWithOption:方法。
+</code></pre><p>#UIWindow<br>    UIWindow是一种特殊的UIView，通常一个app中只有UIWindow，ios程序启动完毕后，创建的第一个视图控件就是UIWindow，接着创建控制器的view 最后将控制器的view添加到UIWindow 于是控制器的view就显示屏幕上。也就是说，没有UIWindow，就看不到UI界面<br>    UIWindow的获得：<br>    1 [UIApplication shardApplication].windows 在本应用中打开UIWindow列表，这样就可以接触到应用中的任何一个UIView对象<br>    2 [UIApplication shardApplication].keyWindow 用来接受键盘以及非接触类的消息事件的UIWindow 应用程序中每个时刻只能有一个UIWindow是keyWindow 如果某个UIWindow内部文本框不能输入文字，可能就是这个UIwindow不是keyWindow<br>    3 view.window 获得某个UIView所在的UIWindow<br>    storyBoard加载时<br>    1 会自动创建一个UIWindow对象，<br>    2 加载Main storyBoard 创建箭头所指的视图控制器<br>    3 并将storyBoard箭头所指的控制器设为rootController，并将窗口显示在屏幕上</p>
+<p>#UIApplication<br>    UIApplication 对象是应用程序的象征，并且是单例的 [UIApp;icatin shardApplication]可以获得这个单例对象 这个是ios程序启动后创建的第一个对象 并且不允许自己创建该对象<br>    利用UIApplication对象，可以进行一些应用级别的操作<br>    1 设置联网指示器的可见 networkActivityIndicationVisible<br>    2 设置应用程序图标右上角的红色提示数字 applicationIconBadgeNumber(0 代表清除图标右上角的数字)<br>    3 在ios7开始 系统提供了2中管理状态栏的方式 1 通过UIViewController管理 每个UIViewController都可以拥有一个自己的不同的状态栏 2 通过UIApplication管理 一个应用程序的状态栏由他统一管理。<br>    默认的情况下，状态栏都是由UIViewController管理   - （BOOl）preferStatusBarHidden 状态栏的可见性<br>    如果要利用UIApplication来管理状态栏 首先修改info.plist文件<br>    加上row （View controller-based status bar appearance BOOL NO）<br>    4 UIApplication有一个功能十分强大 openURL：方法<br>    UIApplication *app = [UIApplication shardAppliaction];<br>    [app openURL:[NSURL URLWithString:@”tel://10086”]];//打电话<br>    [app openURL:[NSURL URLWithString:@”sms://10086”]];//发短信<br>    [app openURL:[NSURL URLWithString:@”mailto:<a href="mailto://1235@qq.com" target="_blank" rel="noopener">//1235@qq.com</a>“]];//发邮件<br>    [app openURL:[NSURL URLWithStrinf:@”<a href="http://www.baidu.com&quot;]]" target="_blank" rel="noopener">http://www.baidu.com&quot;]]</a>;<br>    打开其他应用app</p>
+<p>#程序启动的完整过程<br>    1 首先执行main函数<br>    2 在main函数中调用UIApplication Main函数<br>        创建UIApplication对象<br>        创建UIApplication的Delegate对象<br>    3 delegate对象开始监听系统事件（在非storyBoard的情况下）<br>        1 程序启动完毕后，就会调用代理的<br>        2 application:(UIApplication <em>) didFinishLaunchingWithOptions:(NSDictionary </em>)launchOptions方法<br>        在这个方法中创建UIWindow和rootViewController对象<br>        3 显示窗口<br>    3 根据info.plist获得最主要的storyBoard的文件名，加载最主要的storyboard<br>        1 创建UIWindow<br>        2 创建和设置UIwindow的rootViewController<br>        3 显示窗口</p>
+<p>##UIApplication，UIApplication的代理MKDelegate对象，UIWindow，UIViewController之间的关系<br>    UIApplication对象内部有一个代理属性 关联到MKDelegate对象,MKDelegate里面有一个UIwindow属性，关联到UIWindow对象<br>    UIWindow对象通过设置rootViewController属性关联到UIViewController对象，UIViewController的View属性用于显示视图</p>
+<p>#退出键盘方法<br>    老方法：谁把键盘叫出来，谁就把键盘放回去<br>    新方法：调用[self.view endEditing:YES]方法 是整个View都不是第一响应者</p>
+<p>#info.plist，pch文件 infoPList.string文件<br>    info.plist文件是对整个工程做一些运行期的配置，不能删除，所以在自定义的plist文件命名不能以plist开头，如果修改了info.plist文件，需要先把工程clean 然后再把模拟器中的应用删除<br>    infoPlist.string文件用于本地化 支持对语言环境</p>
+<pre><code>pch文件是一个头文件 pch头文件中的内容可以被项目中的其他所有的源文件共享和访问  
+
+作用 1 可以用于存放全局变量（整个项目都用得上的宏） 
+2 如果某个头文件要在整个项目中到处使用，可以在pch文件中包含
+eg 在pch文件中添加 #define MKLog(...) NSLog(__AV_ARGS__)(固定写法)用MKLog代替NSLog
+当改为 #define MKLog(...) //NSLog(__) NSLog(__AV_ARGS__) 相当于把所有的MKLog注释了
+3 自动打开后者关闭日志输出功能
+应用程序可分为调试阶段和发布阶段，在调试阶段系统（通过检测程序的运行是在真机设配还是模拟器(或者Xcode环境)）会自定义一个叫做DEBUG的宏，当处于发布阶段的时候，DEBUG这个宏会由系统自动删除
+#ifdef DEBUG//调试阶段 //很有用
+#define MKLog(...) NSLog(__AV_ARGS__)
+#else //发布阶段
+#define MKLog(...)
+#endif
+******************************
+#ifdef __OBJC__//只有OC文件中的.m 和 .mm 才能使用 __OBJC__这个宏表示只有OC才能使用 所以OC文件里面使用的宏要放在这个宏里面
+#import &lt;UIKit/UIKit.h&gt;
+#import &lt;Foundation/Foundation.h&gt;
+#endif
+</code></pre><p>#谓词 predicate<br>    在编程中，经常需要获取一个对象的集合，并通过某些已知条件计算这个集合的值，并保留某些符合条件的对象，删除不满足的条件的对象。 NSPredicate是一种过滤条件,用于指定过滤器的条件。通过创建NSPredicate对象，准确的描述过滤条件，通过谓词筛选对象，判断他们是否于过滤条件匹配<br>    方便1 数组过滤器：通过这种方式不必编写for循环和if语句  -filteredArrayUsingPredicate:是NSArray NSMutableArray数组中的一种类别方法，他将循环遍历数组内容，根据谓词计算每个对象的值，并将值为YES的对象累计添加到一个新数组中。缺点：运行速度没有自己写的代码快<br>    解决谓词中的硬编码问题：方法一：格式说明符 方法2：变量名<br>    predict = [NSPredicate predicateWithFormat:@”engine.horsepower &gt; %d”,50];<br>    predict = [NSPredicate predicateWithFormat:@”name == %@”,@”herbie”]; 通过传参<br>    predict = [NSPredicate predicateWithFormat:@”%K==%@”,@name,@”Herbie”];//改变键路径 只能通过%K的格式符改变键路径<br>    2<br>    predictTemplate = [NSPredicate predicateWithFormat:@”name = $NAME”];<br>    NSDictionary *dict = @{@”NAME”:@”heibie”}<br>    predicate = [predicateTemPlate predicateWithSubstitleVariables:dict];//返回一个新的谓词对象</p>
+<p>#正则表达式<br>    正则表达式以用^表示开始 $表示结束 以一个[A-Za-z0-9_+-]表示匹配一个字符 {8}表示匹配8个字符<br>    | 竖直分隔符代表选择。例如“gray|grey”可以匹配grey或gray。</p>
+<pre><code>+ 加号代表前面的字符必须至少出现一次。(1次、或多次)。例如,“goo+gle”可以匹 配google、gooogle、goooogle等
+? 问号代表前面的字符最多只可以出现一次。(0次、或1次)。例如,“colou?r”可以匹 配color或者colour
+* 星号代表前面的字符可以不出现,也可以出现一次或者多次。(0次、或1次、或多 次)。例如,“0*42”可以匹配42、042、0042、00042等。
+{n}重复n此
+{n,}至少重复 n 此
+{n,m}重n 到 m 此
+</code></pre><p>#kvc kvo<br>    KVC (key value coding) 是一种协议,(属性的点或者设置实例变量来 直接 更改对象的状态)是一种 间接 更改对象状态的方式.它实现的方法就是使用字符串表示更改的对象状态,如果找不到会调用undefined方法.</p>
+<pre><code>KVO 提供了一种机制,当制定对象的属性发生改变后,则对象就会接收到通知,简单的说就是每次指定的被观察的对象的属性被修改后, KVO 就会自动通知相应观察者.
+注意:必须使用 set 方法,或者 KVC 的方法修改属性的值,才会引起 KVO 的通知
+KVO 是 model 于 controller 之间通信的一种机制.controller 作为观察者,监听 modal 某一属性的改变.
+KVO 于 notification 的区别和联系
+相同:均可以实现 modal 和 controller 之间的通信
+区别: KVO 直接通知 controller, 模型数据的变化,前提是 controller 已经是 modal 的观察者
+优点:只通知一个属性的改变,并且属性的改变是由系统通知给 controller, 模型对象不需要发送 post 通知,效率更高,力度更消耗资源更少
+notification 可以实现连个对象之间的通信
+1 需要通知中心 ,间接地通知 controller, 只要注册即可,
+2 如果 modal 发生改变,需要 modal 自己向通知中心发送(调用post方法)通知,再有通知中心再向 controller(前提是已经向通知中心注册) 发送,这个过程力度较大,会通知所有改变
+通知(notification 和代理 delegate 的区别)
+相同:都能完成对象之间的通信
+代理是一对一的(一个对象对应于另外一个对象,并且一个对象只能告诉另外一个对象发生什么事情(单向通信)),通知是多对多的关系(一个对象(通知发布者)可以对应于多个观察者(通知接受者),同时每个观察对象可以同时观察多个对象  )
+</code></pre><p>#XML解析<br>    XML 被设计用来结构化(基于树形结构(很重要)),存储以及传输信息,它没有任何行为,不能显示任何信息,区分于HTML<br>    使用 XML json 的目的是为了跨平台<br>    SAX(simple APIs for XML)提供了一种 顺序访问模式 ，当使用SAX分析器解析XML文档进行分析时，会触发一系列的事件，并激活相应的事件处理函数。应用程序通过对这些事件处理函数来实现对XML文件的解析。所以SAX也被成为  事件驱动  接口。由于SAX在对XML文件解析时会触发一系列的处理函数，由于事件触发本身是有时序性的，因此，SAX是一种顺序访问机制，对于已经访问过的部分，不能再倒回去重新工作。SAX在实现时，只是在顺序的检查XML文档中的字节流，判断当前字节是XML语法中的那一部分，是否符合XML语法，再触发相应的事件，事件的处理函数由应用程序自己实现<br>    使用NSXMLParser<br>    优点：对内存占用的少，实现简单，对只需要访问XML文档中的数据而不对文档进行更改的应用程序来说很合适<br>     缺点：缺少灵活性,，效率较低<br>    DOM(document object modal) 文件解析 是利用第三方库GDataXMLNode.h GDataXMLNode.m 在使用第三库的时候在使用DOMXML解析文件是设置一下几项<br>    1 在Header Search Paths 加上/usr/include/libxml2<br>    2 在build Phases中的GCDataXMLNode.m 加上-fno-objc-arc<br>    3 other linkFlag 添上 -lxml2(一套开源的解析框架)<br>    一次性将 XML 文档读入到内存中,并以树形结构存在,可以随意访问任何一个元素<br>    缺点：占用的内存较多</p>
+<p>#json<br>    json (javascript object notation)javaScript对象表示法 是轻量级的文本数据交换格式，独立于语言，具有自我描述性，易理解 独立于语言和平台 比XML相比的优点：没有结束标签 更短 读写速度更快 使用数组 不使用保留字,网络数据量消耗小<br>    缺点:可读性差,编码难度大<br>    两种框架<br>    1 NSJsonSerialization ios5.0之后有效<br>    2 jsonKit </p>
+<p>#web 服务器<br>    web 服务器也被称为 www服务器,主要功能是可以向发出请求的浏览器提供文档程序.<br>    服务器是一种被动程序,只有当 Internet 上运行其他计算机的浏览器发出请求时,服务器才会响应,常用的服务器有 IIS 和 Apache .<br>    web 服务器是一台在 Internet 上具有独立的 ip 地址的计算机<br>    web 服务器是指驻留在因特网上的某种类型计算机的程序<br>    在 MAC 启动本地的 Apache 服务器 sudo apachectl -k start 重新启动: sudo apachectl -k restart</p>
+<p>#post&amp;get<br>    post 和 get 是两种最常用的与服务器进行交互的 HTTP 方法<br>    get 的语义是 获取 指定的URL的资源<br>    将数据按照 variable =value 的形式,添加到 action 所指的 URL 后面,并且两者之间使用?连接,各变量之间使用&amp;连接<br>    缺点:<br>    1 貌似不安全,因为在传输的过程中,数据将被放在请求的 URL 中<br>    2 传输的数据量小,这主要是因为受 URL 的长度限制<br>    post:<br>    post 的语义是 向指定的URL的资源 添加 数据<br>    将数据放在数据体中,按照变量和值向对应的方式,传递到 action 所指向的 URL<br>    优点<br>    1 所有的数据对用户来说都是不可见的<br>    2 可以传输大量数据,上传文件只能是 post<br>    总结:如果从 URL 的角度看的话: get方法是不安全的, post方法是安全的,因为get在传输过程中,数据都放在URL中,但是如果从服务器的角度上讲, get方法是安全的, post方法是不安全的,因为 post方法回向服务器添加数据,而 get 方法只会向服务器获取数据,所以,如果要想服务器进行攻击,只能使用 post 方法</p>
+<p>#block<br>    (返回值类型)(^块名字)(参数类型) = ^(参数列表){代码实现};<br>    block 是一种特殊的数据类型,可以将 block 当做比较特殊的对象</p>
+<h3 id="使用局部变量"><a href="#使用局部变量" class="headerlink" title="使用局部变量"></a>使用局部变量</h3><pre><code>block 可以使用在定义之前声明的局部变量(默认的情况下是只读的)
+int i = 10;
+void (^myblock)() = ^{
+    NSLog(&quot;%d&quot;,i);
+};
+i = 100;
+myblock();
+输出结果是 10 
+注意:
+1 在定义 block 时 ,会在 block 中建立  当前局部变量内容的副本(拷贝), block 中所用的也就是这个副本
+2 后续在对该变量的的任何修改,都不会影响 block 中的这个变量的数值
+3 如果需要在 block 中保持局部变量的数值变化,需要使用__ block 关键字
+4 使用__block 关键字之后,同样可以再 block 中修改变量数值
+</code></pre><p>###传递对象</p>
+<p>###注意循环引用<br>    @property (nonatomic, strong) NSMutableArray *myBlocks;</p>
+<pre><code>#pragma mark 将代码改为调用self的方法
+int(^sum)(int, int) = ^(int x, int y) {
+    return [self sum:x y:y];
+};
+[self.myBlocks addObject:sum];
+
+#pragma mark 对象被释放时自动调用
+- (void)dealloc
+{
+    NSLog(@&quot;DemoObj被释放&quot;);
+}
+self 对 myblocks 强引用 myblock 对sum 强引用 sum 对 self 强引用 产生循环引用的结果就是对象无法释放,由于局部变量默认的都是强引用,离开其所在的作用区域后都会被释放.所以使用__ weak关键字,将局部变量声明为弱引用
+__weak DemoObj *weakSelf = self;
+int (^int,int) = ^(int,int){
+    return [weakSelf sum:x y:y];
+};
+所以在 block 内部,如果碰到 self, 最好能够思考一下,不要造成循环引用
+</code></pre><p>#进程 线程<br>    进程作为分配资源的基本单位,<br>    线程是独立运行和独立调度(有操作系统内核调度)的基本单位.</p>
+<p>###进程:<br>    正在运行中的程序,负责程序运行的内存分配,每一个进程都有一个自己独立的虚拟内存空间,进程是一个基本的分配单元,也是一个基本的执行单元,相比较程序,进程是一个动态概念,进程是程序在处理机上的一个执行过程,而程序是一种静态概念,它是一种软件资料在外存上长期有效<br>    要点:<br>    1 进程是一个实体,每个进程都有一个他自己的地址空间,一般情况下,包含数据区域,文本区域,堆和栈.<br>    文本区域存储处理器执行的代码;<br>    数据段存储全局变量,静态变量常亮,还有一些进程执行期间使用的动态分配内存<br>    堆栈区域存储的是进程调用的指令和本地变量<br>    2 进程是一个在内存中运行的程序<br>    进程的缺点:独立的地址造成不同的进程之间的共享状态信息非常困难,为了共享信息,必须显式的使用进程通信机制系统的开销很大, 这就造成了进程之间的通信比较慢,</p>
+<p>###线程:<br>    是进程中一个独立的执行路径(控制单元),一个进程中至少包含一个线程,即主线程,通常将耗时的执行路径:eg:网络请求放在其他线程执行.<br>    创建线程的目的就是为了开启一条新的执行路径(在进程中开辟了一个上下文的逻辑流),运行指定的代码,与主线程的代码实现并发运行<br>    多线程优势:<br>    1 充分发挥多核处理器的优势,将不同的线程分配给不同的处理器,<br>    2 将耗时操作分配到其他线程执行,由主线程负责统一更新界面会使程序更加流畅<br>    3 当硬件处理器的数量增加时,程序会运行更快<br>    4 占用的资源很少,所以对他的调度付出的系统开销很小,能跟高效的提高提高系统内多个程序间的并发执行速度<br>    缺点:新建线程会消耗内存空间和 CPU 时间,降低系统性能,多线程技术是为了并发执行多项任务,不会提高单个算法本身的执行效率</p>
+<p>###ios 三种多线程技术<br>    1 NSThread (创建简单,管理困难,常使用[NSThread currentThread]跟踪任务所在线程)<br>    2 NSOperation/NSOperationQueue (是使用 GCD 实现的一套 OC 的 API)<br>    3 GCD(Grand Central Dispatch 大中心调度,基于C语言的底层API,用block定义任务,方便,提供了更多的控制能力以及操作队列中不能使用的底层函数)  </p>
+<p>#git<br>    git init –bare 创建一个纯代码仓库<br>    git clone ssh:<a href="mailto://git@192.168.1.122" target="_blank" rel="noopener">//git@192.168.1.122</a>/Users/git/Documents/test<br>    git push ssh:<a href="mailto://git@192.168.1.122" target="_blank" rel="noopener">//git@192.168.1.122</a>/Users/git/Documents/test master<br>    git pull </p>
+<p>#@property属性的用法<br>    weak(assign):代理\ UI控件<br>    strong(retain)其他对象(除代理\UI控件\字符串)<br>    copy (字符串)<br>    assign 基本数据类型(int float 枚举 结构体 BOOL)</p>
+<p>#比较常用的程序架构<br>    当首次使用软件的时候,需要登录为例:<br>        1 下载完成后,运行,先弹出的是用户指引界面,一般式 UIScrollView 和 UIImageView 结合实现,当 UIScrollView 滑动到最后一个界面,通常有一个按钮,点击按钮后进入到登录页面,填写完用户名和密码后,进入主界面<br>        当不是第一次运行APP 的时候,在屏幕上点击 ICNO 图标时,如果记住密码,就直接进入程序主界面,如果没有记住密码的时候,则会重新弹出登录界面,要求用户输入用户名和密码,然后进入主界面.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://weibo.com/wangtaoworld/面试/2015/01/24/常见面试题.html" data-id="cjfkp6gol0003m123racaqhlm" class="article-share-link">Teilen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面试/">面试</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-iOS开发/viewController" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/uncategorized/2015/01/17/iOS开发/viewController.html" class="article-date">
+  <time datetime="2015-01-17T05:43:19.000Z" itemprop="datePublished">2015-01-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/uncategorized/2015/01/17/iOS开发/viewController.html">viewController</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-UIViewController生命周期几种方法调用时机"><a href="#1-UIViewController生命周期几种方法调用时机" class="headerlink" title="1.UIViewController生命周期几种方法调用时机"></a>1.UIViewController生命周期几种方法调用时机</h2><ol>
+<li>- (id)initWithNibName:(NSString <em>)nibNameOrNil bundle:(NSBundle </em>)nibBundleOrNil;<br>当UIViewController在初始化加载xib文件时，该方法被调用。</li>
+<li>- (void)loadView;<br>当每次访问UIViewController的view(比如controller.view,self.view)并且view为nil，该方法就会被调用。</li>
+<li>- (void)viewWillUnload; </li>
+<li>- (void)viewDidUnload;</li>
+<li>- (void)viewDidLoad;<br>不管是通过xib文件还是重写loadView创建UIViewController的view，在view创建完毕后，最终都会调用该方法。</li>
+<li>- (void)viewWillAppear:(BOOL)animated;<br>当view将要呈现在UI界面上时会调用该方法。</li>
+<li>- (void)viewDidAppear:(BOOL)animated;<br>当view已经完全过渡到屏幕上时会调用该方法。</li>
+<li>- (void)viewWillDisappear:(BOOL)animated;<br>当view将要消失，或被覆盖、隐藏时会调用该方法。</li>
+<li>- (void)viewDidDisappear:(BOOL)animated;<br>当view已经完全消失，或被覆盖、隐藏时会调用该方法。</li>
+</ol>
+<h2 id="2-UIViewController-xib的加载过程"><a href="#2-UIViewController-xib的加载过程" class="headerlink" title="2.UIViewController xib的加载过程"></a>2.UIViewController xib的加载过程</h2><p>loadView默认实现就是在自定义的UIViewController类里不重写loadView方法，或者重写后只是在方法里简单实现[super loadView]。默认实现做了如下几个工作：</p>
+<ol>
+<li>它会先去查找与UIViewController相关联的xib文件，通过加载xib文件来创建UIViewController的view<br> 如果在初始化UIViewController指定了xib文件名，就会根据传入的xib文件名加载对应的xib文件<br> [[UIViewController alloc] initWithNibName:@”ViewController” bundle:nil];<br> 如果没有明显地传xib文件名，就会加载跟UIViewController同名的xib文件<br> [[UIViewController alloc] init]; // 加载UIViewController.xib </li>
+<li>如果没有找到相关联的xib文件，就会创建一个空白的UIView，然后赋值给UIViewController的view属性，大致如下：<br> self.view = [[[UIView alloc] initWithFrame:[UIScreen mainScreen].applicationFrame] autorelease];</li>
+</ol>
+<h2 id="3-几种控制器容器的优缺点"><a href="#3-几种控制器容器的优缺点" class="headerlink" title="3.几种控制器容器的优缺点"></a>3.几种控制器容器的优缺点</h2><h3 id="1-UITabBarController-Tabbar底部标签式-Instagram、微信、微博"><a href="#1-UITabBarController-Tabbar底部标签式-Instagram、微信、微博" class="headerlink" title="1.UITabBarController(Tabbar底部标签式:Instagram、微信、微博)"></a>1.UITabBarController(Tabbar底部标签式:Instagram、微信、微博)</h3><p>UITabBarController作为一种容器适合管理底部标签式（TabBar 如： Instagram、微信、微博）这种结构的APP</p>
+<h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><ol>
+<li>清楚当前所在的入口位置</li>
+<li>轻松在各入口间频繁跳转且不会迷失方向</li>
+<li>直接展现最重要入口的内容信息（默认首页）</li>
+</ol>
+<h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><p>功能入口过多时，该模式显得笨重不实用(超过5个的时候会将其他控制器添加到一个更多界面)</p>
+<h3 id="2-UINavigationController-Springboard跳板式-星巴克"><a href="#2-UINavigationController-Springboard跳板式-星巴克" class="headerlink" title="2.UINavigationController (Springboard跳板式:星巴克)"></a>2.UINavigationController (Springboard跳板式:星巴克)</h3><p>UINavigationController作为一种容器适合管理跳板式（SpringBoard 如： 星巴克）这种结构的APP</p>
+<h4 id="优点-1"><a href="#优点-1" class="headerlink" title="优点"></a>优点</h4><ol>
+<li>清晰展现各入口</li>
+<li>容易记住各入口位置，方便快速找到</li>
+</ol>
+<h4 id="确定"><a href="#确定" class="headerlink" title="确定"></a>确定</h4><ol>
+<li>无法在多入口间灵活跳转，不适合任务操作</li>
+<li>容易形成更深的路径</li>
+<li>不能直接展现入口内容</li>
+<li>不能显示太多入口次级内容</li>
+</ol>
+<h3 id="3-UINavigationController做整体，融合TabBarController（List-Menu列表式：知乎）"><a href="#3-UINavigationController做整体，融合TabBarController（List-Menu列表式：知乎）" class="headerlink" title="3.UINavigationController做整体，融合TabBarController（List Menu列表式：知乎）"></a>3.UINavigationController做整体，融合TabBarController（List Menu列表式：知乎）</h3><h4 id="优点-2"><a href="#优点-2" class="headerlink" title="优点"></a>优点</h4><ol>
+<li>层次展示清晰</li>
+<li>可展示内容较长的标题</li>
+<li>可展示标题的次级内容</li>
+</ol>
+<h4 id="缺点-1"><a href="#缺点-1" class="headerlink" title="缺点"></a>缺点</h4><ol>
+<li>同级内容过多时，用户浏览容易产生疲劳</li>
+<li>排版灵活性不是很高</li>
+<li>只能通过排列顺序、颜色来区分各入口重要程度</li>
+</ol>
+<h3 id="4-UIScrollvIewController融合pageControl-Carousel旋转木马式-豆瓣同城"><a href="#4-UIScrollvIewController融合pageControl-Carousel旋转木马式-豆瓣同城" class="headerlink" title="4.UIScrollvIewController融合pageControl (Carousel旋转木马式:豆瓣同城)"></a>4.UIScrollvIewController融合pageControl (Carousel旋转木马式:豆瓣同城)</h3><h4 id="优点-3"><a href="#优点-3" class="headerlink" title="优点"></a>优点</h4><ol>
+<li>单页面内容整体性强</li>
+<li>线性的浏览方式有顺畅感、方向感</li>
+</ol>
+<h4 id="缺点-2"><a href="#缺点-2" class="headerlink" title="缺点"></a>缺点</h4><ol>
+<li>不适合展示过多页面</li>
+<li>不能跳跃性地查看间隔的页面，只能按顺序查看相邻的页面</li>
+<li>由于各页面内容结构相似，容易忽略后面的内容</li>
+</ol>
+<h3 id="5-Drawer抽屉式：豆瓣小组"><a href="#5-Drawer抽屉式：豆瓣小组" class="headerlink" title="5. Drawer抽屉式：豆瓣小组"></a>5. Drawer抽屉式：豆瓣小组</h3><h4 id="优点-4"><a href="#优点-4" class="headerlink" title="优点"></a>优点</h4><ol>
+<li>兼容多种模式（页面内自有组织）</li>
+<li>扩展性好</li>
+</ol>
+<h4 id="缺点-3"><a href="#缺点-3" class="headerlink" title="缺点"></a>缺点</h4><ol>
+<li>隐藏框架中其他入口</li>
+<li>对入口交互的功能可见性(affordance)要求高</li>
+<li>对排版要求高</li>
+</ol>
+<h3 id="6-Plus点聚式：Path"><a href="#6-Plus点聚式：Path" class="headerlink" title="6. Plus点聚式：Path"></a>6. Plus点聚式：Path</h3><h4 id="优点-5"><a href="#优点-5" class="headerlink" title="优点"></a>优点</h4><ol>
+<li>灵活</li>
+<li>展示方式有趣</li>
+<li>使界面更开阔</li>
+</ol>
+<h4 id="缺点-4"><a href="#缺点-4" class="headerlink" title="缺点"></a>缺点</h4><ol>
+<li>隐藏框架中其他入口</li>
+<li>对入口交互的功能可见性(affordance)要求高</li>
+</ol>
+<h3 id="7-Gallery陈列馆式：多看，豆瓣电影"><a href="#7-Gallery陈列馆式：多看，豆瓣电影" class="headerlink" title="7.Gallery陈列馆式：多看，豆瓣电影"></a>7.Gallery陈列馆式：多看，豆瓣电影</h3><h4 id="优点-6"><a href="#优点-6" class="headerlink" title="优点"></a>优点</h4><ol>
+<li>直观展现各项内容</li>
+<li>方便浏览经常更新的内容</li>
+</ol>
+<h4 id="缺点-5"><a href="#缺点-5" class="headerlink" title="缺点"></a>缺点</h4><ol>
+<li>不适合展现顶层入口框架</li>
+<li>容易形成界面内容过多，显得杂乱</li>
+<li>设计效果容易呆板</li>
+</ol>
+<h3 id="8-Waterfall瀑布式"><a href="#8-Waterfall瀑布式" class="headerlink" title="8.Waterfall瀑布式"></a>8.Waterfall瀑布式</h3><h4 id="优点-7"><a href="#优点-7" class="headerlink" title="优点"></a>优点</h4><ol>
+<li>浏览时产生流畅体验</li>
+</ol>
+<h4 id="缺点-6"><a href="#缺点-6" class="headerlink" title="缺点"></a>缺点</h4><ol>
+<li>缺乏对整体内容的体积感，容易发生空间位置迷失</li>
+<li>浏览一段时间后，容易产生疲劳感</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://weibo.com/wangtaoworld/uncategorized/2015/01/17/iOS开发/viewController.html" data-id="cjfkp6gqg001xm1232njfy8ny" class="article-share-link">Teilen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/kinds-of-viewControllers/">kinds of viewControllers</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Mac/NTFS-read-write" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/uncategorized/2014/11/20/Mac/NTFS-read-write.html" class="article-date">
+  <time datetime="2014-11-20T01:06:21.000Z" itemprop="datePublished">2014-11-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/uncategorized/2014/11/20/Mac/NTFS-read-write.html">NTFS read-write</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <pre><code>********************************************************************
+    1:&gt;&gt;&gt;  sudo mount | grep ntfs  &lt;&lt;&lt;
+    2:会得到如下路径，第3条的命令根据该路径而变化
+    &quot;/dev/disk1s1 on /Volumes/半片残枫 (ntfs, local, nodev, nosuid, read-only, noowners)&quot;
+    3:&gt;&gt;&gt;  sudo umount /dev/disk1s1  &lt;&lt;&lt;
+    4:&gt;&gt;&gt;  sudo mkdir -p /Volumes/wto  &lt;&lt;&lt;
+    5:&gt;&gt;&gt;  sudo mount_ntfs -o rw,auto,nobrowse,noowners,noatime /dev/disk1s1 /Volumes/wto  &lt;&lt;&lt;
+    //网上代码    &gt;&gt;&gt;  sudo mount_ntfs -o rw,auto,nobrowse,noowners,noatime  /dev/disk0s1 /Volumes/Win7boot
+       &lt;&lt;&lt;
+    6:&gt;&gt;&gt;  cd /Volumes  &lt;&lt;&lt;
+    7:&gt;&gt;&gt;  open .  &lt;&lt;&lt;
+    8:推出硬盘命令
+    &gt;&gt;&gt;  sudo umount /Volumes/wto  &lt;&lt;&lt;
+    或者在Finder中右键推出
+    *****此方法需要每次插入硬盘时执行该部分命令
+********************************************************************
+    http://www.memacx.com/forum.php?mod=viewthread&amp;tid=5482
+    //
+    在root下使用(建议使用此条)
+    &gt;&gt;&gt;   vi ~/.bashrc   &lt;&lt;&lt;
+    编辑添加： export EDITOR=vim
+    网上&gt;&gt;&gt;  echo export EDITOR=/usr/bin/vim &gt;&gt; ~/.bashrc
+    或者
+    //直接执行
+    &gt;&gt;&gt;  export EDITOR=vim
+    或者
+    //执行
+    &gt;&gt;&gt;  EDITOR=vim  &lt;&lt;&lt;
+    &gt;&gt;&gt;  export EDITOR  &lt;&lt;&lt;
+
+保存后即可和vim编译器一样编辑 /etc/fstab 下的内容：vim /etc/fstab,
+也就是可以直接执行 &gt;&gt;&gt;&gt;   vifs  &lt;&lt;&lt;命令
+然后直接像在vim中一样直接编辑添加
+//
+LABEL=半片残枫 none ntfs rw,nobrowse,noatime,nosuid
+//或
+LABEL=半片残枫 none ntfs rw,nobrowse,noowners,noatime,nosuid
+//
+******此方法即可在以后每次开机时自动执行该命令，自动会挂载NTFS格式硬盘半片残枫为读写格式的
+********************************************************************
+    /////////////////////////////////////////////////////////////
+    尤明大牛给的建议：
+    //1：
+    先执行
+    &gt;&gt;&gt;   sudo mount_ntfs -o rw,auto.nobrowse,noowners,noatime /dev/disk1s1 /Volumes/disk   &lt;&lt;&lt;
+    //其中disk为自己在  /Volmes/  下创建的文件，
+    //disk1s1为执行&gt;&gt;&gt;  sudo mount | grep ntfs  &lt;&lt;&lt;后查看到的文件
+    //此方法需要每次插入硬盘时都需要执行该部分命令
+    //2：
+    不行的话就在   /etc/fstab 下
+    vi fsatb
+    //
+    添加
+    LABEL=半片残枫 none ntfs rw
+    //
+    此方法即可每次开机自动将NTFS格式的硬盘挂载为读写格式的
+    ///////////////////////////////////////////////////////////////
+**********************************************************************
+    //链接
+    一般情况下，ubuntu终端下的默认编辑器为nano，我们直接编辑某个文件，默认就会打开nano。比如我们输入“crontab -e“的时候默认会打开nano编辑器。
+    对于熟悉VIM的朋友来说，都希望默认编辑器能使用vim，那么我们就需要修改ubuntu的默认编辑器。
+    修改ubuntu默认编辑器有三种方法：
+    一、直接在终端输入：
+
+echo export EDITOR=/usr/bin/vim &gt;&gt; ~/.bashrc
+二、使用系统管理工具update-alternatives来修改
+在终端输入：
+update-alternatives --config editor
+然后选择vim.basic这项即可
+三、如果系统中只剩下nano和vim两个编辑器，这个时候我们如果完全删除nano，那么系统会默认选择vim为默认编辑器
+在终端输入删除nano编辑器的命令：
+
+sudo apt-get remove nano
+
+修改完成之后我们输入：
+
+crontab -e
+看一看出现的是不是大家喜欢的vim编辑器呢。
+
+
+改变默认的程序来运行
+
+比如说，想给PDF文件换个默认的阅读工具，怎么弄呢？
+　　随便找个PDF文件，右击-&gt;使用其它程序打开，这样是可以选择不同的阅读器，可是如何指定为默认的阅读器呢？
+　　ubuntu中有两个文件，跟文件的默认打开方式有关：
+　　1./etc/gnome/defaults.list 保存了全局的打开方式
+　　2.~/.local/share/applications/mimeapps.list 保存了个人的打开方式
+
+    当两着有冲突，则优先采用局部的个人设置。举个例子：
+　　application/pdf=Foxit-Reader.desktop;
+    这样，系统就默认使用Foxit Reader作为PDF默认的阅读器，而不是系统自带的evince。注意格式，文件名要写对，后面有分号。
+　　文件名怎么写呢？其实，通过“右击-&gt;使用其它程序打开”，就会在mimeapps.list，产生一条记录，该记录就会显示你选中程序的文件名，这下该知道怎么做了吧
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://weibo.com/wangtaoworld/uncategorized/2014/11/20/Mac/NTFS-read-write.html" data-id="cjfkp6gpr000jm123fiws29j2" class="article-share-link">Teilen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NTFS/">NTFS</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/2/">&laquo; zurück</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">weiter &raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Kategorien</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/军事/">军事</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/文档/">文档</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/面试/">面试</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/BUG/">BUG</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IP/">IP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NTFS/">NTFS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UITextField/">UITextField</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UUID/">UUID</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/demo/">demo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/json/">json</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kinds-of-viewControllers/">kinds of viewControllers</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xls/">xls</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/上线/">上线</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/即时通讯/">即时通讯</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/字符串/">字符串</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/帮助/">帮助</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/手机型号/">手机型号</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/技术点/">技术点</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/搭建博客/">搭建博客</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/文档/">文档</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/检测/">检测</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/法律/">法律</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/表情/">表情</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/证书/">证书</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/键盘/">键盘</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面试/">面试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/飞机/">飞机</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/BUG/" style="font-size: 10px;">BUG</a> <a href="/tags/IP/" style="font-size: 10px;">IP</a> <a href="/tags/NTFS/" style="font-size: 10px;">NTFS</a> <a href="/tags/UITextField/" style="font-size: 10px;">UITextField</a> <a href="/tags/UUID/" style="font-size: 10px;">UUID</a> <a href="/tags/demo/" style="font-size: 10px;">demo</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/kinds-of-viewControllers/" style="font-size: 10px;">kinds of viewControllers</a> <a href="/tags/xls/" style="font-size: 10px;">xls</a> <a href="/tags/上线/" style="font-size: 17.5px;">上线</a> <a href="/tags/即时通讯/" style="font-size: 10px;">即时通讯</a> <a href="/tags/字符串/" style="font-size: 10px;">字符串</a> <a href="/tags/帮助/" style="font-size: 15px;">帮助</a> <a href="/tags/手机型号/" style="font-size: 12.5px;">手机型号</a> <a href="/tags/技术点/" style="font-size: 10px;">技术点</a> <a href="/tags/搭建博客/" style="font-size: 10px;">搭建博客</a> <a href="/tags/文档/" style="font-size: 20px;">文档</a> <a href="/tags/检测/" style="font-size: 10px;">检测</a> <a href="/tags/法律/" style="font-size: 10px;">法律</a> <a href="/tags/表情/" style="font-size: 10px;">表情</a> <a href="/tags/证书/" style="font-size: 10px;">证书</a> <a href="/tags/键盘/" style="font-size: 10px;">键盘</a> <a href="/tags/面试/" style="font-size: 10px;">面试</a> <a href="/tags/飞机/" style="font-size: 10px;">飞机</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">October 2014</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/iOS/2018/04/03/GitHub博客/购买域名和GitHubPages博客的绑定三部曲.html">购买域名和GitHubPages博客的绑定三部曲</a>
+          </li>
+        
+          <li>
+            <a href="/iOS/2018/04/02/iOS开发/iOS_获取手机型号.html">iOS_获取手机型号</a>
+          </li>
+        
+          <li>
+            <a href="/iOS/2018/04/02/iOS开发/iOS_获取IP地址.html">iOS_获取IP地址</a>
+          </li>
+        
+          <li>
+            <a href="/iOS/2018/04/02/iOS开发/iOS_检测当前网络类型和运营商.html">iOS_检测当前网络类型和运营商</a>
+          </li>
+        
+          <li>
+            <a href="/iOS/2018/04/02/工作项目/广益云课堂.html">广益云课堂</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 wangtao<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
