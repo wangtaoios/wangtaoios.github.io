@@ -1,265 +1,169 @@
-
-
 <!DOCTYPE html>
-<html lang="zh-Hans">
-<head prefix="og: http://ogp.me/ns#">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-    <meta name="description" content="技术交流">
-    <title>iOS_获取IP地址 | wt</title>
-
-    <!-- Open Graph -->
-    <meta name="description" content="123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293#import &amp;lt;ifaddrs.h&amp;g">
-<meta name="keywords" content="IP">
-<meta property="og:type" content="article">
-<meta property="og:title" content="iOS_获取IP地址">
-<meta property="og:url" content="https://weibo.com/wangtaoworld/iOS/2018/04/02/iOS开发/iOS_获取IP地址.html">
-<meta property="og:site_name" content="wt">
-<meta property="og:description" content="123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293#import &amp;lt;ifaddrs.h&amp;g">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-02T08:45:36.000Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="iOS_获取IP地址">
-<meta name="twitter:description" content="123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293#import &amp;lt;ifaddrs.h&amp;g">
-
-    <script type="application/ld+json">
-{
-  "@context": "http://schema.org",
-  "@type": "Person",
-  "email": "mailto:",
-  "image": "",
-  "name": "wangtao",
-  "url": "https://weibo.com/wangtaoworld"
-}
-</script>
-    <script>
-    var algoliaEnabled = false;
+<html lang="zh-CN">
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="技术交流">
+  <meta name="keywords" content="">
+  
+    <link rel="icon" href="">
+  
     
-</script>
-
-    
-
-    
-    
-        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-    
-    
-    
-        <!-- stylesheets list from config.yml -->
-        
-        <link rel="stylesheet" href="/css/aloha.css">
-        
-        <link rel="stylesheet" href="//cdn.bootcss.com/semantic-ui/2.2.4/semantic.min.css">
-        
-        <link rel="stylesheet" href="//cdn.bootcss.com/magnific-popup.js/1.1.0/magnific-popup.min.css">
-        
-    
-
+  <title>iOS_获取IP地址 | wt</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/lib/jquery.fancybox.min.css">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-<body id="body" style="margin-bottom: 0;" class="pushable">
 
-    <div class="ui top fixed menu">
-        <a class="item" id="menu-icon"><i class="sidebar icon"></i></a>
-    </div>
-
-    <div id="menu-sidebar" class="ui left vertical sidebar menu">
-
-    <div id="sidebar-top">
-        <div class="content">
-            <h3>wt</h3>
-        </div>
-    </div>
-    <div class="ui container sidebar-card">
-    <div class="ui people shape content">
-        <div class="active side">
-            <div class="ui card">
-                <div class="image">
-                    <img class="ui medium bordered image" src="/images/avatar.jpg">
-                </div>
-                <div class="content">
-                    <a class="header">wangtao</a>
-                    
-                </div>
-                <div class="extra content">
-                    <div class="ui list">
-                        
-                        
-                    </div>
-
-                </div>
-                <div class="extra content">
-                    <div class="ui list">
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-</div>
-
-    
-    
-
-    
-
-    
-    <a href="/index.html" class="item" >
-        <i class="home icon"></i>
-        HOME
+<body>
+  <header>
+  <div class="header-container">
+    <a class='logo' href="/">
+      <span>wt</span>
     </a>
+    <ul class="right-header">
+      
+        <li class="nav-item">
+          
+            <a href="/" class="item-link">首页</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/about" class="item-link">关于</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/archives" class="item-link">归档</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/tags" class="item-link">标签</a>
+          
+        </li>
+      
+    </ul>
+  </div>
+</header>
 
-    
+  <main id='post'>
+  <div class="content">
+    <article>
+        <section class="content markdown-body">
+          <h1>iOS_获取IP地址</h1>
+          <div class='post-meta'>
+            <i class="fa fa-calendar" aria-hidden="true"></i> <time>2018年04月02日</time>
+            
+              | <i class="fa fa-folder-open-o" aria-hidden="true"></i> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/iOS/">iOS</a>
+  </div>
 
-    
-</div>
 
-    <div class="pusher body-content">
-        <div id="content" class="ui main container">
-            <!--<div class="ui one column grid">-->
-                <!--<div class="column">-->
-                    <!--<div class="ui main container">-->
-                        <div id="post-iOS开发/iOS_获取IP地址" class="ui main container article-type-post">
 
-    
-
-    <div class="ui divided grid">
-
-        <div class="two column row" id="article-content">
-
-            <div class="thirteen wide computer thirteen wide tablet sixteen wide mobile column">
+            
+            
+              | 
+                  <i class="fa fa-tag" aria-hidden="true"></i>
                 
-
-<h1 class="ui header">
-    
-    iOS_获取IP地址
-</h1>
+               
+  <a href="/tags/#IP" class='tag'>IP</a>
 
 
-
-                <div class="article-inner">
-
-                    <div class="article-entry" itemprop="articleBody">
-                        
-                        <figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#import <span class="meta-string">&lt;ifaddrs.h&gt;</span></span></span><br><span class="line"><span class="meta">#import <span class="meta-string">&lt;arpa/inet.h&gt;</span></span></span><br><span class="line"><span class="meta">#import <span class="meta-string">&lt;net/if.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#define IOS_CELLULAR&#xA0; &#xA0; @<span class="meta-string">&quot;pdp_ip0&quot;</span></span></span><br><span class="line"><span class="meta">#define IOS_WIFI&#xA0; &#xA0; &#xA0; &#xA0; @<span class="meta-string">&quot;en0&quot;</span></span></span><br><span class="line"><span class="meta">#define IOS_VPN &#xA0; &#xA0; &#xA0; &#xA0; @<span class="meta-string">&quot;utun0&quot;</span></span></span><br><span class="line"><span class="meta">#define IP_ADDR_IPv4&#xA0; &#xA0; @<span class="meta-string">&quot;ipv4&quot;</span></span></span><br><span class="line"><span class="meta">#define IP_ADDR_IPv6&#xA0; &#xA0; @<span class="meta-string">&quot;ipv6&quot;</span></span></span><br><span class="line"></span><br><span class="line">+ (<span class="built_in">NSString</span> *)getIPAddress:(<span class="built_in">BOOL</span>)preferIPv4</span><br><span class="line">{</span><br><span class="line">&#xA0; &#xA0; <span class="built_in">NSArray</span> *searchArray = preferIPv4 ?</span><br><span class="line">&#xA0; &#xA0; @[ IOS_VPN <span class="string">@&quot;/&quot;</span> IP_ADDR_IPv4, IOS_VPN <span class="string">@&quot;/&quot;</span> IP_ADDR_IPv6, IOS_WIFI <span class="string">@&quot;/&quot;</span> IP_ADDR_IPv4, IOS_WIFI <span class="string">@&quot;/&quot;</span> IP_ADDR_IPv6, IOS_CELLULAR <span class="string">@&quot;/&quot;</span> IP_ADDR_IPv4, IOS_CELLULAR <span class="string">@&quot;/&quot;</span> IP_ADDR_IPv6 ] :</span><br><span class="line">&#xA0; &#xA0; @[ IOS_VPN <span class="string">@&quot;/&quot;</span> IP_ADDR_IPv6, IOS_VPN <span class="string">@&quot;/&quot;</span> IP_ADDR_IPv4, IOS_WIFI <span class="string">@&quot;/&quot;</span> IP_ADDR_IPv6, IOS_WIFI <span class="string">@&quot;/&quot;</span> IP_ADDR_IPv4, IOS_CELLULAR <span class="string">@&quot;/&quot;</span> IP_ADDR_IPv6, IOS_CELLULAR <span class="string">@&quot;/&quot;</span> IP_ADDR_IPv4 ] ;</span><br><span class="line">&#xA0;&#xA0; &#xA0;</span><br><span class="line">&#xA0; &#xA0; <span class="built_in">NSDictionary</span> *addresses = [<span class="keyword">self</span> getIPAddresses];</span><br><span class="line">&#xA0; &#xA0; <span class="built_in">NSLog</span>(<span class="string">@&quot;addresses: %@&quot;</span>, addresses);</span><br><span class="line">&#xA0;&#xA0; &#xA0;</span><br><span class="line">&#xA0; &#xA0; __block <span class="built_in">NSString</span> *address;</span><br><span class="line">&#xA0; &#xA0; [searchArray enumerateObjectsUsingBlock:^(<span class="built_in">NSString</span> *key, <span class="built_in">NSUInteger</span> idx, <span class="built_in">BOOL</span> *stop)</span><br><span class="line">&#xA0;&#xA0; &#xA0; {</span><br><span class="line">&#xA0;&#xA0; &#xA0; &#xA0; &#xA0; address = addresses[key];</span><br><span class="line">&#xA0;&#xA0; &#xA0; &#xA0; &#xA0; <span class="comment">//&#x7B5B;&#x9009;&#x51FA;IP&#x5730;&#x5740;&#x683C;&#x5F0F;</span></span><br><span class="line">&#xA0;&#xA0; &#xA0; &#xA0; &#xA0; <span class="keyword">if</span>([<span class="keyword">self</span> isValidatIP:address]) *stop = <span class="literal">YES</span>;</span><br><span class="line">&#xA0;&#xA0; &#xA0; } ];</span><br><span class="line">&#xA0; &#xA0; <span class="keyword">return</span> address ? address : <span class="string">@&quot;0.0.0.0&quot;</span>;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">+ (<span class="built_in">BOOL</span>)isValidatIP:(<span class="built_in">NSString</span> *)ipAddress {</span><br><span class="line">&#xA0; &#xA0; <span class="keyword">if</span> (ipAddress.length == <span class="number">0</span>) {</span><br><span class="line">&#xA0; &#xA0; &#xA0; &#xA0; <span class="keyword">return</span> <span class="literal">NO</span>;</span><br><span class="line">&#xA0; &#xA0; }</span><br><span class="line">&#xA0; &#xA0; <span class="built_in">NSString</span> *urlRegEx = <span class="string">@&quot;^([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\.&quot;</span></span><br><span class="line">&#xA0; &#xA0; <span class="string">&quot;([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\.&quot;</span></span><br><span class="line">&#xA0; &#xA0; <span class="string">&quot;([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\.&quot;</span></span><br><span class="line">&#xA0; &#xA0; <span class="string">&quot;([01]?\\d\\d?|2[0-4]\\d|25[0-5])$&quot;</span>;</span><br><span class="line">&#xA0;&#xA0; &#xA0;</span><br><span class="line">&#xA0; &#xA0; <span class="built_in">NSError</span> *error;</span><br><span class="line">&#xA0; &#xA0; <span class="built_in">NSRegularExpression</span> *regex = [<span class="built_in">NSRegularExpression</span> regularExpressionWithPattern:urlRegEx options:<span class="number">0</span> error:&amp;error];</span><br><span class="line">&#xA0;&#xA0; &#xA0;</span><br><span class="line">&#xA0; &#xA0; <span class="keyword">if</span> (regex != <span class="literal">nil</span>) {</span><br><span class="line">&#xA0; &#xA0; &#xA0; &#xA0; <span class="built_in">NSTextCheckingResult</span> *firstMatch=[regex firstMatchInString:ipAddress options:<span class="number">0</span> range:<span class="built_in">NSMakeRange</span>(<span class="number">0</span>, [ipAddress length])];</span><br><span class="line">&#xA0;&#xA0; &#xA0; &#xA0; &#xA0;</span><br><span class="line">&#xA0; &#xA0; &#xA0; &#xA0; <span class="keyword">if</span> (firstMatch) {</span><br><span class="line">&#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; <span class="built_in">NSRange</span> resultRange = [firstMatch rangeAtIndex:<span class="number">0</span>];</span><br><span class="line">&#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; <span class="built_in">NSString</span> *result=[ipAddress substringWithRange:resultRange];</span><br><span class="line">&#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; <span class="comment">//&#x8F93;&#x51FA;&#x7ED3;&#x679C;</span></span><br><span class="line">&#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; <span class="built_in">NSLog</span>(<span class="string">@&quot;%@&quot;</span>,result);</span><br><span class="line">&#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; <span class="keyword">return</span> <span class="literal">YES</span>;</span><br><span class="line">&#xA0; &#xA0; &#xA0; &#xA0; }</span><br><span class="line">&#xA0; &#xA0; }</span><br><span class="line">&#xA0; &#xA0; <span class="keyword">return</span> <span class="literal">NO</span>;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">+ (<span class="built_in">NSDictionary</span> *)getIPAddresses</span><br><span class="line">{</span><br><span class="line">&#xA0; &#xA0; <span class="built_in">NSMutableDictionary</span> *addresses = [<span class="built_in">NSMutableDictionary</span> dictionaryWithCapacity:<span class="number">8</span>];</span><br><span class="line">&#xA0; &#xA0; <span class="comment">// retrieve the current interfaces - returns 0 on success</span></span><br><span class="line">&#xA0; &#xA0; <span class="keyword">struct</span> ifaddrs *interfaces;</span><br><span class="line">&#xA0; &#xA0; <span class="keyword">if</span>(!getifaddrs(&amp;interfaces)) {</span><br><span class="line">&#xA0; &#xA0; &#xA0; &#xA0; <span class="comment">// Loop through linked list of interfaces</span></span><br><span class="line">&#xA0; &#xA0; &#xA0; &#xA0; <span class="keyword">struct</span> ifaddrs *interface;</span><br><span class="line">&#xA0; &#xA0; &#xA0; &#xA0; <span class="keyword">for</span>(interface=interfaces; interface; interface=interface-&gt;ifa_next) {</span><br><span class="line">&#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; <span class="keyword">if</span>(!(interface-&gt;ifa_flags &amp; IFF_UP) <span class="comment">/* || (interface-&gt;ifa_flags &amp; IFF_LOOPBACK) */</span> ) {</span><br><span class="line">&#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; <span class="keyword">continue</span>; <span class="comment">// deeply nested code harder to read</span></span><br><span class="line">&#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; }</span><br><span class="line">&#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; <span class="keyword">const</span> <span class="keyword">struct</span> sockaddr_in *addr = (<span class="keyword">const</span> <span class="keyword">struct</span> sockaddr_in*)interface-&gt;ifa_addr;</span><br><span class="line">&#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; <span class="keyword">char</span> addrBuf[ MAX(INET_ADDRSTRLEN, INET6_ADDRSTRLEN) ];</span><br><span class="line">&#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; <span class="keyword">if</span>(addr &amp;&amp; (addr-&gt;sin_family==AF_INET || addr-&gt;sin_family==AF_INET6)) {</span><br><span class="line">&#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; <span class="built_in">NSString</span> *name = [<span class="built_in">NSString</span> stringWithUTF8String:interface-&gt;ifa_name];</span><br><span class="line">&#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; <span class="built_in">NSString</span> *type;</span><br><span class="line">&#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; <span class="keyword">if</span>(addr-&gt;sin_family == AF_INET) {</span><br><span class="line">&#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; <span class="keyword">if</span>(inet_ntop(AF_INET, &amp;addr-&gt;sin_addr, addrBuf, INET_ADDRSTRLEN)) {</span><br><span class="line">&#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; type = IP_ADDR_IPv4;</span><br><span class="line">&#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; }</span><br><span class="line">&#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; } <span class="keyword">else</span> {</span><br><span class="line">&#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; <span class="keyword">const</span> <span class="keyword">struct</span> sockaddr_in6 *addr6 = (<span class="keyword">const</span> <span class="keyword">struct</span> sockaddr_in6*)interface-&gt;ifa_addr;</span><br><span class="line">&#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; <span class="keyword">if</span>(inet_ntop(AF_INET6, &amp;addr6-&gt;sin6_addr, addrBuf, INET6_ADDRSTRLEN)) {</span><br><span class="line">&#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; type = IP_ADDR_IPv6;</span><br><span class="line">&#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; }</span><br><span class="line">&#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; }</span><br><span class="line">&#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; <span class="keyword">if</span>(type) {</span><br><span class="line">&#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; <span class="built_in">NSString</span> *key = [<span class="built_in">NSString</span> stringWithFormat:<span class="string">@&quot;%@/%@&quot;</span>, name, type];</span><br><span class="line">&#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; addresses[key] = [<span class="built_in">NSString</span> stringWithUTF8String:addrBuf];</span><br><span class="line">&#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; }</span><br><span class="line">&#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; }</span><br><span class="line">&#xA0; &#xA0; &#xA0; &#xA0; }</span><br><span class="line">&#xA0; &#xA0; &#xA0; &#xA0; <span class="comment">// Free memory</span></span><br><span class="line">&#xA0; &#xA0; &#xA0; &#xA0; freeifaddrs(interfaces);</span><br><span class="line">&#xA0; &#xA0; }</span><br><span class="line">&#xA0; &#xA0; <span class="keyword">return</span> [addresses count] ? addresses : <span class="literal">nil</span>;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
-<p>&#x4F7F;&#x7528;&#x65B9;&#x6CD5;</p>
+            
+          </div>
+          <figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#import <span class="meta-string">&lt;ifaddrs.h&gt;</span></span></span><br><span class="line"><span class="meta">#import <span class="meta-string">&lt;arpa/inet.h&gt;</span></span></span><br><span class="line"><span class="meta">#import <span class="meta-string">&lt;net/if.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#define IOS_CELLULAR    @<span class="meta-string">"pdp_ip0"</span></span></span><br><span class="line"><span class="meta">#define IOS_WIFI        @<span class="meta-string">"en0"</span></span></span><br><span class="line"><span class="meta">#define IOS_VPN         @<span class="meta-string">"utun0"</span></span></span><br><span class="line"><span class="meta">#define IP_ADDR_IPv4    @<span class="meta-string">"ipv4"</span></span></span><br><span class="line"><span class="meta">#define IP_ADDR_IPv6    @<span class="meta-string">"ipv6"</span></span></span><br><span class="line"></span><br><span class="line">+ (<span class="built_in">NSString</span> *)getIPAddress:(<span class="built_in">BOOL</span>)preferIPv4</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">NSArray</span> *searchArray = preferIPv4 ?</span><br><span class="line">    @[ IOS_VPN <span class="string">@"/"</span> IP_ADDR_IPv4, IOS_VPN <span class="string">@"/"</span> IP_ADDR_IPv6, IOS_WIFI <span class="string">@"/"</span> IP_ADDR_IPv4, IOS_WIFI <span class="string">@"/"</span> IP_ADDR_IPv6, IOS_CELLULAR <span class="string">@"/"</span> IP_ADDR_IPv4, IOS_CELLULAR <span class="string">@"/"</span> IP_ADDR_IPv6 ] :</span><br><span class="line">    @[ IOS_VPN <span class="string">@"/"</span> IP_ADDR_IPv6, IOS_VPN <span class="string">@"/"</span> IP_ADDR_IPv4, IOS_WIFI <span class="string">@"/"</span> IP_ADDR_IPv6, IOS_WIFI <span class="string">@"/"</span> IP_ADDR_IPv4, IOS_CELLULAR <span class="string">@"/"</span> IP_ADDR_IPv6, IOS_CELLULAR <span class="string">@"/"</span> IP_ADDR_IPv4 ] ;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">NSDictionary</span> *addresses = [<span class="keyword">self</span> getIPAddresses];</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"addresses: %@"</span>, addresses);</span><br><span class="line">    </span><br><span class="line">    __block <span class="built_in">NSString</span> *address;</span><br><span class="line">    [searchArray enumerateObjectsUsingBlock:^(<span class="built_in">NSString</span> *key, <span class="built_in">NSUInteger</span> idx, <span class="built_in">BOOL</span> *stop)</span><br><span class="line">     &#123;</span><br><span class="line">         address = addresses[key];</span><br><span class="line">         <span class="comment">//筛选出IP地址格式</span></span><br><span class="line">         <span class="keyword">if</span>([<span class="keyword">self</span> isValidatIP:address]) *stop = <span class="literal">YES</span>;</span><br><span class="line">     &#125; ];</span><br><span class="line">    <span class="keyword">return</span> address ? address : <span class="string">@"0.0.0.0"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">+ (<span class="built_in">BOOL</span>)isValidatIP:(<span class="built_in">NSString</span> *)ipAddress &#123;</span><br><span class="line">    <span class="keyword">if</span> (ipAddress.length == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">NO</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">NSString</span> *urlRegEx = <span class="string">@"^([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\."</span></span><br><span class="line">    <span class="string">"([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\."</span></span><br><span class="line">    <span class="string">"([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\."</span></span><br><span class="line">    <span class="string">"([01]?\\d\\d?|2[0-4]\\d|25[0-5])$"</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">NSError</span> *error;</span><br><span class="line">    <span class="built_in">NSRegularExpression</span> *regex = [<span class="built_in">NSRegularExpression</span> regularExpressionWithPattern:urlRegEx options:<span class="number">0</span> error:&amp;error];</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (regex != <span class="literal">nil</span>) &#123;</span><br><span class="line">        <span class="built_in">NSTextCheckingResult</span> *firstMatch=[regex firstMatchInString:ipAddress options:<span class="number">0</span> range:<span class="built_in">NSMakeRange</span>(<span class="number">0</span>, [ipAddress length])];</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> (firstMatch) &#123;</span><br><span class="line">            <span class="built_in">NSRange</span> resultRange = [firstMatch rangeAtIndex:<span class="number">0</span>];</span><br><span class="line">            <span class="built_in">NSString</span> *result=[ipAddress substringWithRange:resultRange];</span><br><span class="line">            <span class="comment">//输出结果</span></span><br><span class="line">            <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>,result);</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">YES</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">NO</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">+ (<span class="built_in">NSDictionary</span> *)getIPAddresses</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">NSMutableDictionary</span> *addresses = [<span class="built_in">NSMutableDictionary</span> dictionaryWithCapacity:<span class="number">8</span>];</span><br><span class="line">    <span class="comment">// retrieve the current interfaces - returns 0 on success</span></span><br><span class="line">    <span class="keyword">struct</span> ifaddrs *interfaces;</span><br><span class="line">    <span class="keyword">if</span>(!getifaddrs(&amp;interfaces)) &#123;</span><br><span class="line">        <span class="comment">// Loop through linked list of interfaces</span></span><br><span class="line">        <span class="keyword">struct</span> ifaddrs *interface;</span><br><span class="line">        <span class="keyword">for</span>(interface=interfaces; interface; interface=interface-&gt;ifa_next) &#123;</span><br><span class="line">            <span class="keyword">if</span>(!(interface-&gt;ifa_flags &amp; IFF_UP) <span class="comment">/* || (interface-&gt;ifa_flags &amp; IFF_LOOPBACK) */</span> ) &#123;</span><br><span class="line">                <span class="keyword">continue</span>; <span class="comment">// deeply nested code harder to read</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">const</span> <span class="keyword">struct</span> sockaddr_in *addr = (<span class="keyword">const</span> <span class="keyword">struct</span> sockaddr_in*)interface-&gt;ifa_addr;</span><br><span class="line">            <span class="keyword">char</span> addrBuf[ MAX(INET_ADDRSTRLEN, INET6_ADDRSTRLEN) ];</span><br><span class="line">            <span class="keyword">if</span>(addr &amp;&amp; (addr-&gt;sin_family==AF_INET || addr-&gt;sin_family==AF_INET6)) &#123;</span><br><span class="line">                <span class="built_in">NSString</span> *name = [<span class="built_in">NSString</span> stringWithUTF8String:interface-&gt;ifa_name];</span><br><span class="line">                <span class="built_in">NSString</span> *type;</span><br><span class="line">                <span class="keyword">if</span>(addr-&gt;sin_family == AF_INET) &#123;</span><br><span class="line">                    <span class="keyword">if</span>(inet_ntop(AF_INET, &amp;addr-&gt;sin_addr, addrBuf, INET_ADDRSTRLEN)) &#123;</span><br><span class="line">                        type = IP_ADDR_IPv4;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="keyword">const</span> <span class="keyword">struct</span> sockaddr_in6 *addr6 = (<span class="keyword">const</span> <span class="keyword">struct</span> sockaddr_in6*)interface-&gt;ifa_addr;</span><br><span class="line">                    <span class="keyword">if</span>(inet_ntop(AF_INET6, &amp;addr6-&gt;sin6_addr, addrBuf, INET6_ADDRSTRLEN)) &#123;</span><br><span class="line">                        type = IP_ADDR_IPv6;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(type) &#123;</span><br><span class="line">                    <span class="built_in">NSString</span> *key = [<span class="built_in">NSString</span> stringWithFormat:<span class="string">@"%@/%@"</span>, name, type];</span><br><span class="line">                    addresses[key] = [<span class="built_in">NSString</span> stringWithUTF8String:addrBuf];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// Free memory</span></span><br><span class="line">        freeifaddrs(interfaces);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> [addresses count] ? addresses : <span class="literal">nil</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用方法</p>
 <pre><code>NSString *ipAddress = [WTKeychain getIPAddress:YES];
 </code></pre>
-                        
-                    </div>
-
-                    
-                    
-                    
-
-                    <div class="description post-description">
-    <span class="post-description-item">
-        <time datetime="2018-04-02T08:45:02.000Z" itemprop="datePublished">2018-04-02</time>
-
-    </span>
-    <span class="post-description-item">
+        </section>
+    </article>
+    
         
-
-    <span>
-        <i class="tags icon"></i>
-    </span>
-
+  </div>
+  <aside>
     
-    <span class="ui tiny label">
-        <a href="/tags/IP/">IP</a>
-    </span>
+  </aside>
+</main>
 
-    
 
-    </span>
-</div>
 
-                </div>
-                
-                <div id="pagination" class="nav-web ui text container pagination">
-
-    <div class="ui stackable two column divided grid container">
-        <div class="row">
-            <div class="column nav-left">
-                
-
-                <a href="/iOS/2018/04/02/iOS开发/iOS_获取手机型号.html" class="ui tiny button">
-
-                    <i class="angle left icon"></i>
-                    
-                    iOS_获取手机型号
-                    
-
-                </a>
-
-                
-            </div>
-            <div class="column nav-right">
-                
-
-                <a href="/iOS/2018/04/02/iOS开发/iOS_检测当前网络类型和运营商.html" class="ui tiny button">
-                    
-                    iOS_检测当前网络类型和运营商
-                    
-                    <i class="angle right icon"></i></a>
-                
-            </div>
-        </div>
+  <footer>
+  <div class="copyright">
+    <div>
+      &copy; 2018 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a>&nbsp
     </div>
-
-</div>
-                
-            </div>
-
-            
-            <div class="three wide computer three wide tablet column">
-
-                <div class="ui sticky article-toc" id="article-toc">
-                    <!-- toc -->
-                    
-                </div>
-
-            </div>
-            
-
-        </div>
+    <div>
+      Theme by <a href="https://github.com/lewis-geek/hexo-theme-Aath" target="_blank">Aath</a>
     </div>
-</div>
+  </div>
+</footer>
 
 
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
-        </div>
-        <div class="ui vertical footer segment">
-    <div class="ui center aligned container">
-        <div class="ui inverted section divider"></div>
-        &copy; 2018 <a href="/">wangtao</a>,
-        Powered by <a href="https://github.com/henryhuang/hexo-theme-aloha" target="_blank">Aloha</a> and <a
-                href="http://hexo.io/" target="_blank">Hexo</a>.
-    </div>
-</div>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script src="/lib/in-view.min.js"></script>
+<script src="/lib/lodash.min.js"></script>
+<script>
+  var isDown = true
+  var oldY = 0
+  inView.offset(50)
 
-    </div>
+  document.body.addEventListener('touchstart', function(){});
+  
+  window.addEventListener('scroll', _.throttle(e => {
+    var currentY = window.scrollY
+    if((oldY - currentY) < 0) {
+      isDown = true
+    } else {
+      isDown = false
+    }
+    oldY = currentY
+  }, 250))
 
+  $("article img").each(function() {
+      var strA = "<a data-fancybox='gallery' href='" + this.src + "'></a>";
+      $(this).wrapAll(strA);
+  });
 
+  $('.toc-link').each(function() {
+      var href = $(this).attr("href");
+      
+      inView(href).on('exit', () => {
+        if (isDown) {
+          handleActive(href)
+        }
+      })
 
+      inView(href).on('enter', () => {
+        if (!isDown) {
+          handleActive(href)
+        }
+      })
 
-<!-- scripts list from theme config.yml -->
+      this.onclick = function(e) {
+        var pos = $(href).offset().top - 10;
+        $("html,body").animate({scrollTop: pos}, 300);
+        setTimeout(() => {
+          handleActive(href)
+        }, 350)
+        return false
+      }
+  })
 
-<script src="//cdn.bootcss.com/jquery/3.1.0/jquery.min.js"></script>
-
-<script src="//cdn.bootcss.com/semantic-ui/2.2.4/semantic.min.js"></script>
-
-<script src="//cdn.bootcss.com/algoliasearch/3.18.1/algoliasearch.min.js"></script>
-
-<script src="//cdn.bootcss.com/algoliasearch-helper-js/2.13.0/algoliasearch.helper.min.js"></script>
-
-<script src="/js/semantic-ui-algolia.js"></script>
-
-<script src="/js/aloha-events.js"></script>
-
+  function handleActive(href) {
+    document.querySelectorAll('.toc-link').forEach(elm => {
+      elm.classList.remove('active')
+    })
+    document.querySelector(".toc [href='"+ href +"']").classList.add('active')
+  }
+</script>
+<script src="/lib/jquery.fancybox.min.js"></script>
 
 
 </body>

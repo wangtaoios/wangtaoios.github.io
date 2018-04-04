@@ -1,154 +1,88 @@
-
-
 <!DOCTYPE html>
-<html lang="zh-Hans">
-<head prefix="og: http://ogp.me/ns#">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-    <meta name="description" content="技术交流">
-    <title>iOS仿新浪微博个人中心基础版 | wt</title>
-
-    <!-- Open Graph -->
-    <meta name="description" content="&amp;#x4F7F;&amp;#x7528;&amp;#x7B2C;&amp;#x4E09;&amp;#x65B9;&amp;#x5E93;WMPageController&amp;#xFF0C;&amp;#x4EFF;&amp;#x65B0;&amp;#x6D6A;&amp;#x5FAE;&amp;#x535A;&amp;#x4E2A;&amp;#x4EBA;&amp;#x4E2D;&amp;#x5FC3;&amp;#x9875;&amp;#x9762;  &amp;#x5B8C;&amp;#x6574;demo&amp;#xFF0C;&amp;#x6B22;&amp;#">
-<meta name="keywords" content="demo">
-<meta property="og:type" content="article">
-<meta property="og:title" content="iOS仿新浪微博个人中心基础版">
-<meta property="og:url" content="https://weibo.com/wangtaoworld/iOS/2018/03/27/iOS开发/iOS仿新浪微博个人中心基础版.html">
-<meta property="og:site_name" content="wt">
-<meta property="og:description" content="&amp;#x4F7F;&amp;#x7528;&amp;#x7B2C;&amp;#x4E09;&amp;#x65B9;&amp;#x5E93;WMPageController&amp;#xFF0C;&amp;#x4EFF;&amp;#x65B0;&amp;#x6D6A;&amp;#x5FAE;&amp;#x535A;&amp;#x4E2A;&amp;#x4EBA;&amp;#x4E2D;&amp;#x5FC3;&amp;#x9875;&amp;#x9762;  &amp;#x5B8C;&amp;#x6574;demo&amp;#xFF0C;&amp;#x6B22;&amp;#">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://github.com/wangtaoios/images/blob/master/%E9%A1%B9%E7%9B%AEDemo%E5%9B%BE%E7%89%87/weibo_0327.gif?raw=true">
-<meta property="og:updated_time" content="2018-03-27T07:20:53.000Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="iOS仿新浪微博个人中心基础版">
-<meta name="twitter:description" content="&amp;#x4F7F;&amp;#x7528;&amp;#x7B2C;&amp;#x4E09;&amp;#x65B9;&amp;#x5E93;WMPageController&amp;#xFF0C;&amp;#x4EFF;&amp;#x65B0;&amp;#x6D6A;&amp;#x5FAE;&amp;#x535A;&amp;#x4E2A;&amp;#x4EBA;&amp;#x4E2D;&amp;#x5FC3;&amp;#x9875;&amp;#x9762;  &amp;#x5B8C;&amp;#x6574;demo&amp;#xFF0C;&amp;#x6B22;&amp;#">
-<meta name="twitter:image" content="https://github.com/wangtaoios/images/blob/master/%E9%A1%B9%E7%9B%AEDemo%E5%9B%BE%E7%89%87/weibo_0327.gif?raw=true">
-
-    <script type="application/ld+json">
-{
-  "@context": "http://schema.org",
-  "@type": "Person",
-  "email": "mailto:",
-  "image": "",
-  "name": "wangtao",
-  "url": "https://weibo.com/wangtaoworld"
-}
-</script>
-    <script>
-    var algoliaEnabled = false;
+<html lang="zh-CN">
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="技术交流">
+  <meta name="keywords" content="">
+  
+    <link rel="icon" href="">
+  
     
-</script>
-
-    
-
-    
-    
-        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-    
-    
-    
-        <!-- stylesheets list from config.yml -->
-        
-        <link rel="stylesheet" href="/css/aloha.css">
-        
-        <link rel="stylesheet" href="//cdn.bootcss.com/semantic-ui/2.2.4/semantic.min.css">
-        
-        <link rel="stylesheet" href="//cdn.bootcss.com/magnific-popup.js/1.1.0/magnific-popup.min.css">
-        
-    
-
+  <title>iOS仿新浪微博个人中心基础版 | wt</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/lib/jquery.fancybox.min.css">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-<body id="body" style="margin-bottom: 0;" class="pushable">
 
-    <div class="ui top fixed menu">
-        <a class="item" id="menu-icon"><i class="sidebar icon"></i></a>
-    </div>
-
-    <div id="menu-sidebar" class="ui left vertical sidebar menu">
-
-    <div id="sidebar-top">
-        <div class="content">
-            <h3>wt</h3>
-        </div>
-    </div>
-    <div class="ui container sidebar-card">
-    <div class="ui people shape content">
-        <div class="active side">
-            <div class="ui card">
-                <div class="image">
-                    <img class="ui medium bordered image" src="/images/avatar.jpg">
-                </div>
-                <div class="content">
-                    <a class="header">wangtao</a>
-                    
-                </div>
-                <div class="extra content">
-                    <div class="ui list">
-                        
-                        
-                    </div>
-
-                </div>
-                <div class="extra content">
-                    <div class="ui list">
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-</div>
-
-    
-    
-
-    
-
-    
-    <a href="/index.html" class="item" >
-        <i class="home icon"></i>
-        HOME
+<body>
+  <header>
+  <div class="header-container">
+    <a class='logo' href="/">
+      <span>wt</span>
     </a>
+    <ul class="right-header">
+      
+        <li class="nav-item">
+          
+            <a href="/" class="item-link">首页</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/about" class="item-link">关于</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/archives" class="item-link">归档</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/tags" class="item-link">标签</a>
+          
+        </li>
+      
+    </ul>
+  </div>
+</header>
 
-    
+  <main id='post'>
+  <div class="content">
+    <article>
+        <section class="content markdown-body">
+          <h1>iOS仿新浪微博个人中心基础版</h1>
+          <div class='post-meta'>
+            <i class="fa fa-calendar" aria-hidden="true"></i> <time>2018年03月27日</time>
+            
+              | <i class="fa fa-folder-open-o" aria-hidden="true"></i> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/iOS/">iOS</a>
+  </div>
 
-    
-</div>
 
-    <div class="pusher body-content">
-        <div id="content" class="ui main container">
-            <!--<div class="ui one column grid">-->
-                <!--<div class="column">-->
-                    <!--<div class="ui main container">-->
-                        <div id="post-iOS开发/iOS仿新浪微博个人中心基础版" class="ui main container article-type-post">
 
-    
-
-    <div class="ui divided grid">
-
-        <div class="two column row" id="article-content">
-
-            <div class="thirteen wide computer thirteen wide tablet sixteen wide mobile column">
+            
+            
+              | 
+                  <i class="fa fa-tag" aria-hidden="true"></i>
                 
-
-<h1 class="ui header">
-    
-    iOS仿新浪微博个人中心基础版
-</h1>
+               
+  <a href="/tags/#demo" class='tag'>demo</a>
 
 
-
-                <div class="article-inner">
-
-                    <div class="article-entry" itemprop="articleBody">
-                        
-                        <p>&#x4F7F;&#x7528;&#x7B2C;&#x4E09;&#x65B9;&#x5E93;WMPageController&#xFF0C;&#x4EFF;&#x65B0;&#x6D6A;&#x5FAE;&#x535A;&#x4E2A;&#x4EBA;&#x4E2D;&#x5FC3;&#x9875;&#x9762;</p>
-<p><a class="magnific-img" href="https://github.com/wangtaoios/images/blob/master/%E9%A1%B9%E7%9B%AEDemo%E5%9B%BE%E7%89%87/weibo_0327.gif?raw=true"><img src="https://github.com/wangtaoios/images/blob/master/%E9%A1%B9%E7%9B%AEDemo%E5%9B%BE%E7%89%87/weibo_0327.gif?raw=true" alt="&#x6548;&#x679C;" class="ui centered image"></a></p>
-<p>&#x5B8C;&#x6574;demo&#xFF0C;&#x6B22;&#x8FCE;<a href="https://github.com/wangtaoios/WTWeiBoBaseDemo" target="_blank" rel="noopener">Star</a></p>
-<p>&#x4E24;&#x79CD;&#x4F7F;&#x7528;&#x65B9;&#x6CD5;</p>
-<p>1&#xFF1A;WTWeiBoVC&#x662F;&#x81EA;&#x5B9A;&#x4E49;&#x7684;&#x57FA;&#x7C7B;&#xFF0C;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x8C03;&#x7528;</p>
+            
+          </div>
+          <p>使用第三方库WMPageController，仿新浪微博个人中心页面</p>
+<p><img src="https://github.com/wangtaoios/images/blob/master/%E9%A1%B9%E7%9B%AEDemo%E5%9B%BE%E7%89%87/weibo_0327.gif?raw=true" alt="效果"></p>
+<p>完整demo，欢迎<a href="https://github.com/wangtaoios/WTWeiBoBaseDemo" target="_blank" rel="noopener">Star</a></p>
+<p>两种使用方法</p>
+<p>1：WTWeiBoVC是自定义的基类，可以直接调用</p>
 <pre><code>WTWeiBoVC *vc = [[WTWeiBoVC alloc] init];
 
 WTTempTVC *vc1 = [[WTTempTVC alloc] init];
@@ -160,16 +94,16 @@ headerView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 200
 headerView.backgroundColor = [UIColor cyanColor];
 
 vc.headerView = headerView;
-vc.titleArrays = @[@&quot;&#x4E3B;&#x9875;&quot;, @&quot;&#x5FAE;&#x535A;&quot;, @&quot;&#x76F8;&#x518C;&quot;, ];
+vc.titleArrays = @[@&quot;主页&quot;, @&quot;微博&quot;, @&quot;相册&quot;, ];
 vc.vcArrays = @[vc1, vc2, vc3];
 
 [self.navigationController pushViewController:vc animated:YES];
-</code></pre><p> 2&#xFF1A;WTWeiBoPersonVC&#x7EE7;&#x627F;WTWeiBoVC&#xFF0C;&#x5728;viewDidLoad&#x81EA;&#x5B9A;&#x4E49;&#x53C2;&#x6570;</p>
+</code></pre><p> 2：WTWeiBoPersonVC继承WTWeiBoVC，在viewDidLoad自定义参数</p>
 <pre><code> - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 
-    self.navigationItem.title = @&quot;&#x6211;&#x7684;&quot;;
+    self.navigationItem.title = @&quot;我的&quot;;
 
     WTTempTVC *vc1 = [[WTTempTVC alloc] init];
     WTTempTVC *vc2 = [[WTTempTVC alloc] init];
@@ -185,125 +119,93 @@ vc.vcArrays = @[vc1, vc2, vc3];
     bgImageView.image = [UIImage imageNamed:@&quot;bear&quot;];
 
     self.headerView = headerView;
-    self.titleArrays = @[@&quot;&#x4E3B;&#x9875;&quot;, @&quot;&#x5FAE;&#x535A;&quot;, @&quot;&#x76F8;&#x518C;&quot;, ];
+    self.titleArrays = @[@&quot;主页&quot;, @&quot;微博&quot;, @&quot;相册&quot;, ];
     self.vcArrays = @[vc1, vc2, vc3];
 
 }
 </code></pre>
-                        
-                    </div>
-
-                    
-                    
-                    
-
-                    <div class="description post-description">
-    <span class="post-description-item">
-        <time datetime="2018-03-27T07:07:40.000Z" itemprop="datePublished">2018-03-27</time>
-
-    </span>
-    <span class="post-description-item">
+        </section>
+    </article>
+    
         
-
-    <span>
-        <i class="tags icon"></i>
-    </span>
-
+  </div>
+  <aside>
     
-    <span class="ui tiny label">
-        <a href="/tags/demo/">demo</a>
-    </span>
+  </aside>
+</main>
 
-    
 
-    </span>
-</div>
 
-                </div>
-                
-                <div id="pagination" class="nav-web ui text container pagination">
-
-    <div class="ui stackable two column divided grid container">
-        <div class="row">
-            <div class="column nav-left">
-                
-
-                <a href="/文档/2018/03/27/GitHub博客/上传项目到GitHub.html" class="ui tiny button">
-
-                    <i class="angle left icon"></i>
-                    
-                    上传项目到GitHub
-                    
-
-                </a>
-
-                
-            </div>
-            <div class="column nav-right">
-                
-
-                <a href="/iOS/2018/03/24/GitHub博客/Hexo的使用.html" class="ui tiny button">
-                    
-                    Hexo的使用
-                    
-                    <i class="angle right icon"></i></a>
-                
-            </div>
-        </div>
+  <footer>
+  <div class="copyright">
+    <div>
+      &copy; 2018 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a>&nbsp
     </div>
-
-</div>
-                
-            </div>
-
-            
-            <div class="three wide computer three wide tablet column">
-
-                <div class="ui sticky article-toc" id="article-toc">
-                    <!-- toc -->
-                    
-                </div>
-
-            </div>
-            
-
-        </div>
+    <div>
+      Theme by <a href="https://github.com/lewis-geek/hexo-theme-Aath" target="_blank">Aath</a>
     </div>
-</div>
+  </div>
+</footer>
 
 
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
-        </div>
-        <div class="ui vertical footer segment">
-    <div class="ui center aligned container">
-        <div class="ui inverted section divider"></div>
-        &copy; 2018 <a href="/">wangtao</a>,
-        Powered by <a href="https://github.com/henryhuang/hexo-theme-aloha" target="_blank">Aloha</a> and <a
-                href="http://hexo.io/" target="_blank">Hexo</a>.
-    </div>
-</div>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script src="/lib/in-view.min.js"></script>
+<script src="/lib/lodash.min.js"></script>
+<script>
+  var isDown = true
+  var oldY = 0
+  inView.offset(50)
 
-    </div>
+  document.body.addEventListener('touchstart', function(){});
+  
+  window.addEventListener('scroll', _.throttle(e => {
+    var currentY = window.scrollY
+    if((oldY - currentY) < 0) {
+      isDown = true
+    } else {
+      isDown = false
+    }
+    oldY = currentY
+  }, 250))
 
+  $("article img").each(function() {
+      var strA = "<a data-fancybox='gallery' href='" + this.src + "'></a>";
+      $(this).wrapAll(strA);
+  });
 
+  $('.toc-link').each(function() {
+      var href = $(this).attr("href");
+      
+      inView(href).on('exit', () => {
+        if (isDown) {
+          handleActive(href)
+        }
+      })
 
+      inView(href).on('enter', () => {
+        if (!isDown) {
+          handleActive(href)
+        }
+      })
 
-<!-- scripts list from theme config.yml -->
+      this.onclick = function(e) {
+        var pos = $(href).offset().top - 10;
+        $("html,body").animate({scrollTop: pos}, 300);
+        setTimeout(() => {
+          handleActive(href)
+        }, 350)
+        return false
+      }
+  })
 
-<script src="//cdn.bootcss.com/jquery/3.1.0/jquery.min.js"></script>
-
-<script src="//cdn.bootcss.com/semantic-ui/2.2.4/semantic.min.js"></script>
-
-<script src="//cdn.bootcss.com/algoliasearch/3.18.1/algoliasearch.min.js"></script>
-
-<script src="//cdn.bootcss.com/algoliasearch-helper-js/2.13.0/algoliasearch.helper.min.js"></script>
-
-<script src="/js/semantic-ui-algolia.js"></script>
-
-<script src="/js/aloha-events.js"></script>
-
+  function handleActive(href) {
+    document.querySelectorAll('.toc-link').forEach(elm => {
+      elm.classList.remove('active')
+    })
+    document.querySelector(".toc [href='"+ href +"']").classList.add('active')
+  }
+</script>
+<script src="/lib/jquery.fancybox.min.js"></script>
 
 
 </body>

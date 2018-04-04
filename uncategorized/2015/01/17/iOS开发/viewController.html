@@ -1,349 +1,252 @@
-
-
 <!DOCTYPE html>
-<html lang="zh-Hans">
-<head prefix="og: http://ogp.me/ns#">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-    <meta name="description" content="技术交流">
-    <title>viewController | wt</title>
-
-    <!-- Open Graph -->
-    <meta name="description" content="1.UIViewController&amp;#x751F;&amp;#x547D;&amp;#x5468;&amp;#x671F;&amp;#x51E0;&amp;#x79CD;&amp;#x65B9;&amp;#x6CD5;&amp;#x8C03;&amp;#x7528;&amp;#x65F6;&amp;#x673A; - (id)initWithNibName:(NSString )nibNameOrNil bundle:(NSBundle )nibBundleOrNil;&amp;#x5F5">
-<meta name="keywords" content="kinds of viewControllers">
-<meta property="og:type" content="article">
-<meta property="og:title" content="viewController">
-<meta property="og:url" content="https://weibo.com/wangtaoworld/uncategorized/2015/01/17/iOS开发/viewController.html">
-<meta property="og:site_name" content="wt">
-<meta property="og:description" content="1.UIViewController&amp;#x751F;&amp;#x547D;&amp;#x5468;&amp;#x671F;&amp;#x51E0;&amp;#x79CD;&amp;#x65B9;&amp;#x6CD5;&amp;#x8C03;&amp;#x7528;&amp;#x65F6;&amp;#x673A; - (id)initWithNibName:(NSString )nibNameOrNil bundle:(NSBundle )nibBundleOrNil;&amp;#x5F5">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2015-01-17T07:42:06.000Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="viewController">
-<meta name="twitter:description" content="1.UIViewController&amp;#x751F;&amp;#x547D;&amp;#x5468;&amp;#x671F;&amp;#x51E0;&amp;#x79CD;&amp;#x65B9;&amp;#x6CD5;&amp;#x8C03;&amp;#x7528;&amp;#x65F6;&amp;#x673A; - (id)initWithNibName:(NSString )nibNameOrNil bundle:(NSBundle )nibBundleOrNil;&amp;#x5F5">
-
-    <script type="application/ld+json">
-{
-  "@context": "http://schema.org",
-  "@type": "Person",
-  "email": "mailto:",
-  "image": "",
-  "name": "wangtao",
-  "url": "https://weibo.com/wangtaoworld"
-}
-</script>
-    <script>
-    var algoliaEnabled = false;
+<html lang="zh-CN">
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="技术交流">
+  <meta name="keywords" content="">
+  
+    <link rel="icon" href="">
+  
     
-</script>
-
-    
-
-    
-    
-        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-    
-    
-    
-        <!-- stylesheets list from config.yml -->
-        
-        <link rel="stylesheet" href="/css/aloha.css">
-        
-        <link rel="stylesheet" href="//cdn.bootcss.com/semantic-ui/2.2.4/semantic.min.css">
-        
-        <link rel="stylesheet" href="//cdn.bootcss.com/magnific-popup.js/1.1.0/magnific-popup.min.css">
-        
-    
-
+  <title>viewController | wt</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/lib/jquery.fancybox.min.css">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-<body id="body" style="margin-bottom: 0;" class="pushable">
 
-    <div class="ui top fixed menu">
-        <a class="item" id="menu-icon"><i class="sidebar icon"></i></a>
-    </div>
-
-    <div id="menu-sidebar" class="ui left vertical sidebar menu">
-
-    <div id="sidebar-top">
-        <div class="content">
-            <h3>wt</h3>
-        </div>
-    </div>
-    <div class="ui container sidebar-card">
-    <div class="ui people shape content">
-        <div class="active side">
-            <div class="ui card">
-                <div class="image">
-                    <img class="ui medium bordered image" src="/images/avatar.jpg">
-                </div>
-                <div class="content">
-                    <a class="header">wangtao</a>
-                    
-                </div>
-                <div class="extra content">
-                    <div class="ui list">
-                        
-                        
-                    </div>
-
-                </div>
-                <div class="extra content">
-                    <div class="ui list">
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-</div>
-
-    
-    
-
-    
-
-    
-    <a href="/index.html" class="item" >
-        <i class="home icon"></i>
-        HOME
+<body>
+  <header>
+  <div class="header-container">
+    <a class='logo' href="/">
+      <span>wt</span>
     </a>
+    <ul class="right-header">
+      
+        <li class="nav-item">
+          
+            <a href="/" class="item-link">首页</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/about" class="item-link">关于</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/archives" class="item-link">归档</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/tags" class="item-link">标签</a>
+          
+        </li>
+      
+    </ul>
+  </div>
+</header>
 
-    
-
-    
-</div>
-
-    <div class="pusher body-content">
-        <div id="content" class="ui main container">
-            <!--<div class="ui one column grid">-->
-                <!--<div class="column">-->
-                    <!--<div class="ui main container">-->
-                        <div id="post-iOS开发/viewController" class="ui main container article-type-post">
-
-    
-
-    <div class="ui divided grid">
-
-        <div class="two column row" id="article-content">
-
-            <div class="thirteen wide computer thirteen wide tablet sixteen wide mobile column">
+  <main id='post'>
+  <div class="content">
+    <article>
+        <section class="content markdown-body">
+          <h1>viewController</h1>
+          <div class='post-meta'>
+            <i class="fa fa-calendar" aria-hidden="true"></i> <time>2015年01月17日</time>
+            
+            
+              | 
+                  <i class="fa fa-tag" aria-hidden="true"></i>
                 
-
-<h1 class="ui header">
-    
-    viewController
-</h1>
+               
+  <a href="/tags/#kinds of viewControllers" class='tag'>kinds of viewControllers</a>
 
 
-
-                <div class="article-inner">
-
-                    <div class="article-entry" itemprop="articleBody">
-                        
-                        <h2 id="1-UIViewController&#x751F;&#x547D;&#x5468;&#x671F;&#x51E0;&#x79CD;&#x65B9;&#x6CD5;&#x8C03;&#x7528;&#x65F6;&#x673A;"><a href="#1-UIViewController&#x751F;&#x547D;&#x5468;&#x671F;&#x51E0;&#x79CD;&#x65B9;&#x6CD5;&#x8C03;&#x7528;&#x65F6;&#x673A;" class="headerlink" title="1.UIViewController&#x751F;&#x547D;&#x5468;&#x671F;&#x51E0;&#x79CD;&#x65B9;&#x6CD5;&#x8C03;&#x7528;&#x65F6;&#x673A;"></a>1.UIViewController&#x751F;&#x547D;&#x5468;&#x671F;&#x51E0;&#x79CD;&#x65B9;&#x6CD5;&#x8C03;&#x7528;&#x65F6;&#x673A;</h2><ol class="ui list">
-<li>- (id)initWithNibName:(NSString <em>)nibNameOrNil bundle:(NSBundle </em>)nibBundleOrNil;<br>&#x5F53;UIViewController&#x5728;&#x521D;&#x59CB;&#x5316;&#x52A0;&#x8F7D;xib&#x6587;&#x4EF6;&#x65F6;&#xFF0C;&#x8BE5;&#x65B9;&#x6CD5;&#x88AB;&#x8C03;&#x7528;&#x3002;</li>
-<li>- (void)loadView;<br>&#x5F53;&#x6BCF;&#x6B21;&#x8BBF;&#x95EE;UIViewController&#x7684;view(&#x6BD4;&#x5982;controller.view,self.view)&#x5E76;&#x4E14;view&#x4E3A;nil&#xFF0C;&#x8BE5;&#x65B9;&#x6CD5;&#x5C31;&#x4F1A;&#x88AB;&#x8C03;&#x7528;&#x3002;</li>
+            
+          </div>
+          <h2 id="1-UIViewController生命周期几种方法调用时机"><a href="#1-UIViewController生命周期几种方法调用时机" class="headerlink" title="1.UIViewController生命周期几种方法调用时机"></a>1.UIViewController生命周期几种方法调用时机</h2><ol>
+<li>- (id)initWithNibName:(NSString <em>)nibNameOrNil bundle:(NSBundle </em>)nibBundleOrNil;<br>当UIViewController在初始化加载xib文件时，该方法被调用。</li>
+<li>- (void)loadView;<br>当每次访问UIViewController的view(比如controller.view,self.view)并且view为nil，该方法就会被调用。</li>
 <li>- (void)viewWillUnload; </li>
 <li>- (void)viewDidUnload;</li>
-<li>- (void)viewDidLoad;<br>&#x4E0D;&#x7BA1;&#x662F;&#x901A;&#x8FC7;xib&#x6587;&#x4EF6;&#x8FD8;&#x662F;&#x91CD;&#x5199;loadView&#x521B;&#x5EFA;UIViewController&#x7684;view&#xFF0C;&#x5728;view&#x521B;&#x5EFA;&#x5B8C;&#x6BD5;&#x540E;&#xFF0C;&#x6700;&#x7EC8;&#x90FD;&#x4F1A;&#x8C03;&#x7528;&#x8BE5;&#x65B9;&#x6CD5;&#x3002;</li>
-<li>- (void)viewWillAppear:(BOOL)animated;<br>&#x5F53;view&#x5C06;&#x8981;&#x5448;&#x73B0;&#x5728;UI&#x754C;&#x9762;&#x4E0A;&#x65F6;&#x4F1A;&#x8C03;&#x7528;&#x8BE5;&#x65B9;&#x6CD5;&#x3002;</li>
-<li>- (void)viewDidAppear:(BOOL)animated;<br>&#x5F53;view&#x5DF2;&#x7ECF;&#x5B8C;&#x5168;&#x8FC7;&#x6E21;&#x5230;&#x5C4F;&#x5E55;&#x4E0A;&#x65F6;&#x4F1A;&#x8C03;&#x7528;&#x8BE5;&#x65B9;&#x6CD5;&#x3002;</li>
-<li>- (void)viewWillDisappear:(BOOL)animated;<br>&#x5F53;view&#x5C06;&#x8981;&#x6D88;&#x5931;&#xFF0C;&#x6216;&#x88AB;&#x8986;&#x76D6;&#x3001;&#x9690;&#x85CF;&#x65F6;&#x4F1A;&#x8C03;&#x7528;&#x8BE5;&#x65B9;&#x6CD5;&#x3002;</li>
-<li>- (void)viewDidDisappear:(BOOL)animated;<br>&#x5F53;view&#x5DF2;&#x7ECF;&#x5B8C;&#x5168;&#x6D88;&#x5931;&#xFF0C;&#x6216;&#x88AB;&#x8986;&#x76D6;&#x3001;&#x9690;&#x85CF;&#x65F6;&#x4F1A;&#x8C03;&#x7528;&#x8BE5;&#x65B9;&#x6CD5;&#x3002;</li>
+<li>- (void)viewDidLoad;<br>不管是通过xib文件还是重写loadView创建UIViewController的view，在view创建完毕后，最终都会调用该方法。</li>
+<li>- (void)viewWillAppear:(BOOL)animated;<br>当view将要呈现在UI界面上时会调用该方法。</li>
+<li>- (void)viewDidAppear:(BOOL)animated;<br>当view已经完全过渡到屏幕上时会调用该方法。</li>
+<li>- (void)viewWillDisappear:(BOOL)animated;<br>当view将要消失，或被覆盖、隐藏时会调用该方法。</li>
+<li>- (void)viewDidDisappear:(BOOL)animated;<br>当view已经完全消失，或被覆盖、隐藏时会调用该方法。</li>
 </ol>
-<h2 id="2-UIViewController-xib&#x7684;&#x52A0;&#x8F7D;&#x8FC7;&#x7A0B;"><a href="#2-UIViewController-xib&#x7684;&#x52A0;&#x8F7D;&#x8FC7;&#x7A0B;" class="headerlink" title="2.UIViewController xib&#x7684;&#x52A0;&#x8F7D;&#x8FC7;&#x7A0B;"></a>2.UIViewController xib&#x7684;&#x52A0;&#x8F7D;&#x8FC7;&#x7A0B;</h2><p>loadView&#x9ED8;&#x8BA4;&#x5B9E;&#x73B0;&#x5C31;&#x662F;&#x5728;&#x81EA;&#x5B9A;&#x4E49;&#x7684;UIViewController&#x7C7B;&#x91CC;&#x4E0D;&#x91CD;&#x5199;loadView&#x65B9;&#x6CD5;&#xFF0C;&#x6216;&#x8005;&#x91CD;&#x5199;&#x540E;&#x53EA;&#x662F;&#x5728;&#x65B9;&#x6CD5;&#x91CC;&#x7B80;&#x5355;&#x5B9E;&#x73B0;[super loadView]&#x3002;&#x9ED8;&#x8BA4;&#x5B9E;&#x73B0;&#x505A;&#x4E86;&#x5982;&#x4E0B;&#x51E0;&#x4E2A;&#x5DE5;&#x4F5C;&#xFF1A;</p>
-<ol class="ui list">
-<li>&#x5B83;&#x4F1A;&#x5148;&#x53BB;&#x67E5;&#x627E;&#x4E0E;UIViewController&#x76F8;&#x5173;&#x8054;&#x7684;xib&#x6587;&#x4EF6;&#xFF0C;&#x901A;&#x8FC7;&#x52A0;&#x8F7D;xib&#x6587;&#x4EF6;&#x6765;&#x521B;&#x5EFA;UIViewController&#x7684;view<br> &#x5982;&#x679C;&#x5728;&#x521D;&#x59CB;&#x5316;UIViewController&#x6307;&#x5B9A;&#x4E86;xib&#x6587;&#x4EF6;&#x540D;&#xFF0C;&#x5C31;&#x4F1A;&#x6839;&#x636E;&#x4F20;&#x5165;&#x7684;xib&#x6587;&#x4EF6;&#x540D;&#x52A0;&#x8F7D;&#x5BF9;&#x5E94;&#x7684;xib&#x6587;&#x4EF6;<br> [[UIViewController alloc] initWithNibName:@&#x201D;ViewController&#x201D; bundle:nil];<br> &#x5982;&#x679C;&#x6CA1;&#x6709;&#x660E;&#x663E;&#x5730;&#x4F20;xib&#x6587;&#x4EF6;&#x540D;&#xFF0C;&#x5C31;&#x4F1A;&#x52A0;&#x8F7D;&#x8DDF;UIViewController&#x540C;&#x540D;&#x7684;xib&#x6587;&#x4EF6;<br> [[UIViewController alloc] init]; // &#x52A0;&#x8F7D;UIViewController.xib </li>
-<li>&#x5982;&#x679C;&#x6CA1;&#x6709;&#x627E;&#x5230;&#x76F8;&#x5173;&#x8054;&#x7684;xib&#x6587;&#x4EF6;&#xFF0C;&#x5C31;&#x4F1A;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x7A7A;&#x767D;&#x7684;UIView&#xFF0C;&#x7136;&#x540E;&#x8D4B;&#x503C;&#x7ED9;UIViewController&#x7684;view&#x5C5E;&#x6027;&#xFF0C;&#x5927;&#x81F4;&#x5982;&#x4E0B;&#xFF1A;<br> self.view = [[[UIView alloc] initWithFrame:[UIScreen mainScreen].applicationFrame] autorelease];</li>
+<h2 id="2-UIViewController-xib的加载过程"><a href="#2-UIViewController-xib的加载过程" class="headerlink" title="2.UIViewController xib的加载过程"></a>2.UIViewController xib的加载过程</h2><p>loadView默认实现就是在自定义的UIViewController类里不重写loadView方法，或者重写后只是在方法里简单实现[super loadView]。默认实现做了如下几个工作：</p>
+<ol>
+<li>它会先去查找与UIViewController相关联的xib文件，通过加载xib文件来创建UIViewController的view<br> 如果在初始化UIViewController指定了xib文件名，就会根据传入的xib文件名加载对应的xib文件<br> [[UIViewController alloc] initWithNibName:@”ViewController” bundle:nil];<br> 如果没有明显地传xib文件名，就会加载跟UIViewController同名的xib文件<br> [[UIViewController alloc] init]; // 加载UIViewController.xib </li>
+<li>如果没有找到相关联的xib文件，就会创建一个空白的UIView，然后赋值给UIViewController的view属性，大致如下：<br> self.view = [[[UIView alloc] initWithFrame:[UIScreen mainScreen].applicationFrame] autorelease];</li>
 </ol>
-<h2 id="3-&#x51E0;&#x79CD;&#x63A7;&#x5236;&#x5668;&#x5BB9;&#x5668;&#x7684;&#x4F18;&#x7F3A;&#x70B9;"><a href="#3-&#x51E0;&#x79CD;&#x63A7;&#x5236;&#x5668;&#x5BB9;&#x5668;&#x7684;&#x4F18;&#x7F3A;&#x70B9;" class="headerlink" title="3.&#x51E0;&#x79CD;&#x63A7;&#x5236;&#x5668;&#x5BB9;&#x5668;&#x7684;&#x4F18;&#x7F3A;&#x70B9;"></a>3.&#x51E0;&#x79CD;&#x63A7;&#x5236;&#x5668;&#x5BB9;&#x5668;&#x7684;&#x4F18;&#x7F3A;&#x70B9;</h2><h3 id="1-UITabBarController-Tabbar&#x5E95;&#x90E8;&#x6807;&#x7B7E;&#x5F0F;-Instagram&#x3001;&#x5FAE;&#x4FE1;&#x3001;&#x5FAE;&#x535A;"><a href="#1-UITabBarController-Tabbar&#x5E95;&#x90E8;&#x6807;&#x7B7E;&#x5F0F;-Instagram&#x3001;&#x5FAE;&#x4FE1;&#x3001;&#x5FAE;&#x535A;" class="headerlink" title="1.UITabBarController(Tabbar&#x5E95;&#x90E8;&#x6807;&#x7B7E;&#x5F0F;:Instagram&#x3001;&#x5FAE;&#x4FE1;&#x3001;&#x5FAE;&#x535A;)"></a>1.UITabBarController(Tabbar&#x5E95;&#x90E8;&#x6807;&#x7B7E;&#x5F0F;:Instagram&#x3001;&#x5FAE;&#x4FE1;&#x3001;&#x5FAE;&#x535A;)</h3><p>UITabBarController&#x4F5C;&#x4E3A;&#x4E00;&#x79CD;&#x5BB9;&#x5668;&#x9002;&#x5408;&#x7BA1;&#x7406;&#x5E95;&#x90E8;&#x6807;&#x7B7E;&#x5F0F;&#xFF08;TabBar &#x5982;&#xFF1A; Instagram&#x3001;&#x5FAE;&#x4FE1;&#x3001;&#x5FAE;&#x535A;&#xFF09;&#x8FD9;&#x79CD;&#x7ED3;&#x6784;&#x7684;APP</p>
-<h4 id="&#x4F18;&#x70B9;"><a href="#&#x4F18;&#x70B9;" class="headerlink" title="&#x4F18;&#x70B9;"></a>&#x4F18;&#x70B9;</h4><ol class="ui list">
-<li>&#x6E05;&#x695A;&#x5F53;&#x524D;&#x6240;&#x5728;&#x7684;&#x5165;&#x53E3;&#x4F4D;&#x7F6E;</li>
-<li>&#x8F7B;&#x677E;&#x5728;&#x5404;&#x5165;&#x53E3;&#x95F4;&#x9891;&#x7E41;&#x8DF3;&#x8F6C;&#x4E14;&#x4E0D;&#x4F1A;&#x8FF7;&#x5931;&#x65B9;&#x5411;</li>
-<li>&#x76F4;&#x63A5;&#x5C55;&#x73B0;&#x6700;&#x91CD;&#x8981;&#x5165;&#x53E3;&#x7684;&#x5185;&#x5BB9;&#x4FE1;&#x606F;&#xFF08;&#x9ED8;&#x8BA4;&#x9996;&#x9875;&#xFF09;</li>
+<h2 id="3-几种控制器容器的优缺点"><a href="#3-几种控制器容器的优缺点" class="headerlink" title="3.几种控制器容器的优缺点"></a>3.几种控制器容器的优缺点</h2><h3 id="1-UITabBarController-Tabbar底部标签式-Instagram、微信、微博"><a href="#1-UITabBarController-Tabbar底部标签式-Instagram、微信、微博" class="headerlink" title="1.UITabBarController(Tabbar底部标签式:Instagram、微信、微博)"></a>1.UITabBarController(Tabbar底部标签式:Instagram、微信、微博)</h3><p>UITabBarController作为一种容器适合管理底部标签式（TabBar 如： Instagram、微信、微博）这种结构的APP</p>
+<h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><ol>
+<li>清楚当前所在的入口位置</li>
+<li>轻松在各入口间频繁跳转且不会迷失方向</li>
+<li>直接展现最重要入口的内容信息（默认首页）</li>
 </ol>
-<h4 id="&#x7F3A;&#x70B9;"><a href="#&#x7F3A;&#x70B9;" class="headerlink" title="&#x7F3A;&#x70B9;"></a>&#x7F3A;&#x70B9;</h4><p>&#x529F;&#x80FD;&#x5165;&#x53E3;&#x8FC7;&#x591A;&#x65F6;&#xFF0C;&#x8BE5;&#x6A21;&#x5F0F;&#x663E;&#x5F97;&#x7B28;&#x91CD;&#x4E0D;&#x5B9E;&#x7528;(&#x8D85;&#x8FC7;5&#x4E2A;&#x7684;&#x65F6;&#x5019;&#x4F1A;&#x5C06;&#x5176;&#x4ED6;&#x63A7;&#x5236;&#x5668;&#x6DFB;&#x52A0;&#x5230;&#x4E00;&#x4E2A;&#x66F4;&#x591A;&#x754C;&#x9762;)</p>
-<h3 id="2-UINavigationController-Springboard&#x8DF3;&#x677F;&#x5F0F;-&#x661F;&#x5DF4;&#x514B;"><a href="#2-UINavigationController-Springboard&#x8DF3;&#x677F;&#x5F0F;-&#x661F;&#x5DF4;&#x514B;" class="headerlink" title="2.UINavigationController (Springboard&#x8DF3;&#x677F;&#x5F0F;:&#x661F;&#x5DF4;&#x514B;)"></a>2.UINavigationController (Springboard&#x8DF3;&#x677F;&#x5F0F;:&#x661F;&#x5DF4;&#x514B;)</h3><p>UINavigationController&#x4F5C;&#x4E3A;&#x4E00;&#x79CD;&#x5BB9;&#x5668;&#x9002;&#x5408;&#x7BA1;&#x7406;&#x8DF3;&#x677F;&#x5F0F;&#xFF08;SpringBoard &#x5982;&#xFF1A; &#x661F;&#x5DF4;&#x514B;&#xFF09;&#x8FD9;&#x79CD;&#x7ED3;&#x6784;&#x7684;APP</p>
-<h4 id="&#x4F18;&#x70B9;-1"><a href="#&#x4F18;&#x70B9;-1" class="headerlink" title="&#x4F18;&#x70B9;"></a>&#x4F18;&#x70B9;</h4><ol class="ui list">
-<li>&#x6E05;&#x6670;&#x5C55;&#x73B0;&#x5404;&#x5165;&#x53E3;</li>
-<li>&#x5BB9;&#x6613;&#x8BB0;&#x4F4F;&#x5404;&#x5165;&#x53E3;&#x4F4D;&#x7F6E;&#xFF0C;&#x65B9;&#x4FBF;&#x5FEB;&#x901F;&#x627E;&#x5230;</li>
+<h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><p>功能入口过多时，该模式显得笨重不实用(超过5个的时候会将其他控制器添加到一个更多界面)</p>
+<h3 id="2-UINavigationController-Springboard跳板式-星巴克"><a href="#2-UINavigationController-Springboard跳板式-星巴克" class="headerlink" title="2.UINavigationController (Springboard跳板式:星巴克)"></a>2.UINavigationController (Springboard跳板式:星巴克)</h3><p>UINavigationController作为一种容器适合管理跳板式（SpringBoard 如： 星巴克）这种结构的APP</p>
+<h4 id="优点-1"><a href="#优点-1" class="headerlink" title="优点"></a>优点</h4><ol>
+<li>清晰展现各入口</li>
+<li>容易记住各入口位置，方便快速找到</li>
 </ol>
-<h4 id="&#x786E;&#x5B9A;"><a href="#&#x786E;&#x5B9A;" class="headerlink" title="&#x786E;&#x5B9A;"></a>&#x786E;&#x5B9A;</h4><ol class="ui list">
-<li>&#x65E0;&#x6CD5;&#x5728;&#x591A;&#x5165;&#x53E3;&#x95F4;&#x7075;&#x6D3B;&#x8DF3;&#x8F6C;&#xFF0C;&#x4E0D;&#x9002;&#x5408;&#x4EFB;&#x52A1;&#x64CD;&#x4F5C;</li>
-<li>&#x5BB9;&#x6613;&#x5F62;&#x6210;&#x66F4;&#x6DF1;&#x7684;&#x8DEF;&#x5F84;</li>
-<li>&#x4E0D;&#x80FD;&#x76F4;&#x63A5;&#x5C55;&#x73B0;&#x5165;&#x53E3;&#x5185;&#x5BB9;</li>
-<li>&#x4E0D;&#x80FD;&#x663E;&#x793A;&#x592A;&#x591A;&#x5165;&#x53E3;&#x6B21;&#x7EA7;&#x5185;&#x5BB9;</li>
+<h4 id="确定"><a href="#确定" class="headerlink" title="确定"></a>确定</h4><ol>
+<li>无法在多入口间灵活跳转，不适合任务操作</li>
+<li>容易形成更深的路径</li>
+<li>不能直接展现入口内容</li>
+<li>不能显示太多入口次级内容</li>
 </ol>
-<h3 id="3-UINavigationController&#x505A;&#x6574;&#x4F53;&#xFF0C;&#x878D;&#x5408;TabBarController&#xFF08;List-Menu&#x5217;&#x8868;&#x5F0F;&#xFF1A;&#x77E5;&#x4E4E;&#xFF09;"><a href="#3-UINavigationController&#x505A;&#x6574;&#x4F53;&#xFF0C;&#x878D;&#x5408;TabBarController&#xFF08;List-Menu&#x5217;&#x8868;&#x5F0F;&#xFF1A;&#x77E5;&#x4E4E;&#xFF09;" class="headerlink" title="3.UINavigationController&#x505A;&#x6574;&#x4F53;&#xFF0C;&#x878D;&#x5408;TabBarController&#xFF08;List Menu&#x5217;&#x8868;&#x5F0F;&#xFF1A;&#x77E5;&#x4E4E;&#xFF09;"></a>3.UINavigationController&#x505A;&#x6574;&#x4F53;&#xFF0C;&#x878D;&#x5408;TabBarController&#xFF08;List Menu&#x5217;&#x8868;&#x5F0F;&#xFF1A;&#x77E5;&#x4E4E;&#xFF09;</h3><h4 id="&#x4F18;&#x70B9;-2"><a href="#&#x4F18;&#x70B9;-2" class="headerlink" title="&#x4F18;&#x70B9;"></a>&#x4F18;&#x70B9;</h4><ol class="ui list">
-<li>&#x5C42;&#x6B21;&#x5C55;&#x793A;&#x6E05;&#x6670;</li>
-<li>&#x53EF;&#x5C55;&#x793A;&#x5185;&#x5BB9;&#x8F83;&#x957F;&#x7684;&#x6807;&#x9898;</li>
-<li>&#x53EF;&#x5C55;&#x793A;&#x6807;&#x9898;&#x7684;&#x6B21;&#x7EA7;&#x5185;&#x5BB9;</li>
+<h3 id="3-UINavigationController做整体，融合TabBarController（List-Menu列表式：知乎）"><a href="#3-UINavigationController做整体，融合TabBarController（List-Menu列表式：知乎）" class="headerlink" title="3.UINavigationController做整体，融合TabBarController（List Menu列表式：知乎）"></a>3.UINavigationController做整体，融合TabBarController（List Menu列表式：知乎）</h3><h4 id="优点-2"><a href="#优点-2" class="headerlink" title="优点"></a>优点</h4><ol>
+<li>层次展示清晰</li>
+<li>可展示内容较长的标题</li>
+<li>可展示标题的次级内容</li>
 </ol>
-<h4 id="&#x7F3A;&#x70B9;-1"><a href="#&#x7F3A;&#x70B9;-1" class="headerlink" title="&#x7F3A;&#x70B9;"></a>&#x7F3A;&#x70B9;</h4><ol class="ui list">
-<li>&#x540C;&#x7EA7;&#x5185;&#x5BB9;&#x8FC7;&#x591A;&#x65F6;&#xFF0C;&#x7528;&#x6237;&#x6D4F;&#x89C8;&#x5BB9;&#x6613;&#x4EA7;&#x751F;&#x75B2;&#x52B3;</li>
-<li>&#x6392;&#x7248;&#x7075;&#x6D3B;&#x6027;&#x4E0D;&#x662F;&#x5F88;&#x9AD8;</li>
-<li>&#x53EA;&#x80FD;&#x901A;&#x8FC7;&#x6392;&#x5217;&#x987A;&#x5E8F;&#x3001;&#x989C;&#x8272;&#x6765;&#x533A;&#x5206;&#x5404;&#x5165;&#x53E3;&#x91CD;&#x8981;&#x7A0B;&#x5EA6;</li>
+<h4 id="缺点-1"><a href="#缺点-1" class="headerlink" title="缺点"></a>缺点</h4><ol>
+<li>同级内容过多时，用户浏览容易产生疲劳</li>
+<li>排版灵活性不是很高</li>
+<li>只能通过排列顺序、颜色来区分各入口重要程度</li>
 </ol>
-<h3 id="4-UIScrollvIewController&#x878D;&#x5408;pageControl-Carousel&#x65CB;&#x8F6C;&#x6728;&#x9A6C;&#x5F0F;-&#x8C46;&#x74E3;&#x540C;&#x57CE;"><a href="#4-UIScrollvIewController&#x878D;&#x5408;pageControl-Carousel&#x65CB;&#x8F6C;&#x6728;&#x9A6C;&#x5F0F;-&#x8C46;&#x74E3;&#x540C;&#x57CE;" class="headerlink" title="4.UIScrollvIewController&#x878D;&#x5408;pageControl (Carousel&#x65CB;&#x8F6C;&#x6728;&#x9A6C;&#x5F0F;:&#x8C46;&#x74E3;&#x540C;&#x57CE;)"></a>4.UIScrollvIewController&#x878D;&#x5408;pageControl (Carousel&#x65CB;&#x8F6C;&#x6728;&#x9A6C;&#x5F0F;:&#x8C46;&#x74E3;&#x540C;&#x57CE;)</h3><h4 id="&#x4F18;&#x70B9;-3"><a href="#&#x4F18;&#x70B9;-3" class="headerlink" title="&#x4F18;&#x70B9;"></a>&#x4F18;&#x70B9;</h4><ol class="ui list">
-<li>&#x5355;&#x9875;&#x9762;&#x5185;&#x5BB9;&#x6574;&#x4F53;&#x6027;&#x5F3A;</li>
-<li>&#x7EBF;&#x6027;&#x7684;&#x6D4F;&#x89C8;&#x65B9;&#x5F0F;&#x6709;&#x987A;&#x7545;&#x611F;&#x3001;&#x65B9;&#x5411;&#x611F;</li>
+<h3 id="4-UIScrollvIewController融合pageControl-Carousel旋转木马式-豆瓣同城"><a href="#4-UIScrollvIewController融合pageControl-Carousel旋转木马式-豆瓣同城" class="headerlink" title="4.UIScrollvIewController融合pageControl (Carousel旋转木马式:豆瓣同城)"></a>4.UIScrollvIewController融合pageControl (Carousel旋转木马式:豆瓣同城)</h3><h4 id="优点-3"><a href="#优点-3" class="headerlink" title="优点"></a>优点</h4><ol>
+<li>单页面内容整体性强</li>
+<li>线性的浏览方式有顺畅感、方向感</li>
 </ol>
-<h4 id="&#x7F3A;&#x70B9;-2"><a href="#&#x7F3A;&#x70B9;-2" class="headerlink" title="&#x7F3A;&#x70B9;"></a>&#x7F3A;&#x70B9;</h4><ol class="ui list">
-<li>&#x4E0D;&#x9002;&#x5408;&#x5C55;&#x793A;&#x8FC7;&#x591A;&#x9875;&#x9762;</li>
-<li>&#x4E0D;&#x80FD;&#x8DF3;&#x8DC3;&#x6027;&#x5730;&#x67E5;&#x770B;&#x95F4;&#x9694;&#x7684;&#x9875;&#x9762;&#xFF0C;&#x53EA;&#x80FD;&#x6309;&#x987A;&#x5E8F;&#x67E5;&#x770B;&#x76F8;&#x90BB;&#x7684;&#x9875;&#x9762;</li>
-<li>&#x7531;&#x4E8E;&#x5404;&#x9875;&#x9762;&#x5185;&#x5BB9;&#x7ED3;&#x6784;&#x76F8;&#x4F3C;&#xFF0C;&#x5BB9;&#x6613;&#x5FFD;&#x7565;&#x540E;&#x9762;&#x7684;&#x5185;&#x5BB9;</li>
+<h4 id="缺点-2"><a href="#缺点-2" class="headerlink" title="缺点"></a>缺点</h4><ol>
+<li>不适合展示过多页面</li>
+<li>不能跳跃性地查看间隔的页面，只能按顺序查看相邻的页面</li>
+<li>由于各页面内容结构相似，容易忽略后面的内容</li>
 </ol>
-<h3 id="5-Drawer&#x62BD;&#x5C49;&#x5F0F;&#xFF1A;&#x8C46;&#x74E3;&#x5C0F;&#x7EC4;"><a href="#5-Drawer&#x62BD;&#x5C49;&#x5F0F;&#xFF1A;&#x8C46;&#x74E3;&#x5C0F;&#x7EC4;" class="headerlink" title="5. Drawer&#x62BD;&#x5C49;&#x5F0F;&#xFF1A;&#x8C46;&#x74E3;&#x5C0F;&#x7EC4;"></a>5. Drawer&#x62BD;&#x5C49;&#x5F0F;&#xFF1A;&#x8C46;&#x74E3;&#x5C0F;&#x7EC4;</h3><h4 id="&#x4F18;&#x70B9;-4"><a href="#&#x4F18;&#x70B9;-4" class="headerlink" title="&#x4F18;&#x70B9;"></a>&#x4F18;&#x70B9;</h4><ol class="ui list">
-<li>&#x517C;&#x5BB9;&#x591A;&#x79CD;&#x6A21;&#x5F0F;&#xFF08;&#x9875;&#x9762;&#x5185;&#x81EA;&#x6709;&#x7EC4;&#x7EC7;&#xFF09;</li>
-<li>&#x6269;&#x5C55;&#x6027;&#x597D;</li>
+<h3 id="5-Drawer抽屉式：豆瓣小组"><a href="#5-Drawer抽屉式：豆瓣小组" class="headerlink" title="5. Drawer抽屉式：豆瓣小组"></a>5. Drawer抽屉式：豆瓣小组</h3><h4 id="优点-4"><a href="#优点-4" class="headerlink" title="优点"></a>优点</h4><ol>
+<li>兼容多种模式（页面内自有组织）</li>
+<li>扩展性好</li>
 </ol>
-<h4 id="&#x7F3A;&#x70B9;-3"><a href="#&#x7F3A;&#x70B9;-3" class="headerlink" title="&#x7F3A;&#x70B9;"></a>&#x7F3A;&#x70B9;</h4><ol class="ui list">
-<li>&#x9690;&#x85CF;&#x6846;&#x67B6;&#x4E2D;&#x5176;&#x4ED6;&#x5165;&#x53E3;</li>
-<li>&#x5BF9;&#x5165;&#x53E3;&#x4EA4;&#x4E92;&#x7684;&#x529F;&#x80FD;&#x53EF;&#x89C1;&#x6027;(affordance)&#x8981;&#x6C42;&#x9AD8;</li>
-<li>&#x5BF9;&#x6392;&#x7248;&#x8981;&#x6C42;&#x9AD8;</li>
+<h4 id="缺点-3"><a href="#缺点-3" class="headerlink" title="缺点"></a>缺点</h4><ol>
+<li>隐藏框架中其他入口</li>
+<li>对入口交互的功能可见性(affordance)要求高</li>
+<li>对排版要求高</li>
 </ol>
-<h3 id="6-Plus&#x70B9;&#x805A;&#x5F0F;&#xFF1A;Path"><a href="#6-Plus&#x70B9;&#x805A;&#x5F0F;&#xFF1A;Path" class="headerlink" title="6. Plus&#x70B9;&#x805A;&#x5F0F;&#xFF1A;Path"></a>6. Plus&#x70B9;&#x805A;&#x5F0F;&#xFF1A;Path</h3><h4 id="&#x4F18;&#x70B9;-5"><a href="#&#x4F18;&#x70B9;-5" class="headerlink" title="&#x4F18;&#x70B9;"></a>&#x4F18;&#x70B9;</h4><ol class="ui list">
-<li>&#x7075;&#x6D3B;</li>
-<li>&#x5C55;&#x793A;&#x65B9;&#x5F0F;&#x6709;&#x8DA3;</li>
-<li>&#x4F7F;&#x754C;&#x9762;&#x66F4;&#x5F00;&#x9614;</li>
+<h3 id="6-Plus点聚式：Path"><a href="#6-Plus点聚式：Path" class="headerlink" title="6. Plus点聚式：Path"></a>6. Plus点聚式：Path</h3><h4 id="优点-5"><a href="#优点-5" class="headerlink" title="优点"></a>优点</h4><ol>
+<li>灵活</li>
+<li>展示方式有趣</li>
+<li>使界面更开阔</li>
 </ol>
-<h4 id="&#x7F3A;&#x70B9;-4"><a href="#&#x7F3A;&#x70B9;-4" class="headerlink" title="&#x7F3A;&#x70B9;"></a>&#x7F3A;&#x70B9;</h4><ol class="ui list">
-<li>&#x9690;&#x85CF;&#x6846;&#x67B6;&#x4E2D;&#x5176;&#x4ED6;&#x5165;&#x53E3;</li>
-<li>&#x5BF9;&#x5165;&#x53E3;&#x4EA4;&#x4E92;&#x7684;&#x529F;&#x80FD;&#x53EF;&#x89C1;&#x6027;(affordance)&#x8981;&#x6C42;&#x9AD8;</li>
+<h4 id="缺点-4"><a href="#缺点-4" class="headerlink" title="缺点"></a>缺点</h4><ol>
+<li>隐藏框架中其他入口</li>
+<li>对入口交互的功能可见性(affordance)要求高</li>
 </ol>
-<h3 id="7-Gallery&#x9648;&#x5217;&#x9986;&#x5F0F;&#xFF1A;&#x591A;&#x770B;&#xFF0C;&#x8C46;&#x74E3;&#x7535;&#x5F71;"><a href="#7-Gallery&#x9648;&#x5217;&#x9986;&#x5F0F;&#xFF1A;&#x591A;&#x770B;&#xFF0C;&#x8C46;&#x74E3;&#x7535;&#x5F71;" class="headerlink" title="7.Gallery&#x9648;&#x5217;&#x9986;&#x5F0F;&#xFF1A;&#x591A;&#x770B;&#xFF0C;&#x8C46;&#x74E3;&#x7535;&#x5F71;"></a>7.Gallery&#x9648;&#x5217;&#x9986;&#x5F0F;&#xFF1A;&#x591A;&#x770B;&#xFF0C;&#x8C46;&#x74E3;&#x7535;&#x5F71;</h3><h4 id="&#x4F18;&#x70B9;-6"><a href="#&#x4F18;&#x70B9;-6" class="headerlink" title="&#x4F18;&#x70B9;"></a>&#x4F18;&#x70B9;</h4><ol class="ui list">
-<li>&#x76F4;&#x89C2;&#x5C55;&#x73B0;&#x5404;&#x9879;&#x5185;&#x5BB9;</li>
-<li>&#x65B9;&#x4FBF;&#x6D4F;&#x89C8;&#x7ECF;&#x5E38;&#x66F4;&#x65B0;&#x7684;&#x5185;&#x5BB9;</li>
+<h3 id="7-Gallery陈列馆式：多看，豆瓣电影"><a href="#7-Gallery陈列馆式：多看，豆瓣电影" class="headerlink" title="7.Gallery陈列馆式：多看，豆瓣电影"></a>7.Gallery陈列馆式：多看，豆瓣电影</h3><h4 id="优点-6"><a href="#优点-6" class="headerlink" title="优点"></a>优点</h4><ol>
+<li>直观展现各项内容</li>
+<li>方便浏览经常更新的内容</li>
 </ol>
-<h4 id="&#x7F3A;&#x70B9;-5"><a href="#&#x7F3A;&#x70B9;-5" class="headerlink" title="&#x7F3A;&#x70B9;"></a>&#x7F3A;&#x70B9;</h4><ol class="ui list">
-<li>&#x4E0D;&#x9002;&#x5408;&#x5C55;&#x73B0;&#x9876;&#x5C42;&#x5165;&#x53E3;&#x6846;&#x67B6;</li>
-<li>&#x5BB9;&#x6613;&#x5F62;&#x6210;&#x754C;&#x9762;&#x5185;&#x5BB9;&#x8FC7;&#x591A;&#xFF0C;&#x663E;&#x5F97;&#x6742;&#x4E71;</li>
-<li>&#x8BBE;&#x8BA1;&#x6548;&#x679C;&#x5BB9;&#x6613;&#x5446;&#x677F;</li>
+<h4 id="缺点-5"><a href="#缺点-5" class="headerlink" title="缺点"></a>缺点</h4><ol>
+<li>不适合展现顶层入口框架</li>
+<li>容易形成界面内容过多，显得杂乱</li>
+<li>设计效果容易呆板</li>
 </ol>
-<h3 id="8-Waterfall&#x7011;&#x5E03;&#x5F0F;"><a href="#8-Waterfall&#x7011;&#x5E03;&#x5F0F;" class="headerlink" title="8.Waterfall&#x7011;&#x5E03;&#x5F0F;"></a>8.Waterfall&#x7011;&#x5E03;&#x5F0F;</h3><h4 id="&#x4F18;&#x70B9;-7"><a href="#&#x4F18;&#x70B9;-7" class="headerlink" title="&#x4F18;&#x70B9;"></a>&#x4F18;&#x70B9;</h4><ol class="ui list">
-<li>&#x6D4F;&#x89C8;&#x65F6;&#x4EA7;&#x751F;&#x6D41;&#x7545;&#x4F53;&#x9A8C;</li>
+<h3 id="8-Waterfall瀑布式"><a href="#8-Waterfall瀑布式" class="headerlink" title="8.Waterfall瀑布式"></a>8.Waterfall瀑布式</h3><h4 id="优点-7"><a href="#优点-7" class="headerlink" title="优点"></a>优点</h4><ol>
+<li>浏览时产生流畅体验</li>
 </ol>
-<h4 id="&#x7F3A;&#x70B9;-6"><a href="#&#x7F3A;&#x70B9;-6" class="headerlink" title="&#x7F3A;&#x70B9;"></a>&#x7F3A;&#x70B9;</h4><ol class="ui list">
-<li>&#x7F3A;&#x4E4F;&#x5BF9;&#x6574;&#x4F53;&#x5185;&#x5BB9;&#x7684;&#x4F53;&#x79EF;&#x611F;&#xFF0C;&#x5BB9;&#x6613;&#x53D1;&#x751F;&#x7A7A;&#x95F4;&#x4F4D;&#x7F6E;&#x8FF7;&#x5931;</li>
-<li>&#x6D4F;&#x89C8;&#x4E00;&#x6BB5;&#x65F6;&#x95F4;&#x540E;&#xFF0C;&#x5BB9;&#x6613;&#x4EA7;&#x751F;&#x75B2;&#x52B3;&#x611F;</li>
+<h4 id="缺点-6"><a href="#缺点-6" class="headerlink" title="缺点"></a>缺点</h4><ol>
+<li>缺乏对整体内容的体积感，容易发生空间位置迷失</li>
+<li>浏览一段时间后，容易产生疲劳感</li>
 </ol>
 
-                        
-                    </div>
-
-                    
-                    
-                    
-
-                    <div class="description post-description">
-    <span class="post-description-item">
-        <time datetime="2015-01-17T05:43:19.000Z" itemprop="datePublished">2015-01-17</time>
-
-    </span>
-    <span class="post-description-item">
+        </section>
+    </article>
+    
         
-
-    <span>
-        <i class="tags icon"></i>
-    </span>
-
+  </div>
+  <aside>
     
-    <span class="ui tiny label">
-        <a href="/tags/kinds-of-viewControllers/">kinds of viewControllers</a>
-    </span>
-
+    <div class="toc-container">
+        <h1>目录</h1>
+        <div class="content">
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-UIViewController生命周期几种方法调用时机"><span class="toc-number">1.</span> <span class="toc-text">1.UIViewController生命周期几种方法调用时机</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-UIViewController-xib的加载过程"><span class="toc-number">2.</span> <span class="toc-text">2.UIViewController xib的加载过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-几种控制器容器的优缺点"><span class="toc-number">3.</span> <span class="toc-text">3.几种控制器容器的优缺点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-UITabBarController-Tabbar底部标签式-Instagram、微信、微博"><span class="toc-number">3.1.</span> <span class="toc-text">1.UITabBarController(Tabbar底部标签式:Instagram、微信、微博)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#优点"><span class="toc-number">3.1.1.</span> <span class="toc-text">优点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#缺点"><span class="toc-number">3.1.2.</span> <span class="toc-text">缺点</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-UINavigationController-Springboard跳板式-星巴克"><span class="toc-number">3.2.</span> <span class="toc-text">2.UINavigationController (Springboard跳板式:星巴克)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#优点-1"><span class="toc-number">3.2.1.</span> <span class="toc-text">优点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#确定"><span class="toc-number">3.2.2.</span> <span class="toc-text">确定</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-UINavigationController做整体，融合TabBarController（List-Menu列表式：知乎）"><span class="toc-number">3.3.</span> <span class="toc-text">3.UINavigationController做整体，融合TabBarController（List Menu列表式：知乎）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#优点-2"><span class="toc-number">3.3.1.</span> <span class="toc-text">优点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#缺点-1"><span class="toc-number">3.3.2.</span> <span class="toc-text">缺点</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-UIScrollvIewController融合pageControl-Carousel旋转木马式-豆瓣同城"><span class="toc-number">3.4.</span> <span class="toc-text">4.UIScrollvIewController融合pageControl (Carousel旋转木马式:豆瓣同城)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#优点-3"><span class="toc-number">3.4.1.</span> <span class="toc-text">优点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#缺点-2"><span class="toc-number">3.4.2.</span> <span class="toc-text">缺点</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-Drawer抽屉式：豆瓣小组"><span class="toc-number">3.5.</span> <span class="toc-text">5. Drawer抽屉式：豆瓣小组</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#优点-4"><span class="toc-number">3.5.1.</span> <span class="toc-text">优点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#缺点-3"><span class="toc-number">3.5.2.</span> <span class="toc-text">缺点</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-Plus点聚式：Path"><span class="toc-number">3.6.</span> <span class="toc-text">6. Plus点聚式：Path</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#优点-5"><span class="toc-number">3.6.1.</span> <span class="toc-text">优点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#缺点-4"><span class="toc-number">3.6.2.</span> <span class="toc-text">缺点</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-Gallery陈列馆式：多看，豆瓣电影"><span class="toc-number">3.7.</span> <span class="toc-text">7.Gallery陈列馆式：多看，豆瓣电影</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#优点-6"><span class="toc-number">3.7.1.</span> <span class="toc-text">优点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#缺点-5"><span class="toc-number">3.7.2.</span> <span class="toc-text">缺点</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-Waterfall瀑布式"><span class="toc-number">3.8.</span> <span class="toc-text">8.Waterfall瀑布式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#优点-7"><span class="toc-number">3.8.1.</span> <span class="toc-text">优点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#缺点-6"><span class="toc-number">3.8.2.</span> <span class="toc-text">缺点</span></a></li></ol></li></ol></li></ol>
+        </div>
+    </div>
     
+  </aside>
+</main>
 
-    </span>
-</div>
 
-                </div>
-                
-                <div id="pagination" class="nav-web ui text container pagination">
 
-    <div class="ui stackable two column divided grid container">
-        <div class="row">
-            <div class="column nav-left">
-                
-
-                <a href="/面试/2015/01/24/常见面试题.html" class="ui tiny button">
-
-                    <i class="angle left icon"></i>
-                    
-                    面试问题-01
-                    
-
-                </a>
-
-                
-            </div>
-            <div class="column nav-right">
-                
-
-                <a href="/uncategorized/2014/11/20/Mac/NTFS-read-write.html" class="ui tiny button">
-                    
-                    NTFS read-write
-                    
-                    <i class="angle right icon"></i></a>
-                
-            </div>
-        </div>
+  <footer>
+  <div class="copyright">
+    <div>
+      &copy; 2018 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a>&nbsp
     </div>
-
-</div>
-                
-            </div>
-
-            
-            <div class="three wide computer three wide tablet column">
-
-                <div class="ui sticky article-toc" id="article-toc">
-                    <!-- toc -->
-                    <ol class="ui ordered list"><li><a href="#1-UIViewController生命周期几种方法调用时机"><span>1.UIViewController生命周期几种方法调用时机</span></a></li><li><a href="#2-UIViewController-xib的加载过程"><span>2.UIViewController xib的加载过程</span></a></li><li><a href="#3-几种控制器容器的优缺点"><span>3.几种控制器容器的优缺点</span></a><ol><li><a href="#1-UITabBarController-Tabbar底部标签式-Instagram、微信、微博"><span>1.UITabBarController(Tabbar底部标签式:Instagram、微信、微博)</span></a><ol><li><a href="#优点"><span>优点</span></a></li><li><a href="#缺点"><span>缺点</span></a></li></ol></li><li><a href="#2-UINavigationController-Springboard跳板式-星巴克"><span>2.UINavigationController (Springboard跳板式:星巴克)</span></a><ol><li><a href="#优点-1"><span>优点</span></a></li><li><a href="#确定"><span>确定</span></a></li></ol></li><li><a href="#3-UINavigationController做整体，融合TabBarController（List-Menu列表式：知乎）"><span>3.UINavigationController做整体，融合TabBarController（List Menu列表式：知乎）</span></a><ol><li><a href="#优点-2"><span>优点</span></a></li><li><a href="#缺点-1"><span>缺点</span></a></li></ol></li><li><a href="#4-UIScrollvIewController融合pageControl-Carousel旋转木马式-豆瓣同城"><span>4.UIScrollvIewController融合pageControl (Carousel旋转木马式:豆瓣同城)</span></a><ol><li><a href="#优点-3"><span>优点</span></a></li><li><a href="#缺点-2"><span>缺点</span></a></li></ol></li><li><a href="#5-Drawer抽屉式：豆瓣小组"><span>5. Drawer抽屉式：豆瓣小组</span></a><ol><li><a href="#优点-4"><span>优点</span></a></li><li><a href="#缺点-3"><span>缺点</span></a></li></ol></li><li><a href="#6-Plus点聚式：Path"><span>6. Plus点聚式：Path</span></a><ol><li><a href="#优点-5"><span>优点</span></a></li><li><a href="#缺点-4"><span>缺点</span></a></li></ol></li><li><a href="#7-Gallery陈列馆式：多看，豆瓣电影"><span>7.Gallery陈列馆式：多看，豆瓣电影</span></a><ol><li><a href="#优点-6"><span>优点</span></a></li><li><a href="#缺点-5"><span>缺点</span></a></li></ol></li><li><a href="#8-Waterfall瀑布式"><span>8.Waterfall瀑布式</span></a><ol><li><a href="#优点-7"><span>优点</span></a></li><li><a href="#缺点-6"><span>缺点</span></a></li></ol></li></ol></li></ol>
-                </div>
-
-            </div>
-            
-
-        </div>
+    <div>
+      Theme by <a href="https://github.com/lewis-geek/hexo-theme-Aath" target="_blank">Aath</a>
     </div>
-</div>
+  </div>
+</footer>
 
 
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
-        </div>
-        <div class="ui vertical footer segment">
-    <div class="ui center aligned container">
-        <div class="ui inverted section divider"></div>
-        &copy; 2018 <a href="/">wangtao</a>,
-        Powered by <a href="https://github.com/henryhuang/hexo-theme-aloha" target="_blank">Aloha</a> and <a
-                href="http://hexo.io/" target="_blank">Hexo</a>.
-    </div>
-</div>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script src="/lib/in-view.min.js"></script>
+<script src="/lib/lodash.min.js"></script>
+<script>
+  var isDown = true
+  var oldY = 0
+  inView.offset(50)
 
-    </div>
+  document.body.addEventListener('touchstart', function(){});
+  
+  window.addEventListener('scroll', _.throttle(e => {
+    var currentY = window.scrollY
+    if((oldY - currentY) < 0) {
+      isDown = true
+    } else {
+      isDown = false
+    }
+    oldY = currentY
+  }, 250))
 
+  $("article img").each(function() {
+      var strA = "<a data-fancybox='gallery' href='" + this.src + "'></a>";
+      $(this).wrapAll(strA);
+  });
 
+  $('.toc-link').each(function() {
+      var href = $(this).attr("href");
+      
+      inView(href).on('exit', () => {
+        if (isDown) {
+          handleActive(href)
+        }
+      })
 
+      inView(href).on('enter', () => {
+        if (!isDown) {
+          handleActive(href)
+        }
+      })
 
-<!-- scripts list from theme config.yml -->
+      this.onclick = function(e) {
+        var pos = $(href).offset().top - 10;
+        $("html,body").animate({scrollTop: pos}, 300);
+        setTimeout(() => {
+          handleActive(href)
+        }, 350)
+        return false
+      }
+  })
 
-<script src="//cdn.bootcss.com/jquery/3.1.0/jquery.min.js"></script>
-
-<script src="//cdn.bootcss.com/semantic-ui/2.2.4/semantic.min.js"></script>
-
-<script src="//cdn.bootcss.com/algoliasearch/3.18.1/algoliasearch.min.js"></script>
-
-<script src="//cdn.bootcss.com/algoliasearch-helper-js/2.13.0/algoliasearch.helper.min.js"></script>
-
-<script src="/js/semantic-ui-algolia.js"></script>
-
-<script src="/js/aloha-events.js"></script>
-
+  function handleActive(href) {
+    document.querySelectorAll('.toc-link').forEach(elm => {
+      elm.classList.remove('active')
+    })
+    document.querySelector(".toc [href='"+ href +"']").classList.add('active')
+  }
+</script>
+<script src="/lib/jquery.fancybox.min.js"></script>
 
 
 </body>

@@ -1,266 +1,177 @@
-
-
 <!DOCTYPE html>
-<html lang="zh-Hans">
-<head prefix="og: http://ogp.me/ns#">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-    <meta name="description" content="技术交流">
-    <title>去掉json字符串中的\n，\r，\t | wt</title>
-
-    <!-- Open Graph -->
-    <meta name="description" content="AFURLResponseSerialization: &amp;#x54CD;&amp;#x5E94;&amp;#x6570;&amp;#x636E;&amp;#x89E3;&amp;#x6790;&amp;#x5668;!123456AFJSONResponseSerializer              JSONObject(NSDictionary&amp;#x6216;NSArray)AFHTTPResponseSerializer">
-<meta name="keywords" content="json">
-<meta property="og:type" content="article">
-<meta property="og:title" content="去掉json字符串中的\n，\r，\t">
-<meta property="og:url" content="https://weibo.com/wangtaoworld/iOS/2018/03/30/iOS开发/去掉json字符串中的/n /r /t.html">
-<meta property="og:site_name" content="wt">
-<meta property="og:description" content="AFURLResponseSerialization: &amp;#x54CD;&amp;#x5E94;&amp;#x6570;&amp;#x636E;&amp;#x89E3;&amp;#x6790;&amp;#x5668;!123456AFJSONResponseSerializer              JSONObject(NSDictionary&amp;#x6216;NSArray)AFHTTPResponseSerializer">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-30T07:47:28.000Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="去掉json字符串中的\n，\r，\t">
-<meta name="twitter:description" content="AFURLResponseSerialization: &amp;#x54CD;&amp;#x5E94;&amp;#x6570;&amp;#x636E;&amp;#x89E3;&amp;#x6790;&amp;#x5668;!123456AFJSONResponseSerializer              JSONObject(NSDictionary&amp;#x6216;NSArray)AFHTTPResponseSerializer">
-
-    <script type="application/ld+json">
-{
-  "@context": "http://schema.org",
-  "@type": "Person",
-  "email": "mailto:",
-  "image": "",
-  "name": "wangtao",
-  "url": "https://weibo.com/wangtaoworld"
-}
-</script>
-    <script>
-    var algoliaEnabled = false;
+<html lang="zh-CN">
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="技术交流">
+  <meta name="keywords" content="">
+  
+    <link rel="icon" href="">
+  
     
-</script>
-
-    
-
-    
-    
-        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-    
-    
-    
-        <!-- stylesheets list from config.yml -->
-        
-        <link rel="stylesheet" href="/css/aloha.css">
-        
-        <link rel="stylesheet" href="//cdn.bootcss.com/semantic-ui/2.2.4/semantic.min.css">
-        
-        <link rel="stylesheet" href="//cdn.bootcss.com/magnific-popup.js/1.1.0/magnific-popup.min.css">
-        
-    
-
+  <title>去掉json字符串中的\n，\r，\t | wt</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/lib/jquery.fancybox.min.css">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-<body id="body" style="margin-bottom: 0;" class="pushable">
 
-    <div class="ui top fixed menu">
-        <a class="item" id="menu-icon"><i class="sidebar icon"></i></a>
-    </div>
-
-    <div id="menu-sidebar" class="ui left vertical sidebar menu">
-
-    <div id="sidebar-top">
-        <div class="content">
-            <h3>wt</h3>
-        </div>
-    </div>
-    <div class="ui container sidebar-card">
-    <div class="ui people shape content">
-        <div class="active side">
-            <div class="ui card">
-                <div class="image">
-                    <img class="ui medium bordered image" src="/images/avatar.jpg">
-                </div>
-                <div class="content">
-                    <a class="header">wangtao</a>
-                    
-                </div>
-                <div class="extra content">
-                    <div class="ui list">
-                        
-                        
-                    </div>
-
-                </div>
-                <div class="extra content">
-                    <div class="ui list">
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-</div>
-
-    
-    
-
-    
-
-    
-    <a href="/index.html" class="item" >
-        <i class="home icon"></i>
-        HOME
+<body>
+  <header>
+  <div class="header-container">
+    <a class='logo' href="/">
+      <span>wt</span>
     </a>
+    <ul class="right-header">
+      
+        <li class="nav-item">
+          
+            <a href="/" class="item-link">首页</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/about" class="item-link">关于</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/archives" class="item-link">归档</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/tags" class="item-link">标签</a>
+          
+        </li>
+      
+    </ul>
+  </div>
+</header>
 
-    
+  <main id='post'>
+  <div class="content">
+    <article>
+        <section class="content markdown-body">
+          <h1>去掉json字符串中的\n，\r，\t</h1>
+          <div class='post-meta'>
+            <i class="fa fa-calendar" aria-hidden="true"></i> <time>2018年03月30日</time>
+            
+              | <i class="fa fa-folder-open-o" aria-hidden="true"></i> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/iOS/">iOS</a>
+  </div>
 
-    
-</div>
 
-    <div class="pusher body-content">
-        <div id="content" class="ui main container">
-            <!--<div class="ui one column grid">-->
-                <!--<div class="column">-->
-                    <!--<div class="ui main container">-->
-                        <div id="post-iOS开发/去掉json字符串中的\n \r \t" class="ui main container article-type-post">
 
-    
-
-    <div class="ui divided grid">
-
-        <div class="two column row" id="article-content">
-
-            <div class="thirteen wide computer thirteen wide tablet sixteen wide mobile column">
+            
+            
+              | 
+                  <i class="fa fa-tag" aria-hidden="true"></i>
                 
-
-<h1 class="ui header">
-    
-    去掉json字符串中的\n，\r，\t
-</h1>
+               
+  <a href="/tags/#json" class='tag'>json</a>
 
 
-
-                <div class="article-inner">
-
-                    <div class="article-entry" itemprop="articleBody">
-                        
-                        <h6 id="AFURLResponseSerialization-&#x54CD;&#x5E94;&#x6570;&#x636E;&#x89E3;&#x6790;&#x5668;"><a href="#AFURLResponseSerialization-&#x54CD;&#x5E94;&#x6570;&#x636E;&#x89E3;&#x6790;&#x5668;" class="headerlink" title="AFURLResponseSerialization: &#x54CD;&#x5E94;&#x6570;&#x636E;&#x89E3;&#x6790;&#x5668;!"></a>AFURLResponseSerialization: &#x54CD;&#x5E94;&#x6570;&#x636E;&#x89E3;&#x6790;&#x5668;!</h6><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">AFJSONResponseSerializer              JSONObject(<span class="built_in">NSDictionary</span>&#x6216;<span class="built_in">NSArray</span>)</span><br><span class="line">AFHTTPResponseSerializer              <span class="built_in">NSData</span></span><br><span class="line">AFPropertyListResponseSerializer      propertyList(<span class="built_in">NSDictionary</span>&#x6216;<span class="built_in">NSArray</span>)</span><br><span class="line">AFXMLParserResponseSerializer         <span class="built_in">NSXMLDocument</span></span><br><span class="line">AFImageResponseSerializer             <span class="built_in">UIImage</span> </span><br><span class="line">AFCompoundResponseSerializer          &#x6587;&#x4EF6;</span><br></pre></td></tr></table></figure>
-<p>######&#x5982;&#x679C;&#x540E;&#x53F0;&#x7ED9;&#x7684;json&#x6570;&#x636E;&#x4E2D;&#x6CA1;&#x6709;\n&#xFF0C;\r&#xFF0C;\t&#xFF0C;&#x53EF;&#x4EE5;&#x8FD9;&#x6837;</p>
+            
+          </div>
+          <h6 id="AFURLResponseSerialization-响应数据解析器"><a href="#AFURLResponseSerialization-响应数据解析器" class="headerlink" title="AFURLResponseSerialization: 响应数据解析器!"></a>AFURLResponseSerialization: 响应数据解析器!</h6><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">AFJSONResponseSerializer              JSONObject(<span class="built_in">NSDictionary</span>或<span class="built_in">NSArray</span>)</span><br><span class="line">AFHTTPResponseSerializer              <span class="built_in">NSData</span></span><br><span class="line">AFPropertyListResponseSerializer      propertyList(<span class="built_in">NSDictionary</span>或<span class="built_in">NSArray</span>)</span><br><span class="line">AFXMLParserResponseSerializer         <span class="built_in">NSXMLDocument</span></span><br><span class="line">AFImageResponseSerializer             <span class="built_in">UIImage</span> </span><br><span class="line">AFCompoundResponseSerializer          文件</span><br></pre></td></tr></table></figure>
+<p>######如果后台给的json数据中没有\n，\r，\t，可以这样</p>
 <figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">strong</span>) AFHTTPSessionManager *manager;</span><br><span class="line">        </span><br><span class="line"><span class="keyword">self</span>.manager.responseSerializer = [AFJSONResponseSerializer serializer];</span><br></pre></td></tr></table></figure>
-<p>######&#x5982;&#x679C;&#x540E;&#x53F0;&#x7ED9;&#x7684;json&#x6570;&#x636E;&#x4E2D;&#x6709;\n&#xFF0C;\r&#xFF0C;\t&#xFF0C;&#x7A7A;&#x683C;&#xFF0C;&#x9700;&#x8981;&#x8FD9;&#x6837;&#xFF0C;&#x5426;&#x5219;&#x89E3;&#x6790;&#x5931;&#x8D25;&#xFF0C;&#x63A5;&#x6536;&#x4E0D;&#x5230;json<br>&#x62A5;&#x9519;&#x4FE1;&#x606F;&#xFF1A;<br>{error is Error Domain=NSCocoaErrorDomain Code=3840 &#x201C;The operation couldn&#x2019;t be completed. (Cocoa error 3840.)&#x201D;}</p>
-<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">strong</span>) AFHTTPSessionManager *manager;</span><br><span class="line">       </span><br><span class="line"><span class="keyword">self</span>.manager.responseSerializer = [AFHTTPResponseSerializer serializer];</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//&#x53BB;&#x9664;json&#x5B57;&#x7B26;&#x4E32;&#x4E2D;&#x7684;\n&#xFF0C;\r&#xFF0C;\t&#xFF0C;&#x7A7A;&#x683C;</span></span><br><span class="line">+ (<span class="built_in">NSDictionary</span> *)successValueWithSuccessValueData:(<span class="keyword">id</span>)successValueData</span><br><span class="line">{</span><br><span class="line">    <span class="built_in">NSError</span> *error = <span class="literal">nil</span>;</span><br><span class="line">    <span class="built_in">NSString</span> *jsonString = [[<span class="built_in">NSString</span> alloc] initWithData:successValueData encoding:<span class="built_in">NSUTF8StringEncoding</span>];</span><br><span class="line">    <span class="built_in">NSRange</span> range = <span class="built_in">NSMakeRange</span>(<span class="number">0</span>, [jsonString length]);</span><br><span class="line">    </span><br><span class="line">    jsonString = [jsonString stringByReplacingOccurrencesOfString:<span class="string">@&quot;\r&quot;</span></span><br><span class="line">                                                       withString:<span class="string">@&quot;\\\\r&quot;</span></span><br><span class="line">                                                          options:<span class="built_in">NSRegularExpressionSearch</span></span><br><span class="line">                                                            range:range];</span><br><span class="line">    </span><br><span class="line">    jsonString = [jsonString stringByReplacingOccurrencesOfString:<span class="string">@&quot;\n&quot;</span></span><br><span class="line">                                                       withString:<span class="string">@&quot;\\\\n&quot;</span></span><br><span class="line">                                                          options:<span class="built_in">NSRegularExpressionSearch</span></span><br><span class="line">                                                            range:range];</span><br><span class="line">    </span><br><span class="line">    jsonString = [jsonString stringByReplacingOccurrencesOfString:<span class="string">@&quot;\t&quot;</span></span><br><span class="line">                                                       withString:<span class="string">@&quot;\\\\t&quot;</span></span><br><span class="line">                                                          options:<span class="built_in">NSRegularExpressionSearch</span></span><br><span class="line">                                                            range:range];</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">NSData</span> *jsonData = [jsonString dataUsingEncoding:<span class="built_in">NSUTF8StringEncoding</span>];</span><br><span class="line">    <span class="built_in">NSDictionary</span> *successValue = [<span class="built_in">NSJSONSerialization</span> JSONObjectWithData:jsonData options:<span class="built_in">NSJSONReadingMutableContainers</span> error:&amp;error];</span><br><span class="line">    <span class="keyword">return</span> successValue;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
-                        
-                    </div>
-
-                    
-                    
-                    
-
-                    <div class="description post-description">
-    <span class="post-description-item">
-        <time datetime="2018-03-30T07:46:47.000Z" itemprop="datePublished">2018-03-30</time>
-
-    </span>
-    <span class="post-description-item">
+<p>######如果后台给的json数据中有\n，\r，\t，空格，需要这样，否则解析失败，接收不到json<br>报错信息：<br>{error is Error Domain=NSCocoaErrorDomain Code=3840 “The operation couldn’t be completed. (Cocoa error 3840.)”}</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">strong</span>) AFHTTPSessionManager *manager;</span><br><span class="line">       </span><br><span class="line"><span class="keyword">self</span>.manager.responseSerializer = [AFHTTPResponseSerializer serializer];</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//去除json字符串中的\n，\r，\t，空格</span></span><br><span class="line">+ (<span class="built_in">NSDictionary</span> *)successValueWithSuccessValueData:(<span class="keyword">id</span>)successValueData</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">NSError</span> *error = <span class="literal">nil</span>;</span><br><span class="line">    <span class="built_in">NSString</span> *jsonString = [[<span class="built_in">NSString</span> alloc] initWithData:successValueData encoding:<span class="built_in">NSUTF8StringEncoding</span>];</span><br><span class="line">    <span class="built_in">NSRange</span> range = <span class="built_in">NSMakeRange</span>(<span class="number">0</span>, [jsonString length]);</span><br><span class="line">    </span><br><span class="line">    jsonString = [jsonString stringByReplacingOccurrencesOfString:<span class="string">@"\r"</span></span><br><span class="line">                                                       withString:<span class="string">@"\\\\r"</span></span><br><span class="line">                                                          options:<span class="built_in">NSRegularExpressionSearch</span></span><br><span class="line">                                                            range:range];</span><br><span class="line">    </span><br><span class="line">    jsonString = [jsonString stringByReplacingOccurrencesOfString:<span class="string">@"\n"</span></span><br><span class="line">                                                       withString:<span class="string">@"\\\\n"</span></span><br><span class="line">                                                          options:<span class="built_in">NSRegularExpressionSearch</span></span><br><span class="line">                                                            range:range];</span><br><span class="line">    </span><br><span class="line">    jsonString = [jsonString stringByReplacingOccurrencesOfString:<span class="string">@"\t"</span></span><br><span class="line">                                                       withString:<span class="string">@"\\\\t"</span></span><br><span class="line">                                                          options:<span class="built_in">NSRegularExpressionSearch</span></span><br><span class="line">                                                            range:range];</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">NSData</span> *jsonData = [jsonString dataUsingEncoding:<span class="built_in">NSUTF8StringEncoding</span>];</span><br><span class="line">    <span class="built_in">NSDictionary</span> *successValue = [<span class="built_in">NSJSONSerialization</span> JSONObjectWithData:jsonData options:<span class="built_in">NSJSONReadingMutableContainers</span> error:&amp;error];</span><br><span class="line">    <span class="keyword">return</span> successValue;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        </section>
+    </article>
+    
         
-
-    <span>
-        <i class="tags icon"></i>
-    </span>
-
+  </div>
+  <aside>
     
-    <span class="ui tiny label">
-        <a href="/tags/json/">json</a>
-    </span>
-
+    <div class="toc-container">
+        <h1>目录</h1>
+        <div class="content">
+            <ol class="toc"><li class="toc-item toc-level-6"><a class="toc-link" href="#AFURLResponseSerialization-响应数据解析器"><span class="toc-number">1.</span> <span class="toc-text">AFURLResponseSerialization: 响应数据解析器!</span></a></li></ol>
+        </div>
+    </div>
     
+  </aside>
+</main>
 
-    </span>
-</div>
 
-                </div>
-                
-                <div id="pagination" class="nav-web ui text container pagination">
 
-    <div class="ui stackable two column divided grid container">
-        <div class="row">
-            <div class="column nav-left">
-                
-
-                <a href="/iOS/2018/03/30/iOS开发/iOS导出xls.html" class="ui tiny button">
-
-                    <i class="angle left icon"></i>
-                    
-                    iOS导出xls
-                    
-
-                </a>
-
-                
-            </div>
-            <div class="column nav-right">
-                
-
-                <a href="/iOS/2018/03/30/iOS开发/UITextField输入正整数和两位小数.html" class="ui tiny button">
-                    
-                    UITextField输入正整数和两位小数
-                    
-                    <i class="angle right icon"></i></a>
-                
-            </div>
-        </div>
+  <footer>
+  <div class="copyright">
+    <div>
+      &copy; 2018 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a>&nbsp
     </div>
-
-</div>
-                
-            </div>
-
-            
-            <div class="three wide computer three wide tablet column">
-
-                <div class="ui sticky article-toc" id="article-toc">
-                    <!-- toc -->
-                    <ol class="ui ordered list"><li><a href="#AFURLResponseSerialization-响应数据解析器"><span>AFURLResponseSerialization: 响应数据解析器!</span></a></li></ol>
-                </div>
-
-            </div>
-            
-
-        </div>
+    <div>
+      Theme by <a href="https://github.com/lewis-geek/hexo-theme-Aath" target="_blank">Aath</a>
     </div>
-</div>
+  </div>
+</footer>
 
 
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
-        </div>
-        <div class="ui vertical footer segment">
-    <div class="ui center aligned container">
-        <div class="ui inverted section divider"></div>
-        &copy; 2018 <a href="/">wangtao</a>,
-        Powered by <a href="https://github.com/henryhuang/hexo-theme-aloha" target="_blank">Aloha</a> and <a
-                href="http://hexo.io/" target="_blank">Hexo</a>.
-    </div>
-</div>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script src="/lib/in-view.min.js"></script>
+<script src="/lib/lodash.min.js"></script>
+<script>
+  var isDown = true
+  var oldY = 0
+  inView.offset(50)
 
-    </div>
+  document.body.addEventListener('touchstart', function(){});
+  
+  window.addEventListener('scroll', _.throttle(e => {
+    var currentY = window.scrollY
+    if((oldY - currentY) < 0) {
+      isDown = true
+    } else {
+      isDown = false
+    }
+    oldY = currentY
+  }, 250))
 
+  $("article img").each(function() {
+      var strA = "<a data-fancybox='gallery' href='" + this.src + "'></a>";
+      $(this).wrapAll(strA);
+  });
 
+  $('.toc-link').each(function() {
+      var href = $(this).attr("href");
+      
+      inView(href).on('exit', () => {
+        if (isDown) {
+          handleActive(href)
+        }
+      })
 
+      inView(href).on('enter', () => {
+        if (!isDown) {
+          handleActive(href)
+        }
+      })
 
-<!-- scripts list from theme config.yml -->
+      this.onclick = function(e) {
+        var pos = $(href).offset().top - 10;
+        $("html,body").animate({scrollTop: pos}, 300);
+        setTimeout(() => {
+          handleActive(href)
+        }, 350)
+        return false
+      }
+  })
 
-<script src="//cdn.bootcss.com/jquery/3.1.0/jquery.min.js"></script>
-
-<script src="//cdn.bootcss.com/semantic-ui/2.2.4/semantic.min.js"></script>
-
-<script src="//cdn.bootcss.com/algoliasearch/3.18.1/algoliasearch.min.js"></script>
-
-<script src="//cdn.bootcss.com/algoliasearch-helper-js/2.13.0/algoliasearch.helper.min.js"></script>
-
-<script src="/js/semantic-ui-algolia.js"></script>
-
-<script src="/js/aloha-events.js"></script>
-
+  function handleActive(href) {
+    document.querySelectorAll('.toc-link').forEach(elm => {
+      elm.classList.remove('active')
+    })
+    document.querySelector(".toc [href='"+ href +"']").classList.add('active')
+  }
+</script>
+<script src="/lib/jquery.fancybox.min.js"></script>
 
 
 </body>

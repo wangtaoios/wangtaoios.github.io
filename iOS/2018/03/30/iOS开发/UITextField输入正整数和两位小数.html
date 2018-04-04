@@ -1,269 +1,170 @@
-
-
 <!DOCTYPE html>
-<html lang="zh-Hans">
-<head prefix="og: http://ogp.me/ns#">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-    <meta name="description" content="技术交流">
-    <title>UITextField输入正整数和两位小数 | wt</title>
-
-    <!-- Open Graph -->
-    <meta name="description" content="#####A&amp;#xFF1A; &amp;#x8F93;&amp;#x51FA;&amp;#x5C0F;&amp;#x6570;&amp;#x70B9;&amp;#x540E;&amp;#x4E24;&amp;#x4F4D;&amp;#xFF0C;&amp;#x5C0F;&amp;#x6570;&amp;#x70B9;&amp;#x524D;&amp;#x9762;&amp;#x6CA1;&amp;#x6709;&amp;#x9650;&amp;#x5236;12345678910111213141516171819202122232425">
-<meta name="keywords" content="UITextField">
-<meta property="og:type" content="article">
-<meta property="og:title" content="UITextField输入正整数和两位小数">
-<meta property="og:url" content="https://weibo.com/wangtaoworld/iOS/2018/03/30/iOS开发/UITextField输入正整数和两位小数.html">
-<meta property="og:site_name" content="wt">
-<meta property="og:description" content="#####A&amp;#xFF1A; &amp;#x8F93;&amp;#x51FA;&amp;#x5C0F;&amp;#x6570;&amp;#x70B9;&amp;#x540E;&amp;#x4E24;&amp;#x4F4D;&amp;#xFF0C;&amp;#x5C0F;&amp;#x6570;&amp;#x70B9;&amp;#x524D;&amp;#x9762;&amp;#x6CA1;&amp;#x6709;&amp;#x9650;&amp;#x5236;12345678910111213141516171819202122232425">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://github.com/wangtaoios/images/blob/master/%E9%A1%B9%E7%9B%AEDemo%E5%9B%BE%E7%89%87/UITextField_00_0330.png?raw=true">
-<meta property="og:image" content="https://github.com/wangtaoios/images/blob/master/%E9%A1%B9%E7%9B%AEDemo%E5%9B%BE%E7%89%87/UITextField_01_0330.png?raw=true">
-<meta property="og:updated_time" content="2018-03-30T06:53:33.000Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="UITextField输入正整数和两位小数">
-<meta name="twitter:description" content="#####A&amp;#xFF1A; &amp;#x8F93;&amp;#x51FA;&amp;#x5C0F;&amp;#x6570;&amp;#x70B9;&amp;#x540E;&amp;#x4E24;&amp;#x4F4D;&amp;#xFF0C;&amp;#x5C0F;&amp;#x6570;&amp;#x70B9;&amp;#x524D;&amp;#x9762;&amp;#x6CA1;&amp;#x6709;&amp;#x9650;&amp;#x5236;12345678910111213141516171819202122232425">
-<meta name="twitter:image" content="https://github.com/wangtaoios/images/blob/master/%E9%A1%B9%E7%9B%AEDemo%E5%9B%BE%E7%89%87/UITextField_00_0330.png?raw=true">
-
-    <script type="application/ld+json">
-{
-  "@context": "http://schema.org",
-  "@type": "Person",
-  "email": "mailto:",
-  "image": "",
-  "name": "wangtao",
-  "url": "https://weibo.com/wangtaoworld"
-}
-</script>
-    <script>
-    var algoliaEnabled = false;
+<html lang="zh-CN">
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="技术交流">
+  <meta name="keywords" content="">
+  
+    <link rel="icon" href="">
+  
     
-</script>
-
-    
-
-    
-    
-        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-    
-    
-    
-        <!-- stylesheets list from config.yml -->
-        
-        <link rel="stylesheet" href="/css/aloha.css">
-        
-        <link rel="stylesheet" href="//cdn.bootcss.com/semantic-ui/2.2.4/semantic.min.css">
-        
-        <link rel="stylesheet" href="//cdn.bootcss.com/magnific-popup.js/1.1.0/magnific-popup.min.css">
-        
-    
-
+  <title>UITextField输入正整数和两位小数 | wt</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/lib/jquery.fancybox.min.css">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-<body id="body" style="margin-bottom: 0;" class="pushable">
 
-    <div class="ui top fixed menu">
-        <a class="item" id="menu-icon"><i class="sidebar icon"></i></a>
-    </div>
-
-    <div id="menu-sidebar" class="ui left vertical sidebar menu">
-
-    <div id="sidebar-top">
-        <div class="content">
-            <h3>wt</h3>
-        </div>
-    </div>
-    <div class="ui container sidebar-card">
-    <div class="ui people shape content">
-        <div class="active side">
-            <div class="ui card">
-                <div class="image">
-                    <img class="ui medium bordered image" src="/images/avatar.jpg">
-                </div>
-                <div class="content">
-                    <a class="header">wangtao</a>
-                    
-                </div>
-                <div class="extra content">
-                    <div class="ui list">
-                        
-                        
-                    </div>
-
-                </div>
-                <div class="extra content">
-                    <div class="ui list">
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-</div>
-
-    
-    
-
-    
-
-    
-    <a href="/index.html" class="item" >
-        <i class="home icon"></i>
-        HOME
+<body>
+  <header>
+  <div class="header-container">
+    <a class='logo' href="/">
+      <span>wt</span>
     </a>
+    <ul class="right-header">
+      
+        <li class="nav-item">
+          
+            <a href="/" class="item-link">首页</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/about" class="item-link">关于</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/archives" class="item-link">归档</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/tags" class="item-link">标签</a>
+          
+        </li>
+      
+    </ul>
+  </div>
+</header>
 
-    
+  <main id='post'>
+  <div class="content">
+    <article>
+        <section class="content markdown-body">
+          <h1>UITextField输入正整数和两位小数</h1>
+          <div class='post-meta'>
+            <i class="fa fa-calendar" aria-hidden="true"></i> <time>2018年03月30日</time>
+            
+              | <i class="fa fa-folder-open-o" aria-hidden="true"></i> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/iOS/">iOS</a>
+  </div>
 
-    
-</div>
 
-    <div class="pusher body-content">
-        <div id="content" class="ui main container">
-            <!--<div class="ui one column grid">-->
-                <!--<div class="column">-->
-                    <!--<div class="ui main container">-->
-                        <div id="post-iOS开发/UITextField输入正整数和两位小数" class="ui main container article-type-post">
 
-    
-
-    <div class="ui divided grid">
-
-        <div class="two column row" id="article-content">
-
-            <div class="thirteen wide computer thirteen wide tablet sixteen wide mobile column">
+            
+            
+              | 
+                  <i class="fa fa-tag" aria-hidden="true"></i>
                 
+               
+  <a href="/tags/#UITextField" class='tag'>UITextField</a>
 
-<h1 class="ui header">
+
+            
+          </div>
+          <p>#####A： 输出小数点后两位，小数点前面没有限制<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">    rightTextField.keyboardType = <span class="built_in">UIKeyboardTypeDecimalPad</span>;</span><br><span class="line"></span><br><span class="line">- (<span class="built_in">BOOL</span>)textField:(<span class="built_in">UITextField</span> *)textField shouldChangeCharactersInRange:(<span class="built_in">NSRange</span>)range replacementString:(<span class="built_in">NSString</span> *)string</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//删除处理</span></span><br><span class="line">    <span class="keyword">if</span> ([string isEqualToString:<span class="string">@""</span>]) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">YES</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//首位不能为.号</span></span><br><span class="line">    <span class="keyword">if</span> (range.location == <span class="number">0</span> &amp;&amp; [string isEqualToString:<span class="string">@"."</span>]) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">NO</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//判断只输出数字和.号</span></span><br><span class="line"><span class="comment">//    NSString *passWordRegex = @"[0-9\\.]";</span></span><br><span class="line"><span class="comment">//    NSPredicate *passWordPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",passWordRegex];</span></span><br><span class="line"><span class="comment">//    if (![passWordPredicate evaluateWithObject:string]) &#123;</span></span><br><span class="line"><span class="comment">//        return NO;</span></span><br><span class="line"><span class="comment">//    &#125;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//判断只输出数字和.号</span></span><br><span class="line">    <span class="keyword">if</span> (![<span class="string">@"0123456789."</span> rangeOfString:string].length) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">NO</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//逻辑处理</span></span><br><span class="line">    <span class="keyword">if</span> ([textField.text containsString:<span class="string">@"."</span>]) &#123;</span><br><span class="line">        <span class="keyword">if</span> ([string isEqualToString:<span class="string">@"."</span>]) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">NO</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">NSRange</span> subRange = [textField.text rangeOfString:<span class="string">@"."</span>];</span><br><span class="line">        <span class="keyword">if</span> (range.location - subRange.location &gt; <span class="number">2</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">NO</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//可在此处加小数点前面位数限制</span></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//可在此处加小数点前面位数限制</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">YES</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>#####B： 输出正整数<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">    rightTextField.keyboardType = UIKeyboardTypeNumberPad;</span><br><span class="line"></span><br><span class="line">- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)<span class="built_in">string</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> ([<span class="built_in">string</span> isEqualToString:@<span class="string">""</span>]) &#123;</span><br><span class="line"><span class="built_in">        return</span> YES;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">string</span>.<span class="built_in">length</span> != <span class="number">1</span>) &#123;</span><br><span class="line"><span class="built_in">        return</span> NO;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (![@<span class="string">"0123456789"</span> rangeOfString:<span class="built_in">string</span>].<span class="built_in">length</span>) &#123;</span><br><span class="line"><span class="built_in">        return</span> NO;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (textField.<span class="built_in">text</span>.<span class="built_in">length</span> == <span class="number">0</span>) &#123;</span><br><span class="line"><span class="built_in">        return</span> ![<span class="built_in">string</span> isEqualToString:@<span class="string">"0"</span>];</span><br><span class="line">    &#125;</span><br><span class="line"><span class="built_in">    return</span> YES;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://github.com/wangtaoios/images/blob/master/%E9%A1%B9%E7%9B%AEDemo%E5%9B%BE%E7%89%87/UITextField_00_0330.png?raw=true" alt="效果图"></p>
+<p><img src="https://github.com/wangtaoios/images/blob/master/%E9%A1%B9%E7%9B%AEDemo%E5%9B%BE%E7%89%87/UITextField_01_0330.png?raw=true" alt="效果图"></p>
+
+        </section>
+    </article>
     
-    UITextField输入正整数和两位小数
-</h1>
-
-
-
-                <div class="article-inner">
-
-                    <div class="article-entry" itemprop="articleBody">
-                        
-                        <p>#####A&#xFF1A; &#x8F93;&#x51FA;&#x5C0F;&#x6570;&#x70B9;&#x540E;&#x4E24;&#x4F4D;&#xFF0C;&#x5C0F;&#x6570;&#x70B9;&#x524D;&#x9762;&#x6CA1;&#x6709;&#x9650;&#x5236;<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">    rightTextField.keyboardType = <span class="built_in">UIKeyboardTypeDecimalPad</span>;</span><br><span class="line"></span><br><span class="line">- (<span class="built_in">BOOL</span>)textField:(<span class="built_in">UITextField</span> *)textField shouldChangeCharactersInRange:(<span class="built_in">NSRange</span>)range replacementString:(<span class="built_in">NSString</span> *)string</span><br><span class="line">{</span><br><span class="line">    <span class="comment">//&#x5220;&#x9664;&#x5904;&#x7406;</span></span><br><span class="line">    <span class="keyword">if</span> ([string isEqualToString:<span class="string">@&quot;&quot;</span>]) {</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">YES</span>;</span><br><span class="line">    }</span><br><span class="line">    <span class="comment">//&#x9996;&#x4F4D;&#x4E0D;&#x80FD;&#x4E3A;.&#x53F7;</span></span><br><span class="line">    <span class="keyword">if</span> (range.location == <span class="number">0</span> &amp;&amp; [string isEqualToString:<span class="string">@&quot;.&quot;</span>]) {</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">NO</span>;</span><br><span class="line">    }</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//&#x5224;&#x65AD;&#x53EA;&#x8F93;&#x51FA;&#x6570;&#x5B57;&#x548C;.&#x53F7;</span></span><br><span class="line"><span class="comment">//    NSString *passWordRegex = @&quot;[0-9\\.]&quot;;</span></span><br><span class="line"><span class="comment">//    NSPredicate *passWordPredicate = [NSPredicate predicateWithFormat:@&quot;SELF MATCHES %@&quot;,passWordRegex];</span></span><br><span class="line"><span class="comment">//    if (![passWordPredicate evaluateWithObject:string]) {</span></span><br><span class="line"><span class="comment">//        return NO;</span></span><br><span class="line"><span class="comment">//    }</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//&#x5224;&#x65AD;&#x53EA;&#x8F93;&#x51FA;&#x6570;&#x5B57;&#x548C;.&#x53F7;</span></span><br><span class="line">    <span class="keyword">if</span> (![<span class="string">@&quot;0123456789.&quot;</span> rangeOfString:string].length) {</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">NO</span>;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">//&#x903B;&#x8F91;&#x5904;&#x7406;</span></span><br><span class="line">    <span class="keyword">if</span> ([textField.text containsString:<span class="string">@&quot;.&quot;</span>]) {</span><br><span class="line">        <span class="keyword">if</span> ([string isEqualToString:<span class="string">@&quot;.&quot;</span>]) {</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">NO</span>;</span><br><span class="line">        }</span><br><span class="line">        <span class="built_in">NSRange</span> subRange = [textField.text rangeOfString:<span class="string">@&quot;.&quot;</span>];</span><br><span class="line">        <span class="keyword">if</span> (range.location - subRange.location &gt; <span class="number">2</span>) {</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">NO</span>;</span><br><span class="line">        }</span><br><span class="line">        <span class="comment">//&#x53EF;&#x5728;&#x6B64;&#x5904;&#x52A0;&#x5C0F;&#x6570;&#x70B9;&#x524D;&#x9762;&#x4F4D;&#x6570;&#x9650;&#x5236;</span></span><br><span class="line"></span><br><span class="line">    }</span><br><span class="line">    <span class="comment">//&#x53EF;&#x5728;&#x6B64;&#x5904;&#x52A0;&#x5C0F;&#x6570;&#x70B9;&#x524D;&#x9762;&#x4F4D;&#x6570;&#x9650;&#x5236;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">YES</span>;</span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
-<p>#####B&#xFF1A; &#x8F93;&#x51FA;&#x6B63;&#x6574;&#x6570;<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">    rightTextField.keyboardType = UIKeyboardTypeNumberPad;</span><br><span class="line"></span><br><span class="line">- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)<span class="built_in">string</span></span><br><span class="line">{</span><br><span class="line">    <span class="keyword">if</span> ([<span class="built_in">string</span> isEqualToString:@<span class="string">&quot;&quot;</span>]) {</span><br><span class="line"><span class="built_in">        return</span> YES;</span><br><span class="line">    }</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">string</span>.<span class="built_in">length</span> != <span class="number">1</span>) {</span><br><span class="line"><span class="built_in">        return</span> NO;</span><br><span class="line">    }</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (![@<span class="string">&quot;0123456789&quot;</span> rangeOfString:<span class="built_in">string</span>].<span class="built_in">length</span>) {</span><br><span class="line"><span class="built_in">        return</span> NO;</span><br><span class="line">    }</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (textField.<span class="built_in">text</span>.<span class="built_in">length</span> == <span class="number">0</span>) {</span><br><span class="line"><span class="built_in">        return</span> ![<span class="built_in">string</span> isEqualToString:@<span class="string">&quot;0&quot;</span>];</span><br><span class="line">    }</span><br><span class="line"><span class="built_in">    return</span> YES;</span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
-<p><a class="magnific-img" href="https://github.com/wangtaoios/images/blob/master/%E9%A1%B9%E7%9B%AEDemo%E5%9B%BE%E7%89%87/UITextField_00_0330.png?raw=true"><img src="https://github.com/wangtaoios/images/blob/master/%E9%A1%B9%E7%9B%AEDemo%E5%9B%BE%E7%89%87/UITextField_00_0330.png?raw=true" alt="&#x6548;&#x679C;&#x56FE;" class="ui centered image"></a></p>
-<p><a class="magnific-img" href="https://github.com/wangtaoios/images/blob/master/%E9%A1%B9%E7%9B%AEDemo%E5%9B%BE%E7%89%87/UITextField_01_0330.png?raw=true"><img src="https://github.com/wangtaoios/images/blob/master/%E9%A1%B9%E7%9B%AEDemo%E5%9B%BE%E7%89%87/UITextField_01_0330.png?raw=true" alt="&#x6548;&#x679C;&#x56FE;" class="ui centered image"></a></p>
-
-                        
-                    </div>
-
-                    
-                    
-                    
-
-                    <div class="description post-description">
-    <span class="post-description-item">
-        <time datetime="2018-03-30T06:53:26.000Z" itemprop="datePublished">2018-03-30</time>
-
-    </span>
-    <span class="post-description-item">
         
-
-    <span>
-        <i class="tags icon"></i>
-    </span>
-
+  </div>
+  <aside>
     
-    <span class="ui tiny label">
-        <a href="/tags/UITextField/">UITextField</a>
-    </span>
+  </aside>
+</main>
 
-    
 
-    </span>
-</div>
 
-                </div>
-                
-                <div id="pagination" class="nav-web ui text container pagination">
-
-    <div class="ui stackable two column divided grid container">
-        <div class="row">
-            <div class="column nav-left">
-                
-
-                <a href="/iOS/2018/03/30/iOS开发/去掉json字符串中的\n \r \t.html" class="ui tiny button">
-
-                    <i class="angle left icon"></i>
-                    
-                    去掉json字符串中的\n，\r，\t
-                    
-
-                </a>
-
-                
-            </div>
-            <div class="column nav-right">
-                
-
-                <a href="/军事/2018/03/30/军事/2016年底中日军机对抗.html" class="ui tiny button">
-                    
-                    2016年底中日军机对抗
-                    
-                    <i class="angle right icon"></i></a>
-                
-            </div>
-        </div>
+  <footer>
+  <div class="copyright">
+    <div>
+      &copy; 2018 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a>&nbsp
     </div>
-
-</div>
-                
-            </div>
-
-            
-            <div class="three wide computer three wide tablet column">
-
-                <div class="ui sticky article-toc" id="article-toc">
-                    <!-- toc -->
-                    
-                </div>
-
-            </div>
-            
-
-        </div>
+    <div>
+      Theme by <a href="https://github.com/lewis-geek/hexo-theme-Aath" target="_blank">Aath</a>
     </div>
-</div>
+  </div>
+</footer>
 
 
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
-        </div>
-        <div class="ui vertical footer segment">
-    <div class="ui center aligned container">
-        <div class="ui inverted section divider"></div>
-        &copy; 2018 <a href="/">wangtao</a>,
-        Powered by <a href="https://github.com/henryhuang/hexo-theme-aloha" target="_blank">Aloha</a> and <a
-                href="http://hexo.io/" target="_blank">Hexo</a>.
-    </div>
-</div>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script src="/lib/in-view.min.js"></script>
+<script src="/lib/lodash.min.js"></script>
+<script>
+  var isDown = true
+  var oldY = 0
+  inView.offset(50)
 
-    </div>
+  document.body.addEventListener('touchstart', function(){});
+  
+  window.addEventListener('scroll', _.throttle(e => {
+    var currentY = window.scrollY
+    if((oldY - currentY) < 0) {
+      isDown = true
+    } else {
+      isDown = false
+    }
+    oldY = currentY
+  }, 250))
 
+  $("article img").each(function() {
+      var strA = "<a data-fancybox='gallery' href='" + this.src + "'></a>";
+      $(this).wrapAll(strA);
+  });
 
+  $('.toc-link').each(function() {
+      var href = $(this).attr("href");
+      
+      inView(href).on('exit', () => {
+        if (isDown) {
+          handleActive(href)
+        }
+      })
 
+      inView(href).on('enter', () => {
+        if (!isDown) {
+          handleActive(href)
+        }
+      })
 
-<!-- scripts list from theme config.yml -->
+      this.onclick = function(e) {
+        var pos = $(href).offset().top - 10;
+        $("html,body").animate({scrollTop: pos}, 300);
+        setTimeout(() => {
+          handleActive(href)
+        }, 350)
+        return false
+      }
+  })
 
-<script src="//cdn.bootcss.com/jquery/3.1.0/jquery.min.js"></script>
-
-<script src="//cdn.bootcss.com/semantic-ui/2.2.4/semantic.min.js"></script>
-
-<script src="//cdn.bootcss.com/algoliasearch/3.18.1/algoliasearch.min.js"></script>
-
-<script src="//cdn.bootcss.com/algoliasearch-helper-js/2.13.0/algoliasearch.helper.min.js"></script>
-
-<script src="/js/semantic-ui-algolia.js"></script>
-
-<script src="/js/aloha-events.js"></script>
-
+  function handleActive(href) {
+    document.querySelectorAll('.toc-link').forEach(elm => {
+      elm.classList.remove('active')
+    })
+    document.querySelector(".toc [href='"+ href +"']").classList.add('active')
+  }
+</script>
+<script src="/lib/jquery.fancybox.min.js"></script>
 
 
 </body>

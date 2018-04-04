@@ -1,354 +1,250 @@
-
-
 <!DOCTYPE html>
-<html lang="zh-Hans">
-<head prefix="og: http://ogp.me/ns#">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-    <meta name="description" content="技术交流">
-    <title>NTFS read-write | wt</title>
-
-    <!-- Open Graph -->
-    <meta name="description" content="********************************************************************     1:&amp;gt;&amp;gt;&amp;gt;  sudo mount | grep ntfs  &amp;lt;&amp;lt;&amp;lt;     2:&amp;#x4F1A;&amp;#x5F97;&amp;#x5230;&amp;#x5982;&amp;#x4E0B;&amp;#x8DEF;&amp;#x5F84;&amp;#xFF0C;&amp;#x7">
-<meta name="keywords" content="NTFS">
-<meta property="og:type" content="article">
-<meta property="og:title" content="NTFS read-write">
-<meta property="og:url" content="https://weibo.com/wangtaoworld/uncategorized/2014/11/20/Mac/NTFS-read-write.html">
-<meta property="og:site_name" content="wt">
-<meta property="og:description" content="********************************************************************     1:&amp;gt;&amp;gt;&amp;gt;  sudo mount | grep ntfs  &amp;lt;&amp;lt;&amp;lt;     2:&amp;#x4F1A;&amp;#x5F97;&amp;#x5230;&amp;#x5982;&amp;#x4E0B;&amp;#x8DEF;&amp;#x5F84;&amp;#xFF0C;&amp;#x7">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-20T08:26:21.000Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="NTFS read-write">
-<meta name="twitter:description" content="********************************************************************     1:&amp;gt;&amp;gt;&amp;gt;  sudo mount | grep ntfs  &amp;lt;&amp;lt;&amp;lt;     2:&amp;#x4F1A;&amp;#x5F97;&amp;#x5230;&amp;#x5982;&amp;#x4E0B;&amp;#x8DEF;&amp;#x5F84;&amp;#xFF0C;&amp;#x7">
-
-    <script type="application/ld+json">
-{
-  "@context": "http://schema.org",
-  "@type": "Person",
-  "email": "mailto:",
-  "image": "",
-  "name": "wangtao",
-  "url": "https://weibo.com/wangtaoworld"
-}
-</script>
-    <script>
-    var algoliaEnabled = false;
+<html lang="zh-CN">
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="技术交流">
+  <meta name="keywords" content="">
+  
+    <link rel="icon" href="">
+  
     
-</script>
-
-    
-
-    
-    
-        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-    
-    
-    
-        <!-- stylesheets list from config.yml -->
-        
-        <link rel="stylesheet" href="/css/aloha.css">
-        
-        <link rel="stylesheet" href="//cdn.bootcss.com/semantic-ui/2.2.4/semantic.min.css">
-        
-        <link rel="stylesheet" href="//cdn.bootcss.com/magnific-popup.js/1.1.0/magnific-popup.min.css">
-        
-    
-
+  <title>NTFS read-write | wt</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/lib/jquery.fancybox.min.css">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-<body id="body" style="margin-bottom: 0;" class="pushable">
 
-    <div class="ui top fixed menu">
-        <a class="item" id="menu-icon"><i class="sidebar icon"></i></a>
-    </div>
-
-    <div id="menu-sidebar" class="ui left vertical sidebar menu">
-
-    <div id="sidebar-top">
-        <div class="content">
-            <h3>wt</h3>
-        </div>
-    </div>
-    <div class="ui container sidebar-card">
-    <div class="ui people shape content">
-        <div class="active side">
-            <div class="ui card">
-                <div class="image">
-                    <img class="ui medium bordered image" src="/images/avatar.jpg">
-                </div>
-                <div class="content">
-                    <a class="header">wangtao</a>
-                    
-                </div>
-                <div class="extra content">
-                    <div class="ui list">
-                        
-                        
-                    </div>
-
-                </div>
-                <div class="extra content">
-                    <div class="ui list">
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-</div>
-
-    
-    
-
-    
-
-    
-    <a href="/index.html" class="item" >
-        <i class="home icon"></i>
-        HOME
+<body>
+  <header>
+  <div class="header-container">
+    <a class='logo' href="/">
+      <span>wt</span>
     </a>
+    <ul class="right-header">
+      
+        <li class="nav-item">
+          
+            <a href="/" class="item-link">首页</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/about" class="item-link">关于</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/archives" class="item-link">归档</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/tags" class="item-link">标签</a>
+          
+        </li>
+      
+    </ul>
+  </div>
+</header>
 
-    
-
-    
-</div>
-
-    <div class="pusher body-content">
-        <div id="content" class="ui main container">
-            <!--<div class="ui one column grid">-->
-                <!--<div class="column">-->
-                    <!--<div class="ui main container">-->
-                        <div id="post-Mac/NTFS-read-write" class="ui main container article-type-post">
-
-    
-
-    <div class="ui divided grid">
-
-        <div class="two column row" id="article-content">
-
-            <div class="thirteen wide computer thirteen wide tablet sixteen wide mobile column">
+  <main id='post'>
+  <div class="content">
+    <article>
+        <section class="content markdown-body">
+          <h1>NTFS read-write</h1>
+          <div class='post-meta'>
+            <i class="fa fa-calendar" aria-hidden="true"></i> <time>2014年11月20日</time>
+            
+            
+              | 
+                  <i class="fa fa-tag" aria-hidden="true"></i>
                 
-
-<h1 class="ui header">
-    
-    NTFS read-write
-</h1>
+               
+  <a href="/tags/#NTFS" class='tag'>NTFS</a>
 
 
-
-                <div class="article-inner">
-
-                    <div class="article-entry" itemprop="articleBody">
-                        
-                        <pre><code>********************************************************************
+            
+          </div>
+          <pre><code>********************************************************************
     1:&gt;&gt;&gt;  sudo mount | grep ntfs  &lt;&lt;&lt;
-    2:&#x4F1A;&#x5F97;&#x5230;&#x5982;&#x4E0B;&#x8DEF;&#x5F84;&#xFF0C;&#x7B2C;3&#x6761;&#x7684;&#x547D;&#x4EE4;&#x6839;&#x636E;&#x8BE5;&#x8DEF;&#x5F84;&#x800C;&#x53D8;&#x5316;
-    &quot;/dev/disk1s1 on /Volumes/&#x534A;&#x7247;&#x6B8B;&#x67AB; (ntfs, local, nodev, nosuid, read-only, noowners)&quot;
+    2:会得到如下路径，第3条的命令根据该路径而变化
+    &quot;/dev/disk1s1 on /Volumes/半片残枫 (ntfs, local, nodev, nosuid, read-only, noowners)&quot;
     3:&gt;&gt;&gt;  sudo umount /dev/disk1s1  &lt;&lt;&lt;
     4:&gt;&gt;&gt;  sudo mkdir -p /Volumes/wto  &lt;&lt;&lt;
     5:&gt;&gt;&gt;  sudo mount_ntfs -o rw,auto,nobrowse,noowners,noatime /dev/disk1s1 /Volumes/wto  &lt;&lt;&lt;
-    //&#x7F51;&#x4E0A;&#x4EE3;&#x7801;    &gt;&gt;&gt;  sudo mount_ntfs -o rw,auto,nobrowse,noowners,noatime  /dev/disk0s1 /Volumes/Win7boot
+    //网上代码    &gt;&gt;&gt;  sudo mount_ntfs -o rw,auto,nobrowse,noowners,noatime  /dev/disk0s1 /Volumes/Win7boot
        &lt;&lt;&lt;
     6:&gt;&gt;&gt;  cd /Volumes  &lt;&lt;&lt;
     7:&gt;&gt;&gt;  open .  &lt;&lt;&lt;
-    8:&#x63A8;&#x51FA;&#x786C;&#x76D8;&#x547D;&#x4EE4;
+    8:推出硬盘命令
     &gt;&gt;&gt;  sudo umount /Volumes/wto  &lt;&lt;&lt;
-    &#x6216;&#x8005;&#x5728;Finder&#x4E2D;&#x53F3;&#x952E;&#x63A8;&#x51FA;
-    *****&#x6B64;&#x65B9;&#x6CD5;&#x9700;&#x8981;&#x6BCF;&#x6B21;&#x63D2;&#x5165;&#x786C;&#x76D8;&#x65F6;&#x6267;&#x884C;&#x8BE5;&#x90E8;&#x5206;&#x547D;&#x4EE4;
+    或者在Finder中右键推出
+    *****此方法需要每次插入硬盘时执行该部分命令
 ********************************************************************
     http://www.memacx.com/forum.php?mod=viewthread&amp;tid=5482
     //
-    &#x5728;root&#x4E0B;&#x4F7F;&#x7528;(&#x5EFA;&#x8BAE;&#x4F7F;&#x7528;&#x6B64;&#x6761;)
+    在root下使用(建议使用此条)
     &gt;&gt;&gt;   vi ~/.bashrc   &lt;&lt;&lt;
-    &#x7F16;&#x8F91;&#x6DFB;&#x52A0;&#xFF1A; export EDITOR=vim
-    &#x7F51;&#x4E0A;&gt;&gt;&gt;  echo export EDITOR=/usr/bin/vim &gt;&gt; ~/.bashrc
-    &#x6216;&#x8005;
-    //&#x76F4;&#x63A5;&#x6267;&#x884C;
+    编辑添加： export EDITOR=vim
+    网上&gt;&gt;&gt;  echo export EDITOR=/usr/bin/vim &gt;&gt; ~/.bashrc
+    或者
+    //直接执行
     &gt;&gt;&gt;  export EDITOR=vim
-    &#x6216;&#x8005;
-    //&#x6267;&#x884C;
+    或者
+    //执行
     &gt;&gt;&gt;  EDITOR=vim  &lt;&lt;&lt;
     &gt;&gt;&gt;  export EDITOR  &lt;&lt;&lt;
 
-&#x4FDD;&#x5B58;&#x540E;&#x5373;&#x53EF;&#x548C;vim&#x7F16;&#x8BD1;&#x5668;&#x4E00;&#x6837;&#x7F16;&#x8F91; /etc/fstab &#x4E0B;&#x7684;&#x5185;&#x5BB9;&#xFF1A;vim /etc/fstab,
-&#x4E5F;&#x5C31;&#x662F;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x6267;&#x884C; &gt;&gt;&gt;&gt;   vifs  &lt;&lt;&lt;&#x547D;&#x4EE4;
-&#x7136;&#x540E;&#x76F4;&#x63A5;&#x50CF;&#x5728;vim&#x4E2D;&#x4E00;&#x6837;&#x76F4;&#x63A5;&#x7F16;&#x8F91;&#x6DFB;&#x52A0;
+保存后即可和vim编译器一样编辑 /etc/fstab 下的内容：vim /etc/fstab,
+也就是可以直接执行 &gt;&gt;&gt;&gt;   vifs  &lt;&lt;&lt;命令
+然后直接像在vim中一样直接编辑添加
 //
-LABEL=&#x534A;&#x7247;&#x6B8B;&#x67AB; none ntfs rw,nobrowse,noatime,nosuid
-//&#x6216;
-LABEL=&#x534A;&#x7247;&#x6B8B;&#x67AB; none ntfs rw,nobrowse,noowners,noatime,nosuid
+LABEL=半片残枫 none ntfs rw,nobrowse,noatime,nosuid
+//或
+LABEL=半片残枫 none ntfs rw,nobrowse,noowners,noatime,nosuid
 //
-******&#x6B64;&#x65B9;&#x6CD5;&#x5373;&#x53EF;&#x5728;&#x4EE5;&#x540E;&#x6BCF;&#x6B21;&#x5F00;&#x673A;&#x65F6;&#x81EA;&#x52A8;&#x6267;&#x884C;&#x8BE5;&#x547D;&#x4EE4;&#xFF0C;&#x81EA;&#x52A8;&#x4F1A;&#x6302;&#x8F7D;NTFS&#x683C;&#x5F0F;&#x786C;&#x76D8;&#x534A;&#x7247;&#x6B8B;&#x67AB;&#x4E3A;&#x8BFB;&#x5199;&#x683C;&#x5F0F;&#x7684;
+******此方法即可在以后每次开机时自动执行该命令，自动会挂载NTFS格式硬盘半片残枫为读写格式的
 ********************************************************************
     /////////////////////////////////////////////////////////////
-    &#x5C24;&#x660E;&#x5927;&#x725B;&#x7ED9;&#x7684;&#x5EFA;&#x8BAE;&#xFF1A;
-    //1&#xFF1A;
-    &#x5148;&#x6267;&#x884C;
+    尤明大牛给的建议：
+    //1：
+    先执行
     &gt;&gt;&gt;   sudo mount_ntfs -o rw,auto.nobrowse,noowners,noatime /dev/disk1s1 /Volumes/disk   &lt;&lt;&lt;
-    //&#x5176;&#x4E2D;disk&#x4E3A;&#x81EA;&#x5DF1;&#x5728;  /Volmes/  &#x4E0B;&#x521B;&#x5EFA;&#x7684;&#x6587;&#x4EF6;&#xFF0C;
-    //disk1s1&#x4E3A;&#x6267;&#x884C;&gt;&gt;&gt;  sudo mount | grep ntfs  &lt;&lt;&lt;&#x540E;&#x67E5;&#x770B;&#x5230;&#x7684;&#x6587;&#x4EF6;
-    //&#x6B64;&#x65B9;&#x6CD5;&#x9700;&#x8981;&#x6BCF;&#x6B21;&#x63D2;&#x5165;&#x786C;&#x76D8;&#x65F6;&#x90FD;&#x9700;&#x8981;&#x6267;&#x884C;&#x8BE5;&#x90E8;&#x5206;&#x547D;&#x4EE4;
-    //2&#xFF1A;
-    &#x4E0D;&#x884C;&#x7684;&#x8BDD;&#x5C31;&#x5728;   /etc/fstab &#x4E0B;
+    //其中disk为自己在  /Volmes/  下创建的文件，
+    //disk1s1为执行&gt;&gt;&gt;  sudo mount | grep ntfs  &lt;&lt;&lt;后查看到的文件
+    //此方法需要每次插入硬盘时都需要执行该部分命令
+    //2：
+    不行的话就在   /etc/fstab 下
     vi fsatb
     //
-    &#x6DFB;&#x52A0;
-    LABEL=&#x534A;&#x7247;&#x6B8B;&#x67AB; none ntfs rw
+    添加
+    LABEL=半片残枫 none ntfs rw
     //
-    &#x6B64;&#x65B9;&#x6CD5;&#x5373;&#x53EF;&#x6BCF;&#x6B21;&#x5F00;&#x673A;&#x81EA;&#x52A8;&#x5C06;NTFS&#x683C;&#x5F0F;&#x7684;&#x786C;&#x76D8;&#x6302;&#x8F7D;&#x4E3A;&#x8BFB;&#x5199;&#x683C;&#x5F0F;&#x7684;
+    此方法即可每次开机自动将NTFS格式的硬盘挂载为读写格式的
     ///////////////////////////////////////////////////////////////
 **********************************************************************
-    //&#x94FE;&#x63A5;
-    &#x4E00;&#x822C;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;ubuntu&#x7EC8;&#x7AEF;&#x4E0B;&#x7684;&#x9ED8;&#x8BA4;&#x7F16;&#x8F91;&#x5668;&#x4E3A;nano&#xFF0C;&#x6211;&#x4EEC;&#x76F4;&#x63A5;&#x7F16;&#x8F91;&#x67D0;&#x4E2A;&#x6587;&#x4EF6;&#xFF0C;&#x9ED8;&#x8BA4;&#x5C31;&#x4F1A;&#x6253;&#x5F00;nano&#x3002;&#x6BD4;&#x5982;&#x6211;&#x4EEC;&#x8F93;&#x5165;&#x201C;crontab -e&#x201C;&#x7684;&#x65F6;&#x5019;&#x9ED8;&#x8BA4;&#x4F1A;&#x6253;&#x5F00;nano&#x7F16;&#x8F91;&#x5668;&#x3002;
-    &#x5BF9;&#x4E8E;&#x719F;&#x6089;VIM&#x7684;&#x670B;&#x53CB;&#x6765;&#x8BF4;&#xFF0C;&#x90FD;&#x5E0C;&#x671B;&#x9ED8;&#x8BA4;&#x7F16;&#x8F91;&#x5668;&#x80FD;&#x4F7F;&#x7528;vim&#xFF0C;&#x90A3;&#x4E48;&#x6211;&#x4EEC;&#x5C31;&#x9700;&#x8981;&#x4FEE;&#x6539;ubuntu&#x7684;&#x9ED8;&#x8BA4;&#x7F16;&#x8F91;&#x5668;&#x3002;
-    &#x4FEE;&#x6539;ubuntu&#x9ED8;&#x8BA4;&#x7F16;&#x8F91;&#x5668;&#x6709;&#x4E09;&#x79CD;&#x65B9;&#x6CD5;&#xFF1A;
-    &#x4E00;&#x3001;&#x76F4;&#x63A5;&#x5728;&#x7EC8;&#x7AEF;&#x8F93;&#x5165;&#xFF1A;
+    //链接
+    一般情况下，ubuntu终端下的默认编辑器为nano，我们直接编辑某个文件，默认就会打开nano。比如我们输入“crontab -e“的时候默认会打开nano编辑器。
+    对于熟悉VIM的朋友来说，都希望默认编辑器能使用vim，那么我们就需要修改ubuntu的默认编辑器。
+    修改ubuntu默认编辑器有三种方法：
+    一、直接在终端输入：
 
 echo export EDITOR=/usr/bin/vim &gt;&gt; ~/.bashrc
-&#x4E8C;&#x3001;&#x4F7F;&#x7528;&#x7CFB;&#x7EDF;&#x7BA1;&#x7406;&#x5DE5;&#x5177;update-alternatives&#x6765;&#x4FEE;&#x6539;
-&#x5728;&#x7EC8;&#x7AEF;&#x8F93;&#x5165;&#xFF1A;
+二、使用系统管理工具update-alternatives来修改
+在终端输入：
 update-alternatives --config editor
-&#x7136;&#x540E;&#x9009;&#x62E9;vim.basic&#x8FD9;&#x9879;&#x5373;&#x53EF;
-&#x4E09;&#x3001;&#x5982;&#x679C;&#x7CFB;&#x7EDF;&#x4E2D;&#x53EA;&#x5269;&#x4E0B;nano&#x548C;vim&#x4E24;&#x4E2A;&#x7F16;&#x8F91;&#x5668;&#xFF0C;&#x8FD9;&#x4E2A;&#x65F6;&#x5019;&#x6211;&#x4EEC;&#x5982;&#x679C;&#x5B8C;&#x5168;&#x5220;&#x9664;nano&#xFF0C;&#x90A3;&#x4E48;&#x7CFB;&#x7EDF;&#x4F1A;&#x9ED8;&#x8BA4;&#x9009;&#x62E9;vim&#x4E3A;&#x9ED8;&#x8BA4;&#x7F16;&#x8F91;&#x5668;
-&#x5728;&#x7EC8;&#x7AEF;&#x8F93;&#x5165;&#x5220;&#x9664;nano&#x7F16;&#x8F91;&#x5668;&#x7684;&#x547D;&#x4EE4;&#xFF1A;
+然后选择vim.basic这项即可
+三、如果系统中只剩下nano和vim两个编辑器，这个时候我们如果完全删除nano，那么系统会默认选择vim为默认编辑器
+在终端输入删除nano编辑器的命令：
 
 sudo apt-get remove nano
 
-&#x4FEE;&#x6539;&#x5B8C;&#x6210;&#x4E4B;&#x540E;&#x6211;&#x4EEC;&#x8F93;&#x5165;&#xFF1A;
+修改完成之后我们输入：
 
 crontab -e
-&#x770B;&#x4E00;&#x770B;&#x51FA;&#x73B0;&#x7684;&#x662F;&#x4E0D;&#x662F;&#x5927;&#x5BB6;&#x559C;&#x6B22;&#x7684;vim&#x7F16;&#x8F91;&#x5668;&#x5462;&#x3002;
+看一看出现的是不是大家喜欢的vim编辑器呢。
 
 
-&#x6539;&#x53D8;&#x9ED8;&#x8BA4;&#x7684;&#x7A0B;&#x5E8F;&#x6765;&#x8FD0;&#x884C;
+改变默认的程序来运行
 
-&#x6BD4;&#x5982;&#x8BF4;&#xFF0C;&#x60F3;&#x7ED9;PDF&#x6587;&#x4EF6;&#x6362;&#x4E2A;&#x9ED8;&#x8BA4;&#x7684;&#x9605;&#x8BFB;&#x5DE5;&#x5177;&#xFF0C;&#x600E;&#x4E48;&#x5F04;&#x5462;&#xFF1F;
-&#x3000;&#x3000;&#x968F;&#x4FBF;&#x627E;&#x4E2A;PDF&#x6587;&#x4EF6;&#xFF0C;&#x53F3;&#x51FB;-&gt;&#x4F7F;&#x7528;&#x5176;&#x5B83;&#x7A0B;&#x5E8F;&#x6253;&#x5F00;&#xFF0C;&#x8FD9;&#x6837;&#x662F;&#x53EF;&#x4EE5;&#x9009;&#x62E9;&#x4E0D;&#x540C;&#x7684;&#x9605;&#x8BFB;&#x5668;&#xFF0C;&#x53EF;&#x662F;&#x5982;&#x4F55;&#x6307;&#x5B9A;&#x4E3A;&#x9ED8;&#x8BA4;&#x7684;&#x9605;&#x8BFB;&#x5668;&#x5462;&#xFF1F;
-&#x3000;&#x3000;ubuntu&#x4E2D;&#x6709;&#x4E24;&#x4E2A;&#x6587;&#x4EF6;&#xFF0C;&#x8DDF;&#x6587;&#x4EF6;&#x7684;&#x9ED8;&#x8BA4;&#x6253;&#x5F00;&#x65B9;&#x5F0F;&#x6709;&#x5173;&#xFF1A;
-&#x3000;&#x3000;1./etc/gnome/defaults.list &#x4FDD;&#x5B58;&#x4E86;&#x5168;&#x5C40;&#x7684;&#x6253;&#x5F00;&#x65B9;&#x5F0F;
-&#x3000;&#x3000;2.~/.local/share/applications/mimeapps.list &#x4FDD;&#x5B58;&#x4E86;&#x4E2A;&#x4EBA;&#x7684;&#x6253;&#x5F00;&#x65B9;&#x5F0F;
+比如说，想给PDF文件换个默认的阅读工具，怎么弄呢？
+　　随便找个PDF文件，右击-&gt;使用其它程序打开，这样是可以选择不同的阅读器，可是如何指定为默认的阅读器呢？
+　　ubuntu中有两个文件，跟文件的默认打开方式有关：
+　　1./etc/gnome/defaults.list 保存了全局的打开方式
+　　2.~/.local/share/applications/mimeapps.list 保存了个人的打开方式
 
-    &#x5F53;&#x4E24;&#x7740;&#x6709;&#x51B2;&#x7A81;&#xFF0C;&#x5219;&#x4F18;&#x5148;&#x91C7;&#x7528;&#x5C40;&#x90E8;&#x7684;&#x4E2A;&#x4EBA;&#x8BBE;&#x7F6E;&#x3002;&#x4E3E;&#x4E2A;&#x4F8B;&#x5B50;&#xFF1A;
-&#x3000;&#x3000;application/pdf=Foxit-Reader.desktop;
-    &#x8FD9;&#x6837;&#xFF0C;&#x7CFB;&#x7EDF;&#x5C31;&#x9ED8;&#x8BA4;&#x4F7F;&#x7528;Foxit Reader&#x4F5C;&#x4E3A;PDF&#x9ED8;&#x8BA4;&#x7684;&#x9605;&#x8BFB;&#x5668;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x7CFB;&#x7EDF;&#x81EA;&#x5E26;&#x7684;evince&#x3002;&#x6CE8;&#x610F;&#x683C;&#x5F0F;&#xFF0C;&#x6587;&#x4EF6;&#x540D;&#x8981;&#x5199;&#x5BF9;&#xFF0C;&#x540E;&#x9762;&#x6709;&#x5206;&#x53F7;&#x3002;
-&#x3000;&#x3000;&#x6587;&#x4EF6;&#x540D;&#x600E;&#x4E48;&#x5199;&#x5462;&#xFF1F;&#x5176;&#x5B9E;&#xFF0C;&#x901A;&#x8FC7;&#x201C;&#x53F3;&#x51FB;-&gt;&#x4F7F;&#x7528;&#x5176;&#x5B83;&#x7A0B;&#x5E8F;&#x6253;&#x5F00;&#x201D;&#xFF0C;&#x5C31;&#x4F1A;&#x5728;mimeapps.list&#xFF0C;&#x4EA7;&#x751F;&#x4E00;&#x6761;&#x8BB0;&#x5F55;&#xFF0C;&#x8BE5;&#x8BB0;&#x5F55;&#x5C31;&#x4F1A;&#x663E;&#x793A;&#x4F60;&#x9009;&#x4E2D;&#x7A0B;&#x5E8F;&#x7684;&#x6587;&#x4EF6;&#x540D;&#xFF0C;&#x8FD9;&#x4E0B;&#x8BE5;&#x77E5;&#x9053;&#x600E;&#x4E48;&#x505A;&#x4E86;&#x5427;
+    当两着有冲突，则优先采用局部的个人设置。举个例子：
+　　application/pdf=Foxit-Reader.desktop;
+    这样，系统就默认使用Foxit Reader作为PDF默认的阅读器，而不是系统自带的evince。注意格式，文件名要写对，后面有分号。
+　　文件名怎么写呢？其实，通过“右击-&gt;使用其它程序打开”，就会在mimeapps.list，产生一条记录，该记录就会显示你选中程序的文件名，这下该知道怎么做了吧
 </code></pre>
-                        
-                    </div>
-
-                    
-                    
-                    
-
-                    <div class="description post-description">
-    <span class="post-description-item">
-        <time datetime="2014-11-20T01:06:21.000Z" itemprop="datePublished">2014-11-20</time>
-
-    </span>
-    <span class="post-description-item">
+        </section>
+    </article>
+    
         
-
-    <span>
-        <i class="tags icon"></i>
-    </span>
-
+  </div>
+  <aside>
     
-    <span class="ui tiny label">
-        <a href="/tags/NTFS/">NTFS</a>
-    </span>
+  </aside>
+</main>
 
-    
 
-    </span>
-</div>
 
-                </div>
-                
-                <div id="pagination" class="nav-web ui text container pagination">
-
-    <div class="ui stackable two column divided grid container">
-        <div class="row">
-            <div class="column nav-left">
-                
-
-                <a href="/uncategorized/2015/01/17/iOS开发/viewController.html" class="ui tiny button">
-
-                    <i class="angle left icon"></i>
-                    
-                    viewController
-                    
-
-                </a>
-
-                
-            </div>
-            <div class="column nav-right">
-                
-
-                <a href="/iOS/2014/11/10/网址.html" class="ui tiny button">
-                    
-                    技术网址
-                    
-                    <i class="angle right icon"></i></a>
-                
-            </div>
-        </div>
+  <footer>
+  <div class="copyright">
+    <div>
+      &copy; 2018 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a>&nbsp
     </div>
-
-</div>
-                
-            </div>
-
-            
-            <div class="three wide computer three wide tablet column">
-
-                <div class="ui sticky article-toc" id="article-toc">
-                    <!-- toc -->
-                    
-                </div>
-
-            </div>
-            
-
-        </div>
+    <div>
+      Theme by <a href="https://github.com/lewis-geek/hexo-theme-Aath" target="_blank">Aath</a>
     </div>
-</div>
+  </div>
+</footer>
 
 
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
-        </div>
-        <div class="ui vertical footer segment">
-    <div class="ui center aligned container">
-        <div class="ui inverted section divider"></div>
-        &copy; 2018 <a href="/">wangtao</a>,
-        Powered by <a href="https://github.com/henryhuang/hexo-theme-aloha" target="_blank">Aloha</a> and <a
-                href="http://hexo.io/" target="_blank">Hexo</a>.
-    </div>
-</div>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script src="/lib/in-view.min.js"></script>
+<script src="/lib/lodash.min.js"></script>
+<script>
+  var isDown = true
+  var oldY = 0
+  inView.offset(50)
 
-    </div>
+  document.body.addEventListener('touchstart', function(){});
+  
+  window.addEventListener('scroll', _.throttle(e => {
+    var currentY = window.scrollY
+    if((oldY - currentY) < 0) {
+      isDown = true
+    } else {
+      isDown = false
+    }
+    oldY = currentY
+  }, 250))
 
+  $("article img").each(function() {
+      var strA = "<a data-fancybox='gallery' href='" + this.src + "'></a>";
+      $(this).wrapAll(strA);
+  });
 
+  $('.toc-link').each(function() {
+      var href = $(this).attr("href");
+      
+      inView(href).on('exit', () => {
+        if (isDown) {
+          handleActive(href)
+        }
+      })
 
+      inView(href).on('enter', () => {
+        if (!isDown) {
+          handleActive(href)
+        }
+      })
 
-<!-- scripts list from theme config.yml -->
+      this.onclick = function(e) {
+        var pos = $(href).offset().top - 10;
+        $("html,body").animate({scrollTop: pos}, 300);
+        setTimeout(() => {
+          handleActive(href)
+        }, 350)
+        return false
+      }
+  })
 
-<script src="//cdn.bootcss.com/jquery/3.1.0/jquery.min.js"></script>
-
-<script src="//cdn.bootcss.com/semantic-ui/2.2.4/semantic.min.js"></script>
-
-<script src="//cdn.bootcss.com/algoliasearch/3.18.1/algoliasearch.min.js"></script>
-
-<script src="//cdn.bootcss.com/algoliasearch-helper-js/2.13.0/algoliasearch.helper.min.js"></script>
-
-<script src="/js/semantic-ui-algolia.js"></script>
-
-<script src="/js/aloha-events.js"></script>
-
+  function handleActive(href) {
+    document.querySelectorAll('.toc-link').forEach(elm => {
+      elm.classList.remove('active')
+    })
+    document.querySelector(".toc [href='"+ href +"']").classList.add('active')
+  }
+</script>
+<script src="/lib/jquery.fancybox.min.js"></script>
 
 
 </body>

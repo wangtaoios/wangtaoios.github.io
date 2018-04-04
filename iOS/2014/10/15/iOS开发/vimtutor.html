@@ -1,335 +1,246 @@
-
-
 <!DOCTYPE html>
-<html lang="zh-Hans">
-<head prefix="og: http://ogp.me/ns#">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-    <meta name="description" content="技术交流">
-    <title>vim教程 | wt</title>
-
-    <!-- Open Graph -->
-    <meta name="description" content="=============================================================================== =      &amp;#x6B61;     &amp;#x8FCE;     &amp;#x95B1;     &amp;#x8B80;   &amp;#x300A; V I M  &amp;#x6559;  &amp;#x7A0B; &amp;#x300B;   &amp;#x2500;&amp;#x2500;">
-<meta name="keywords" content="文档">
-<meta property="og:type" content="article">
-<meta property="og:title" content="vim教程">
-<meta property="og:url" content="https://weibo.com/wangtaoworld/iOS/2014/10/15/iOS开发/vimtutor.html">
-<meta property="og:site_name" content="wt">
-<meta property="og:description" content="=============================================================================== =      &amp;#x6B61;     &amp;#x8FCE;     &amp;#x95B1;     &amp;#x8B80;   &amp;#x300A; V I M  &amp;#x6559;  &amp;#x7A0B; &amp;#x300B;   &amp;#x2500;&amp;#x2500;">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-23T08:39:13.000Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="vim教程">
-<meta name="twitter:description" content="=============================================================================== =      &amp;#x6B61;     &amp;#x8FCE;     &amp;#x95B1;     &amp;#x8B80;   &amp;#x300A; V I M  &amp;#x6559;  &amp;#x7A0B; &amp;#x300B;   &amp;#x2500;&amp;#x2500;">
-
-    <script type="application/ld+json">
-{
-  "@context": "http://schema.org",
-  "@type": "Person",
-  "email": "mailto:",
-  "image": "",
-  "name": "wangtao",
-  "url": "https://weibo.com/wangtaoworld"
-}
-</script>
-    <script>
-    var algoliaEnabled = false;
+<html lang="zh-CN">
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="技术交流">
+  <meta name="keywords" content="">
+  
+    <link rel="icon" href="">
+  
     
-</script>
-
-    
-
-    
-    
-        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-    
-    
-    
-        <!-- stylesheets list from config.yml -->
-        
-        <link rel="stylesheet" href="/css/aloha.css">
-        
-        <link rel="stylesheet" href="//cdn.bootcss.com/semantic-ui/2.2.4/semantic.min.css">
-        
-        <link rel="stylesheet" href="//cdn.bootcss.com/magnific-popup.js/1.1.0/magnific-popup.min.css">
-        
-    
-
+  <title>vim教程 | wt</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/lib/jquery.fancybox.min.css">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-<body id="body" style="margin-bottom: 0;" class="pushable">
 
-    <div class="ui top fixed menu">
-        <a class="item" id="menu-icon"><i class="sidebar icon"></i></a>
-    </div>
-
-    <div id="menu-sidebar" class="ui left vertical sidebar menu">
-
-    <div id="sidebar-top">
-        <div class="content">
-            <h3>wt</h3>
-        </div>
-    </div>
-    <div class="ui container sidebar-card">
-    <div class="ui people shape content">
-        <div class="active side">
-            <div class="ui card">
-                <div class="image">
-                    <img class="ui medium bordered image" src="/images/avatar.jpg">
-                </div>
-                <div class="content">
-                    <a class="header">wangtao</a>
-                    
-                </div>
-                <div class="extra content">
-                    <div class="ui list">
-                        
-                        
-                    </div>
-
-                </div>
-                <div class="extra content">
-                    <div class="ui list">
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-</div>
-
-    
-    
-
-    
-
-    
-    <a href="/index.html" class="item" >
-        <i class="home icon"></i>
-        HOME
+<body>
+  <header>
+  <div class="header-container">
+    <a class='logo' href="/">
+      <span>wt</span>
     </a>
+    <ul class="right-header">
+      
+        <li class="nav-item">
+          
+            <a href="/" class="item-link">首页</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/about" class="item-link">关于</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/archives" class="item-link">归档</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/tags" class="item-link">标签</a>
+          
+        </li>
+      
+    </ul>
+  </div>
+</header>
 
-    
+  <main id='post'>
+  <div class="content">
+    <article>
+        <section class="content markdown-body">
+          <h1>vim教程</h1>
+          <div class='post-meta'>
+            <i class="fa fa-calendar" aria-hidden="true"></i> <time>2014年10月15日</time>
+            
+              | <i class="fa fa-folder-open-o" aria-hidden="true"></i> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/iOS/">iOS</a>
+  </div>
 
-    
-</div>
 
-    <div class="pusher body-content">
-        <div id="content" class="ui main container">
-            <!--<div class="ui one column grid">-->
-                <!--<div class="column">-->
-                    <!--<div class="ui main container">-->
-                        <div id="post-iOS开发/vimtutor" class="ui main container article-type-post">
 
-    
-
-    <div class="ui divided grid">
-
-        <div class="two column row" id="article-content">
-
-            <div class="thirteen wide computer thirteen wide tablet sixteen wide mobile column">
+            
+            
+              | 
+                  <i class="fa fa-tag" aria-hidden="true"></i>
                 
-
-<h1 class="ui header">
-    
-    vim教程
-</h1>
+               
+  <a href="/tags/#文档" class='tag'>文档</a>
 
 
+            
+          </div>
+          <p>===============================================================================</p>
+<h1 id="歡-迎-閱-讀-《-V-I-M-教-程-》-──-版本-1-5"><a href="#歡-迎-閱-讀-《-V-I-M-教-程-》-──-版本-1-5" class="headerlink" title="=      歡     迎     閱     讀   《 V I M  教  程 》   ──     版本 1.5      ="></a>=      歡     迎     閱     讀   《 V I M  教  程 》   ──     版本 1.5      =</h1><pre><code>vim 是一個具有很多命令的功能非常強大的編輯器。限于篇幅，在本教程當中
+不就詳細介紹了。本教程的設計目標是講述一些必要的基本命令，而掌握好這
+些命令，您就能夠很容易將vim當作一個通用的萬能編輯器來使用了。
 
-                <div class="article-inner">
+完成本教程的內容大約需要25-30分鐘，取決于您訓練的時間。
 
-                    <div class="article-entry" itemprop="articleBody">
-                        
-                        <p>===============================================================================</p>
-<h1 id="&#x6B61;-&#x8FCE;-&#x95B1;-&#x8B80;-&#x300A;-V-I-M-&#x6559;-&#x7A0B;-&#x300B;-&#x2500;&#x2500;-&#x7248;&#x672C;-1-5"><a href="#&#x6B61;-&#x8FCE;-&#x95B1;-&#x8B80;-&#x300A;-V-I-M-&#x6559;-&#x7A0B;-&#x300B;-&#x2500;&#x2500;-&#x7248;&#x672C;-1-5" class="headerlink" title="=      &#x6B61;     &#x8FCE;     &#x95B1;     &#x8B80;   &#x300A; V I M  &#x6559;  &#x7A0B; &#x300B;   &#x2500;&#x2500;     &#x7248;&#x672C; 1.5      ="></a>=      &#x6B61;     &#x8FCE;     &#x95B1;     &#x8B80;   &#x300A; V I M  &#x6559;  &#x7A0B; &#x300B;   &#x2500;&#x2500;     &#x7248;&#x672C; 1.5      =</h1><pre><code>vim &#x662F;&#x4E00;&#x500B;&#x5177;&#x6709;&#x5F88;&#x591A;&#x547D;&#x4EE4;&#x7684;&#x529F;&#x80FD;&#x975E;&#x5E38;&#x5F37;&#x5927;&#x7684;&#x7DE8;&#x8F2F;&#x5668;&#x3002;&#x9650;&#x4E8E;&#x7BC7;&#x5E45;&#xFF0C;&#x5728;&#x672C;&#x6559;&#x7A0B;&#x7576;&#x4E2D;
-&#x4E0D;&#x5C31;&#x8A73;&#x7D30;&#x4ECB;&#x7D39;&#x4E86;&#x3002;&#x672C;&#x6559;&#x7A0B;&#x7684;&#x8A2D;&#x8A08;&#x76EE;&#x6A19;&#x662F;&#x8B1B;&#x8FF0;&#x4E00;&#x4E9B;&#x5FC5;&#x8981;&#x7684;&#x57FA;&#x672C;&#x547D;&#x4EE4;&#xFF0C;&#x800C;&#x638C;&#x63E1;&#x597D;&#x9019;
-&#x4E9B;&#x547D;&#x4EE4;&#xFF0C;&#x60A8;&#x5C31;&#x80FD;&#x5920;&#x5F88;&#x5BB9;&#x6613;&#x5C07;vim&#x7576;&#x4F5C;&#x4E00;&#x500B;&#x901A;&#x7528;&#x7684;&#x842C;&#x80FD;&#x7DE8;&#x8F2F;&#x5668;&#x4F86;&#x4F7F;&#x7528;&#x4E86;&#x3002;
+每一節的命令操作將會更改本文。推薦您復制本文的一個副本，然後在副本上
+進行訓練(如果您是通過&quot;vimtutor&quot;來啟動教程的，那麼本文就已經是副本了)。
 
-&#x5B8C;&#x6210;&#x672C;&#x6559;&#x7A0B;&#x7684;&#x5167;&#x5BB9;&#x5927;&#x7D04;&#x9700;&#x8981;25-30&#x5206;&#x9418;&#xFF0C;&#x53D6;&#x6C7A;&#x4E8E;&#x60A8;&#x8A13;&#x7DF4;&#x7684;&#x6642;&#x9593;&#x3002;
+切記一點︰本教程的設計思路是在使用中進行學習的。也就是說，您需要通過
+執行命令來學習它們本身的正確用法。如果您只是閱讀而不操作，那麼您可能
+會很快遺忘這些命令的！
 
-&#x6BCF;&#x4E00;&#x7BC0;&#x7684;&#x547D;&#x4EE4;&#x64CD;&#x4F5C;&#x5C07;&#x6703;&#x66F4;&#x6539;&#x672C;&#x6587;&#x3002;&#x63A8;&#x85A6;&#x60A8;&#x5FA9;&#x5236;&#x672C;&#x6587;&#x7684;&#x4E00;&#x500B;&#x526F;&#x672C;&#xFF0C;&#x7136;&#x5F8C;&#x5728;&#x526F;&#x672C;&#x4E0A;
-&#x9032;&#x884C;&#x8A13;&#x7DF4;(&#x5982;&#x679C;&#x60A8;&#x662F;&#x901A;&#x904E;&quot;vimtutor&quot;&#x4F86;&#x555F;&#x52D5;&#x6559;&#x7A0B;&#x7684;&#xFF0C;&#x90A3;&#x9EBC;&#x672C;&#x6587;&#x5C31;&#x5DF2;&#x7D93;&#x662F;&#x526F;&#x672C;&#x4E86;)&#x3002;
-
-&#x5207;&#x8A18;&#x4E00;&#x9EDE;&#xFE30;&#x672C;&#x6559;&#x7A0B;&#x7684;&#x8A2D;&#x8A08;&#x601D;&#x8DEF;&#x662F;&#x5728;&#x4F7F;&#x7528;&#x4E2D;&#x9032;&#x884C;&#x5B78;&#x7FD2;&#x7684;&#x3002;&#x4E5F;&#x5C31;&#x662F;&#x8AAA;&#xFF0C;&#x60A8;&#x9700;&#x8981;&#x901A;&#x904E;
-&#x57F7;&#x884C;&#x547D;&#x4EE4;&#x4F86;&#x5B78;&#x7FD2;&#x5B83;&#x5011;&#x672C;&#x8EAB;&#x7684;&#x6B63;&#x78BA;&#x7528;&#x6CD5;&#x3002;&#x5982;&#x679C;&#x60A8;&#x53EA;&#x662F;&#x95B1;&#x8B80;&#x800C;&#x4E0D;&#x64CD;&#x4F5C;&#xFF0C;&#x90A3;&#x9EBC;&#x60A8;&#x53EF;&#x80FD;
-&#x6703;&#x5F88;&#x5FEB;&#x907A;&#x5FD8;&#x9019;&#x4E9B;&#x547D;&#x4EE4;&#x7684;&#xFF01;
-
-&#x597D;&#x4E86;&#xFF0C;&#x73FE;&#x5728;&#x8ACB;&#x78BA;&#x5B9A;&#x60A8;&#x7684;Shift-Lock(&#x5927;&#x5C0F;&#x5BEB;&#x9396;&#x5B9A;&#x9375;)&#x9084;&#x6C92;&#x6709;&#x6309;&#x4E0B;&#xFF0C;&#x7136;&#x5F8C;&#x6309;&#x9375;&#x76E4;&#x4E0A;
-&#x7684;&#x5B57;&#x6BCD;&#x9375; j &#x8DB3;&#x5920;&#x591A;&#x7684;&#x6B21;&#x6578;&#x4F86;&#x79FB;&#x52D5;&#x5149;&#x6A19;&#xFF0C;&#x76F4;&#x5230;&#x7B2C;&#x4E00;&#x7BC0;&#x7684;&#x5167;&#x5BB9;&#x80FD;&#x5920;&#x5B8C;&#x5168;&#x5145;&#x6EFF;&#x5C4F;&#x5E55;&#x3002;
-</code></pre><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">			       &#x7B2C;&#x4E00;&#x8B1B;&#x5C0F;&#x7D50;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="number">1</span>. &#x5149;&#x6A19;&#x5728;&#x5C4F;&#x5E55;&#x6587;&#x672C;&#x4E2D;&#x7684;&#x79FB;&#x52D5;&#x65E2;&#x53EF;&#x4EE5;&#x7528;&#x7BAD;&#x982D;&#x9375;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; hjkl &#x5B57;&#x6BCD;&#x9375;&#x3002;</span><br><span class="line">	 h (&#x5DE6;&#x79FB;)	<span class="keyword">j</span> (&#x4E0B;&#x884C;)       <span class="keyword">k</span> (&#x4E0A;&#x884C;)	    <span class="keyword">l</span> (&#x53F3;&#x79FB;)</span><br><span class="line"></span><br><span class="line">  <span class="number">2</span>. &#x6B32;&#x9032;&#x5165;<span class="keyword">vim</span>&#x7DE8;&#x8F2F;&#x5668;(&#x5F9E;&#x547D;&#x4EE4;&#x884C;&#x63D0;&#x793A;&#x7B26;)&#xFF0C;&#x8ACB;&#x8F38;&#x5165;&#xFE30;<span class="keyword">vim</span> &#x6587;&#x4EF6;&#x540D; &lt;&#x56DE;&#x8ECA;&gt;</span><br><span class="line"></span><br><span class="line">  <span class="number">3</span>. &#x6B32;&#x9000;&#x51FA;<span class="keyword">vim</span>&#x7DE8;&#x8F2F;&#x5668;&#xFF0C;&#x8ACB;&#x8F38;&#x5165;&#x4EE5;&#x4E0B;&#x547D;&#x4EE4;&#x653E;&#x68C4;&#x6240;&#x6709;&#x4FEE;&#x6539;&#xFE30;</span><br><span class="line"></span><br><span class="line">	<span class="symbol">&lt;ESC&gt;</span>   :q!	 &lt;&#x56DE;&#x8ECA;&gt;</span><br><span class="line"></span><br><span class="line">     &#x6216;&#x8005;&#x8F38;&#x5165;&#x4EE5;&#x4E0B;&#x547D;&#x4EE4;&#x4FDD;&#x5B58;&#x6240;&#x6709;&#x4FEE;&#x6539;&#xFE30;</span><br><span class="line"></span><br><span class="line">	<span class="symbol">&lt;ESC&gt;</span>   :<span class="keyword">wq</span>	 &lt;&#x56DE;&#x8ECA;&gt;</span><br><span class="line"></span><br><span class="line">  <span class="number">4</span>. &#x5728;&#x6B63;&#x5E38;&#x6A21;&#x5F0F;&#x4E0B;&#x522A;&#x9664;&#x5149;&#x6A19;&#x6240;&#x5728;&#x4F4D;&#x7F6E;&#x7684;&#x5B57;&#x7B26;&#xFF0C;&#x8ACB;&#x6309;&#xFE30; <span class="keyword">x</span></span><br><span class="line"></span><br><span class="line">  <span class="number">5</span>. &#x5728;&#x6B63;&#x5E38;&#x6A21;&#x5F0F;&#x4E0B;&#x8981;&#x5728;&#x5149;&#x6A19;&#x6240;&#x5728;&#x4F4D;&#x7F6E;&#x958B;&#x59CB;&#x63D2;&#x5165;&#x6587;&#x672C;&#xFF0C;&#x8ACB;&#x6309;&#xFE30;</span><br><span class="line"></span><br><span class="line">	 i     &#x8F38;&#x5165;&#x5FC5;&#x8981;&#x6587;&#x672C;	<span class="symbol">&lt;ESC&gt;</span></span><br><span class="line"></span><br><span class="line">&#x7279;&#x5225;&#x63D0;&#x793A;&#xFE30;&#x6309;&#x4E0B; <span class="symbol">&lt;ESC&gt;</span> &#x9375;&#x6703;&#x5E36;&#x60A8;&#x56DE;&#x5230;&#x6B63;&#x5E38;&#x6A21;&#x5F0F;&#x6216;&#x8005;&#x53D6;&#x6D88;&#x4E00;&#x500B;&#x4E0D;&#x671F;&#x671B;&#x6216;&#x8005;&#x90E8;&#x5206;&#x5B8C;&#x6210;</span><br><span class="line">&#x7684;&#x547D;&#x4EE4;&#x3002;</span><br><span class="line"></span><br><span class="line">&#x597D;&#x4E86;&#xFF0C;&#x7B2C;&#x4E00;&#x8B1B;&#x5230;&#x6B64;&#x7D50;&#x675F;&#x3002;&#x4E0B;&#x9762;&#x63A5;&#x4E0B;&#x4F86;&#x7E7C;&#x7E8C;&#x7B2C;&#x4E8C;&#x8B1B;&#x7684;&#x5167;&#x5BB9;&#x3002;</span><br></pre></td></tr></table></figure>
-<pre><code>&#x7B2C;&#x4E8C;&#x8B1B;&#x5C0F;&#x7D50;
-</code></pre><ol class="ui list">
-<li><p>&#x6B32;&#x5F9E;&#x7576;&#x524D;&#x5149;&#x6A19;&#x522A;&#x9664;&#x81F3;&#x55AE;&#x5B57;/&#x55AE;&#x8A5E;&#x672B;&#x5C3E;&#xFF0C;&#x8ACB;&#x8F38;&#x5165;&#xFE30;dw</p>
+好了，現在請確定您的Shift-Lock(大小寫鎖定鍵)還沒有按下，然後按鍵盤上
+的字母鍵 j 足夠多的次數來移動光標，直到第一節的內容能夠完全充滿屏幕。
+</code></pre><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">			       第一講小結</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="number">1</span>. 光標在屏幕文本中的移動既可以用箭頭鍵，也可以使用 hjkl 字母鍵。</span><br><span class="line">	 h (左移)	<span class="keyword">j</span> (下行)       <span class="keyword">k</span> (上行)	    <span class="keyword">l</span> (右移)</span><br><span class="line"></span><br><span class="line">  <span class="number">2</span>. 欲進入<span class="keyword">vim</span>編輯器(從命令行提示符)，請輸入︰<span class="keyword">vim</span> 文件名 &lt;回車&gt;</span><br><span class="line"></span><br><span class="line">  <span class="number">3</span>. 欲退出<span class="keyword">vim</span>編輯器，請輸入以下命令放棄所有修改︰</span><br><span class="line"></span><br><span class="line">	<span class="symbol">&lt;ESC&gt;</span>   :q!	 &lt;回車&gt;</span><br><span class="line"></span><br><span class="line">     或者輸入以下命令保存所有修改︰</span><br><span class="line"></span><br><span class="line">	<span class="symbol">&lt;ESC&gt;</span>   :<span class="keyword">wq</span>	 &lt;回車&gt;</span><br><span class="line"></span><br><span class="line">  <span class="number">4</span>. 在正常模式下刪除光標所在位置的字符，請按︰ <span class="keyword">x</span></span><br><span class="line"></span><br><span class="line">  <span class="number">5</span>. 在正常模式下要在光標所在位置開始插入文本，請按︰</span><br><span class="line"></span><br><span class="line">	 i     輸入必要文本	<span class="symbol">&lt;ESC&gt;</span></span><br><span class="line"></span><br><span class="line">特別提示︰按下 <span class="symbol">&lt;ESC&gt;</span> 鍵會帶您回到正常模式或者取消一個不期望或者部分完成</span><br><span class="line">的命令。</span><br><span class="line"></span><br><span class="line">好了，第一講到此結束。下面接下來繼續第二講的內容。</span><br></pre></td></tr></table></figure>
+<pre><code>第二講小結
+</code></pre><ol>
+<li><p>欲從當前光標刪除至單字/單詞末尾，請輸入︰dw</p>
 </li>
-<li><p>&#x6B32;&#x5F9E;&#x7576;&#x524D;&#x5149;&#x6A19;&#x522A;&#x9664;&#x81F3;&#x7576;&#x524D;&#x884C;&#x672B;&#x5C3E;&#xFF0C;&#x8ACB;&#x8F38;&#x5165;&#xFE30;d$</p>
+<li><p>欲從當前光標刪除至當前行末尾，請輸入︰d$</p>
 </li>
-<li><p>&#x6B32;&#x522A;&#x9664;&#x6574;&#x884C;&#xFF0C;&#x8ACB;&#x8F38;&#x5165;&#xFE30;dd</p>
+<li><p>欲刪除整行，請輸入︰dd</p>
 </li>
-<li><p>&#x5728;&#x6B63;&#x5E38;&#x6A21;&#x5F0F;&#x4E0B;&#x4E00;&#x500B;&#x547D;&#x4EE4;&#x7684;&#x683C;&#x5F0F;&#x662F;&#xFE30;</p>
-<p>  [number]   command   object     &#x6216;&#x8005;     command    [number]   object<br>&#x5176;&#x610F;&#x662F;&#xFE30;<br>  number - &#x4EE3;&#x8868;&#x7684;&#x662F;&#x547D;&#x4EE4;&#x57F7;&#x884C;&#x7684;&#x6B21;&#x6578;<br>  command - &#x4EE3;&#x8868;&#x8981;&#x505A;&#x7684;&#x4E8B;&#x60C5;&#xFF0C;&#x6BD4;&#x5982; d &#x4EE3;&#x8868;&#x522A;&#x9664;<br>  object - &#x4EE3;&#x8868;&#x8981;&#x64CD;&#x4F5C;&#x7684;&#x5C0D;&#x8C61;&#xFF0C;&#x6BD4;&#x5982; w &#x4EE3;&#x8868;&#x55AE;&#x5B57;/&#x55AE;&#x8A5E;&#xFF0C;$ &#x4EE3;&#x8868;&#x5230;&#x884C;&#x672B;&#x7B49;&#x7B49;&#x3002;<br>   $ (to the end of line), etc.</p>
+<li><p>在正常模式下一個命令的格式是︰</p>
+<p>  [number]   command   object     或者     command    [number]   object<br>其意是︰<br>  number - 代表的是命令執行的次數<br>  command - 代表要做的事情，比如 d 代表刪除<br>  object - 代表要操作的對象，比如 w 代表單字/單詞，$ 代表到行末等等。<br>   $ (to the end of line), etc.</p>
 </li>
-<li><p>&#x6B32;&#x64A4;&#x6D88;&#x4EE5;&#x524D;&#x7684;&#x64CD;&#x4F5C;&#xFF0C;&#x8ACB;&#x8F38;&#x5165;&#xFE30;u (&#x5C0F;&#x5BEB;&#x7684;u)<br>&#x6B32;&#x64A4;&#x6D88;&#x5728;&#x4E00;&#x884C;&#x4E2D;&#x6240;&#x505A;&#x7684;&#x6539;&#x52D5;&#xFF0C;&#x8ACB;&#x8F38;&#x5165;&#xFE30;U (&#x5927;&#x5BEB;&#x7684;U)<br>&#x6B32;&#x64A4;&#x6D88;&#x4EE5;&#x524D;&#x7684;&#x64A4;&#x6D88;&#x547D;&#x4EE4;&#xFF0C;&#x6062;&#x5FA9;&#x4EE5;&#x524D;&#x7684;&#x64CD;&#x4F5C;&#x7D50;&#x679C;&#xFF0C;&#x8ACB;&#x8F38;&#x5165;&#xFE30;CTRL-R</p>
+<li><p>欲撤消以前的操作，請輸入︰u (小寫的u)<br>欲撤消在一行中所做的改動，請輸入︰U (大寫的U)<br>欲撤消以前的撤消命令，恢復以前的操作結果，請輸入︰CTRL-R</p>
 </li>
 </ol>
-<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">			       &#x7B2C;&#x4E09;&#x8B1B;&#x5C0F;&#x7D50;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="number">1.</span> &#x8981;&#x91CD;&#x65B0;&#x7F6E;&#x5165;&#x5DF2;&#x7D93;&#x522A;&#x9664;&#x7684;&#x6587;&#x672C;&#x5167;&#x5BB9;&#xFF0C;&#x8ACB;&#x8F38;&#x5165;&#x5C0F;&#x5BEB;&#x5B57;&#x6BCD; p&#x3002;&#x8A72;&#x64CD;&#x4F5C;&#x53EF;&#x4EE5;&#x5C07;&#x5DF2;&#x522A;&#x9664;</span><br><span class="line">     &#x7684;&#x6587;&#x672C;&#x5167;&#x5BB9;&#x7F6E;&#x4E8E;&#x5149;&#x6A19;&#x4E4B;&#x5F8C;&#x3002;&#x5982;&#x679C;&#x6700;&#x5F8C;&#x4E00;&#x6B21;&#x522A;&#x9664;&#x7684;&#x662F;&#x4E00;&#x500B;&#x6574;&#x884C;&#xFF0C;&#x90A3;&#x9EBC;&#x8A72;&#x884C;&#x5C07;&#x7F6E;</span><br><span class="line">     &#x4E8E;&#x7576;&#x524D;&#x5149;&#x6A19;&#x6240;&#x5728;&#x884C;&#x7684;&#x4E0B;&#x4E00;&#x884C;&#x3002;</span><br><span class="line"></span><br><span class="line">  <span class="number">2.</span> &#x8981;&#x66FF;&#x63DB;&#x5149;&#x6A19;&#x6240;&#x5728;&#x4F4D;&#x7F6E;&#x7684;&#x5B57;&#x7B26;&#xFF0C;&#x8ACB;&#x8F38;&#x5165;&#x5C0F;&#x5BEB;&#x7684; r &#x548C;&#x8981;&#x66FF;&#x63DB;&#x6389;&#x539F;&#x4F4D;&#x7F6E;&#x5B57;&#x7B26;&#x7684;&#x65B0;&#x5B57;</span><br><span class="line">     &#x7B26;&#x5373;&#x53EF;&#x3002;</span><br><span class="line"></span><br><span class="line">  <span class="number">3.</span> &#x66F4;&#x6539;&#x985E;&#x547D;&#x4EE4;&#x5141;&#x8A31;&#x60A8;&#x6539;&#x8B8A;&#x6307;&#x5B9A;&#x7684;&#x5C0D;&#x8C61;&#xFF0C;&#x5F9E;&#x7576;&#x524D;&#x5149;&#x6A19;&#x6240;&#x5728;&#x4F4D;&#x7F6E;&#x76F4;&#x5230;&#x5C0D;&#x8C61;&#x7684;&#x672B;&#x5C3E;&#x3002;</span><br><span class="line">     &#x6BD4;&#x5982;&#x8F38;&#x5165; cw &#x53EF;&#x4EE5;&#x66FF;&#x63DB;&#x7576;&#x524D;&#x5149;&#x6A19;&#x5230;&#x55AE;&#x8A5E;&#x7684;&#x672B;&#x5C3E;&#x7684;&#x5167;&#x5BB9;&#xFF1B;&#x8F38;&#x5165; c$ &#x53EF;&#x4EE5;&#x66FF;&#x63DB;&#x7576;</span><br><span class="line">     &#x524D;&#x5149;&#x6A19;&#x5230;&#x884C;&#x672B;&#x7684;&#x5167;&#x5BB9;&#x3002;</span><br><span class="line"></span><br><span class="line">  <span class="number">4.</span> &#x66F4;&#x6539;&#x985E;&#x547D;&#x4EE4;&#x7684;&#x683C;&#x5F0F;&#x662F;&#xFE30;</span><br><span class="line"></span><br><span class="line">	 [number]   c	object	      &#x6216;&#x8005;	c   [number]   object</span><br><span class="line"></span><br><span class="line">&#x4E0B;&#x9762;&#x6211;&#x5011;&#x7E7C;&#x7E8C;&#x5B78;&#x7FD2;&#x4E0B;&#x4E00;&#x8B1B;&#x3002;</span><br></pre></td></tr></table></figure>
-<pre><code>&#x7B2C;&#x56DB;&#x8B1B;&#x5C0F;&#x7D50;
-</code></pre><ol class="ui list">
-<li><p>Ctrl-g &#x7528;&#x4E8E;&#x986F;&#x793A;&#x7576;&#x524D;&#x5149;&#x6A19;&#x6240;&#x5728;&#x4F4D;&#x7F6E;&#x548C;&#x6587;&#x4EF6;&#x72C0;&#x614B;&#x4FE1;&#x606F;&#x3002;Shift-G &#x7528;&#x4E8E;&#x5C07;&#x5149;&#x6A19;&#x8DF3;<br>&#x8F49;&#x81F3;&#x6587;&#x4EF6;&#x6700;&#x5F8C;&#x4E00;&#x884C;&#x3002;&#x5148;&#x6572;&#x5165;&#x4E00;&#x500B;&#x884C;&#x865F;&#x7136;&#x5F8C;&#x6309; Shift-G &#x5247;&#x662F;&#x5C07;&#x5149;&#x6A19;&#x79FB;&#x52D5;&#x81F3;&#x8A72;&#x884C;<br>&#x865F;&#x4EE3;&#x8868;&#x7684;&#x884C;&#x3002;</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">			       第三講小結</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="number">1.</span> 要重新置入已經刪除的文本內容，請輸入小寫字母 p。該操作可以將已刪除</span><br><span class="line">     的文本內容置于光標之後。如果最後一次刪除的是一個整行，那麼該行將置</span><br><span class="line">     于當前光標所在行的下一行。</span><br><span class="line"></span><br><span class="line">  <span class="number">2.</span> 要替換光標所在位置的字符，請輸入小寫的 r 和要替換掉原位置字符的新字</span><br><span class="line">     符即可。</span><br><span class="line"></span><br><span class="line">  <span class="number">3.</span> 更改類命令允許您改變指定的對象，從當前光標所在位置直到對象的末尾。</span><br><span class="line">     比如輸入 cw 可以替換當前光標到單詞的末尾的內容；輸入 c$ 可以替換當</span><br><span class="line">     前光標到行末的內容。</span><br><span class="line"></span><br><span class="line">  <span class="number">4.</span> 更改類命令的格式是︰</span><br><span class="line"></span><br><span class="line">	 [number]   c	object	      或者	c   [number]   object</span><br><span class="line"></span><br><span class="line">下面我們繼續學習下一講。</span><br></pre></td></tr></table></figure>
+<pre><code>第四講小結
+</code></pre><ol>
+<li><p>Ctrl-g 用于顯示當前光標所在位置和文件狀態信息。Shift-G 用于將光標跳<br>轉至文件最後一行。先敲入一個行號然後按 Shift-G 則是將光標移動至該行<br>號代表的行。</p>
 </li>
-<li><p>&#x8F38;&#x5165; / &#x7136;&#x5F8C;&#x7DCA;&#x96A8;&#x4E00;&#x500B;&#x5B57;&#x7B26;&#x4E32;&#x662F;&#x5247;&#x662F;&#x5728;&#x7576;&#x524D;&#x6240;&#x7DE8;&#x8F2F;&#x7684;&#x6587;&#x6A94;&#x4E2D;&#x5411;&#x5F8C;&#x67E5;&#x627E;&#x8A72;&#x5B57;&#x7B26;&#x4E32;&#x3002;<br>&#x8F38;&#x5165;&#x554F;&#x865F; ? &#x7136;&#x5F8C;&#x7DCA;&#x96A8;&#x4E00;&#x500B;&#x5B57;&#x7B26;&#x4E32;&#x662F;&#x5247;&#x662F;&#x5728;&#x7576;&#x524D;&#x6240;&#x7DE8;&#x8F2F;&#x7684;&#x6587;&#x6A94;&#x4E2D;&#x5411;&#x524D;&#x67E5;&#x627E;&#x8A72;&#x5B57;<br>&#x7B26;&#x4E32;&#x3002;&#x5B8C;&#x6210;&#x4E00;&#x6B21;&#x67E5;&#x627E;&#x4E4B;&#x5F8C;&#x6309; n &#x9375;&#x5247;&#x662F;&#x91CD;&#x5FA9;&#x4E0A;&#x4E00;&#x6B21;&#x7684;&#x547D;&#x4EE4;&#xFF0C;&#x53EF;&#x5728;&#x540C;&#x4E00;&#x65B9;&#x5411;&#x4E0A;&#x67E5;<br>&#x627E;&#x4E0B;&#x4E00;&#x500B;&#x5B57;&#x7B26;&#x4E32;&#x6240;&#x5728;&#xFF1B;&#x6216;&#x8005;&#x6309; Shift-N &#x5411;&#x76F8;&#x53CD;&#x65B9;&#x5411;&#x67E5;&#x627E;&#x4E0B;&#x8A72;&#x5B57;&#x7B26;&#x4E32;&#x6240;&#x5728;&#x3002;</p>
+<li><p>輸入 / 然後緊隨一個字符串是則是在當前所編輯的文檔中向後查找該字符串。<br>輸入問號 ? 然後緊隨一個字符串是則是在當前所編輯的文檔中向前查找該字<br>符串。完成一次查找之後按 n 鍵則是重復上一次的命令，可在同一方向上查<br>找下一個字符串所在；或者按 Shift-N 向相反方向查找下該字符串所在。</p>
 </li>
-<li><p>&#x5982;&#x679C;&#x5149;&#x6A19;&#x7576;&#x524D;&#x4F4D;&#x7F6E;&#x662F;&#x62EC;&#x865F;(&#x3001;)&#x3001;[&#x3001;]&#x3001;{&#x3001;}&#xFF0C;&#x6309; % &#x53EF;&#x4EE5;&#x5C07;&#x5149;&#x6A19;&#x79FB;&#x52D5;&#x5230;&#x914D;&#x5C0D;&#x7684;<br>&#x62EC;&#x865F;&#x4E0A;&#x3002;</p>
+<li><p>如果光標當前位置是括號(、)、[、]、{、}，按 % 可以將光標移動到配對的<br>括號上。</p>
 </li>
-<li><p>&#x5728;&#x4E00;&#x884C;&#x5167;&#x66FF;&#x63DB;&#x982D;&#x4E00;&#x500B;&#x5B57;&#x7B26;&#x4E32; old &#x70BA;&#x65B0;&#x7684;&#x5B57;&#x7B26;&#x4E32; new&#xFF0C;&#x8ACB;&#x8F38;&#x5165;  :s/old/new<br>&#x5728;&#x4E00;&#x884C;&#x5167;&#x66FF;&#x63DB;&#x6240;&#x6709;&#x7684;&#x5B57;&#x7B26;&#x4E32; old &#x70BA;&#x65B0;&#x7684;&#x5B57;&#x7B26;&#x4E32; new&#xFF0C;&#x8ACB;&#x8F38;&#x5165;  :s/old/new/g<br>&#x5728;&#x5169;&#x884C;&#x5167;&#x66FF;&#x63DB;&#x6240;&#x6709;&#x7684;&#x5B57;&#x7B26;&#x4E32; old &#x70BA;&#x65B0;&#x7684;&#x5B57;&#x7B26;&#x4E32; new&#xFF0C;&#x8ACB;&#x8F38;&#x5165;  :#,#s/old/new/g<br>&#x5728;&#x6587;&#x4EF6;&#x5167;&#x66FF;&#x63DB;&#x6240;&#x6709;&#x7684;&#x5B57;&#x7B26;&#x4E32; old &#x70BA;&#x65B0;&#x7684;&#x5B57;&#x7B26;&#x4E32; new&#xFF0C;&#x8ACB;&#x8F38;&#x5165;  :%s/old/new/g<br>&#x9032;&#x884C;&#x5168;&#x6587;&#x66FF;&#x63DB;&#x6642;&#x8A62;&#x554F;&#x7528;&#x6236;&#x78BA;&#x8A8D;&#x6BCF;&#x500B;&#x66FF;&#x63DB;&#x9700;&#x6DFB;&#x52A0; c &#x9078;&#x9805;&#xFF0C;&#x8ACB;&#x8F38;&#x5165; :%s/old/new/gc</p>
-</li>
-</ol>
-<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">	       &#x7B2C;&#x4E94;&#x8B1B;&#x5C0F;&#x7D50;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="number">1.</span> :!command &#x7528;&#x4E8E;&#x57F7;&#x884C;&#x4E00;&#x500B;&#x5916;&#x90E8;&#x547D;&#x4EE4; command&#x3002;</span><br><span class="line"></span><br><span class="line">   &#x8ACB;&#x770B;&#x4E00;&#x4E9B;&#x5BE6;&#x969B;&#x4F8B;&#x5B50;&#xFE30;</span><br><span class="line">:!dir		-  &#x7528;&#x4E8E;&#x986F;&#x793A;&#x7576;&#x524D;&#x76EE;&#x9304;&#x7684;&#x5167;&#x5BB9;&#x3002;</span><br><span class="line">:!rm FILENAME	-  &#x7528;&#x4E8E;&#x522A;&#x9664;&#x540D;&#x70BA; FILENAME &#x7684;&#x6587;&#x4EF6;&#x3002;</span><br><span class="line"></span><br><span class="line"><span class="number">2.</span> :w FILENAME  &#x53EF;&#x5C07;&#x7576;&#x524D; VIM &#x4E2D;&#x6B63;&#x5728;&#x7DE8;&#x8F2F;&#x7684;&#x6587;&#x4EF6;&#x4FDD;&#x5B58;&#x5230;&#x540D;&#x70BA; FILENAME</span><br><span class="line">   &#x7684;&#x6587;&#x4EF6;&#x4E2D;&#x3002;</span><br><span class="line"></span><br><span class="line"><span class="number">3.</span> :#,#w FILENAME &#x53EF;&#x5C07;&#x7576;&#x524D;&#x7DE8;&#x8F2F;&#x6587;&#x4EF6;&#x7B2C; # &#x884C;&#x81F3;&#x7B2C; # &#x884C;&#x7684;&#x5167;&#x5BB9;&#x4FDD;&#x5B58;&#x5230;&#x6587;&#x4EF6;</span><br><span class="line">   FILENAME &#x4E2D;&#x3002;</span><br><span class="line"></span><br><span class="line"><span class="number">4.</span> :r FILENAME &#x53EF;&#x63D0;&#x53D6;&#x78C1;&#x76E4;&#x6587;&#x4EF6; FILENAME &#x4E26;&#x5C07;&#x5176;&#x63D2;&#x5165;&#x5230;&#x7576;&#x524D;&#x6587;&#x4EF6;&#x7684;&#x5149;&#x6A19;&#x4F4D;&#x7F6E;</span><br><span class="line">   &#x5F8C;&#x9762;&#x3002;</span><br></pre></td></tr></table></figure>
-<pre><code>&#x7B2C;&#x516D;&#x8B1B;&#x5C0F;&#x7D50;
-</code></pre><ol class="ui list">
-<li><p>&#x8F38;&#x5165;&#x5C0F;&#x5BEB;&#x7684; o &#x53EF;&#x4EE5;&#x5728;&#x5149;&#x6A19;&#x4E0B;&#x65B9;&#x6253;&#x958B;&#x65B0;&#x7684;&#x4E00;&#x884C;&#x4E26;&#x5C07;&#x5149;&#x6A19;&#x7F6E;&#x4E8E;&#x65B0;&#x958B;&#x7684;&#x884C;&#x9996;&#xFF0C;&#x9032;&#x5165;<br>&#x63D2;&#x5165;&#x6A21;&#x5F0F;&#x3002;<br>&#x8F38;&#x5165;&#x5927;&#x5BEB;&#x7684; O &#x53EF;&#x4EE5;&#x5728;&#x5149;&#x6A19;&#x4E0A;&#x65B9;&#x6253;&#x958B;&#x65B0;&#x7684;&#x4E00;&#x884C;&#x4E26;&#x5C07;&#x5149;&#x6A19;&#x7F6E;&#x4E8E;&#x65B0;&#x958B;&#x7684;&#x884C;&#x9996;&#xFF0C;&#x9032;&#x5165;<br>&#x63D2;&#x5165;&#x6A21;&#x5F0F;&#x3002;</p>
-</li>
-<li><p>&#x8F38;&#x5165;&#x5C0F;&#x5BEB;&#x7684; a &#x53EF;&#x4EE5;&#x5728;&#x5149;&#x6A19;&#x6240;&#x5728;&#x4F4D;&#x7F6E;&#x4E4B;&#x5F8C;&#x63D2;&#x5165;&#x6587;&#x672C;&#x3002;<br>&#x8F38;&#x5165;&#x5927;&#x5BEB;&#x7684; A &#x53EF;&#x4EE5;&#x5728;&#x5149;&#x6A19;&#x6240;&#x5728;&#x884C;&#x7684;&#x884C;&#x672B;&#x4E4B;&#x5F8C;&#x63D2;&#x5165;&#x6587;&#x672C;&#x3002;</p>
-</li>
-<li><p>&#x8F38;&#x5165;&#x5927;&#x5BEB;&#x7684; R &#x5C07;&#x9032;&#x5165;&#x66FF;&#x63DB;&#x6A21;&#x5F0F;&#xFF0C;&#x76F4;&#x81F3;&#x6309; <esc> &#x9375;&#x9000;&#x51FA;&#x66FF;&#x63DB;&#x6A21;&#x5F0F;&#x800C;&#x9032;&#x5165;&#x6B63;&#x5E38;<br>&#x6A21;&#x5F0F;&#x3002;</esc></p>
-</li>
-<li><p>&#x8F38;&#x5165; :set xxx &#x53EF;&#x4EE5;&#x8A2D;&#x7F6E; xxx &#x9078;&#x9805;&#x3002;</p>
+<li><p>在一行內替換頭一個字符串 old 為新的字符串 new，請輸入  :s/old/new<br>在一行內替換所有的字符串 old 為新的字符串 new，請輸入  :s/old/new/g<br>在兩行內替換所有的字符串 old 為新的字符串 new，請輸入  :#,#s/old/new/g<br>在文件內替換所有的字符串 old 為新的字符串 new，請輸入  :%s/old/new/g<br>進行全文替換時詢問用戶確認每個替換需添加 c 選項，請輸入 :%s/old/new/gc</p>
 </li>
 </ol>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">	       &#x7B2C;&#x4E03;&#x8B1B;&#xFE30;&#x5728;&#x7DDA;&#x5E6B;&#x52A9;&#x547D;&#x4EE4;</span><br><span class="line"></span><br><span class="line">	      ** &#x4F7F;&#x7528;&#x5728;&#x7DDA;&#x5E6B;&#x52A9;&#x7CFB;&#x7D71; **</span><br><span class="line"></span><br><span class="line"> Vim &#x64C1;&#x6709;&#x4E00;&#x500B;&#x7D30;&#x81F4;&#x5168;&#x9762;&#x7684;&#x5728;&#x7DDA;&#x5E6B;&#x52A9;&#x7CFB;&#x7D71;&#x3002;&#x8981;&#x555F;&#x52D5;&#x8A72;&#x5E6B;&#x52A9;&#x7CFB;&#x7D71;&#xFF0C;&#x8ACB;&#x9078;&#x64C7;&#x5982;&#x4E0B;&#x4E09;&#x7A2E;&#x65B9;</span><br><span class="line"> &#x6CD5;&#x4E4B;&#x4E00;&#xFE30;</span><br><span class="line">- &#x6309;&#x4E0B; <span class="symbol">&lt;HELP&gt;</span> &#x9375; (&#x5982;&#x679C;&#x9375;&#x76E4;&#x4E0A;&#x6709;&#x7684;&#x8A71;)</span><br><span class="line">- &#x6309;&#x4E0B; <span class="symbol">&lt;F1&gt;</span> &#x9375; (&#x5982;&#x679C;&#x9375;&#x76E4;&#x4E0A;&#x6709;&#x7684;&#x8A71;)</span><br><span class="line">- &#x8F38;&#x5165;	:<span class="keyword">help</span> &lt;&#x56DE;&#x8ECA;&gt;</span><br><span class="line"></span><br><span class="line"> &#x8F38;&#x5165; :q &lt;&#x56DE;&#x8ECA;&gt; &#x53EF;&#x4EE5;&#x95DC;&#x9589;&#x5E6B;&#x52A9;&#x7A97;&#x53E3;&#x3002;</span><br><span class="line"></span><br><span class="line"> &#x63D0;&#x4F9B;&#x4E00;&#x500B;&#x6B63;&#x78BA;&#x7684;&#x53C3;&#x6578;&#x7D66;<span class="string">&quot;:help&quot;</span>&#x547D;&#x4EE4;&#xFF0C;&#x60A8;&#x53EF;&#x4EE5;&#x627E;&#x5230;&#x95DC;&#x4E8E;&#x8A72;&#x4E3B;&#x984C;&#x7684;&#x5E6B;&#x52A9;&#x3002;&#x8ACB;&#x8A66;&#x9A57;&#x4EE5;</span><br><span class="line"> &#x4E0B;&#x53C3;&#x6578;(&#x53EF;&#x5225;&#x5FD8;&#x4E86;&#x6309;&#x56DE;&#x8ECA;&#x9375;&#x54E6;&#x3002;:)&#xFE30;</span><br><span class="line"></span><br><span class="line">  :<span class="keyword">help</span> <span class="keyword">w</span> &lt;&#x56DE;&#x8ECA;&gt;</span><br><span class="line">  :<span class="keyword">help</span> c_&lt;T &lt;&#x56DE;&#x8ECA;&gt;</span><br><span class="line">  :<span class="keyword">help</span> <span class="keyword">insert</span>-<span class="built_in">index</span> &lt;&#x56DE;&#x8ECA;&gt;</span><br><span class="line">  :<span class="keyword">help</span> user-manual &lt;&#x56DE;&#x8ECA;&gt;</span><br></pre></td></tr></table></figure>
-<pre><code> &#x7B2C;&#x516B;&#x8B1B;&#xFE30;&#x5275;&#x5EFA;&#x4E00;&#x500B;&#x555F;&#x52D5;&#x8173;&#x672C;
+<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">	       第五講小結</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="number">1.</span> :!command 用于執行一個外部命令 command。</span><br><span class="line"></span><br><span class="line">   請看一些實際例子︰</span><br><span class="line">:!dir		-  用于顯示當前目錄的內容。</span><br><span class="line">:!rm FILENAME	-  用于刪除名為 FILENAME 的文件。</span><br><span class="line"></span><br><span class="line"><span class="number">2.</span> :w FILENAME  可將當前 VIM 中正在編輯的文件保存到名為 FILENAME</span><br><span class="line">   的文件中。</span><br><span class="line"></span><br><span class="line"><span class="number">3.</span> :#,#w FILENAME 可將當前編輯文件第 # 行至第 # 行的內容保存到文件</span><br><span class="line">   FILENAME 中。</span><br><span class="line"></span><br><span class="line"><span class="number">4.</span> :r FILENAME 可提取磁盤文件 FILENAME 並將其插入到當前文件的光標位置</span><br><span class="line">   後面。</span><br></pre></td></tr></table></figure>
+<pre><code>第六講小結
+</code></pre><ol>
+<li><p>輸入小寫的 o 可以在光標下方打開新的一行並將光標置于新開的行首，進入<br>插入模式。<br>輸入大寫的 O 可以在光標上方打開新的一行並將光標置于新開的行首，進入<br>插入模式。</p>
+</li>
+<li><p>輸入小寫的 a 可以在光標所在位置之後插入文本。<br>輸入大寫的 A 可以在光標所在行的行末之後插入文本。</p>
+</li>
+<li><p>輸入大寫的 R 將進入替換模式，直至按 <esc> 鍵退出替換模式而進入正常<br>模式。</esc></p>
+</li>
+<li><p>輸入 :set xxx 可以設置 xxx 選項。</p>
+</li>
+</ol>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">	       第七講︰在線幫助命令</span><br><span class="line"></span><br><span class="line">	      ** 使用在線幫助系統 **</span><br><span class="line"></span><br><span class="line"> Vim 擁有一個細致全面的在線幫助系統。要啟動該幫助系統，請選擇如下三種方</span><br><span class="line"> 法之一︰</span><br><span class="line">- 按下 <span class="symbol">&lt;HELP&gt;</span> 鍵 (如果鍵盤上有的話)</span><br><span class="line">- 按下 <span class="symbol">&lt;F1&gt;</span> 鍵 (如果鍵盤上有的話)</span><br><span class="line">- 輸入	:<span class="keyword">help</span> &lt;回車&gt;</span><br><span class="line"></span><br><span class="line"> 輸入 :q &lt;回車&gt; 可以關閉幫助窗口。</span><br><span class="line"></span><br><span class="line"> 提供一個正確的參數給<span class="string">":help"</span>命令，您可以找到關于該主題的幫助。請試驗以</span><br><span class="line"> 下參數(可別忘了按回車鍵哦。:)︰</span><br><span class="line"></span><br><span class="line">  :<span class="keyword">help</span> <span class="keyword">w</span> &lt;回車&gt;</span><br><span class="line">  :<span class="keyword">help</span> c_&lt;T &lt;回車&gt;</span><br><span class="line">  :<span class="keyword">help</span> <span class="keyword">insert</span>-<span class="built_in">index</span> &lt;回車&gt;</span><br><span class="line">  :<span class="keyword">help</span> user-manual &lt;回車&gt;</span><br></pre></td></tr></table></figure>
+<pre><code> 第八講︰創建一個啟動腳本
 
-** &#x555F;&#x7528;vim&#x7684;&#x529F;&#x80FD; **
-</code></pre><p>  Vim&#x7684;&#x529F;&#x80FD;&#x7279;&#x6027;&#x8981;&#x6BD4;vi&#x591A;&#x5F97;&#x591A;&#xFF0C;&#x4F46;&#x5927;&#x90E8;&#x5206;&#x529F;&#x80FD;&#x90FD;&#x6C92;&#x6709;&#x7F3A;&#x7701;&#x6FC0;&#x6D3B;&#x3002;&#x70BA;&#x4E86;&#x555F;&#x52D5;&#x66F4;&#x591A;&#x7684;<br>  &#x529F;&#x80FD;&#xFF0C;&#x60A8;&#x5F97;&#x5275;&#x5EFA;&#x4E00;&#x500B;vimrc&#x6587;&#x4EF6;&#x3002;</p>
-<ol class="ui list">
-<li><p>&#x958B;&#x59CB;&#x7DE8;&#x8F2F;vimrc&#x6587;&#x4EF6;&#xFF0C;&#x9019;&#x53D6;&#x6C7A;&#x4E8E;&#x60A8;&#x6240;&#x4F7F;&#x7528;&#x7684;&#x64CD;&#x4F5C;&#x7CFB;&#x7D71;&#xFE30;</p>
-<p>:edit ~/.vimrc        &#x9019;&#x662F;Unix&#x7CFB;&#x7D71;&#x6240;&#x4F7F;&#x7528;&#x7684;&#x547D;&#x4EE4;<br>:edit $VIM/_vimrc        &#x9019;&#x662F;Windows&#x7CFB;&#x7D71;&#x6240;&#x4F7F;&#x7528;&#x7684;&#x547D;&#x4EE4;</p>
+** 啟用vim的功能 **
+</code></pre><p>  Vim的功能特性要比vi多得多，但大部分功能都沒有缺省激活。為了啟動更多的<br>  功能，您得創建一個vimrc文件。</p>
+<ol>
+<li><p>開始編輯vimrc文件，這取決于您所使用的操作系統︰</p>
+<p>:edit ~/.vimrc        這是Unix系統所使用的命令<br>:edit $VIM/_vimrc        這是Windows系統所使用的命令</p>
 </li>
-<li><p>&#x63A5;&#x8457;&#x5C0E;&#x5165;vimrc&#x8303;&#x4F8B;&#x6587;&#x4EF6;&#xFE30;</p>
+<li><p>接著導入vimrc范例文件︰</p>
 <p>:read $VIMRUNTIME/vimrc_example.vim</p>
 </li>
-<li><p>&#x4FDD;&#x5B58;&#x6587;&#x4EF6;&#xFF0C;&#x547D;&#x4EE4;&#x70BA;&#xFE30;</p>
+<li><p>保存文件，命令為︰</p>
 <p>:write</p>
-<p>&#x5728;&#x4E0B;&#x6B21;&#x60A8;&#x555F;&#x52D5;vim&#x7684;&#x6642;&#x5019;&#xFF0C;&#x7DE8;&#x8F2F;&#x5668;&#x5C31;&#x6703;&#x6709;&#x4E86;&#x8A9E;&#x6CD5;&#x9AD8;&#x4EAE;&#x7684;&#x529F;&#x80FD;&#x3002;&#x60A8;&#x53EF;&#x4EE5;&#x7E7C;&#x7E8C;&#x628A;&#x60A8;&#x559C;<br>&#x6B61;&#x7684;&#x5176;&#x5B83;&#x529F;&#x80FD;&#x8A2D;&#x7F6E;&#x6DFB;&#x52A0;&#x5230;&#x9019;&#x500B;vimrc&#x6587;&#x4EF6;&#x4E2D;&#x3002;</p>
+<p>在下次您啟動vim的時候，編輯器就會有了語法高亮的功能。您可以繼續把您喜<br>歡的其它功能設置添加到這個vimrc文件中。</p>
 </li>
 </ol>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"> <span class="attribute">vim</span> &#x6559;&#x7A0B;&#x5230;&#x6B64;&#x7D50;&#x675F;&#x3002;&#x672C;&#x6559;&#x7A0B;&#x53EA;&#x662F;&#x70BA;&#x4E86;&#x7C21;&#x660E;&#x5730;&#x4ECB;&#x7D39;&#x4E00;&#x4E0B;vim&#x7DE8;&#x8F2F;&#x5668;&#xFF0C;&#x4F46;&#x5DF2;&#x8DB3;&#x4EE5;&#x8B93;&#x60A8;</span><br><span class="line"> &#x5F88;&#x5BB9;&#x6613;&#x5B78;&#x6703;&#x4F7F;&#x7528;&#x672C;&#x7DE8;&#x8F2F;&#x5668;&#x4E86;&#x3002;&#x6BCB;&#x5EB8;&#x8CEA;&#x7591;&#xFF0C;vim&#x9084;&#x6709;&#x5F88;&#x591A;&#x5F88;&#x591A;&#x7684;&#x547D;&#x4EE4;&#xFF0C;&#x672C;&#x6559;&#x7A0B;&#x6240;&#x4ECB;</span><br><span class="line"> &#x7D39;&#x7684;&#x9084;&#x5DEE;&#x5F97;&#x9060;&#x8457;&#x5462;&#x3002;&#x6240;&#x4EE5;&#x60A8;&#x8981;&#x7CBE;&#x901A;&#x7684;&#x8A71;&#xFF0C;&#x9084;&#x671B;&#x7E7C;&#x7E8C;&#x52AA;&#x529B;&#x54E6;&#x3002;&#x4E0B;&#x4E00;&#x6B65;&#x60A8;&#x53EF;&#x4EE5;&#x95B1;&#x8B80;</span><br><span class="line"> vim&#x624B;&#x518A;&#xFF0C;&#x4F7F;&#x7528;&#x7684;&#x547D;&#x4EE4;&#x662F;&#xFE30;</span><br><span class="line">:help user-manual</span><br><span class="line"></span><br><span class="line"> &#x70BA;&#x4E86;&#x66F4;&#x9032;&#x4E00;&#x6B65;&#x7684;&#x53C3;&#x8003;&#x548C;&#x5B78;&#x7FD2;&#xFF0C;&#x4EE5;&#x4E0B;&#x9019;&#x672C;&#x66F8;&#x503C;&#x5F97;&#x63A8;&#x85A6;&#xFE30;</span><br><span class="line"></span><br><span class="line">Vim - Vi Improved - &#x4F5C;&#x8005;&#xFE30;Steve Oualline</span><br><span class="line">&#x51FA;&#x7248;&#x793E;&#xFE30;New Riders</span><br><span class="line"></span><br><span class="line"> &#x9019;&#x662F;&#x7B2C;&#x4E00;&#x672C;&#x5B8C;&#x5168;&#x8B1B;&#x89E3;vim&#x7684;&#x66F8;&#x7C4D;&#x3002;&#x5C0D;&#x4E8E;&#x521D;&#x5B78;&#x8005;&#x7279;&#x5225;&#x6709;&#x7528;&#x3002;&#x5176;&#x4E2D;&#x9084;&#x5305;&#x542B;&#x6709;&#x5927;&#x91CF;&#x5BE6;&#x4F8B;</span><br><span class="line"> &#x548C;&#x5716;&#x793A;&#x3002;&#x6B32;&#x77E5;&#x8A73;&#x60C5;&#xFF0C;&#x8ACB;&#x8A2A;&#x554F; http://iccf-holland.org/click5.html</span><br><span class="line"></span><br><span class="line"> &#x4EE5;&#x4E0B;&#x9019;&#x672C;&#x66F8;&#x6BD4;&#x8F03;&#x8001;&#x4E86;&#x800C;&#x4E14;&#x5167;&#x5BB9;&#x4E3B;&#x8981;&#x662F;vi&#x800C;&#x4E0D;&#x662F;vim&#xFF0C;&#x4F46;&#x662F;&#x4E5F;&#x503C;&#x5F97;&#x63A8;&#x85A6;&#xFE30;</span><br><span class="line"></span><br><span class="line">Learning the Vi Editor - &#x4F5C;&#x8005;&#xFE30;Linda Lamb</span><br><span class="line">&#x51FA;&#x7248;&#x793E;&#xFE30;O<span class="string">&apos;Reilly &amp; Associates Inc.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"> &#x9019;&#x662F;&#x4E00;&#x672C;&#x4E0D;&#x932F;&#x7684;&#x66F8;&#xFF0C;&#x901A;&#x904E;&#x5B83;&#x60A8;&#x5E7E;&#x4E4E;&#x80FD;&#x5920;&#x4E86;&#x89E3;&#x5230;&#x5168;&#x90E8;vi&#x80FD;&#x5920;&#x505A;&#x5230;&#x7684;&#x4E8B;&#x60C5;&#x3002;&#x6B64;&#x66F8;&#x7684;&#x7B2C;</span></span><br><span class="line"><span class="string"> &#x516D;&#x500B;&#x7248;&#x672C;&#x4E5F;&#x5305;&#x542B;&#x4E86;&#x4E00;&#x4E9B;&#x95DC;&#x4E8E;vim&#x7684;&#x4FE1;&#x606F;&#x3002;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"> &#x672C;&#x6559;&#x7A0B;&#x662F;&#x7531;&#x4F86;&#x81EA;Calorado School of Minese&#x7684;Michael C. Pierce&#x3001;Robert K.</span></span><br><span class="line"><span class="string"> Ware &#x6240;&#x7DE8;&#x5BEB;&#x7684;&#xFF0C;&#x5176;&#x4E2D;&#x4F86;&#x81EA;Colorado State University&#x7684;Charles Smith&#x63D0;&#x4F9B;&#x4E86;</span></span><br><span class="line"><span class="string"> &#x5F88;&#x591A;&#x5275;&#x610F;&#x3002;&#x7DE8;&#x8005;&#x901A;&#x4FE1;&#x5730;&#x5740;&#x662F;&#xFE30;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">bware<span class="variable">@mines</span>.colorado.edu</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"> &#x672C;&#x6559;&#x7A0B;&#x5DF2;&#x7531;Bram Moolenaar&#x5C08;&#x70BA;vim&#x9032;&#x884C;&#x4FEE;&#x8A02;&#x3002;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"> &#x8B6F;&#x5236;&#x8005;&#x9644;&#x8A00;&#xFE30;</span></span><br><span class="line"><span class="string"> ===========</span></span><br><span class="line"><span class="string">     &#x7C21;&#x9AD4;&#x4E2D;&#x6587;&#x6559;&#x7A0B;&#x7FFB;&#x8B6F;&#x7248;&#x4E4B;&#x8B6F;&#x5236;&#x8005;&#x70BA;&#x6881;&#x660C;&#x6CF0; &lt;beos<span class="variable">@turbolinux</span>.com.cn&gt;&#xFF0C;&#x9084;&#x6709;</span></span><br><span class="line"><span class="string">     &#x53E6;&#x5916;&#x4E00;&#x500B;&#x806F;&#x7CFB;&#x5730;&#x5740;&#xFE30;linuxrat<span class="variable">@gnuchina</span>.org&#x3002;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">     &#x7E41;&#x9AD4;&#x4E2D;&#x6587;&#x6559;&#x7A0B;&#x662F;&#x5F9E;&#x7C21;&#x9AD4;&#x4E2D;&#x6587;&#x6559;&#x7A0B;&#x7FFB;&#x8B6F;&#x7248;&#x4F7F;&#x7528; Debian GNU/Linux &#x4E2D;&#x6587;&#x9805;&#x76EE;&#x5C0F;</span></span><br><span class="line"><span class="string">     &#x7D44;&#x7684;&#x4E8E;&#x5EE3;&#x8F1D;&#x5148;&#x751F;&#x7DE8;&#x5BEB;&#x7684;&#x4E2D;&#x6587;&#x6F22;&#x5B57;&#x8F49;&#x78BC;&#x5668;  autoconvert &#x8F49;&#x63DB;&#x800C;&#x6210;&#x7684;&#xFF0C;&#x4E26;&#x5C0D;&#x8F49;</span></span><br><span class="line"><span class="string">     &#x63DB;&#x7684;&#x7D50;&#x679C;&#x505A;&#x4E86;&#x4E00;&#x4E9B;&#x7D30;&#x7BC0;&#x7684;&#x6539;&#x52D5;&#x3002;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"> &#x8B8A;&#x66F4;&#x8A18;&#x9304;&#xFE30;</span></span><br><span class="line"><span class="string"> =========</span></span><br><span class="line"><span class="string">     2002&#x5E74;08&#x6708;30&#x65E5; &#x6881;&#x660C;&#x6CF0; &lt;beos<span class="variable">@turbolinux</span>.com.cn&gt;</span></span><br><span class="line"><span class="string">     &#x611F;&#x8B1D; RMS<span class="variable">@SMTH</span> &#x7684;&#x6307;&#x6B63;&#xFF0C;&#x5C07;&#x591A;&#x8655;&#x932F;&#x8AA4;&#x4FEE;&#x6B63;&#x3002;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">     2002&#x5E74;04&#x6708;22&#x65E5; &#x6881;&#x660C;&#x6CF0; &lt;linuxrat<span class="variable">@gnuchina</span>.org&gt;</span></span><br><span class="line"><span class="string">     &#x611F;&#x8B1D; xuandong<span class="variable">@sh163</span>.net &#x7684;&#x6307;&#x6B63;&#xFF0C;&#x5C07;&#x5169;&#x8655;&#x932F;&#x5225;&#x5B57;&#x4FEE;&#x6B63;&#x3002;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">     2002&#x5E74;03&#x6708;18&#x65E5; &#x6881;&#x660C;&#x6CF0; &lt;linuxrat<span class="variable">@gnuchina</span>.org&gt;</span></span><br><span class="line"><span class="string">     &#x6839;&#x64DA;Bram Molenaar&#x5148;&#x751F;&#x5728;2002&#x5E74;03&#x6708;16&#x65E5;&#x7684;&#x4F86;&#x4FE1;&#x8981;&#x6C42;&#xFF0C;&#x5C07;vimtutor1.4&#x4E2D;&#x8B6F;</span></span><br><span class="line"><span class="string">     &#x7248;&#x5347;&#x7D1A;&#x5230;vimtutor1.5&#x3002;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">     2001&#x5E74;11&#x6708;15&#x65E5; &#x6881;&#x660C;&#x6CF0; &lt;linuxrat<span class="variable">@gnuchina</span>.org&gt;</span></span><br><span class="line"><span class="string">     &#x5C07;vimtutor1.4&#x4E2D;&#x8B6F;&#x7248;&#x63D0;&#x4EA4;&#x7D66;Bram Molenaar&#x548C;Sven Guckes&#x3002;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"> <span class="attribute">vim</span> 教程到此結束。本教程只是為了簡明地介紹一下vim編輯器，但已足以讓您</span><br><span class="line"> 很容易學會使用本編輯器了。毋庸質疑，vim還有很多很多的命令，本教程所介</span><br><span class="line"> 紹的還差得遠著呢。所以您要精通的話，還望繼續努力哦。下一步您可以閱讀</span><br><span class="line"> vim手冊，使用的命令是︰</span><br><span class="line">:help user-manual</span><br><span class="line"></span><br><span class="line"> 為了更進一步的參考和學習，以下這本書值得推薦︰</span><br><span class="line"></span><br><span class="line">Vim - Vi Improved - 作者︰Steve Oualline</span><br><span class="line">出版社︰New Riders</span><br><span class="line"></span><br><span class="line"> 這是第一本完全講解vim的書籍。對于初學者特別有用。其中還包含有大量實例</span><br><span class="line"> 和圖示。欲知詳情，請訪問 http://iccf-holland.org/click5.html</span><br><span class="line"></span><br><span class="line"> 以下這本書比較老了而且內容主要是vi而不是vim，但是也值得推薦︰</span><br><span class="line"></span><br><span class="line">Learning the Vi Editor - 作者︰Linda Lamb</span><br><span class="line">出版社︰O<span class="string">'Reilly &amp; Associates Inc.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"> 這是一本不錯的書，通過它您幾乎能夠了解到全部vi能夠做到的事情。此書的第</span></span><br><span class="line"><span class="string"> 六個版本也包含了一些關于vim的信息。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"> 本教程是由來自Calorado School of Minese的Michael C. Pierce、Robert K.</span></span><br><span class="line"><span class="string"> Ware 所編寫的，其中來自Colorado State University的Charles Smith提供了</span></span><br><span class="line"><span class="string"> 很多創意。編者通信地址是︰</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">bware<span class="variable">@mines</span>.colorado.edu</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"> 本教程已由Bram Moolenaar專為vim進行修訂。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"> 譯制者附言︰</span></span><br><span class="line"><span class="string"> ===========</span></span><br><span class="line"><span class="string">     簡體中文教程翻譯版之譯制者為梁昌泰 &lt;beos<span class="variable">@turbolinux</span>.com.cn&gt;，還有</span></span><br><span class="line"><span class="string">     另外一個聯系地址︰linuxrat<span class="variable">@gnuchina</span>.org。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">     繁體中文教程是從簡體中文教程翻譯版使用 Debian GNU/Linux 中文項目小</span></span><br><span class="line"><span class="string">     組的于廣輝先生編寫的中文漢字轉碼器  autoconvert 轉換而成的，並對轉</span></span><br><span class="line"><span class="string">     換的結果做了一些細節的改動。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"> 變更記錄︰</span></span><br><span class="line"><span class="string"> =========</span></span><br><span class="line"><span class="string">     2002年08月30日 梁昌泰 &lt;beos<span class="variable">@turbolinux</span>.com.cn&gt;</span></span><br><span class="line"><span class="string">     感謝 RMS<span class="variable">@SMTH</span> 的指正，將多處錯誤修正。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">     2002年04月22日 梁昌泰 &lt;linuxrat<span class="variable">@gnuchina</span>.org&gt;</span></span><br><span class="line"><span class="string">     感謝 xuandong<span class="variable">@sh163</span>.net 的指正，將兩處錯別字修正。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">     2002年03月18日 梁昌泰 &lt;linuxrat<span class="variable">@gnuchina</span>.org&gt;</span></span><br><span class="line"><span class="string">     根據Bram Molenaar先生在2002年03月16日的來信要求，將vimtutor1.4中譯</span></span><br><span class="line"><span class="string">     版升級到vimtutor1.5。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">     2001年11月15日 梁昌泰 &lt;linuxrat<span class="variable">@gnuchina</span>.org&gt;</span></span><br><span class="line"><span class="string">     將vimtutor1.4中譯版提交給Bram Molenaar和Sven Guckes。</span></span><br></pre></td></tr></table></figure>
 
-                        
-                    </div>
-
-                    
-                    
-                    
-
-                    <div class="description post-description">
-    <span class="post-description-item">
-        <time datetime="2014-10-15T02:40:30.000Z" itemprop="datePublished">2014-10-15</time>
-
-    </span>
-    <span class="post-description-item">
+        </section>
+    </article>
+    
         
-
-    <span>
-        <i class="tags icon"></i>
-    </span>
-
+  </div>
+  <aside>
     
-    <span class="ui tiny label">
-        <a href="/tags/文档/">文档</a>
-    </span>
-
+    <div class="toc-container">
+        <h1>目录</h1>
+        <div class="content">
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#歡-迎-閱-讀-《-V-I-M-教-程-》-──-版本-1-5"><span class="toc-number">1.</span> <span class="toc-text">=      歡     迎     閱     讀   《 V I M  教  程 》   ──     版本 1.5      =</span></a></li></ol>
+        </div>
+    </div>
     
+  </aside>
+</main>
 
-    </span>
-</div>
 
-                </div>
-                
-                <div id="pagination" class="nav-web ui text container pagination">
 
-    <div class="ui stackable two column divided grid container">
-        <div class="row">
-            <div class="column nav-left">
-                
-
-                <a href="/iOS/2014/10/20/Mac/苹果电脑快捷键.html" class="ui tiny button">
-
-                    <i class="angle left icon"></i>
-                    
-                    苹果电脑快捷键
-                    
-
-                </a>
-
-                
-            </div>
-            <div class="column nav-right">
-                
-
-                <a href="/uncategorized/2014/10/04/上传第二个文件.html" class="ui tiny button">
-                    
-                    上传第二个文件
-                    
-                    <i class="angle right icon"></i></a>
-                
-            </div>
-        </div>
+  <footer>
+  <div class="copyright">
+    <div>
+      &copy; 2018 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a>&nbsp
     </div>
-
-</div>
-                
-            </div>
-
-            
-            <div class="three wide computer three wide tablet column">
-
-                <div class="ui sticky article-toc" id="article-toc">
-                    <!-- toc -->
-                    <ol class="ui ordered list"><li><a href="#歡-迎-閱-讀-《-V-I-M-教-程-》-──-版本-1-5"><span>=      歡     迎     閱     讀   《 V I M  教  程 》   ──     版本 1.5      =</span></a></li></ol>
-                </div>
-
-            </div>
-            
-
-        </div>
+    <div>
+      Theme by <a href="https://github.com/lewis-geek/hexo-theme-Aath" target="_blank">Aath</a>
     </div>
-</div>
+  </div>
+</footer>
 
 
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
-        </div>
-        <div class="ui vertical footer segment">
-    <div class="ui center aligned container">
-        <div class="ui inverted section divider"></div>
-        &copy; 2018 <a href="/">wangtao</a>,
-        Powered by <a href="https://github.com/henryhuang/hexo-theme-aloha" target="_blank">Aloha</a> and <a
-                href="http://hexo.io/" target="_blank">Hexo</a>.
-    </div>
-</div>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script src="/lib/in-view.min.js"></script>
+<script src="/lib/lodash.min.js"></script>
+<script>
+  var isDown = true
+  var oldY = 0
+  inView.offset(50)
 
-    </div>
+  document.body.addEventListener('touchstart', function(){});
+  
+  window.addEventListener('scroll', _.throttle(e => {
+    var currentY = window.scrollY
+    if((oldY - currentY) < 0) {
+      isDown = true
+    } else {
+      isDown = false
+    }
+    oldY = currentY
+  }, 250))
 
+  $("article img").each(function() {
+      var strA = "<a data-fancybox='gallery' href='" + this.src + "'></a>";
+      $(this).wrapAll(strA);
+  });
 
+  $('.toc-link').each(function() {
+      var href = $(this).attr("href");
+      
+      inView(href).on('exit', () => {
+        if (isDown) {
+          handleActive(href)
+        }
+      })
 
+      inView(href).on('enter', () => {
+        if (!isDown) {
+          handleActive(href)
+        }
+      })
 
-<!-- scripts list from theme config.yml -->
+      this.onclick = function(e) {
+        var pos = $(href).offset().top - 10;
+        $("html,body").animate({scrollTop: pos}, 300);
+        setTimeout(() => {
+          handleActive(href)
+        }, 350)
+        return false
+      }
+  })
 
-<script src="//cdn.bootcss.com/jquery/3.1.0/jquery.min.js"></script>
-
-<script src="//cdn.bootcss.com/semantic-ui/2.2.4/semantic.min.js"></script>
-
-<script src="//cdn.bootcss.com/algoliasearch/3.18.1/algoliasearch.min.js"></script>
-
-<script src="//cdn.bootcss.com/algoliasearch-helper-js/2.13.0/algoliasearch.helper.min.js"></script>
-
-<script src="/js/semantic-ui-algolia.js"></script>
-
-<script src="/js/aloha-events.js"></script>
-
+  function handleActive(href) {
+    document.querySelectorAll('.toc-link').forEach(elm => {
+      elm.classList.remove('active')
+    })
+    document.querySelector(".toc [href='"+ href +"']").classList.add('active')
+  }
+</script>
+<script src="/lib/jquery.fancybox.min.js"></script>
 
 
 </body>

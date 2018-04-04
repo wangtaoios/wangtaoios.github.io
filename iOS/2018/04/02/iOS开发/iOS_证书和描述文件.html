@@ -1,269 +1,180 @@
-
-
 <!DOCTYPE html>
-<html lang="zh-Hans">
-<head prefix="og: http://ogp.me/ns#">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-    <meta name="description" content="技术交流">
-    <title>iOS_证书和描述文件 | wt</title>
-
-    <!-- Open Graph -->
-    <meta name="description" content="A&amp;#xFF1A;&amp;#x65E0;&amp;#x63A8;&amp;#x9001;&amp;#x529F;&amp;#x80FD;&amp;#x7684;&amp;#x5E94;&amp;#x7528;121&amp;#xFF1A;&amp;#x521B;&amp;#x5EFA;App ID&amp;#xFF0C;&amp;#x5F00;&amp;#x53D1;&amp;#x6D4B;&amp;#x8BD5;&amp;#x53EF;&amp;#x4F7F;&amp;#x7528;&amp;#x901A;&amp;#x914D;&amp;#x7B26;2&amp;#xFF">
-<meta name="keywords" content="证书">
-<meta property="og:type" content="article">
-<meta property="og:title" content="iOS_证书和描述文件">
-<meta property="og:url" content="https://weibo.com/wangtaoworld/iOS/2018/04/02/iOS开发/iOS_证书和描述文件.html">
-<meta property="og:site_name" content="wt">
-<meta property="og:description" content="A&amp;#xFF1A;&amp;#x65E0;&amp;#x63A8;&amp;#x9001;&amp;#x529F;&amp;#x80FD;&amp;#x7684;&amp;#x5E94;&amp;#x7528;121&amp;#xFF1A;&amp;#x521B;&amp;#x5EFA;App ID&amp;#xFF0C;&amp;#x5F00;&amp;#x53D1;&amp;#x6D4B;&amp;#x8BD5;&amp;#x53EF;&amp;#x4F7F;&amp;#x7528;&amp;#x901A;&amp;#x914D;&amp;#x7B26;2&amp;#xFF">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-02T05:42:12.000Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="iOS_证书和描述文件">
-<meta name="twitter:description" content="A&amp;#xFF1A;&amp;#x65E0;&amp;#x63A8;&amp;#x9001;&amp;#x529F;&amp;#x80FD;&amp;#x7684;&amp;#x5E94;&amp;#x7528;121&amp;#xFF1A;&amp;#x521B;&amp;#x5EFA;App ID&amp;#xFF0C;&amp;#x5F00;&amp;#x53D1;&amp;#x6D4B;&amp;#x8BD5;&amp;#x53EF;&amp;#x4F7F;&amp;#x7528;&amp;#x901A;&amp;#x914D;&amp;#x7B26;2&amp;#xFF">
-
-    <script type="application/ld+json">
-{
-  "@context": "http://schema.org",
-  "@type": "Person",
-  "email": "mailto:",
-  "image": "",
-  "name": "wangtao",
-  "url": "https://weibo.com/wangtaoworld"
-}
-</script>
-    <script>
-    var algoliaEnabled = false;
+<html lang="zh-CN">
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="技术交流">
+  <meta name="keywords" content="">
+  
+    <link rel="icon" href="">
+  
     
-</script>
-
-    
-
-    
-    
-        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-    
-    
-    
-        <!-- stylesheets list from config.yml -->
-        
-        <link rel="stylesheet" href="/css/aloha.css">
-        
-        <link rel="stylesheet" href="//cdn.bootcss.com/semantic-ui/2.2.4/semantic.min.css">
-        
-        <link rel="stylesheet" href="//cdn.bootcss.com/magnific-popup.js/1.1.0/magnific-popup.min.css">
-        
-    
-
+  <title>iOS_证书和描述文件 | wt</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/lib/jquery.fancybox.min.css">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-<body id="body" style="margin-bottom: 0;" class="pushable">
 
-    <div class="ui top fixed menu">
-        <a class="item" id="menu-icon"><i class="sidebar icon"></i></a>
-    </div>
-
-    <div id="menu-sidebar" class="ui left vertical sidebar menu">
-
-    <div id="sidebar-top">
-        <div class="content">
-            <h3>wt</h3>
-        </div>
-    </div>
-    <div class="ui container sidebar-card">
-    <div class="ui people shape content">
-        <div class="active side">
-            <div class="ui card">
-                <div class="image">
-                    <img class="ui medium bordered image" src="/images/avatar.jpg">
-                </div>
-                <div class="content">
-                    <a class="header">wangtao</a>
-                    
-                </div>
-                <div class="extra content">
-                    <div class="ui list">
-                        
-                        
-                    </div>
-
-                </div>
-                <div class="extra content">
-                    <div class="ui list">
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-</div>
-
-    
-    
-
-    
-
-    
-    <a href="/index.html" class="item" >
-        <i class="home icon"></i>
-        HOME
+<body>
+  <header>
+  <div class="header-container">
+    <a class='logo' href="/">
+      <span>wt</span>
     </a>
+    <ul class="right-header">
+      
+        <li class="nav-item">
+          
+            <a href="/" class="item-link">首页</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/about" class="item-link">关于</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/archives" class="item-link">归档</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/tags" class="item-link">标签</a>
+          
+        </li>
+      
+    </ul>
+  </div>
+</header>
 
-    
+  <main id='post'>
+  <div class="content">
+    <article>
+        <section class="content markdown-body">
+          <h1>iOS_证书和描述文件</h1>
+          <div class='post-meta'>
+            <i class="fa fa-calendar" aria-hidden="true"></i> <time>2018年04月02日</time>
+            
+              | <i class="fa fa-folder-open-o" aria-hidden="true"></i> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/iOS/">iOS</a>
+  </div>
 
-    
-</div>
 
-    <div class="pusher body-content">
-        <div id="content" class="ui main container">
-            <!--<div class="ui one column grid">-->
-                <!--<div class="column">-->
-                    <!--<div class="ui main container">-->
-                        <div id="post-iOS开发/iOS_证书和描述文件" class="ui main container article-type-post">
 
-    
-
-    <div class="ui divided grid">
-
-        <div class="two column row" id="article-content">
-
-            <div class="thirteen wide computer thirteen wide tablet sixteen wide mobile column">
+            
+            
+              | 
+                  <i class="fa fa-tag" aria-hidden="true"></i>
                 
+               
+  <a href="/tags/#证书" class='tag'>证书</a>
 
-<h1 class="ui header">
+
+            
+          </div>
+          <h3 id="A：无推送功能的应用"><a href="#A：无推送功能的应用" class="headerlink" title="A：无推送功能的应用"></a>A：无推送功能的应用</h3><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>：创建App ID，开发测试可使用通配符</span><br><span class="line"><span class="number">2</span>：添加设备</span><br></pre></td></tr></table></figure>
+<h6 id="开发测试"><a href="#开发测试" class="headerlink" title="开发测试"></a>开发测试</h6><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">3</span>：创建测试证书，Development下的iOS App Development</span><br><span class="line"><span class="number">4</span>：配置测试描述文件，Development下面的iOS App Development</span><br></pre></td></tr></table></figure>
+<h6 id="发布测试"><a href="#发布测试" class="headerlink" title="发布测试"></a>发布测试</h6><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">3</span>：创建发布证书，Production下的App Store and Ad Hoc</span><br><span class="line"><span class="number">4</span>：配置发布测试描述文件，Distribution下面的Ad Hoc</span><br></pre></td></tr></table></figure>
+<h6 id="发布上线"><a href="#发布上线" class="headerlink" title="发布上线"></a>发布上线</h6><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">3</span>：创建发布证书，Production下的App Store and Ad Hoc</span><br><span class="line"><span class="number">4</span>：配置发布AppStore描述文件，Distribution下面的App Store</span><br></pre></td></tr></table></figure>
+<h3 id="B：有推送功能的应用"><a href="#B：有推送功能的应用" class="headerlink" title="B：有推送功能的应用"></a>B：有推送功能的应用</h3><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>：创建App ID，App ID 不能使用通配符，且勾选Push Notifications</span><br><span class="line"><span class="number">2</span>：添加设备</span><br></pre></td></tr></table></figure>
+<h6 id="开发测试-1"><a href="#开发测试-1" class="headerlink" title="开发测试"></a>开发测试</h6><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">3：创建测试证书，Development下的Apple Push Notification<span class="built_in"> service </span>SSL (Sandbox)</span><br><span class="line">4：配置测试描述文件，Development下面的iOS App Development</span><br></pre></td></tr></table></figure>
+<h6 id="发布测试-1"><a href="#发布测试-1" class="headerlink" title="发布测试"></a>发布测试</h6><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">3：创建发布证书，Production下的Apple Push Notification<span class="built_in"> service </span>SSL (Sandbox &amp; Production)</span><br><span class="line">4：配置发布测试描述文件，Distribution下面的Ad Hoc</span><br></pre></td></tr></table></figure>
+<h6 id="发布上线-1"><a href="#发布上线-1" class="headerlink" title="发布上线"></a>发布上线</h6><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">3：创建发布证书，Production下的Apple Push Notification<span class="built_in"> service </span>SSL (Sandbox &amp; Production)</span><br><span class="line">4：配置发布AppStore描述文件，Distribution下面的App Store</span><br></pre></td></tr></table></figure>
+        </section>
+    </article>
     
-    iOS_证书和描述文件
-</h1>
-
-
-
-                <div class="article-inner">
-
-                    <div class="article-entry" itemprop="articleBody">
-                        
-                        <h3 id="A&#xFF1A;&#x65E0;&#x63A8;&#x9001;&#x529F;&#x80FD;&#x7684;&#x5E94;&#x7528;"><a href="#A&#xFF1A;&#x65E0;&#x63A8;&#x9001;&#x529F;&#x80FD;&#x7684;&#x5E94;&#x7528;" class="headerlink" title="A&#xFF1A;&#x65E0;&#x63A8;&#x9001;&#x529F;&#x80FD;&#x7684;&#x5E94;&#x7528;"></a>A&#xFF1A;&#x65E0;&#x63A8;&#x9001;&#x529F;&#x80FD;&#x7684;&#x5E94;&#x7528;</h3><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>&#xFF1A;&#x521B;&#x5EFA;App ID&#xFF0C;&#x5F00;&#x53D1;&#x6D4B;&#x8BD5;&#x53EF;&#x4F7F;&#x7528;&#x901A;&#x914D;&#x7B26;</span><br><span class="line"><span class="number">2</span>&#xFF1A;&#x6DFB;&#x52A0;&#x8BBE;&#x5907;</span><br></pre></td></tr></table></figure>
-<h6 id="&#x5F00;&#x53D1;&#x6D4B;&#x8BD5;"><a href="#&#x5F00;&#x53D1;&#x6D4B;&#x8BD5;" class="headerlink" title="&#x5F00;&#x53D1;&#x6D4B;&#x8BD5;"></a>&#x5F00;&#x53D1;&#x6D4B;&#x8BD5;</h6><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">3</span>&#xFF1A;&#x521B;&#x5EFA;&#x6D4B;&#x8BD5;&#x8BC1;&#x4E66;&#xFF0C;Development&#x4E0B;&#x7684;iOS App Development</span><br><span class="line"><span class="number">4</span>&#xFF1A;&#x914D;&#x7F6E;&#x6D4B;&#x8BD5;&#x63CF;&#x8FF0;&#x6587;&#x4EF6;&#xFF0C;Development&#x4E0B;&#x9762;&#x7684;iOS App Development</span><br></pre></td></tr></table></figure>
-<h6 id="&#x53D1;&#x5E03;&#x6D4B;&#x8BD5;"><a href="#&#x53D1;&#x5E03;&#x6D4B;&#x8BD5;" class="headerlink" title="&#x53D1;&#x5E03;&#x6D4B;&#x8BD5;"></a>&#x53D1;&#x5E03;&#x6D4B;&#x8BD5;</h6><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">3</span>&#xFF1A;&#x521B;&#x5EFA;&#x53D1;&#x5E03;&#x8BC1;&#x4E66;&#xFF0C;Production&#x4E0B;&#x7684;App Store and Ad Hoc</span><br><span class="line"><span class="number">4</span>&#xFF1A;&#x914D;&#x7F6E;&#x53D1;&#x5E03;&#x6D4B;&#x8BD5;&#x63CF;&#x8FF0;&#x6587;&#x4EF6;&#xFF0C;Distribution&#x4E0B;&#x9762;&#x7684;Ad Hoc</span><br></pre></td></tr></table></figure>
-<h6 id="&#x53D1;&#x5E03;&#x4E0A;&#x7EBF;"><a href="#&#x53D1;&#x5E03;&#x4E0A;&#x7EBF;" class="headerlink" title="&#x53D1;&#x5E03;&#x4E0A;&#x7EBF;"></a>&#x53D1;&#x5E03;&#x4E0A;&#x7EBF;</h6><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">3</span>&#xFF1A;&#x521B;&#x5EFA;&#x53D1;&#x5E03;&#x8BC1;&#x4E66;&#xFF0C;Production&#x4E0B;&#x7684;App Store and Ad Hoc</span><br><span class="line"><span class="number">4</span>&#xFF1A;&#x914D;&#x7F6E;&#x53D1;&#x5E03;AppStore&#x63CF;&#x8FF0;&#x6587;&#x4EF6;&#xFF0C;Distribution&#x4E0B;&#x9762;&#x7684;App Store</span><br></pre></td></tr></table></figure>
-<h3 id="B&#xFF1A;&#x6709;&#x63A8;&#x9001;&#x529F;&#x80FD;&#x7684;&#x5E94;&#x7528;"><a href="#B&#xFF1A;&#x6709;&#x63A8;&#x9001;&#x529F;&#x80FD;&#x7684;&#x5E94;&#x7528;" class="headerlink" title="B&#xFF1A;&#x6709;&#x63A8;&#x9001;&#x529F;&#x80FD;&#x7684;&#x5E94;&#x7528;"></a>B&#xFF1A;&#x6709;&#x63A8;&#x9001;&#x529F;&#x80FD;&#x7684;&#x5E94;&#x7528;</h3><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>&#xFF1A;&#x521B;&#x5EFA;App ID&#xFF0C;App ID &#x4E0D;&#x80FD;&#x4F7F;&#x7528;&#x901A;&#x914D;&#x7B26;&#xFF0C;&#x4E14;&#x52FE;&#x9009;Push Notifications</span><br><span class="line"><span class="number">2</span>&#xFF1A;&#x6DFB;&#x52A0;&#x8BBE;&#x5907;</span><br></pre></td></tr></table></figure>
-<h6 id="&#x5F00;&#x53D1;&#x6D4B;&#x8BD5;-1"><a href="#&#x5F00;&#x53D1;&#x6D4B;&#x8BD5;-1" class="headerlink" title="&#x5F00;&#x53D1;&#x6D4B;&#x8BD5;"></a>&#x5F00;&#x53D1;&#x6D4B;&#x8BD5;</h6><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">3&#xFF1A;&#x521B;&#x5EFA;&#x6D4B;&#x8BD5;&#x8BC1;&#x4E66;&#xFF0C;Development&#x4E0B;&#x7684;Apple Push Notification<span class="built_in"> service </span>SSL (Sandbox)</span><br><span class="line">4&#xFF1A;&#x914D;&#x7F6E;&#x6D4B;&#x8BD5;&#x63CF;&#x8FF0;&#x6587;&#x4EF6;&#xFF0C;Development&#x4E0B;&#x9762;&#x7684;iOS App Development</span><br></pre></td></tr></table></figure>
-<h6 id="&#x53D1;&#x5E03;&#x6D4B;&#x8BD5;-1"><a href="#&#x53D1;&#x5E03;&#x6D4B;&#x8BD5;-1" class="headerlink" title="&#x53D1;&#x5E03;&#x6D4B;&#x8BD5;"></a>&#x53D1;&#x5E03;&#x6D4B;&#x8BD5;</h6><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">3&#xFF1A;&#x521B;&#x5EFA;&#x53D1;&#x5E03;&#x8BC1;&#x4E66;&#xFF0C;Production&#x4E0B;&#x7684;Apple Push Notification<span class="built_in"> service </span>SSL (Sandbox &amp; Production)</span><br><span class="line">4&#xFF1A;&#x914D;&#x7F6E;&#x53D1;&#x5E03;&#x6D4B;&#x8BD5;&#x63CF;&#x8FF0;&#x6587;&#x4EF6;&#xFF0C;Distribution&#x4E0B;&#x9762;&#x7684;Ad Hoc</span><br></pre></td></tr></table></figure>
-<h6 id="&#x53D1;&#x5E03;&#x4E0A;&#x7EBF;-1"><a href="#&#x53D1;&#x5E03;&#x4E0A;&#x7EBF;-1" class="headerlink" title="&#x53D1;&#x5E03;&#x4E0A;&#x7EBF;"></a>&#x53D1;&#x5E03;&#x4E0A;&#x7EBF;</h6><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">3&#xFF1A;&#x521B;&#x5EFA;&#x53D1;&#x5E03;&#x8BC1;&#x4E66;&#xFF0C;Production&#x4E0B;&#x7684;Apple Push Notification<span class="built_in"> service </span>SSL (Sandbox &amp; Production)</span><br><span class="line">4&#xFF1A;&#x914D;&#x7F6E;&#x53D1;&#x5E03;AppStore&#x63CF;&#x8FF0;&#x6587;&#x4EF6;&#xFF0C;Distribution&#x4E0B;&#x9762;&#x7684;App Store</span><br></pre></td></tr></table></figure>
-                        
-                    </div>
-
-                    
-                    
-                    
-
-                    <div class="description post-description">
-    <span class="post-description-item">
-        <time datetime="2018-04-02T05:40:11.000Z" itemprop="datePublished">2018-04-02</time>
-
-    </span>
-    <span class="post-description-item">
         
-
-    <span>
-        <i class="tags icon"></i>
-    </span>
-
+  </div>
+  <aside>
     
-    <span class="ui tiny label">
-        <a href="/tags/证书/">证书</a>
-    </span>
-
+    <div class="toc-container">
+        <h1>目录</h1>
+        <div class="content">
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#A：无推送功能的应用"><span class="toc-number">1.</span> <span class="toc-text">A：无推送功能的应用</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#开发测试"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">开发测试</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#发布测试"><span class="toc-number">1.0.0.2.</span> <span class="toc-text">发布测试</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#发布上线"><span class="toc-number">1.0.0.3.</span> <span class="toc-text">发布上线</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#B：有推送功能的应用"><span class="toc-number">2.</span> <span class="toc-text">B：有推送功能的应用</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#开发测试-1"><span class="toc-number">2.0.0.1.</span> <span class="toc-text">开发测试</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#发布测试-1"><span class="toc-number">2.0.0.2.</span> <span class="toc-text">发布测试</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#发布上线-1"><span class="toc-number">2.0.0.3.</span> <span class="toc-text">发布上线</span></a></li></ol></li></ol></li></ol></li></ol>
+        </div>
+    </div>
     
+  </aside>
+</main>
 
-    </span>
-</div>
 
-                </div>
-                
-                <div id="pagination" class="nav-web ui text container pagination">
 
-    <div class="ui stackable two column divided grid container">
-        <div class="row">
-            <div class="column nav-left">
-                
-
-                <a href="/iOS/2018/04/02/工作项目/巧手快修.html" class="ui tiny button">
-
-                    <i class="angle left icon"></i>
-                    
-                    巧手快修
-                    
-
-                </a>
-
-                
-            </div>
-            <div class="column nav-right">
-                
-
-                <a href="/iOS/2018/03/30/iOS开发/iOS_identifierForVendor_UUID_供应商标识符_通用唯一识别码.html" class="ui tiny button">
-                    
-                    iOS_identifierForVendor_UUID_供应商标识[biāo zhì]符_通用唯一识别码
-                    
-                    <i class="angle right icon"></i></a>
-                
-            </div>
-        </div>
+  <footer>
+  <div class="copyright">
+    <div>
+      &copy; 2018 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a>&nbsp
     </div>
-
-</div>
-                
-            </div>
-
-            
-            <div class="three wide computer three wide tablet column">
-
-                <div class="ui sticky article-toc" id="article-toc">
-                    <!-- toc -->
-                    <ol class="ui ordered list"><li><a href="#A：无推送功能的应用"><span>A：无推送功能的应用</span></a><ol><li><a href="#开发测试"><span>开发测试</span></a></li><li><a href="#发布测试"><span>发布测试</span></a></li><li><a href="#发布上线"><span>发布上线</span></a></li></ol></li></ol></li></ol></li><li><a href="#B：有推送功能的应用"><span>B：有推送功能的应用</span></a><ol><li><a href="#开发测试-1"><span>开发测试</span></a></li><li><a href="#发布测试-1"><span>发布测试</span></a></li><li><a href="#发布上线-1"><span>发布上线</span></a></li></ol></li></ol></li></ol></li></ol>
-                </div>
-
-            </div>
-            
-
-        </div>
+    <div>
+      Theme by <a href="https://github.com/lewis-geek/hexo-theme-Aath" target="_blank">Aath</a>
     </div>
-</div>
+  </div>
+</footer>
 
 
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
-        </div>
-        <div class="ui vertical footer segment">
-    <div class="ui center aligned container">
-        <div class="ui inverted section divider"></div>
-        &copy; 2018 <a href="/">wangtao</a>,
-        Powered by <a href="https://github.com/henryhuang/hexo-theme-aloha" target="_blank">Aloha</a> and <a
-                href="http://hexo.io/" target="_blank">Hexo</a>.
-    </div>
-</div>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script src="/lib/in-view.min.js"></script>
+<script src="/lib/lodash.min.js"></script>
+<script>
+  var isDown = true
+  var oldY = 0
+  inView.offset(50)
 
-    </div>
+  document.body.addEventListener('touchstart', function(){});
+  
+  window.addEventListener('scroll', _.throttle(e => {
+    var currentY = window.scrollY
+    if((oldY - currentY) < 0) {
+      isDown = true
+    } else {
+      isDown = false
+    }
+    oldY = currentY
+  }, 250))
 
+  $("article img").each(function() {
+      var strA = "<a data-fancybox='gallery' href='" + this.src + "'></a>";
+      $(this).wrapAll(strA);
+  });
 
+  $('.toc-link').each(function() {
+      var href = $(this).attr("href");
+      
+      inView(href).on('exit', () => {
+        if (isDown) {
+          handleActive(href)
+        }
+      })
 
+      inView(href).on('enter', () => {
+        if (!isDown) {
+          handleActive(href)
+        }
+      })
 
-<!-- scripts list from theme config.yml -->
+      this.onclick = function(e) {
+        var pos = $(href).offset().top - 10;
+        $("html,body").animate({scrollTop: pos}, 300);
+        setTimeout(() => {
+          handleActive(href)
+        }, 350)
+        return false
+      }
+  })
 
-<script src="//cdn.bootcss.com/jquery/3.1.0/jquery.min.js"></script>
-
-<script src="//cdn.bootcss.com/semantic-ui/2.2.4/semantic.min.js"></script>
-
-<script src="//cdn.bootcss.com/algoliasearch/3.18.1/algoliasearch.min.js"></script>
-
-<script src="//cdn.bootcss.com/algoliasearch-helper-js/2.13.0/algoliasearch.helper.min.js"></script>
-
-<script src="/js/semantic-ui-algolia.js"></script>
-
-<script src="/js/aloha-events.js"></script>
-
+  function handleActive(href) {
+    document.querySelectorAll('.toc-link').forEach(elm => {
+      elm.classList.remove('active')
+    })
+    document.querySelector(".toc [href='"+ href +"']").classList.add('active')
+  }
+</script>
+<script src="/lib/jquery.fancybox.min.js"></script>
 
 
 </body>

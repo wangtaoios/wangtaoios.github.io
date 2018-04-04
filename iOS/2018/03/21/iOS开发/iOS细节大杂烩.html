@@ -1,278 +1,179 @@
-
-
 <!DOCTYPE html>
-<html lang="zh-Hans">
-<head prefix="og: http://ogp.me/ns#">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-    <meta name="description" content="技术交流">
-    <title>iOS细节大杂烩 | wt</title>
-
-    <!-- Open Graph -->
-    <meta name="description" content="1&amp;#xFF1A;&amp;#x5173;&amp;#x4E8E;UIWebView 1234567UIWebView&amp;#x7684;&amp;#x4E0B;&amp;#x9762;&amp;#x6709;&amp;#x9ED1;&amp;#x7EBF;&amp;#xFF0C;iPhone7plus&amp;#x6CA1;&amp;#x6709;&amp;#xFF0C;iPhone6&amp;#x548C;iPhone6plus&amp;#x6709;&amp;#xFF0C;&amp;#x52A0;&amp;#x4E0A;">
-<meta name="keywords" content="技术点">
-<meta property="og:type" content="article">
-<meta property="og:title" content="iOS细节大杂烩">
-<meta property="og:url" content="https://weibo.com/wangtaoworld/iOS/2018/03/21/iOS开发/iOS细节大杂烩.html">
-<meta property="og:site_name" content="wt">
-<meta property="og:description" content="1&amp;#xFF1A;&amp;#x5173;&amp;#x4E8E;UIWebView 1234567UIWebView&amp;#x7684;&amp;#x4E0B;&amp;#x9762;&amp;#x6709;&amp;#x9ED1;&amp;#x7EBF;&amp;#xFF0C;iPhone7plus&amp;#x6CA1;&amp;#x6709;&amp;#xFF0C;iPhone6&amp;#x548C;iPhone6plus&amp;#x6709;&amp;#xFF0C;&amp;#x52A0;&amp;#x4E0A;">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://github.com/wangtaoios/images/blob/master/%E9%A1%B9%E7%9B%AEDemo%E5%9B%BE%E7%89%87/YYLabel_BUG_0327.png?raw=true">
-<meta property="og:image" content="https://github.com/wangtaoios/images/blob/master/%E9%A1%B9%E7%9B%AEDemo%E5%9B%BE%E7%89%87/share_0330.png?raw=true">
-<meta property="og:updated_time" content="2018-03-30T06:30:37.000Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="iOS细节大杂烩">
-<meta name="twitter:description" content="1&amp;#xFF1A;&amp;#x5173;&amp;#x4E8E;UIWebView 1234567UIWebView&amp;#x7684;&amp;#x4E0B;&amp;#x9762;&amp;#x6709;&amp;#x9ED1;&amp;#x7EBF;&amp;#xFF0C;iPhone7plus&amp;#x6CA1;&amp;#x6709;&amp;#xFF0C;iPhone6&amp;#x548C;iPhone6plus&amp;#x6709;&amp;#xFF0C;&amp;#x52A0;&amp;#x4E0A;">
-<meta name="twitter:image" content="https://github.com/wangtaoios/images/blob/master/%E9%A1%B9%E7%9B%AEDemo%E5%9B%BE%E7%89%87/YYLabel_BUG_0327.png?raw=true">
-
-    <script type="application/ld+json">
-{
-  "@context": "http://schema.org",
-  "@type": "Person",
-  "email": "mailto:",
-  "image": "",
-  "name": "wangtao",
-  "url": "https://weibo.com/wangtaoworld"
-}
-</script>
-    <script>
-    var algoliaEnabled = false;
+<html lang="zh-CN">
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="技术交流">
+  <meta name="keywords" content="">
+  
+    <link rel="icon" href="">
+  
     
-</script>
-
-    
-
-    
-    
-        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-    
-    
-    
-        <!-- stylesheets list from config.yml -->
-        
-        <link rel="stylesheet" href="/css/aloha.css">
-        
-        <link rel="stylesheet" href="//cdn.bootcss.com/semantic-ui/2.2.4/semantic.min.css">
-        
-        <link rel="stylesheet" href="//cdn.bootcss.com/magnific-popup.js/1.1.0/magnific-popup.min.css">
-        
-    
-
+  <title>iOS细节大杂烩 | wt</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/lib/jquery.fancybox.min.css">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-<body id="body" style="margin-bottom: 0;" class="pushable">
 
-    <div class="ui top fixed menu">
-        <a class="item" id="menu-icon"><i class="sidebar icon"></i></a>
-    </div>
-
-    <div id="menu-sidebar" class="ui left vertical sidebar menu">
-
-    <div id="sidebar-top">
-        <div class="content">
-            <h3>wt</h3>
-        </div>
-    </div>
-    <div class="ui container sidebar-card">
-    <div class="ui people shape content">
-        <div class="active side">
-            <div class="ui card">
-                <div class="image">
-                    <img class="ui medium bordered image" src="/images/avatar.jpg">
-                </div>
-                <div class="content">
-                    <a class="header">wangtao</a>
-                    
-                </div>
-                <div class="extra content">
-                    <div class="ui list">
-                        
-                        
-                    </div>
-
-                </div>
-                <div class="extra content">
-                    <div class="ui list">
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-</div>
-
-    
-    
-
-    
-
-    
-    <a href="/index.html" class="item" >
-        <i class="home icon"></i>
-        HOME
+<body>
+  <header>
+  <div class="header-container">
+    <a class='logo' href="/">
+      <span>wt</span>
     </a>
+    <ul class="right-header">
+      
+        <li class="nav-item">
+          
+            <a href="/" class="item-link">首页</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/about" class="item-link">关于</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/archives" class="item-link">归档</a>
+          
+        </li>
+      
+        <li class="nav-item">
+          
+            <a href="/tags" class="item-link">标签</a>
+          
+        </li>
+      
+    </ul>
+  </div>
+</header>
 
-    
+  <main id='post'>
+  <div class="content">
+    <article>
+        <section class="content markdown-body">
+          <h1>iOS细节大杂烩</h1>
+          <div class='post-meta'>
+            <i class="fa fa-calendar" aria-hidden="true"></i> <time>2018年03月21日</time>
+            
+              | <i class="fa fa-folder-open-o" aria-hidden="true"></i> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/iOS/">iOS</a>
+  </div>
 
-    
-</div>
 
-    <div class="pusher body-content">
-        <div id="content" class="ui main container">
-            <!--<div class="ui one column grid">-->
-                <!--<div class="column">-->
-                    <!--<div class="ui main container">-->
-                        <div id="post-iOS开发/iOS细节大杂烩" class="ui main container article-type-post">
 
-    
-
-    <div class="ui divided grid">
-
-        <div class="two column row" id="article-content">
-
-            <div class="thirteen wide computer thirteen wide tablet sixteen wide mobile column">
+            
+            
+              | 
+                  <i class="fa fa-tag" aria-hidden="true"></i>
                 
-
-<h1 class="ui header">
-    
-    iOS细节大杂烩
-</h1>
+               
+  <a href="/tags/#技术点" class='tag'>技术点</a>
 
 
-
-                <div class="article-inner">
-
-                    <div class="article-entry" itemprop="articleBody">
-                        
-                        <p><strong><em>1&#xFF1A;&#x5173;&#x4E8E;UIWebView</em></strong></p>
-<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">UIWebView&#x7684;&#x4E0B;&#x9762;&#x6709;&#x9ED1;&#x7EBF;&#xFF0C;iPhone7plus&#x6CA1;&#x6709;&#xFF0C;iPhone6&#x548C;iPhone6plus&#x6709;&#xFF0C;&#x52A0;&#x4E0A;</span><br><span class="line">&#xA0; &#xA0; webView.<span class="keyword">backgroundColor </span>= [UIColor clearColor]<span class="comment">;</span></span><br><span class="line">&#xA0; &#xA0; webView.opaque = NO<span class="comment">;</span></span><br><span class="line">&#x89E3;&#x51B3;</span><br><span class="line"></span><br><span class="line">&#x4E0D;&#x68C0;&#x6D4B;&#x7F51;&#x9875;&#x4E0A;&#x7684;&#x4EFB;&#x4F55;&#x5185;&#x5BB9;</span><br><span class="line">    webView.dataDetectorTypes = UIDataDetectorTypeNone<span class="comment">;</span></span><br></pre></td></tr></table></figure>
-<p><strong><em>2&#xFF1A;&#x5173;&#x4E8E;UICollectionReusableView</em></strong></p>
-<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="built_in">UICollectionReusableView</span> *)collectionView:(<span class="built_in">UICollectionView</span> *)collectionView viewForSupplementaryElementOfKind:(<span class="built_in">NSString</span> *)kind atIndexPath:(<span class="built_in">NSIndexPath</span> *)indexPath</span><br><span class="line">&#x5982;&#x679C;&#x5BF9;&#x5E94;&#x7684; section &#x4E0D;&#x9700;&#x8981;&#x9875;&#x7709;&#x548C;&#x9875;&#x811A;&#xFF0C;&#x5C31;&#x8FD4;&#x56DE;<span class="literal">nil</span>&#xFF0C;&#x4F46;&#x4E00;&#x5B9A;&#x5728;</span><br><span class="line">- (<span class="built_in">CGSize</span>)collectionView:(<span class="built_in">UICollectionView</span> *)collectionView layout:(<span class="built_in">UICollectionViewLayout</span> *)collectionViewLayout referenceSizeForHeaderInSection:(<span class="built_in">NSInteger</span>)section</span><br><span class="line">&#x548C;</span><br><span class="line">- (<span class="built_in">CGSize</span>)collectionView:(<span class="built_in">UICollectionView</span> *)collectionView layout:(<span class="built_in">UICollectionViewLayout</span> *)collectionViewLayout referenceSizeForFooterInSection:(<span class="built_in">NSInteger</span>)section</span><br><span class="line">&#x5BF9;&#x5E94;&#x7684; section </span><br><span class="line"> <span class="keyword">return</span> <span class="built_in">CGSizeZero</span></span><br><span class="line">&#x5426;&#x5219; crash</span><br></pre></td></tr></table></figure>
-<p><strong><em>3&#xFF1A;&#x5173;&#x4E8E;UICollectionView</em></strong></p>
-<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">self</span>.collectionView.alwaysBounceVertical = <span class="literal">YES</span>;</span><br><span class="line">&#x5373;&#x4F7F;<span class="built_in">UICollectionView</span>&#x6CA1;&#x6709;&#x8D85;&#x8FC7;&#x4E00;&#x5C4F;&#xFF0C;&#x4ECD;&#x53EF;&#x5F39;&#x6027;&#x6ED1;&#x52A8;</span><br></pre></td></tr></table></figure>
-<p><strong><em>4&#xFF1A;&#x5173;&#x4E8E;YYLabel</em></strong></p>
+            
+          </div>
+          <p><strong><em>1：关于UIWebView</em></strong></p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">UIWebView的下面有黑线，iPhone7plus没有，iPhone6和iPhone6plus有，加上</span><br><span class="line">    webView.<span class="keyword">backgroundColor </span>= [UIColor clearColor]<span class="comment">;</span></span><br><span class="line">    webView.opaque = NO<span class="comment">;</span></span><br><span class="line">解决</span><br><span class="line"></span><br><span class="line">不检测网页上的任何内容</span><br><span class="line">    webView.dataDetectorTypes = UIDataDetectorTypeNone<span class="comment">;</span></span><br></pre></td></tr></table></figure>
+<p><strong><em>2：关于UICollectionReusableView</em></strong></p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="built_in">UICollectionReusableView</span> *)collectionView:(<span class="built_in">UICollectionView</span> *)collectionView viewForSupplementaryElementOfKind:(<span class="built_in">NSString</span> *)kind atIndexPath:(<span class="built_in">NSIndexPath</span> *)indexPath</span><br><span class="line">如果对应的 section 不需要页眉和页脚，就返回<span class="literal">nil</span>，但一定在</span><br><span class="line">- (<span class="built_in">CGSize</span>)collectionView:(<span class="built_in">UICollectionView</span> *)collectionView layout:(<span class="built_in">UICollectionViewLayout</span> *)collectionViewLayout referenceSizeForHeaderInSection:(<span class="built_in">NSInteger</span>)section</span><br><span class="line">和</span><br><span class="line">- (<span class="built_in">CGSize</span>)collectionView:(<span class="built_in">UICollectionView</span> *)collectionView layout:(<span class="built_in">UICollectionViewLayout</span> *)collectionViewLayout referenceSizeForFooterInSection:(<span class="built_in">NSInteger</span>)section</span><br><span class="line">对应的 section </span><br><span class="line"> <span class="keyword">return</span> <span class="built_in">CGSizeZero</span></span><br><span class="line">否则 crash</span><br></pre></td></tr></table></figure>
+<p><strong><em>3：关于UICollectionView</em></strong></p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">self</span>.collectionView.alwaysBounceVertical = <span class="literal">YES</span>;</span><br><span class="line">即使<span class="built_in">UICollectionView</span>没有超过一屏，仍可弹性滑动</span><br></pre></td></tr></table></figure>
+<p><strong><em>4：关于YYLabel</em></strong></p>
 <p><a href="https://github.com/ibireme/YYText/issues/529" target="_blank" rel="noopener">https://github.com/ibireme/YYText/issues/529</a></p>
-<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#x4F7F;&#x7528;YYLabel&#x7684;<span class="keyword">BUG&#xFF0C;&#x884C;&#x95F4;&#x8DDD;&#x53D8;&#x5C0F;</span></span><br><span class="line"><span class="keyword">&#x5DE6;&#x4FA7;UILabel&#xFF0C;&#x53F3;&#x4FA7;YYLabel</span></span><br><span class="line"><span class="keyword">&#x6362;&#x7528;TTTAttributedLabel&#x4ECD;&#x6709;&#x76F8;&#x540C;&#x95EE;&#x9898;</span></span><br></pre></td></tr></table></figure>
-<p><a class="magnific-img" href="https://github.com/wangtaoios/images/blob/master/%E9%A1%B9%E7%9B%AEDemo%E5%9B%BE%E7%89%87/YYLabel_BUG_0327.png?raw=true"><img src="https://github.com/wangtaoios/images/blob/master/%E9%A1%B9%E7%9B%AEDemo%E5%9B%BE%E7%89%87/YYLabel_BUG_0327.png?raw=true" alt="&#x5BF9;&#x6BD4;" class="ui centered image"></a></p>
-<p><strong><em>5&#xFF1A;&#x5173;&#x4E8E;&#x7B2C;&#x4E09;&#x65B9;&#x767B;&#x5F55;</em></strong></p>
-<p>&#x4E3A;&#x4E86;PC&#x548C;APP&#x7684;&#x767B;&#x5F55;&#x540C;&#x6B65;&#xFF0C;&#x9700;&#x8981;&#x4F7F;&#x7528;&#x5FAE;&#x4FE1;&#x548C;QQ&#x7684;unionid&#x53C2;&#x6570;&#xFF0C;&#x6765;&#x8FDB;&#x884C;&#x7B2C;&#x4E09;&#x65B9;&#x767B;&#x5F55;&#xFF0C;&#x5982;&#x679C;&#x5355;&#x7EAF;&#x7684;&#x8003;&#x8651;APP&#x529F;&#x80FD;&#x7684;&#x8BDD;&#xFF0C;unionid&#x548C;openid&#x5747;&#x53EF;</p>
-<p><a class="magnific-img" href="https://github.com/wangtaoios/images/blob/master/%E9%A1%B9%E7%9B%AEDemo%E5%9B%BE%E7%89%87/share_0330.png?raw=true"><img src="https://github.com/wangtaoios/images/blob/master/%E9%A1%B9%E7%9B%AEDemo%E5%9B%BE%E7%89%87/share_0330.png?raw=true" alt="UM" class="ui centered image"></a></p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">使用YYLabel的<span class="keyword">BUG，行间距变小</span></span><br><span class="line"><span class="keyword">左侧UILabel，右侧YYLabel</span></span><br><span class="line"><span class="keyword">换用TTTAttributedLabel仍有相同问题</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://github.com/wangtaoios/images/blob/master/%E9%A1%B9%E7%9B%AEDemo%E5%9B%BE%E7%89%87/YYLabel_BUG_0327.png?raw=true" alt="对比"></p>
+<p><strong><em>5：关于第三方登录</em></strong></p>
+<p>为了PC和APP的登录同步，需要使用微信和QQ的unionid参数，来进行第三方登录，如果单纯的考虑APP功能的话，unionid和openid均可</p>
+<p><img src="https://github.com/wangtaoios/images/blob/master/%E9%A1%B9%E7%9B%AEDemo%E5%9B%BE%E7%89%87/share_0330.png?raw=true" alt="UM"></p>
 
-                        
-                    </div>
-
-                    
-                    
-                    
-
-                    <div class="description post-description">
-    <span class="post-description-item">
-        <time datetime="2018-03-21T09:43:47.000Z" itemprop="datePublished">2018-03-21</time>
-
-    </span>
-    <span class="post-description-item">
+        </section>
+    </article>
+    
         
-
-    <span>
-        <i class="tags icon"></i>
-    </span>
-
+  </div>
+  <aside>
     
-    <span class="ui tiny label">
-        <a href="/tags/技术点/">技术点</a>
-    </span>
+  </aside>
+</main>
 
-    
 
-    </span>
-</div>
 
-                </div>
-                
-                <div id="pagination" class="nav-web ui text container pagination">
-
-    <div class="ui stackable two column divided grid container">
-        <div class="row">
-            <div class="column nav-left">
-                
-
-                <a href="/文档/2018/03/22/iOS开发/-ObjC 和 -all_load 的使用.html" class="ui tiny button">
-
-                    <i class="angle left icon"></i>
-                    
-                    -ObjC 和 -all_load 的使用
-                    
-
-                </a>
-
-                
-            </div>
-            <div class="column nav-right">
-                
-
-                <a href="/iOS/2018/03/21/iOS开发/iOS实现搭建聊天页面.html" class="ui tiny button">
-                    
-                    iOS实现搭建聊天页面
-                    
-                    <i class="angle right icon"></i></a>
-                
-            </div>
-        </div>
+  <footer>
+  <div class="copyright">
+    <div>
+      &copy; 2018 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a>&nbsp
     </div>
-
-</div>
-                
-            </div>
-
-            
-            <div class="three wide computer three wide tablet column">
-
-                <div class="ui sticky article-toc" id="article-toc">
-                    <!-- toc -->
-                    
-                </div>
-
-            </div>
-            
-
-        </div>
+    <div>
+      Theme by <a href="https://github.com/lewis-geek/hexo-theme-Aath" target="_blank">Aath</a>
     </div>
-</div>
+  </div>
+</footer>
 
 
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
-        </div>
-        <div class="ui vertical footer segment">
-    <div class="ui center aligned container">
-        <div class="ui inverted section divider"></div>
-        &copy; 2018 <a href="/">wangtao</a>,
-        Powered by <a href="https://github.com/henryhuang/hexo-theme-aloha" target="_blank">Aloha</a> and <a
-                href="http://hexo.io/" target="_blank">Hexo</a>.
-    </div>
-</div>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script src="/lib/in-view.min.js"></script>
+<script src="/lib/lodash.min.js"></script>
+<script>
+  var isDown = true
+  var oldY = 0
+  inView.offset(50)
 
-    </div>
+  document.body.addEventListener('touchstart', function(){});
+  
+  window.addEventListener('scroll', _.throttle(e => {
+    var currentY = window.scrollY
+    if((oldY - currentY) < 0) {
+      isDown = true
+    } else {
+      isDown = false
+    }
+    oldY = currentY
+  }, 250))
 
+  $("article img").each(function() {
+      var strA = "<a data-fancybox='gallery' href='" + this.src + "'></a>";
+      $(this).wrapAll(strA);
+  });
 
+  $('.toc-link').each(function() {
+      var href = $(this).attr("href");
+      
+      inView(href).on('exit', () => {
+        if (isDown) {
+          handleActive(href)
+        }
+      })
 
+      inView(href).on('enter', () => {
+        if (!isDown) {
+          handleActive(href)
+        }
+      })
 
-<!-- scripts list from theme config.yml -->
+      this.onclick = function(e) {
+        var pos = $(href).offset().top - 10;
+        $("html,body").animate({scrollTop: pos}, 300);
+        setTimeout(() => {
+          handleActive(href)
+        }, 350)
+        return false
+      }
+  })
 
-<script src="//cdn.bootcss.com/jquery/3.1.0/jquery.min.js"></script>
-
-<script src="//cdn.bootcss.com/semantic-ui/2.2.4/semantic.min.js"></script>
-
-<script src="//cdn.bootcss.com/algoliasearch/3.18.1/algoliasearch.min.js"></script>
-
-<script src="//cdn.bootcss.com/algoliasearch-helper-js/2.13.0/algoliasearch.helper.min.js"></script>
-
-<script src="/js/semantic-ui-algolia.js"></script>
-
-<script src="/js/aloha-events.js"></script>
-
+  function handleActive(href) {
+    document.querySelectorAll('.toc-link').forEach(elm => {
+      elm.classList.remove('active')
+    })
+    document.querySelector(".toc [href='"+ href +"']").classList.add('active')
+  }
+</script>
+<script src="/lib/jquery.fancybox.min.js"></script>
 
 
 </body>
