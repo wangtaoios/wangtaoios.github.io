@@ -1,313 +1,1976 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-  <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="description" content="技术交流">
-  <meta name="keywords" content="">
-  
-    <link rel="icon" href="">
-  
+<html>
+    <!-- title -->
+
+
+
+
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
+    <title>fi3ework&#39;s Studio</title>
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .back-top,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+        box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.7);
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s 1;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+</style>
+
+    <link rel="preload" href= /css/style.css?v=20180317 as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="stylesheet" type="text/css" href= /css/mobile.css?v=20180317 media="(max-width: 980px)"/>
+        
+    <link rel="icon" href= /assets/favicon.ico>
+    <script>
+        (function (w) {
+            "use strict";
+            // rel=preload support test
+            if (!w.loadCSS) {
+                w.loadCSS = function () { };
+            }
+            // define on the loadCSS obj
+            var rp = loadCSS.relpreload = {};
+            // rel=preload feature support test
+            // runs once and returns a function for compat purposes
+            rp.support = (function () {
+                var ret;
+                try {
+                    ret = w.document.createElement("link").relList.supports("preload");
+                } catch (e) {
+                    ret = false;
+                }
+                return function () {
+                    return ret;
+                };
+            })();
+
+            // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+            // then change that media back to its intended value on load
+            rp.bindMediaToggle = function (link) {
+                // remember existing media attr for ultimate state, or default to 'all'
+                var finalMedia = link.media || "all";
+
+                function enableStylesheet() {
+                    link.media = finalMedia;
+                }
+
+                // bind load handlers to enable media
+                if (link.addEventListener) {
+                    link.addEventListener("load", enableStylesheet);
+                } else if (link.attachEvent) {
+                    link.attachEvent("onload", enableStylesheet);
+                }
+
+                // Set rel and non-applicable media type to start an async request
+                // note: timeout allows this to happen async to let rendering continue in IE
+                setTimeout(function () {
+                    link.rel = "stylesheet";
+                    link.media = "only x";
+                });
+                // also enable media after 3 seconds,
+                // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+                setTimeout(enableStylesheet, 3000);
+            };
+
+            // loop through link elements in DOM
+            rp.poly = function () {
+                // double check this to prevent external calls from running
+                if (rp.support()) {
+                    return;
+                }
+                var links = w.document.getElementsByTagName("link");
+                for (var i = 0; i < links.length; i++) {
+                    var link = links[i];
+                    // qualify links to those with rel=preload and as=style attrs
+                    if (link.rel === "preload" && link.getAttribute("as") === "style" && !link.getAttribute("data-loadcss")) {
+                        // prevent rerunning on link
+                        link.setAttribute("data-loadcss", true);
+                        // bind listeners to toggle media back
+                        rp.bindMediaToggle(link);
+                    }
+                }
+            };
+
+            // if unsupported, run the polyfill
+            if (!rp.support()) {
+                // run once at least
+                rp.poly();
+
+                // rerun poly on an interval until onload
+                var run = w.setInterval(rp.poly, 500);
+                if (w.addEventListener) {
+                    w.addEventListener("load", function () {
+                        rp.poly();
+                        w.clearInterval(run);
+                    });
+                } else if (w.attachEvent) {
+                    w.attachEvent("onload", function () {
+                        rp.poly();
+                        w.clearInterval(run);
+                    });
+                }
+            }
+            // commonjs
+            if (typeof exports !== "undefined") {
+                exports.loadCSS = loadCSS;
+            }
+            else {
+                w.loadCSS = loadCSS;
+            }
+        }(typeof global !== "undefined" ? global : this));
+    </script>
+    <script src="//cdn.staticfile.org/jquery/3.2.1/jquery.min.js" defer></script>
+    <script src="/scripts/main.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script>
+    <!-- 百度统计  -->
     
-  <title>iOS | wt</title>
-  <link rel="stylesheet" href="/style.css">
-  <link rel="stylesheet" href="/lib/jquery.fancybox.min.css">
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- 谷歌统计  -->
+    
 </head>
 
-<body>
-  <header>
-  <div class="header-container">
-    <a class='logo' href="/">
-      <span>wt</span>
-    </a>
-    <ul class="right-header">
-      
-        <li class="nav-item">
-          
-            <a href="/" class="item-link">首页</a>
-          
-        </li>
-      
-        <li class="nav-item">
-          
-            <a href="/about" class="item-link">关于</a>
-          
-        </li>
-      
-        <li class="nav-item">
-          
-            <a href="/archives" class="item-link">归档</a>
-          
-        </li>
-      
-        <li class="nav-item">
-          
-            <a href="/tags" class="item-link">标签</a>
-          
-        </li>
-      
-    </ul>
-  </div>
-</header>
+    
+    
+<header class="header">
 
-  <main id="archive">
-  <div class="content">
+    <div class="read-progress"></div>
+    <div class="header-sidebar-menu">&#xe775;</div>
+    <!-- post页的toggle banner  -->
+    
+    <a class="home-link" href=/>fi3ework's Studio.</a>
+</header>
+    <div class="wrapper">
+        <div class="site-intro" style=
+
+
+
+
+
+
+
+
+>
+    
+    <!-- 主页  -->
+            
+    <div class="site-intro-img" style="background-image: url(/)"></div>
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+        </p>
+        <!-- 文章页meta -->
+        
+    </div>
+</div>
+        <script>
+  // load webfont-loader async, and add callback function
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+  
+  // get user agent
+  var browser = {
+    versions: function () {
+      var u = window.navigator.userAgent;
+      return {
+        userAgent: u,
+        trident: u.indexOf('Trident') > -1, //IE内核
+        presto: u.indexOf('Presto') > -1, //opera内核
+        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+        gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+        mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+        iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+        iPad: u.indexOf('iPad') > -1, //是否为iPad
+        webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+        weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+        uc: u.indexOf('UCBrowser') > -1 //是否为android下的UC浏览器
+      };
+    }()
+  }
+  console.log("userAgent:" + browser.versions.userAgent);
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded');
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document.getElementsByClassName('intro-title')[0].classList.add('intro-fade-in');
+      document.getElementsByClassName('intro-subtitle')[0].classList.add('intro-fade-in');
+      var postIntroTags = document.getElementsByClassName('post-intro-tags')[0],
+        postIntroMeat = document.getElementsByClassName('post-intro-meta')[0];
+      if (postIntroTags) {
+        postIntroTags.classList.add('post-fade-in');
+      }
+      if (postIntroMeat) {
+        postIntroMeat.classList.add('post-fade-in');
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb(){
+    if (browser.versions.uc) {
+      console.log("UCBrowser");
+      fontLoaded();
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular']
+        },
+        loading: function () {  //所有字体开始加载
+          // console.log('loading');
+        },
+        active: function () {  //所有字体已渲染
+          fontLoaded();
+        },
+        inactive: function () { //字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout');
+          fontLoaded();
+        },
+        timeout: 5000 // Set the timeout to two seconds
+      });
+    }
+  }
+
+  async("https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js", asyncCb)
+</script>        
+        <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
+        <div class="container container-unloaded">
+            <main class="main index-page">
+    
+    
+    
+        <article class="index-post">
+            <a class="abstract-title" href = "/iOS/2018/04/03/GitHub博客/购买域名和GitHubPages博客的绑定三部曲.html" >
+                
+                    <span>购买域名和GitHubPages博客的绑定三部曲</span>
+            </a>
+            <div class="abstract-content">
+                一：购买域名
+在https://sg.godaddy.com/zh（此网站使用Safari打开，Google一直有问题），注册账户，搜索自己喜欢的域名，添加到购物车，中间遇到的服务全部选择“不”，最后Google一下促销码，添加到支付页面，支付宝付款。我选择的域名费用是，第1年：​¥5.86/年，第2年及以后：​¥101.00/﻿年，5年一共¥415.56，输入促销码后变成¥333.95。
+
+在“我的产品”，点击“DNS”，将最下面的域名服务器自定义为f1g1ns1.dnspod.net和f1g1ns2.dnspod.net。
+
+
+二：域名解析在https://www.dnspod.cn...
+            </div>
+            <div class="abstract-post-meta">
+                <!-- date  -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/04/03</span>
+                </div>
+                <!-- tags  -->
+                
+                <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "搭建博客">搭建博客</a>
+    
+</div>
+                
+            </div>
+        </article>
+    
+    
+    
+        <article class="index-post">
+            <a class="abstract-title" href = "/iOS/2018/04/02/iOS开发/iOS_获取手机型号.html" >
+                
+                    <span>iOS_获取手机型号</span>
+            </a>
+            <div class="abstract-content">
+                来源https://www.theiphonewiki.com/wiki/List_of_iPhones
++ (NSString *) devicePlatformString
+{
+    NSString *platform = [self devicePlatform];
+
+    if ([platform isEqualToString:@&quot;iPhone1,1&quot;])    return @&quot;iPhone 2G&quot;;
+    if ([platform isEqualToString:@&quot;iPhone1,2&quot;])    re...
+            </div>
+            <div class="abstract-post-meta">
+                <!-- date  -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/04/02</span>
+                </div>
+                <!-- tags  -->
+                
+                <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "手机型号">手机型号</a>
+    
+</div>
+                
+            </div>
+        </article>
+    
+    
+    
+        <article class="index-post">
+            <a class="abstract-title" href = "/iOS/2018/04/02/iOS开发/iOS_获取IP地址.html" >
+                
+                    <span>iOS_获取IP地址</span>
+            </a>
+            <div class="abstract-content">
+                123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293#import &lt;ifaddrs.h&gt;#import &lt;arpa/inet.h&gt;#import &lt;net/if.h&gt;#define IOS_CELLULAR    @"pdp_ip0"#define IO...
+            </div>
+            <div class="abstract-post-meta">
+                <!-- date  -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/04/02</span>
+                </div>
+                <!-- tags  -->
+                
+                <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "IP">IP</a>
+    
+</div>
+                
+            </div>
+        </article>
+    
+    
+    
+        <article class="index-post">
+            <a class="abstract-title" href = "/iOS/2018/04/02/iOS开发/iOS_检测当前网络类型和运营商.html" >
+                
+                    <span>iOS_检测当前网络类型和运营商</span>
+            </a>
+            <div class="abstract-content">
+                
+https://developer.apple.com/library/ios/samplecode/Reachability/Reachability.zip
+
+下载demo，修改Reachability.h将
+12345typedef enum : NSInteger &#123;    NotReachable = 0,    ReachableViaWiFi,    ReachableViaWWAN&#125; NetworkStatus;
+改为
+1234567typedef enum : NSInteger &#123;    WTNotReachable = 0,    W...
+            </div>
+            <div class="abstract-post-meta">
+                <!-- date  -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/04/02</span>
+                </div>
+                <!-- tags  -->
+                
+                <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "检测">检测</a>
+    
+</div>
+                
+            </div>
+        </article>
+    
+    
+    
+        <article class="index-post">
+            <a class="abstract-title" href = "/iOS/2018/04/02/工作项目/广益云课堂.html" >
+                
+                    <span>广益云课堂</span>
+            </a>
+            <div class="abstract-content">
+                广益云课堂APP，是面对北京邮电大学等高校的一款上课签到，布置作业的APP，分为两个端，老师可以发布作业，统计考勤；学生可以在线定位签到，完成作业。该应用目前已经下线，也许客户发布了新的APP来替代此APP
+https://itunes.apple.com/cn/app/id1172714044
+
+
+
+
+
+
+
+            </div>
+            <div class="abstract-post-meta">
+                <!-- date  -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/04/02</span>
+                </div>
+                <!-- tags  -->
+                
+                <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "上线">上线</a>
+    
+</div>
+                
+            </div>
+        </article>
+    
+    
+    
+        <article class="index-post">
+            <a class="abstract-title" href = "/iOS/2018/04/02/工作项目/西开金服.html" >
+                
+                    <span>西开金服</span>
+            </a>
+            <div class="abstract-content">
+                在西部发展公司的第一款项目，近一年的时间，从版本1的微信框架，更改为版本2的QQ框架，相当于完成两个项目
+iTunes Connect 截图里面有我的邮箱号
+https://itunes.apple.com/cn/app/id1185806961
+
+
+
+
+
+
+
+            </div>
+            <div class="abstract-post-meta">
+                <!-- date  -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/04/02</span>
+                </div>
+                <!-- tags  -->
+                
+                <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "上线">上线</a>
+    
+</div>
+                
+            </div>
+        </article>
+    
+    
+    
+        <article class="index-post">
+            <a class="abstract-title" href = "/iOS/2018/04/02/工作项目/学国学.html" >
+                
+                    <span>学国学</span>
+            </a>
+            <div class="abstract-content">
+                2016年上线的第二款项目
+https://itunes.apple.com/cn/app/id1102375567
+
+
+
+
+            </div>
+            <div class="abstract-post-meta">
+                <!-- date  -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/04/02</span>
+                </div>
+                <!-- tags  -->
+                
+                <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "上线">上线</a>
+    
+</div>
+                
+            </div>
+        </article>
+    
+    
+    
+        <article class="index-post">
+            <a class="abstract-title" href = "/iOS/2018/04/02/工作项目/巧手快修.html" >
+                
+                    <span>巧手快修</span>
+            </a>
+            <div class="abstract-content">
+                2016年上线的第一款项目，截图有我的名字
+https://itunes.apple.com/cn/app/id1079766387
+
+
+
+
+
+            </div>
+            <div class="abstract-post-meta">
+                <!-- date  -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/04/02</span>
+                </div>
+                <!-- tags  -->
+                
+                <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "上线">上线</a>
+    
+</div>
+                
+            </div>
+        </article>
+    
+    
+    
+        <article class="index-post">
+            <a class="abstract-title" href = "/iOS/2018/04/02/iOS开发/iOS_证书和描述文件.html" >
+                
+                    <span>iOS_证书和描述文件</span>
+            </a>
+            <div class="abstract-content">
+                A：无推送功能的应用121：创建App ID，开发测试可使用通配符2：添加设备
+开发测试123：创建测试证书，Development下的iOS App Development4：配置测试描述文件，Development下面的iOS App Development
+发布测试123：创建发布证书，Production下的App Store and Ad Hoc4：配置发布测试描述文件，Distribution下面的Ad Hoc
+发布上线123：创建发布证书，Production下的App Store and Ad Hoc4：配置发布AppStore描述文件，Distribution下面的Ap...
+            </div>
+            <div class="abstract-post-meta">
+                <!-- date  -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/04/02</span>
+                </div>
+                <!-- tags  -->
+                
+                <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "证书">证书</a>
+    
+</div>
+                
+            </div>
+        </article>
+    
+    
+    
+        <article class="index-post">
+            <a class="abstract-title" href = "/iOS/2018/03/30/iOS开发/iOS导出xls.html" >
+                
+                    <span>iOS导出xls</span>
+            </a>
+            <div class="abstract-content">
+                1 系统的方法1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677@interface BYResultManager : NSObject@property (nonatomic, copy) NSString *answer_score;@property (nonatomic, copy) NSString *class_id;@property ...
+            </div>
+            <div class="abstract-post-meta">
+                <!-- date  -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/03/30</span>
+                </div>
+                <!-- tags  -->
+                
+                <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "xls">xls</a>
+    
+</div>
+                
+            </div>
+        </article>
+    
+    
+    
+        <article class="index-post">
+            <a class="abstract-title" href = "/iOS/2018/03/30/iOS开发/iOS_identifierForVendor_UUID_供应商标识符_通用唯一识别码.html" >
+                
+                    <span>iOS_identifierForVendor_UUID_供应商标识[biāo zhì]符_通用唯一识别码</span>
+            </a>
+            <div class="abstract-content">
+                使用方式
+NSString *deviceUUID = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
+
+An alphanumeric string that uniquely identifies a device to the app’s vendor. (read-only)
+
+用于唯一标示设备的字母数字字符串，每一个供应商都不同呀
+Declaration
+
+@property(nonatomic, readonly, strong) NSUUID *identifierForVendor
+
+Discuss...
+            </div>
+            <div class="abstract-post-meta">
+                <!-- date  -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/03/30</span>
+                </div>
+                <!-- tags  -->
+                
+                <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "UUID">UUID</a>
+    
+</div>
+                
+            </div>
+        </article>
+    
+    
+    
+        <article class="index-post">
+            <a class="abstract-title" href = "/iOS/2018/03/30/iOS开发/去掉json字符串中的\n \r \t.html" >
+                
+                    <span>去掉json字符串中的\n，\r，\t</span>
+            </a>
+            <div class="abstract-content">
+                AFURLResponseSerialization: 响应数据解析器!123456AFJSONResponseSerializer              JSONObject(NSDictionary或NSArray)AFHTTPResponseSerializer              NSDataAFPropertyListResponseSerializer      propertyList(NSDictionary或NSArray)AFXMLParserResponseSerializer         NSXMLDocumentAFImageResponseSer...
+            </div>
+            <div class="abstract-post-meta">
+                <!-- date  -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/03/30</span>
+                </div>
+                <!-- tags  -->
+                
+                <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "json">json</a>
+    
+</div>
+                
+            </div>
+        </article>
+    
+    
+    
+        <article class="index-post">
+            <a class="abstract-title" href = "/iOS/2018/03/30/iOS开发/UITextField输入正整数和两位小数.html" >
+                
+                    <span>UITextField输入正整数和两位小数</span>
+            </a>
+            <div class="abstract-content">
+                #####A： 输出小数点后两位，小数点前面没有限制1234567891011121314151617181920212223242526272829303132333435363738394041    rightTextField.keyboardType = UIKeyboardTypeDecimalPad;- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string&#123;    //删除处...
+            </div>
+            <div class="abstract-post-meta">
+                <!-- date  -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/03/30</span>
+                </div>
+                <!-- tags  -->
+                
+                <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "UITextField">UITextField</a>
+    
+</div>
+                
+            </div>
+        </article>
+    
+    
+    
+        <article class="index-post">
+            <a class="abstract-title" href = "/iOS/2018/03/27/iOS开发/iOS仿新浪微博个人中心基础版.html" >
+                
+                    <span>iOS仿新浪微博个人中心基础版</span>
+            </a>
+            <div class="abstract-content">
+                使用第三方库WMPageController，仿新浪微博个人中心页面
+
+完整demo，欢迎Star
+两种使用方法
+1：WTWeiBoVC是自定义的基类，可以直接调用
+WTWeiBoVC *vc = [[WTWeiBoVC alloc] init];
+
+WTTempTVC *vc1 = [[WTTempTVC alloc] init];
+WTTempTVC *vc2 = [[WTTempTVC alloc] init];
+WTTempTVC *vc3 = [[WTTempTVC alloc] init];
+
+UIView *headerView = [[UIView alloc] init...
+            </div>
+            <div class="abstract-post-meta">
+                <!-- date  -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/03/27</span>
+                </div>
+                <!-- tags  -->
+                
+                <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "demo">demo</a>
+    
+</div>
+                
+            </div>
+        </article>
+    
+    
+    
+        <article class="index-post">
+            <a class="abstract-title" href = "/iOS/2018/03/24/GitHub博客/Hexo的使用.html" >
+                
+                    <span>Hexo的使用</span>
+            </a>
+            <div class="abstract-content">
+                
+如果不是首次写GitHub博客，比如换电脑的情况，在source/_posts目录下书写新的.md文件，执行以下即可
+$ cd wangtaoios.github.io
+$ hexo clean    //清除缓存
+$ hexo g        //生成本地发布文件
+$ hexo d        //发布
+//之后要输入账号（wangtaoios）和密码
+  hexo命令
+  wangtaoios.github.io
+
+
+一：安装node.js
+1：下载node.js
+
+2：检验安装成功：
+$ node -v
+二：安装hexo
+$ sudo npm install hexo-cli...
+            </div>
+            <div class="abstract-post-meta">
+                <!-- date  -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/03/24</span>
+                </div>
+                <!-- tags  -->
+                
+                <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "文档">文档</a>
+    
+</div>
+                
+            </div>
+        </article>
+    
+    
+    
+        <article class="index-post">
+            <a class="abstract-title" href = "/iOS/2018/03/21/iOS开发/iOS细节大杂烩.html" >
+                
+                    <span>iOS细节大杂烩</span>
+            </a>
+            <div class="abstract-content">
+                1：关于UIWebView
+1234567UIWebView的下面有黑线，iPhone7plus没有，iPhone6和iPhone6plus有，加上    webView.backgroundColor = [UIColor clearColor];    webView.opaque = NO;解决不检测网页上的任何内容    webView.dataDetectorTypes = UIDataDetectorTypeNone;
+2：关于UICollectionReusableView
+12345678- (UICollectionReusableView *)collectionVi...
+            </div>
+            <div class="abstract-post-meta">
+                <!-- date  -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/03/21</span>
+                </div>
+                <!-- tags  -->
+                
+                <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "技术点">技术点</a>
+    
+</div>
+                
+            </div>
+        </article>
+    
+    
+    
+        <article class="index-post">
+            <a class="abstract-title" href = "/iOS/2018/03/21/iOS开发/iOS实现搭建聊天页面.html" >
+                
+                    <span>iOS实现搭建聊天页面</span>
+            </a>
+            <div class="abstract-content">
+                功能分析，模仿QQ聊天页面
+完整demo，欢迎star WTChatDemo
+
+输入框失去第一响应的情况：
+1：点击页面
+2：下滑页面
+输入框成为第一响应的情况：
+1：开始输入
+2：上滑页面最底部
+
+
+控制器
+123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100...
+            </div>
+            <div class="abstract-post-meta">
+                <!-- date  -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/03/21</span>
+                </div>
+                <!-- tags  -->
+                
+                <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "即时通讯">即时通讯</a>
+    
+</div>
+                
+            </div>
+        </article>
+    
+    
+    
+        <article class="index-post">
+            <a class="abstract-title" href = "/iOS/2018/03/21/iOS开发/iOS使用YYKit实现表情键盘.html" >
+                
+                    <span>iOS使用YYKit实现表情键盘</span>
+            </a>
+            <div class="abstract-content">
+                项目需求，APP发布内容的时候支持表情
+
+需求：点击键盘的表情按钮，比如[微笑]，在输入框显示🙂，发布成功到服务器时候，服务器存[微笑]；请求下来数据在APP展示的时候，仍然显示🙂。
+原理：点击键盘的表情按钮，比如[微笑]，此时将字符串[微笑]传到输入框，输入框使用YYTextView，设置YYTextView的textParser即可展示对应表情🙂。
+关于textParser：12YYTextSimpleEmoticonParser *parser = [YYTextSimpleEmoticonParser new];parser.emoticonMapper = mapper;...
+            </div>
+            <div class="abstract-post-meta">
+                <!-- date  -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/03/21</span>
+                </div>
+                <!-- tags  -->
+                
+                <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "键盘">键盘</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "表情">表情</a>
+    
+</div>
+                
+            </div>
+        </article>
+    
+    
+    
+        <article class="index-post">
+            <a class="abstract-title" href = "/iOS/2018/03/20/Mac/重装Mac系统.html" >
+                
+                    <span>重装Mac系统</span>
+            </a>
+            <div class="abstract-content">
+                好吧，那我该怎么…?我们首先让您有个大概的了解。这是用户界面概览（从左到右）：
+
+文库
+文稿列表
+编辑器
+
+_文库_ 可以让您访问所有文本，它分为几个部分。取决于您是否已开启了 iCloud，您将在这里会看到不同的分段。
+文稿列表包括了您所有的文本。
+然后是编辑器。
+请使用快捷键⌘1、⌘2和⌘3在三窗格（文库、文稿列表和编辑器）、两窗格（文稿列表和编辑器）和仅编辑器视图之间切换。您还可以最左侧的工具栏按钮切换视图。
+
+            </div>
+            <div class="abstract-post-meta">
+                <!-- date  -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/03/20</span>
+                </div>
+                <!-- tags  -->
+                
+                <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "字符串">字符串</a>
+    
+</div>
+                
+            </div>
+        </article>
+    
+    
+    
+        <article class="index-post">
+            <a class="abstract-title" href = "/iOS/2015/11/16/iOS开发/开篇-First blood.html" >
+                
+                    <span>开篇-First blood</span>
+            </a>
+            <div class="abstract-content">
+                在iOS行业这两年来，参考过不计其数的前辈的技术博客，觉得分享是快乐的，分享是互赢的，现在开始书写自己的博客，也是整理自己的技术，也是分享一下，更希望可以和更多的技术人员交流，共同成长。本人邮箱：**wangtaoios@163.com**，欢迎调戏。
+
+            </div>
+            <div class="abstract-post-meta">
+                <!-- date  -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2015/11/16</span>
+                </div>
+                <!-- tags  -->
+                
+                <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "手机型号">手机型号</a>
+    
+</div>
+                
+            </div>
+        </article>
+    
+    
+    
+        <article class="index-post">
+            <a class="abstract-title" href = "/iOS/2014/11/10/网址.html" >
+                
+                    <span>技术网址</span>
+            </a>
+            <div class="abstract-content">
+                //
+http://cnfeat.com/2014/05/10/2014-05-11-how-to-build-a-blog/
+//
+http://www.oschina.net
+//
+http://stackoverflow.com
+//
+http://scottchacon.com/
+//
+http://www.cocoachina.com/
+//
+http://gitref.org/
+//
+http://www.ihref.com/read-16369.html
+//
+http://www.cocoachina.com/ios/20111026/3422.html
+//
+http:...
+            </div>
+            <div class="abstract-post-meta">
+                <!-- date  -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2014/11/10</span>
+                </div>
+                <!-- tags  -->
+                
+                <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "文档">文档</a>
+    
+</div>
+                
+            </div>
+        </article>
+    
+    
+    
+        <article class="index-post">
+            <a class="abstract-title" href = "/iOS/2014/11/06/iOS开发/xcode更换版本经验.html" >
+                
+                    <span>Xcode更换版本经验</span>
+            </a>
+            <div class="abstract-content">
+                ####Xcode更换版本经验
+####在iMac上安装软件时，可以直接在其他电脑上，将Finder中的应用程序，拷贝到自己电脑的应用程序中，进行安装。但是，这对于小型的软件还行，像Xcode这种软件不可以，一般情况下，不建议此方法。须下载dmg格式的文件安装。
+####【1】 删除软件。
+######1.1 在应用程序中，将Xcode移到废纸篓。
+######1.2 在Dock中将Xcode和iOS模拟器移除。
+######1.3 进入/Users/qingyun/Library/Application Support，将iPhone Simulator删除。
+######1.4 进入...
+            </div>
+            <div class="abstract-post-meta">
+                <!-- date  -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2014/11/06</span>
+                </div>
+                <!-- tags  -->
+                
+                <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "文档">文档</a>
+    
+</div>
+                
+            </div>
+        </article>
+    
+    
+    
+        <article class="index-post">
+            <a class="abstract-title" href = "/iOS/2014/10/20/Mac/苹果电脑快捷键.html" >
+                
+                    <span>苹果电脑快捷键</span>
+            </a>
+            <div class="abstract-content">
+                Base Keycommand + c : 复制选中的内容
+command + v : 粘贴已复制的内容
+command + X : 剪贴已选中的内容
+command + z : 撤销最近一次执行放入操作
+command + / : 选中多行，一次注释多行
+Move Keyctrl + a : 移动光标到行首
+ctrl + e : 移动光标到行尾
+ctrl + p : 向上移动光标
+ctrl + n : 向下移动光标
+ctrl + b : 向左按字符移动光标
+ctrl + f : 向右按字符移动光标
+ctrl + option + b :  向左按符移动光标
+ctrl + option ...
+            </div>
+            <div class="abstract-post-meta">
+                <!-- date  -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2014/10/20</span>
+                </div>
+                <!-- tags  -->
+                
+                <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "文档">文档</a>
+    
+</div>
+                
+            </div>
+        </article>
+    
+    
+    
+        <article class="index-post">
+            <a class="abstract-title" href = "/iOS/2014/10/15/iOS开发/vimtutor.html" >
+                
+                    <span>vim教程</span>
+            </a>
+            <div class="abstract-content">
+                ===============================================================================
+=      歡     迎     閱     讀   《 V I M  教  程 》   ──     版本 1.5      =vim 是一個具有很多命令的功能非常強大的編輯器。限于篇幅，在本教程當中
+不就詳細介紹了。本教程的設計目標是講述一些必要的基本命令，而掌握好這
+些命令，您就能夠很容易將vim當作一個通用的萬能編輯器來使用了。
+
+完成本教程的內容大約需要25-30分鐘，取決于您訓練的時間。
+
+每一節的命令操作將會更改...
+            </div>
+            <div class="abstract-post-meta">
+                <!-- date  -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2014/10/15</span>
+                </div>
+                <!-- tags  -->
+                
+                <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "文档">文档</a>
+    
+</div>
+                
+            </div>
+        </article>
+    
+    <!-- paginator  -->
+    
+</main>
+            <!-- profile -->
+            
+        </div>
+        <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+    <div class="social">
         
     
-      <div class="year-list">
-        <h3>2018</h3>
-        <ul>
-          
-            <li >
-              <time>2018/04/03</time>
-              <a href="/iOS/2018/04/03/GitHub博客/购买域名和GitHubPages博客的绑定三部曲.html">
-                <span>
-                    购买域名和GitHubPages博客的绑定三部曲
-                </span>
-              </a>
-            </li>
-          
-            <li >
-              <time>2018/04/02</time>
-              <a href="/iOS/2018/04/02/iOS开发/iOS_获取手机型号.html">
-                <span>
-                    iOS_获取手机型号
-                </span>
-              </a>
-            </li>
-          
-            <li >
-              <time>2018/04/02</time>
-              <a href="/iOS/2018/04/02/iOS开发/iOS_获取IP地址.html">
-                <span>
-                    iOS_获取IP地址
-                </span>
-              </a>
-            </li>
-          
-            <li >
-              <time>2018/04/02</time>
-              <a href="/iOS/2018/04/02/iOS开发/iOS_检测当前网络类型和运营商.html">
-                <span>
-                    iOS_检测当前网络类型和运营商
-                </span>
-              </a>
-            </li>
-          
-            <li >
-              <time>2018/04/02</time>
-              <a href="/iOS/2018/04/02/工作项目/广益云课堂.html">
-                <span>
-                    广益云课堂
-                </span>
-              </a>
-            </li>
-          
-            <li >
-              <time>2018/04/02</time>
-              <a href="/iOS/2018/04/02/工作项目/西开金服.html">
-                <span>
-                    西开金服
-                </span>
-              </a>
-            </li>
-          
-            <li >
-              <time>2018/04/02</time>
-              <a href="/iOS/2018/04/02/工作项目/学国学.html">
-                <span>
-                    学国学
-                </span>
-              </a>
-            </li>
-          
-            <li >
-              <time>2018/04/02</time>
-              <a href="/iOS/2018/04/02/工作项目/巧手快修.html">
-                <span>
-                    巧手快修
-                </span>
-              </a>
-            </li>
-          
-            <li >
-              <time>2018/04/02</time>
-              <a href="/iOS/2018/04/02/iOS开发/iOS_证书和描述文件.html">
-                <span>
-                    iOS_证书和描述文件
-                </span>
-              </a>
-            </li>
-          
-            <li >
-              <time>2018/03/30</time>
-              <a href="/iOS/2018/03/30/iOS开发/iOS_identifierForVendor_UUID_供应商标识符_通用唯一识别码.html">
-                <span>
-                    iOS_identifierForVendor_UUID_供应商标识[biāo zhì]符_通用唯一识别码
-                </span>
-              </a>
-            </li>
-          
-            <li >
-              <time>2018/03/30</time>
-              <a href="/iOS/2018/03/30/iOS开发/iOS导出xls.html">
-                <span>
-                    iOS导出xls
-                </span>
-              </a>
-            </li>
-          
-            <li >
-              <time>2018/03/30</time>
-              <a href="/iOS/2018/03/30/iOS开发/去掉json字符串中的\n \r \t.html">
-                <span>
-                    去掉json字符串中的\n，\r，\t
-                </span>
-              </a>
-            </li>
-          
-            <li >
-              <time>2018/03/30</time>
-              <a href="/iOS/2018/03/30/iOS开发/UITextField输入正整数和两位小数.html">
-                <span>
-                    UITextField输入正整数和两位小数
-                </span>
-              </a>
-            </li>
-          
-            <li >
-              <time>2018/03/27</time>
-              <a href="/iOS/2018/03/27/iOS开发/iOS仿新浪微博个人中心基础版.html">
-                <span>
-                    iOS仿新浪微博个人中心基础版
-                </span>
-              </a>
-            </li>
-          
-            <li >
-              <time>2018/03/24</time>
-              <a href="/iOS/2018/03/24/GitHub博客/Hexo的使用.html">
-                <span>
-                    Hexo的使用
-                </span>
-              </a>
-            </li>
-          
-            <li >
-              <time>2018/03/21</time>
-              <a href="/iOS/2018/03/21/iOS开发/iOS细节大杂烩.html">
-                <span>
-                    iOS细节大杂烩
-                </span>
-              </a>
-            </li>
-          
-            <li >
-              <time>2018/03/21</time>
-              <a href="/iOS/2018/03/21/iOS开发/iOS实现搭建聊天页面.html">
-                <span>
-                    iOS实现搭建聊天页面
-                </span>
-              </a>
-            </li>
-          
-            <li >
-              <time>2018/03/21</time>
-              <a href="/iOS/2018/03/21/iOS开发/iOS使用YYKit实现表情键盘.html">
-                <span>
-                    iOS使用YYKit实现表情键盘
-                </span>
-              </a>
-            </li>
-          
-            <li >
-              <time>2018/03/20</time>
-              <a href="/iOS/2018/03/20/Mac/重装Mac系统.html">
-                <span>
-                    重装Mac系统
-                </span>
-              </a>
-            </li>
-          
-        </ul>
-      </div>
+        
+            
+                <a href="mailto:12345@qq.com" class="iconfont-archer email" title=email ></a>
+            
+        
     
-      <div class="year-list">
-        <h3>2015</h3>
-        <ul>
-          
-            <li >
-              <time>2015/11/16</time>
-              <a href="/iOS/2015/11/16/iOS开发/开篇-First blood.html">
-                <span>
-                    开篇-First blood
-                </span>
-              </a>
-            </li>
-          
-        </ul>
-      </div>
+        
+            
+                <a href="//github.com/fi3ework" class="iconfont-archer github" target="_blank" title=github></a>
+            
+        
     
-      <div class="year-list">
-        <h3>2014</h3>
-        <ul>
-          
-            <li >
-              <time>2014/11/10</time>
-              <a href="/iOS/2014/11/10/网址.html">
-                <span>
-                    技术网址
+        
+            
+                <span class="iconfont-archer wechat" title=wechat>
+                  
+                  <img class="profile-qr" src="/assets/example_qr.png" />
                 </span>
-              </a>
-            </li>
-          
-            <li >
-              <time>2014/11/06</time>
-              <a href="/iOS/2014/11/06/iOS开发/xcode更换版本经验.html">
-                <span>
-                    Xcode更换版本经验
-                </span>
-              </a>
-            </li>
-          
-            <li >
-              <time>2014/10/20</time>
-              <a href="/iOS/2014/10/20/Mac/苹果电脑快捷键.html">
-                <span>
-                    苹果电脑快捷键
-                </span>
-              </a>
-            </li>
-          
-            <li >
-              <time>2014/10/15</time>
-              <a href="/iOS/2014/10/15/iOS开发/vimtutor.html">
-                <span>
-                    vim教程
-                </span>
-              </a>
-            </li>
-          
-        </ul>
-      </div>
+            
+        
     
-  </div>
-</main>
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
 
-  <footer>
-  <div class="copyright">
-    <div>
-      &copy; 2018 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a>&nbsp
     </div>
-    <div>
-      Theme by <a href="https://github.com/lewis-geek/hexo-theme-Aath" target="_blank">Aath</a>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
     </div>
-  </div>
+    <!-- 不蒜子  -->
+    
+    <div class="busuanzi-container">
+        <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span>
+        </span>
+    </div>
+    
 </footer>
-
-
-
-</body>
+    </div>
+    <!-- toc -->
+    
+    <div class="back-top iconfont-archer">&#xe639;</div>
+    <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+          <div class="sidebar-panel-archives">
+    <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-archive"> Total : 36 </div>
+    
+    <div class="post-archive">
+    
+    
+    
+    
+    <div class="archive-year"> 2018 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/03</span><a class="archive-post-title" href= "/iOS/2018/04/03/GitHub博客/购买域名和GitHubPages博客的绑定三部曲.html" >购买域名和GitHubPages博客的绑定三部曲</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/02</span><a class="archive-post-title" href= "/iOS/2018/04/02/iOS开发/iOS_检测当前网络类型和运营商.html" >iOS_检测当前网络类型和运营商</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/02</span><a class="archive-post-title" href= "/iOS/2018/04/02/iOS开发/iOS_获取手机型号.html" >iOS_获取手机型号</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/02</span><a class="archive-post-title" href= "/iOS/2018/04/02/工作项目/广益云课堂.html" >广益云课堂</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/02</span><a class="archive-post-title" href= "/iOS/2018/04/02/iOS开发/iOS_获取IP地址.html" >iOS_获取IP地址</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/02</span><a class="archive-post-title" href= "/iOS/2018/04/02/工作项目/西开金服.html" >西开金服</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/02</span><a class="archive-post-title" href= "/iOS/2018/04/02/工作项目/学国学.html" >学国学</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/02</span><a class="archive-post-title" href= "/iOS/2018/04/02/工作项目/巧手快修.html" >巧手快修</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/02</span><a class="archive-post-title" href= "/iOS/2018/04/02/iOS开发/iOS_证书和描述文件.html" >iOS_证书和描述文件</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/30</span><a class="archive-post-title" href= "/iOS/2018/03/30/iOS开发/iOS_identifierForVendor_UUID_供应商标识符_通用唯一识别码.html" >iOS_identifierForVendor_UUID_供应商标识[biāo zhì]符_通用唯一识别码</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/30</span><a class="archive-post-title" href= "/iOS/2018/03/30/iOS开发/iOS导出xls.html" >iOS导出xls</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/30</span><a class="archive-post-title" href= "/iOS/2018/03/30/iOS开发/去掉json字符串中的\n \r \t.html" >去掉json字符串中的\n，\r，\t</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/30</span><a class="archive-post-title" href= "/军事/2018/03/30/军事/2016年底中日军机对抗.html" >2016年底中日军机对抗</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/30</span><a class="archive-post-title" href= "/iOS/2018/03/30/iOS开发/UITextField输入正整数和两位小数.html" >UITextField输入正整数和两位小数</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/文档/2018/03/29/iOS开发/Mac常用工具.html" >Mac常用工具</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/28</span><a class="archive-post-title" href= "/uncategorized/2018/03/28/Mac/iMac访问局域网.html" >iMac访问局域网</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/27</span><a class="archive-post-title" href= "/文档/2018/03/27/GitHub博客/上传项目到GitHub.html" >上传项目到GitHub</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/27</span><a class="archive-post-title" href= "/iOS/2018/03/27/iOS开发/iOS仿新浪微博个人中心基础版.html" >iOS仿新浪微博个人中心基础版</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/24</span><a class="archive-post-title" href= "/iOS/2018/03/24/GitHub博客/Hexo的使用.html" >Hexo的使用</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/22</span><a class="archive-post-title" href= "/文档/2018/03/22/iOS开发/-ObjC 和 -all_load 的使用.html" >-ObjC 和 -all_load 的使用</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/21</span><a class="archive-post-title" href= "/iOS/2018/03/21/iOS开发/iOS实现搭建聊天页面.html" >iOS实现搭建聊天页面</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/21</span><a class="archive-post-title" href= "/iOS/2018/03/21/iOS开发/iOS细节大杂烩.html" >iOS细节大杂烩</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/21</span><a class="archive-post-title" href= "/iOS/2018/03/21/iOS开发/iOS使用YYKit实现表情键盘.html" >iOS使用YYKit实现表情键盘</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/21</span><a class="archive-post-title" href= "/文档/2018/03/21/法律/最高人民法院之重要司法解释.html" >中华人民共和国最高人民法院之重要司法解释</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/20</span><a class="archive-post-title" href= "/uncategorized/2018/03/20/GitHub博客/hello-world.html" >Hello World</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/20</span><a class="archive-post-title" href= "/iOS/2018/03/20/Mac/重装Mac系统.html" >重装Mac系统</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2015 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/16</span><a class="archive-post-title" href= "/iOS/2015/11/16/iOS开发/开篇-First blood.html" >开篇-First blood</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/24</span><a class="archive-post-title" href= "/面试/2015/01/24/常见面试题.html" >面试问题-01</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/17</span><a class="archive-post-title" href= "/uncategorized/2015/01/17/iOS开发/viewController.html" >viewController</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2014 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/20</span><a class="archive-post-title" href= "/uncategorized/2014/11/20/Mac/NTFS-read-write.html" >NTFS read-write</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/10</span><a class="archive-post-title" href= "/iOS/2014/11/10/网址.html" >技术网址</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/06</span><a class="archive-post-title" href= "/iOS/2014/11/06/iOS开发/xcode更换版本经验.html" >Xcode更换版本经验</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/20</span><a class="archive-post-title" href= "/iOS/2014/10/20/Mac/苹果电脑快捷键.html" >苹果电脑快捷键</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/15</span><a class="archive-post-title" href= "/iOS/2014/10/15/iOS开发/vimtutor.html" >vim教程</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/04</span><a class="archive-post-title" href= "/uncategorized/2014/10/04/上传第二个文件.html" >上传第二个文件</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/04</span><a class="archive-post-title" href= "/uncategorized/2014/10/04/上传第一个文件.html" >上传第一个文件</a>
+        </li>
+    
+    </div>
+  </div>
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+    
+        <span class="sidebar-tag-name" data-tags="文档"><span class="iconfont-archer">&#xe606;</span>文档</span>
+    
+        <span class="sidebar-tag-name" data-tags="面试"><span class="iconfont-archer">&#xe606;</span>面试</span>
+    
+        <span class="sidebar-tag-name" data-tags="搭建博客"><span class="iconfont-archer">&#xe606;</span>搭建博客</span>
+    
+        <span class="sidebar-tag-name" data-tags="BUG"><span class="iconfont-archer">&#xe606;</span>BUG</span>
+    
+        <span class="sidebar-tag-name" data-tags="帮助"><span class="iconfont-archer">&#xe606;</span>帮助</span>
+    
+        <span class="sidebar-tag-name" data-tags="检测"><span class="iconfont-archer">&#xe606;</span>检测</span>
+    
+        <span class="sidebar-tag-name" data-tags="UITextField"><span class="iconfont-archer">&#xe606;</span>UITextField</span>
+    
+        <span class="sidebar-tag-name" data-tags="IP"><span class="iconfont-archer">&#xe606;</span>IP</span>
+    
+        <span class="sidebar-tag-name" data-tags="demo"><span class="iconfont-archer">&#xe606;</span>demo</span>
+    
+        <span class="sidebar-tag-name" data-tags="键盘"><span class="iconfont-archer">&#xe606;</span>键盘</span>
+    
+        <span class="sidebar-tag-name" data-tags="表情"><span class="iconfont-archer">&#xe606;</span>表情</span>
+    
+        <span class="sidebar-tag-name" data-tags="即时通讯"><span class="iconfont-archer">&#xe606;</span>即时通讯</span>
+    
+        <span class="sidebar-tag-name" data-tags="证书"><span class="iconfont-archer">&#xe606;</span>证书</span>
+    
+        <span class="sidebar-tag-name" data-tags="手机型号"><span class="iconfont-archer">&#xe606;</span>手机型号</span>
+    
+        <span class="sidebar-tag-name" data-tags="UUID"><span class="iconfont-archer">&#xe606;</span>UUID</span>
+    
+        <span class="sidebar-tag-name" data-tags="kinds of viewControllers"><span class="iconfont-archer">&#xe606;</span>kinds of viewControllers</span>
+    
+        <span class="sidebar-tag-name" data-tags="技术点"><span class="iconfont-archer">&#xe606;</span>技术点</span>
+    
+        <span class="sidebar-tag-name" data-tags="NTFS"><span class="iconfont-archer">&#xe606;</span>NTFS</span>
+    
+        <span class="sidebar-tag-name" data-tags="字符串"><span class="iconfont-archer">&#xe606;</span>字符串</span>
+    
+        <span class="sidebar-tag-name" data-tags="法律"><span class="iconfont-archer">&#xe606;</span>法律</span>
+    
+        <span class="sidebar-tag-name" data-tags="json"><span class="iconfont-archer">&#xe606;</span>json</span>
+    
+        <span class="sidebar-tag-name" data-tags="上线"><span class="iconfont-archer">&#xe606;</span>上线</span>
+    
+        <span class="sidebar-tag-name" data-tags="xls"><span class="iconfont-archer">&#xe606;</span>xls</span>
+    
+        <span class="sidebar-tag-name" data-tags="飞机"><span class="iconfont-archer">&#xe606;</span>飞机</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+    缺失模块。<br/>
+    1、请确保node版本大于6.2<br/>
+    2、在博客根目录（注意不是archer根目录）执行以下命令：<br/>
+    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br/>
+    3、在根目录_config.yml里添加配置：
+    <pre style="color: #787878; font-size: 0.6rem;">
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: true
+    tags: true</pre>
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    
+        <span class="sidebar-category-name" data-categories="iOS"><span class="iconfont-archer">&#xe60a;</span>iOS</span>
+    
+        <span class="sidebar-category-name" data-categories="面试"><span class="iconfont-archer">&#xe60a;</span>面试</span>
+    
+        <span class="sidebar-category-name" data-categories="文档"><span class="iconfont-archer">&#xe60a;</span>文档</span>
+    
+        <span class="sidebar-category-name" data-categories="军事"><span class="iconfont-archer">&#xe60a;</span>军事</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+    </div>
+</div> 
+    <script>
+    var siteMeta = {
+        root: '/',
+        author: 'wangtao'
+    }
+</script>
+    <!-- busuanzi  -->
+    
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    <!-- CNZZ  -->
+    
+    </div>
+    <!-- async load share.js -->
+    
+    </body>
 </html>
+
+
