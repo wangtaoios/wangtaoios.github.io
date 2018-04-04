@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="文档," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="wt" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="=============================================================================== =      歡     迎     閱     讀   《 V I M  教  程 》   ──     版本 1.5      =vim 是一個具有很多命令的功能非常強大的編輯器。限于篇幅，在本教程當中 不就詳細介紹了。本教程的設計目標">
+<meta name="keywords" content="文档">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vim教程">
+<meta property="og:url" content="https://weibo.com/wangtaoworld/iOS/2014/10/15/iOS开发/vimtutor.html">
+<meta property="og:site_name" content="wt">
+<meta property="og:description" content="=============================================================================== =      歡     迎     閱     讀   《 V I M  教  程 》   ──     版本 1.5      =vim 是一個具有很多命令的功能非常強大的編輯器。限于篇幅，在本教程當中 不就詳細介紹了。本教程的設計目標">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-03-23T08:39:13.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="vim教程">
+<meta name="twitter:description" content="=============================================================================== =      歡     迎     閱     讀   《 V I M  教  程 》   ──     版本 1.5      =vim 是一個具有很多命令的功能非常強大的編輯器。限于篇幅，在本教程當中 不就詳細介紹了。本教程的設計目標">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://weibo.com/wangtaoworld/iOS/2014/10/15/iOS开发/vimtutor.html"/>
+
+
+
+
+
+  <title>vim教程 | wt</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">wt</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://weibo.com/wangtaoworld/iOS/2014/10/15/iOS开发/vimtutor.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wangtao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="wt">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">vim教程</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-10-15T10:40:30+08:00">
+                2014-10-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>===============================================================================</p>
+<h1 id="歡-迎-閱-讀-《-V-I-M-教-程-》-──-版本-1-5"><a href="#歡-迎-閱-讀-《-V-I-M-教-程-》-──-版本-1-5" class="headerlink" title="=      歡     迎     閱     讀   《 V I M  教  程 》   ──     版本 1.5      ="></a>=      歡     迎     閱     讀   《 V I M  教  程 》   ──     版本 1.5      =</h1><pre><code>vim 是一個具有很多命令的功能非常強大的編輯器。限于篇幅，在本教程當中
+不就詳細介紹了。本教程的設計目標是講述一些必要的基本命令，而掌握好這
+些命令，您就能夠很容易將vim當作一個通用的萬能編輯器來使用了。
+
+完成本教程的內容大約需要25-30分鐘，取決于您訓練的時間。
+
+每一節的命令操作將會更改本文。推薦您復制本文的一個副本，然後在副本上
+進行訓練(如果您是通過&quot;vimtutor&quot;來啟動教程的，那麼本文就已經是副本了)。
+
+切記一點︰本教程的設計思路是在使用中進行學習的。也就是說，您需要通過
+執行命令來學習它們本身的正確用法。如果您只是閱讀而不操作，那麼您可能
+會很快遺忘這些命令的！
+
+好了，現在請確定您的Shift-Lock(大小寫鎖定鍵)還沒有按下，然後按鍵盤上
+的字母鍵 j 足夠多的次數來移動光標，直到第一節的內容能夠完全充滿屏幕。
+</code></pre><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">			       第一講小結</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="number">1</span>. 光標在屏幕文本中的移動既可以用箭頭鍵，也可以使用 hjkl 字母鍵。</span><br><span class="line">	 h (左移)	<span class="keyword">j</span> (下行)       <span class="keyword">k</span> (上行)	    <span class="keyword">l</span> (右移)</span><br><span class="line"></span><br><span class="line">  <span class="number">2</span>. 欲進入<span class="keyword">vim</span>編輯器(從命令行提示符)，請輸入︰<span class="keyword">vim</span> 文件名 &lt;回車&gt;</span><br><span class="line"></span><br><span class="line">  <span class="number">3</span>. 欲退出<span class="keyword">vim</span>編輯器，請輸入以下命令放棄所有修改︰</span><br><span class="line"></span><br><span class="line">	<span class="symbol">&lt;ESC&gt;</span>   :q!	 &lt;回車&gt;</span><br><span class="line"></span><br><span class="line">     或者輸入以下命令保存所有修改︰</span><br><span class="line"></span><br><span class="line">	<span class="symbol">&lt;ESC&gt;</span>   :<span class="keyword">wq</span>	 &lt;回車&gt;</span><br><span class="line"></span><br><span class="line">  <span class="number">4</span>. 在正常模式下刪除光標所在位置的字符，請按︰ <span class="keyword">x</span></span><br><span class="line"></span><br><span class="line">  <span class="number">5</span>. 在正常模式下要在光標所在位置開始插入文本，請按︰</span><br><span class="line"></span><br><span class="line">	 i     輸入必要文本	<span class="symbol">&lt;ESC&gt;</span></span><br><span class="line"></span><br><span class="line">特別提示︰按下 <span class="symbol">&lt;ESC&gt;</span> 鍵會帶您回到正常模式或者取消一個不期望或者部分完成</span><br><span class="line">的命令。</span><br><span class="line"></span><br><span class="line">好了，第一講到此結束。下面接下來繼續第二講的內容。</span><br></pre></td></tr></table></figure>
+<pre><code>第二講小結
+</code></pre><ol>
+<li><p>欲從當前光標刪除至單字/單詞末尾，請輸入︰dw</p>
+</li>
+<li><p>欲從當前光標刪除至當前行末尾，請輸入︰d$</p>
+</li>
+<li><p>欲刪除整行，請輸入︰dd</p>
+</li>
+<li><p>在正常模式下一個命令的格式是︰</p>
+<p>  [number]   command   object     或者     command    [number]   object<br>其意是︰<br>  number - 代表的是命令執行的次數<br>  command - 代表要做的事情，比如 d 代表刪除<br>  object - 代表要操作的對象，比如 w 代表單字/單詞，$ 代表到行末等等。<br>   $ (to the end of line), etc.</p>
+</li>
+<li><p>欲撤消以前的操作，請輸入︰u (小寫的u)<br>欲撤消在一行中所做的改動，請輸入︰U (大寫的U)<br>欲撤消以前的撤消命令，恢復以前的操作結果，請輸入︰CTRL-R</p>
+</li>
+</ol>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">			       第三講小結</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="number">1.</span> 要重新置入已經刪除的文本內容，請輸入小寫字母 p。該操作可以將已刪除</span><br><span class="line">     的文本內容置于光標之後。如果最後一次刪除的是一個整行，那麼該行將置</span><br><span class="line">     于當前光標所在行的下一行。</span><br><span class="line"></span><br><span class="line">  <span class="number">2.</span> 要替換光標所在位置的字符，請輸入小寫的 r 和要替換掉原位置字符的新字</span><br><span class="line">     符即可。</span><br><span class="line"></span><br><span class="line">  <span class="number">3.</span> 更改類命令允許您改變指定的對象，從當前光標所在位置直到對象的末尾。</span><br><span class="line">     比如輸入 cw 可以替換當前光標到單詞的末尾的內容；輸入 c$ 可以替換當</span><br><span class="line">     前光標到行末的內容。</span><br><span class="line"></span><br><span class="line">  <span class="number">4.</span> 更改類命令的格式是︰</span><br><span class="line"></span><br><span class="line">	 [number]   c	object	      或者	c   [number]   object</span><br><span class="line"></span><br><span class="line">下面我們繼續學習下一講。</span><br></pre></td></tr></table></figure>
+<pre><code>第四講小結
+</code></pre><ol>
+<li><p>Ctrl-g 用于顯示當前光標所在位置和文件狀態信息。Shift-G 用于將光標跳<br>轉至文件最後一行。先敲入一個行號然後按 Shift-G 則是將光標移動至該行<br>號代表的行。</p>
+</li>
+<li><p>輸入 / 然後緊隨一個字符串是則是在當前所編輯的文檔中向後查找該字符串。<br>輸入問號 ? 然後緊隨一個字符串是則是在當前所編輯的文檔中向前查找該字<br>符串。完成一次查找之後按 n 鍵則是重復上一次的命令，可在同一方向上查<br>找下一個字符串所在；或者按 Shift-N 向相反方向查找下該字符串所在。</p>
+</li>
+<li><p>如果光標當前位置是括號(、)、[、]、{、}，按 % 可以將光標移動到配對的<br>括號上。</p>
+</li>
+<li><p>在一行內替換頭一個字符串 old 為新的字符串 new，請輸入  :s/old/new<br>在一行內替換所有的字符串 old 為新的字符串 new，請輸入  :s/old/new/g<br>在兩行內替換所有的字符串 old 為新的字符串 new，請輸入  :#,#s/old/new/g<br>在文件內替換所有的字符串 old 為新的字符串 new，請輸入  :%s/old/new/g<br>進行全文替換時詢問用戶確認每個替換需添加 c 選項，請輸入 :%s/old/new/gc</p>
+</li>
+</ol>
+<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">	       第五講小結</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="number">1.</span> :!command 用于執行一個外部命令 command。</span><br><span class="line"></span><br><span class="line">   請看一些實際例子︰</span><br><span class="line">:!dir		-  用于顯示當前目錄的內容。</span><br><span class="line">:!rm FILENAME	-  用于刪除名為 FILENAME 的文件。</span><br><span class="line"></span><br><span class="line"><span class="number">2.</span> :w FILENAME  可將當前 VIM 中正在編輯的文件保存到名為 FILENAME</span><br><span class="line">   的文件中。</span><br><span class="line"></span><br><span class="line"><span class="number">3.</span> :#,#w FILENAME 可將當前編輯文件第 # 行至第 # 行的內容保存到文件</span><br><span class="line">   FILENAME 中。</span><br><span class="line"></span><br><span class="line"><span class="number">4.</span> :r FILENAME 可提取磁盤文件 FILENAME 並將其插入到當前文件的光標位置</span><br><span class="line">   後面。</span><br></pre></td></tr></table></figure>
+<pre><code>第六講小結
+</code></pre><ol>
+<li><p>輸入小寫的 o 可以在光標下方打開新的一行並將光標置于新開的行首，進入<br>插入模式。<br>輸入大寫的 O 可以在光標上方打開新的一行並將光標置于新開的行首，進入<br>插入模式。</p>
+</li>
+<li><p>輸入小寫的 a 可以在光標所在位置之後插入文本。<br>輸入大寫的 A 可以在光標所在行的行末之後插入文本。</p>
+</li>
+<li><p>輸入大寫的 R 將進入替換模式，直至按 <esc> 鍵退出替換模式而進入正常<br>模式。</esc></p>
+</li>
+<li><p>輸入 :set xxx 可以設置 xxx 選項。</p>
+</li>
+</ol>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">	       第七講︰在線幫助命令</span><br><span class="line"></span><br><span class="line">	      ** 使用在線幫助系統 **</span><br><span class="line"></span><br><span class="line"> Vim 擁有一個細致全面的在線幫助系統。要啟動該幫助系統，請選擇如下三種方</span><br><span class="line"> 法之一︰</span><br><span class="line">- 按下 <span class="symbol">&lt;HELP&gt;</span> 鍵 (如果鍵盤上有的話)</span><br><span class="line">- 按下 <span class="symbol">&lt;F1&gt;</span> 鍵 (如果鍵盤上有的話)</span><br><span class="line">- 輸入	:<span class="keyword">help</span> &lt;回車&gt;</span><br><span class="line"></span><br><span class="line"> 輸入 :q &lt;回車&gt; 可以關閉幫助窗口。</span><br><span class="line"></span><br><span class="line"> 提供一個正確的參數給<span class="string">":help"</span>命令，您可以找到關于該主題的幫助。請試驗以</span><br><span class="line"> 下參數(可別忘了按回車鍵哦。:)︰</span><br><span class="line"></span><br><span class="line">  :<span class="keyword">help</span> <span class="keyword">w</span> &lt;回車&gt;</span><br><span class="line">  :<span class="keyword">help</span> c_&lt;T &lt;回車&gt;</span><br><span class="line">  :<span class="keyword">help</span> <span class="keyword">insert</span>-<span class="built_in">index</span> &lt;回車&gt;</span><br><span class="line">  :<span class="keyword">help</span> user-manual &lt;回車&gt;</span><br></pre></td></tr></table></figure>
+<pre><code> 第八講︰創建一個啟動腳本
+
+** 啟用vim的功能 **
+</code></pre><p>  Vim的功能特性要比vi多得多，但大部分功能都沒有缺省激活。為了啟動更多的<br>  功能，您得創建一個vimrc文件。</p>
+<ol>
+<li><p>開始編輯vimrc文件，這取決于您所使用的操作系統︰</p>
+<p>:edit ~/.vimrc        這是Unix系統所使用的命令<br>:edit $VIM/_vimrc        這是Windows系統所使用的命令</p>
+</li>
+<li><p>接著導入vimrc范例文件︰</p>
+<p>:read $VIMRUNTIME/vimrc_example.vim</p>
+</li>
+<li><p>保存文件，命令為︰</p>
+<p>:write</p>
+<p>在下次您啟動vim的時候，編輯器就會有了語法高亮的功能。您可以繼續把您喜<br>歡的其它功能設置添加到這個vimrc文件中。</p>
+</li>
+</ol>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"> <span class="attribute">vim</span> 教程到此結束。本教程只是為了簡明地介紹一下vim編輯器，但已足以讓您</span><br><span class="line"> 很容易學會使用本編輯器了。毋庸質疑，vim還有很多很多的命令，本教程所介</span><br><span class="line"> 紹的還差得遠著呢。所以您要精通的話，還望繼續努力哦。下一步您可以閱讀</span><br><span class="line"> vim手冊，使用的命令是︰</span><br><span class="line">:help user-manual</span><br><span class="line"></span><br><span class="line"> 為了更進一步的參考和學習，以下這本書值得推薦︰</span><br><span class="line"></span><br><span class="line">Vim - Vi Improved - 作者︰Steve Oualline</span><br><span class="line">出版社︰New Riders</span><br><span class="line"></span><br><span class="line"> 這是第一本完全講解vim的書籍。對于初學者特別有用。其中還包含有大量實例</span><br><span class="line"> 和圖示。欲知詳情，請訪問 http://iccf-holland.org/click5.html</span><br><span class="line"></span><br><span class="line"> 以下這本書比較老了而且內容主要是vi而不是vim，但是也值得推薦︰</span><br><span class="line"></span><br><span class="line">Learning the Vi Editor - 作者︰Linda Lamb</span><br><span class="line">出版社︰O<span class="string">'Reilly &amp; Associates Inc.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"> 這是一本不錯的書，通過它您幾乎能夠了解到全部vi能夠做到的事情。此書的第</span></span><br><span class="line"><span class="string"> 六個版本也包含了一些關于vim的信息。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"> 本教程是由來自Calorado School of Minese的Michael C. Pierce、Robert K.</span></span><br><span class="line"><span class="string"> Ware 所編寫的，其中來自Colorado State University的Charles Smith提供了</span></span><br><span class="line"><span class="string"> 很多創意。編者通信地址是︰</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">bware<span class="variable">@mines</span>.colorado.edu</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"> 本教程已由Bram Moolenaar專為vim進行修訂。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"> 譯制者附言︰</span></span><br><span class="line"><span class="string"> ===========</span></span><br><span class="line"><span class="string">     簡體中文教程翻譯版之譯制者為梁昌泰 &lt;beos<span class="variable">@turbolinux</span>.com.cn&gt;，還有</span></span><br><span class="line"><span class="string">     另外一個聯系地址︰linuxrat<span class="variable">@gnuchina</span>.org。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">     繁體中文教程是從簡體中文教程翻譯版使用 Debian GNU/Linux 中文項目小</span></span><br><span class="line"><span class="string">     組的于廣輝先生編寫的中文漢字轉碼器  autoconvert 轉換而成的，並對轉</span></span><br><span class="line"><span class="string">     換的結果做了一些細節的改動。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"> 變更記錄︰</span></span><br><span class="line"><span class="string"> =========</span></span><br><span class="line"><span class="string">     2002年08月30日 梁昌泰 &lt;beos<span class="variable">@turbolinux</span>.com.cn&gt;</span></span><br><span class="line"><span class="string">     感謝 RMS<span class="variable">@SMTH</span> 的指正，將多處錯誤修正。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">     2002年04月22日 梁昌泰 &lt;linuxrat<span class="variable">@gnuchina</span>.org&gt;</span></span><br><span class="line"><span class="string">     感謝 xuandong<span class="variable">@sh163</span>.net 的指正，將兩處錯別字修正。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">     2002年03月18日 梁昌泰 &lt;linuxrat<span class="variable">@gnuchina</span>.org&gt;</span></span><br><span class="line"><span class="string">     根據Bram Molenaar先生在2002年03月16日的來信要求，將vimtutor1.4中譯</span></span><br><span class="line"><span class="string">     版升級到vimtutor1.5。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">     2001年11月15日 梁昌泰 &lt;linuxrat<span class="variable">@gnuchina</span>.org&gt;</span></span><br><span class="line"><span class="string">     將vimtutor1.4中譯版提交給Bram Molenaar和Sven Guckes。</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/文档/" rel="tag"># 文档</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/uncategorized/2014/10/04/上传第二个文件.html" rel="next" title="上传第二个文件">
+                <i class="fa fa-chevron-left"></i> 上传第二个文件
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/iOS/2014/10/20/Mac/苹果电脑快捷键.html" rel="prev" title="苹果电脑快捷键">
+                苹果电脑快捷键 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">wangtao</p>
+              <p class="site-description motion-element" itemprop="description">技术交流</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#歡-迎-閱-讀-《-V-I-M-教-程-》-──-版本-1-5"><span class="nav-number">1.</span> <span class="nav-text">=      歡     迎     閱     讀   《 V I M  教  程 》   ──     版本 1.5      =</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">wangtao</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
