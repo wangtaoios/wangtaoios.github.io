@@ -9,7 +9,7 @@
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
-    <title>iOS_检测当前网络类型和运营商 · undefined</title>
+    <title>我 · undefined</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -65,8 +65,6 @@
 
     <link rel="preload" href= /css/style.css?v=20180317 as="style" onload="this.onload=null;this.rel='stylesheet'">
     <link rel="stylesheet" type="text/css" href= /css/mobile.css?v=20180317 media="(max-width: 980px)"/>
-    
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         
     <link rel="icon" href= /assets/me.png>
     <script>
@@ -177,23 +175,12 @@
 </head>
 
     
-        <body class="post-body">
-    
     
 <header class="header">
 
     <div class="read-progress"></div>
     <div class="header-sidebar-menu">&#xe775;</div>
     <!-- post页的toggle banner  -->
-    
-    <div class="banner">
-            <div class="blog-title">
-                <a href="/" >交流与分享</a>
-            </div>
-            <div class="post-title">
-                <a href="#" class="post-name">iOS_检测当前网络类型和运营商</a>
-            </div>
-    </div>
     
     <a class="home-link" href=/>交流与分享</a>
 </header>
@@ -207,67 +194,24 @@
 
 
 
-height:50vh;
-
 >
     
     <!-- 主页  -->
-    
-    
-    <!-- 404页  -->
             
-    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
+    <div class="site-intro-img" style="background-image: url(/)"></div>
     <div class="site-intro-placeholder"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            iOS_检测当前网络类型和运营商
-            <!-- 404 -->
-            
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
             
-            
-            <!-- 404 -->
-            
         </p>
         <!-- 文章页meta -->
-        
-            <!-- 文章页标签  -->
-            
-                <div class= post-intro-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "检测">检测</a>
-    
-</div>
-            
-            <div class="post-intro-meta">
-                <span class="post-intro-calander iconfont-archer">&#xe676;</span>
-                <span class="post-intro-time">2018/04/02</span>
-                
-                <span id="busuanzi_container_page_pv" class="busuanzi-pv">
-                    <span class="iconfont-archer">&#xe602;</span>
-                    <span id="busuanzi_value_page_pv"></span>
-                </span>
-                
-                <span class="shareWrapper">
-                    <span class="iconfont-archer shareIcon">&#xe71d;</span>
-                    <span class="shareText">Share</span>
-                    <ul class="shareList">
-                        <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
-                            <div class="share-qrcode"></div>
-                        </li>
-                        <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
-                        <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
-                        <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
-                        <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
-                    </ul>
-                </span>
-            </div>
         
     </div>
 </div>
@@ -353,37 +297,15 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <blockquote>
-<p><a href="https://developer.apple.com/library/ios/samplecode/Reachability/Reachability.zip" target="_blank" rel="noopener">https://developer.apple.com/library/ios/samplecode/Reachability/Reachability.zip</a></p>
-</blockquote>
-<h4 id="下载demo，修改Reachability-h"><a href="#下载demo，修改Reachability-h" class="headerlink" title="下载demo，修改Reachability.h"></a>下载demo，修改Reachability.h</h4><p>将</p>
-<figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">typedef <span class="class"><span class="keyword">enum</span> : <span class="title">NSInteger</span> &#123;</span></span><br><span class="line">    NotReachable = <span class="number">0</span>,</span><br><span class="line">    ReachableViaWiFi,</span><br><span class="line">    ReachableViaWWAN</span><br><span class="line">&#125; NetworkStatus;</span><br></pre></td></tr></table></figure>
-<p>改为</p>
-<figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">typedef <span class="class"><span class="keyword">enum</span> : <span class="title">NSInteger</span> &#123;</span></span><br><span class="line">    WTNotReachable = <span class="number">0</span>,</span><br><span class="line">    WTReachableViaWiFi = <span class="number">1</span>,</span><br><span class="line">    WTReachableViaWWAN2G = <span class="number">2</span>,</span><br><span class="line">    WTReachableViaWWAN3G = <span class="number">3</span>,</span><br><span class="line">    WTReachableViaWWAN4G = <span class="number">4</span>,</span><br><span class="line">&#125; WTNetworkStatus;</span><br></pre></td></tr></table></figure>
-<h4 id="修改Reachability-m"><a href="#修改Reachability-m" class="headerlink" title="修改Reachability.m"></a>修改Reachability.m</h4><p> 将<br>    networkStatusForFlags:的这个条件</p>
-<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">    <span class="keyword">if</span> ((flags &amp; kSCNetworkReachabilityFlagsIsWWAN) == kSCNetworkReachabilityFlagsIsWWAN)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">         ... but WWAN connections are OK if the calling application is using the CFNetwork APIs.</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="attr">returnValue</span> = ReachableViaWWAN;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<p>改为</p>
-<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">    <span class="keyword">if</span> ((flags &amp; kSCNetworkReachabilityFlagsIsWWAN) == kSCNetworkReachabilityFlagsIsWWAN)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">         ... but WWAN connections are OK if the calling application is using the CFNetwork APIs.</span></span><br><span class="line"><span class="comment">         */</span>        </span><br><span class="line">        <span class="built_in">NSArray</span> *typeStrings2G = @[<span class="built_in">CTRadioAccessTechnologyEdge</span>,</span><br><span class="line">                                   <span class="built_in">CTRadioAccessTechnologyGPRS</span>,</span><br><span class="line">                                   <span class="built_in">CTRadioAccessTechnologyCDMA1x</span>];</span><br><span class="line">        </span><br><span class="line">        <span class="built_in">NSArray</span> *typeStrings3G = @[<span class="built_in">CTRadioAccessTechnologyHSDPA</span>,</span><br><span class="line">                                   <span class="built_in">CTRadioAccessTechnologyWCDMA</span>,</span><br><span class="line">                                   <span class="built_in">CTRadioAccessTechnologyHSUPA</span>,</span><br><span class="line">                                   <span class="built_in">CTRadioAccessTechnologyCDMAEVDORev0</span>,</span><br><span class="line">                                   <span class="built_in">CTRadioAccessTechnologyCDMAEVDORevA</span>,</span><br><span class="line">                                   <span class="built_in">CTRadioAccessTechnologyCDMAEVDORevB</span>,</span><br><span class="line">                                   <span class="built_in">CTRadioAccessTechnologyeHRPD</span>];</span><br><span class="line">        </span><br><span class="line">        <span class="built_in">NSArray</span> *typeStrings4G = @[<span class="built_in">CTRadioAccessTechnologyLTE</span>];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> ([[[<span class="built_in">UIDevice</span> currentDevice] systemVersion] floatValue] &gt;= <span class="number">7.0</span>) &#123;</span><br><span class="line">            <span class="built_in">CTTelephonyNetworkInfo</span> *teleInfo= [[<span class="built_in">CTTelephonyNetworkInfo</span> alloc] init];</span><br><span class="line">            <span class="built_in">NSString</span> *accessString = teleInfo.currentRadioAccessTechnology;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span> ([typeStrings4G containsObject:accessString]) &#123;</span><br><span class="line">                <span class="keyword">return</span> WTReachableViaWWAN4G;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> ([typeStrings3G containsObject:accessString]) &#123;</span><br><span class="line">                <span class="keyword">return</span> WTReachableViaWWAN3G;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> ([typeStrings2G containsObject:accessString]) &#123;</span><br><span class="line">                <span class="keyword">return</span> WTReachableViaWWAN2G;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> WTNotReachable;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> WTNotReachable;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<h4 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h4><figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">CTTelephonyNetworkInfo * telephonyInfo = <span class="comment">[<span class="comment">[CTTelephonyNetworkInfo alloc]</span> init]</span>;</span><br><span class="line">CTCarrier * carrier = <span class="comment">[telephonyInfo subscriberCellularProvider]</span>;</span><br><span class="line">self.carrierNameString= <span class="comment">[carrier carrierName]</span>;</span><br></pre></td></tr></table></figure>
-<figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">WTReachability *internetReachability = <span class="string">[WTReachability reachabilityForInternetConnection]</span>;</span><br><span class="line"><span class="string">[internetReachability startNotifier]</span>;</span><br><span class="line"><span class="string">[self updateInterfaceWithReachability:internetReachability]</span>;</span><br></pre></td></tr></table></figure>
-<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)updateInterfaceWithReachability:(WTReachability *)reachability</span><br><span class="line">&#123;</span><br><span class="line">    WTNetworkStatus netStatus = [reachability currentReachabilityStatus];</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">switch</span> (netStatus) &#123;</span><br><span class="line">        <span class="keyword">case</span> WTReachableViaWiFi:</span><br><span class="line">            <span class="keyword">self</span>.networkStatusString = <span class="string">@"WiFi"</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> WTReachableViaWWAN2G:</span><br><span class="line">            <span class="keyword">self</span>.networkStatusString = [<span class="built_in">NSString</span> stringWithFormat:<span class="string">@"%@ 2G"</span>, <span class="keyword">self</span>.carrierNameString];</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> WTReachableViaWWAN3G:</span><br><span class="line">            <span class="keyword">self</span>.networkStatusString = [<span class="built_in">NSString</span> stringWithFormat:<span class="string">@"%@ 3G"</span>, <span class="keyword">self</span>.carrierNameString];</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> WTReachableViaWWAN4G:</span><br><span class="line">            <span class="keyword">self</span>.networkStatusString = [<span class="built_in">NSString</span> stringWithFormat:<span class="string">@"%@ 4G"</span>, <span class="keyword">self</span>.carrierNameString];</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> WTNotReachable:</span><br><span class="line">            <span class="keyword">self</span>.networkStatusString = <span class="string">@"网络不可用"</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">            </span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <p>hhha wo我</p>
+
     </article>
     <!-- 前后页  -->
     <ul class="post-paginator">
         <li class="next">
             
-                <div class="nextSlogan">Next Post</div>
-                <a href= "/iOS/2018/04/02/iOS开发/iOS_获取IP地址.html" title= iOS_获取IP地址 >
-                    <div class="nextTitle">iOS_获取IP地址</div>
-                </a>
-            
         </li>
         <li class="previous">
-            
-                <div class="prevSlogan">Previous Post</div>
-                <a href= "/iOS/2018/04/02/工作项目/广益云课堂APP.html" title= 广益云课堂APP >
-                    <div class="prevTitle">广益云课堂APP</div>
-                </a>
             
         </li>
     </ul>
@@ -463,24 +385,6 @@ height:50vh;
 </footer>
     </div>
     <!-- toc -->
-    
-    <div class="toc-wrapper" style=
-    
-
-
-
-
-
-
-
-top:50vh;
-
-    >
-        <div class="toc-catalog">
-            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
-        </div>
-        <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#下载demo，修改Reachability-h"><span class="toc-number">1.</span> <span class="toc-text">下载demo，修改Reachability.h</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#修改Reachability-m"><span class="toc-number">2.</span> <span class="toc-text">修改Reachability.m</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用方式"><span class="toc-number">3.</span> <span class="toc-text">使用方式</span></a></li></ol>
-    </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
     <div class="sidebar sidebar-hide">
@@ -1336,8 +1240,6 @@ jsonContent:
     
     </div>
     <!-- async load share.js -->
-    
-        <script src="/scripts/share.js" async></script>    
     
     </body>
 </html>
