@@ -353,19 +353,19 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <h6 id="AFURLResponseSerialization-响应数据解析器"><a href="#AFURLResponseSerialization-响应数据解析器" class="headerlink" title="AFURLResponseSerialization: 响应数据解析器!"></a>AFURLResponseSerialization: 响应数据解析器!</h6><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">AFJSONResponseSerializer              JSONObject(<span class="built_in">NSDictionary</span>或<span class="built_in">NSArray</span>)</span><br><span class="line">AFHTTPResponseSerializer              <span class="built_in">NSData</span></span><br><span class="line">AFPropertyListResponseSerializer      propertyList(<span class="built_in">NSDictionary</span>或<span class="built_in">NSArray</span>)</span><br><span class="line">AFXMLParserResponseSerializer         <span class="built_in">NSXMLDocument</span></span><br><span class="line">AFImageResponseSerializer             <span class="built_in">UIImage</span> </span><br><span class="line">AFCompoundResponseSerializer          文件</span><br></pre></td></tr></table></figure>
+        <h6 id="AFURLResponseSerialization-响应数据解析器"><a href="#AFURLResponseSerialization-响应数据解析器" class="headerlink" title="AFURLResponseSerialization: 响应数据解析器!"></a>AFURLResponseSerialization: 响应数据解析器!</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">AFJSONResponseSerializer              JSONObject(NSDictionary或NSArray)</span><br><span class="line">AFHTTPResponseSerializer              NSData</span><br><span class="line">AFPropertyListResponseSerializer      propertyList(NSDictionary或NSArray)</span><br><span class="line">AFXMLParserResponseSerializer         NSXMLDocument</span><br><span class="line">AFImageResponseSerializer             UIImage </span><br><span class="line">AFCompoundResponseSerializer          文件</span><br></pre></td></tr></table></figure>
 <p>######如果后台给的json数据中没有\n，\r，\t，可以这样</p>
-<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">strong</span>) AFHTTPSessionManager *manager;</span><br><span class="line">        </span><br><span class="line"><span class="keyword">self</span>.manager.responseSerializer = [AFJSONResponseSerializer serializer];</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@property (nonatomic, strong) AFHTTPSessionManager *manager;</span><br><span class="line">        </span><br><span class="line">self.manager.responseSerializer = [AFJSONResponseSerializer serializer];</span><br></pre></td></tr></table></figure>
 <p>######如果后台给的json数据中有\n，\r，\t，空格，需要这样，否则解析失败，接收不到json<br>报错信息：<br>{error is Error Domain=NSCocoaErrorDomain Code=3840 “The operation couldn’t be completed. (Cocoa error 3840.)”}</p>
-<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">strong</span>) AFHTTPSessionManager *manager;</span><br><span class="line">       </span><br><span class="line"><span class="keyword">self</span>.manager.responseSerializer = [AFHTTPResponseSerializer serializer];</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//去除json字符串中的\n，\r，\t，空格</span></span><br><span class="line">+ (<span class="built_in">NSDictionary</span> *)successValueWithSuccessValueData:(<span class="keyword">id</span>)successValueData</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">NSError</span> *error = <span class="literal">nil</span>;</span><br><span class="line">    <span class="built_in">NSString</span> *jsonString = [[<span class="built_in">NSString</span> alloc] initWithData:successValueData encoding:<span class="built_in">NSUTF8StringEncoding</span>];</span><br><span class="line">    <span class="built_in">NSRange</span> range = <span class="built_in">NSMakeRange</span>(<span class="number">0</span>, [jsonString length]);</span><br><span class="line">    </span><br><span class="line">    jsonString = [jsonString stringByReplacingOccurrencesOfString:<span class="string">@"\r"</span></span><br><span class="line">                                                       withString:<span class="string">@"\\\\r"</span></span><br><span class="line">                                                          options:<span class="built_in">NSRegularExpressionSearch</span></span><br><span class="line">                                                            range:range];</span><br><span class="line">    </span><br><span class="line">    jsonString = [jsonString stringByReplacingOccurrencesOfString:<span class="string">@"\n"</span></span><br><span class="line">                                                       withString:<span class="string">@"\\\\n"</span></span><br><span class="line">                                                          options:<span class="built_in">NSRegularExpressionSearch</span></span><br><span class="line">                                                            range:range];</span><br><span class="line">    </span><br><span class="line">    jsonString = [jsonString stringByReplacingOccurrencesOfString:<span class="string">@"\t"</span></span><br><span class="line">                                                       withString:<span class="string">@"\\\\t"</span></span><br><span class="line">                                                          options:<span class="built_in">NSRegularExpressionSearch</span></span><br><span class="line">                                                            range:range];</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">NSData</span> *jsonData = [jsonString dataUsingEncoding:<span class="built_in">NSUTF8StringEncoding</span>];</span><br><span class="line">    <span class="built_in">NSDictionary</span> *successValue = [<span class="built_in">NSJSONSerialization</span> JSONObjectWithData:jsonData options:<span class="built_in">NSJSONReadingMutableContainers</span> error:&amp;error];</span><br><span class="line">    <span class="keyword">return</span> successValue;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">@property (nonatomic, strong) AFHTTPSessionManager *manager;</span><br><span class="line">       </span><br><span class="line">self.manager.responseSerializer = [AFHTTPResponseSerializer serializer];</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//去除json字符串中的\n，\r，\t，空格</span><br><span class="line">+ (NSDictionary *)successValueWithSuccessValueData:(id)successValueData</span><br><span class="line">&#123;</span><br><span class="line">    NSError *error = nil;</span><br><span class="line">    NSString *jsonString = [[NSString alloc] initWithData:successValueData encoding:NSUTF8StringEncoding];</span><br><span class="line">    NSRange range = NSMakeRange(0, [jsonString length]);</span><br><span class="line">    </span><br><span class="line">    jsonString = [jsonString stringByReplacingOccurrencesOfString:@&quot;\r&quot;</span><br><span class="line">                                                       withString:@&quot;\\\\r&quot;</span><br><span class="line">                                                          options:NSRegularExpressionSearch</span><br><span class="line">                                                            range:range];</span><br><span class="line">    </span><br><span class="line">    jsonString = [jsonString stringByReplacingOccurrencesOfString:@&quot;\n&quot;</span><br><span class="line">                                                       withString:@&quot;\\\\n&quot;</span><br><span class="line">                                                          options:NSRegularExpressionSearch</span><br><span class="line">                                                            range:range];</span><br><span class="line">    </span><br><span class="line">    jsonString = [jsonString stringByReplacingOccurrencesOfString:@&quot;\t&quot;</span><br><span class="line">                                                       withString:@&quot;\\\\t&quot;</span><br><span class="line">                                                          options:NSRegularExpressionSearch</span><br><span class="line">                                                            range:range];</span><br><span class="line">    </span><br><span class="line">    NSData *jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];</span><br><span class="line">    NSDictionary *successValue = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:&amp;error];</span><br><span class="line">    return successValue;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
     </article>
     <!-- 前后页  -->
     <ul class="post-paginator">
         <li class="next">
             
                 <div class="nextSlogan">Next Post</div>
-                <a href= "/iOS/2018/03/30/iOS开发/iOS导出xls.html" title= iOS导出xls >
-                    <div class="nextTitle">iOS导出xls</div>
+                <a href= "/iOS/2018/03/30/iOS开发/iOS_identifierForVendor_UUID_供应商标识符_通用唯一识别码.html" title= iOS_identifierForVendor_UUID_供应商标识[biāo zhì]符_通用唯一识别码 >
+                    <div class="nextTitle">iOS_identifierForVendor_UUID_供应商标识[biāo zhì]符_通用唯一识别码</div>
                 </a>
             
         </li>
@@ -983,26 +983,6 @@ top:50vh;
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     <div class="total-archive"> Total : 36 </div>
     
     <div class="post-archive">
@@ -1020,16 +1000,6 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">04/02</span><a class="archive-post-title" href= "/iOS/2018/04/02/工作项目/广益云课堂APP.html" >广益云课堂APP</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">04/02</span><a class="archive-post-title" href= "/iOS/2018/04/02/iOS开发/iOS_检测当前网络类型和运营商.html" >iOS_检测当前网络类型和运营商</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
             <span class="archive-post-date">04/02</span><a class="archive-post-title" href= "/iOS/2018/04/02/iOS开发/iOS_获取IP地址.html" >iOS_获取IP地址</a>
         </li>
     
@@ -1040,17 +1010,27 @@ top:50vh;
     
     
         <li class="archive-post-item">
+            <span class="archive-post-date">04/02</span><a class="archive-post-title" href= "/iOS/2018/04/02/工作项目/广益云课堂APP.html" >广益云课堂APP</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/02</span><a class="archive-post-title" href= "/iOS/2018/04/02/iOS开发/iOS_检测当前网络类型和运营商.html" >iOS_检测当前网络类型和运营商</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
             <span class="archive-post-date">04/02</span><a class="archive-post-title" href= "/iOS/2018/04/02/工作项目/西开金服APP.html" >西开金服APP</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">04/02</span><a class="archive-post-title" href= "/iOS/2018/04/02/工作项目/学国学APP.html" >学国学APP</a>
+            <span class="archive-post-date">04/02</span><a class="archive-post-title" href= "/iOS/2018/04/02/工作项目/巧手快修APP.html" >巧手快修APP</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">04/02</span><a class="archive-post-title" href= "/iOS/2018/04/02/工作项目/巧手快修APP.html" >巧手快修APP</a>
+            <span class="archive-post-date">04/02</span><a class="archive-post-title" href= "/iOS/2018/04/02/工作项目/学国学APP.html" >学国学APP</a>
         </li>
     
     
@@ -1075,12 +1055,12 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/30</span><a class="archive-post-title" href= "/iOS/2018/03/30/iOS开发/UITextField输入正整数和两位小数.html" >UITextField输入正整数和两位小数</a>
+            <span class="archive-post-date">03/30</span><a class="archive-post-title" href= "/军事/2018/03/30/军事/2016年底中日军机对抗.html" >2016年底中日军机对抗</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/30</span><a class="archive-post-title" href= "/军事/2018/03/30/军事/2016年底中日军机对抗.html" >2016年底中日军机对抗</a>
+            <span class="archive-post-date">03/30</span><a class="archive-post-title" href= "/iOS/2018/03/30/iOS开发/UITextField输入正整数和两位小数.html" >UITextField输入正整数和两位小数</a>
         </li>
     
     
@@ -1135,12 +1115,12 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/20</span><a class="archive-post-title" href= "/iOS/2018/03/20/Mac/重装Mac系统.html" >重装Mac系统</a>
+            <span class="archive-post-date">03/20</span><a class="archive-post-title" href= "/uncategorized/2018/03/20/GitHub博客/hello-world.html" >Hello World</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/20</span><a class="archive-post-title" href= "/uncategorized/2018/03/20/GitHub博客/hello-world.html" >Hello World</a>
+            <span class="archive-post-date">03/20</span><a class="archive-post-title" href= "/iOS/2018/03/20/Mac/重装Mac系统.html" >重装Mac系统</a>
         </li>
     
     
@@ -1224,10 +1204,6 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="搭建博客"><span class="iconfont-archer">&#xe606;</span>搭建博客</span>
     
-        <span class="sidebar-tag-name" data-tags="NTFS"><span class="iconfont-archer">&#xe606;</span>NTFS</span>
-    
-        <span class="sidebar-tag-name" data-tags="Mac"><span class="iconfont-archer">&#xe606;</span>Mac</span>
-    
         <span class="sidebar-tag-name" data-tags="BUG"><span class="iconfont-archer">&#xe606;</span>BUG</span>
     
         <span class="sidebar-tag-name" data-tags="UITextField"><span class="iconfont-archer">&#xe606;</span>UITextField</span>
@@ -1259,6 +1235,10 @@ top:50vh;
         <span class="sidebar-tag-name" data-tags="json"><span class="iconfont-archer">&#xe606;</span>json</span>
     
         <span class="sidebar-tag-name" data-tags="开篇"><span class="iconfont-archer">&#xe606;</span>开篇</span>
+    
+        <span class="sidebar-tag-name" data-tags="NTFS"><span class="iconfont-archer">&#xe606;</span>NTFS</span>
+    
+        <span class="sidebar-tag-name" data-tags="Mac"><span class="iconfont-archer">&#xe606;</span>Mac</span>
     
         <span class="sidebar-tag-name" data-tags="飞机"><span class="iconfont-archer">&#xe606;</span>飞机</span>
     

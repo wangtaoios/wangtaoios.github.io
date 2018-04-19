@@ -356,9 +356,9 @@ height:50vh;
         <p>APP版本升级的时候遇到的BUG</p>
 <p>2017年5月份上线时候，APP用的乐视云直播SDK4.5（2017.1.05），2017下半年时候发现，iOS11系统，播放有声音，无画面</p>
 <p>APP新版本的时候就使用最新版本乐视云直播SDK4.6（2017.5.12），但是在SDK4.5里要求</p>
-<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">2.4</span> 设置Other Linker Flags </span><br><span class="line">在TARGETS-&gt;Build Settings-&gt;Other Linker Flags中加 -ObjC和-all_load。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">2.4 设置Other Linker Flags </span><br><span class="line">在TARGETS-&gt;Build Settings-&gt;Other Linker Flags中加 -ObjC和-all_load。</span><br></pre></td></tr></table></figure>
 <p>当我换为新SDK后，报错</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">duplicate symbol _zcfree <span class="string">in:</span></span><br><span class="line">    <span class="regexp">/Users/</span>wangtao<span class="regexp">/Documents/</span>wanzhong <span class="number">2</span><span class="regexp">/WZFilm/</span>WZFilm<span class="regexp">/Classes/</span>Resource<span class="regexp">/LESDK4.6/</span>Libs/libLECPlayerFoundation.a(zutil.o)</span><br><span class="line"><span class="string">ld:</span> <span class="number">1193</span> duplicate symbols <span class="keyword">for</span> architecture x86_64</span><br><span class="line"><span class="string">clang:</span> <span class="string">error:</span> linker command failed with exit code <span class="number">1</span> (use -v to see invocation)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">duplicate symbol _zcfree in:</span><br><span class="line">    /Users/wangtao/Documents/wanzhong 2/WZFilm/WZFilm/Classes/Resource/LESDK4.6/Libs/libLECPlayerFoundation.a(zutil.o)</span><br><span class="line">ld: 1193 duplicate symbols for architecture x86_64</span><br><span class="line">clang: error: linker command failed with exit code 1 (use -v to see invocation)</span><br></pre></td></tr></table></figure>
 <p>1：查看 Build Settings -&gt; Library Search Paths<br>里面SDK路径没问题</p>
 <p>2：Build Settings —&gt; Other Linker Flags 里包含有<br>-ObjC 和 -all_load</p>
 <h4 id="最后将-all-load删掉，就可以了"><a href="#最后将-all-load删掉，就可以了" class="headerlink" title="最后将-all_load删掉，就可以了"></a><a name="fenced-code-block">最后将-all_load删掉，就可以了</a></h4><ul>
@@ -997,26 +997,6 @@ top:50vh;
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     <div class="total-archive"> Total : 36 </div>
     
     <div class="post-archive">
@@ -1034,16 +1014,6 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">04/02</span><a class="archive-post-title" href= "/iOS/2018/04/02/工作项目/广益云课堂APP.html" >广益云课堂APP</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">04/02</span><a class="archive-post-title" href= "/iOS/2018/04/02/iOS开发/iOS_检测当前网络类型和运营商.html" >iOS_检测当前网络类型和运营商</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
             <span class="archive-post-date">04/02</span><a class="archive-post-title" href= "/iOS/2018/04/02/iOS开发/iOS_获取IP地址.html" >iOS_获取IP地址</a>
         </li>
     
@@ -1054,17 +1024,27 @@ top:50vh;
     
     
         <li class="archive-post-item">
+            <span class="archive-post-date">04/02</span><a class="archive-post-title" href= "/iOS/2018/04/02/工作项目/广益云课堂APP.html" >广益云课堂APP</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/02</span><a class="archive-post-title" href= "/iOS/2018/04/02/iOS开发/iOS_检测当前网络类型和运营商.html" >iOS_检测当前网络类型和运营商</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
             <span class="archive-post-date">04/02</span><a class="archive-post-title" href= "/iOS/2018/04/02/工作项目/西开金服APP.html" >西开金服APP</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">04/02</span><a class="archive-post-title" href= "/iOS/2018/04/02/工作项目/学国学APP.html" >学国学APP</a>
+            <span class="archive-post-date">04/02</span><a class="archive-post-title" href= "/iOS/2018/04/02/工作项目/巧手快修APP.html" >巧手快修APP</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">04/02</span><a class="archive-post-title" href= "/iOS/2018/04/02/工作项目/巧手快修APP.html" >巧手快修APP</a>
+            <span class="archive-post-date">04/02</span><a class="archive-post-title" href= "/iOS/2018/04/02/工作项目/学国学APP.html" >学国学APP</a>
         </li>
     
     
@@ -1089,12 +1069,12 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/30</span><a class="archive-post-title" href= "/iOS/2018/03/30/iOS开发/UITextField输入正整数和两位小数.html" >UITextField输入正整数和两位小数</a>
+            <span class="archive-post-date">03/30</span><a class="archive-post-title" href= "/军事/2018/03/30/军事/2016年底中日军机对抗.html" >2016年底中日军机对抗</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/30</span><a class="archive-post-title" href= "/军事/2018/03/30/军事/2016年底中日军机对抗.html" >2016年底中日军机对抗</a>
+            <span class="archive-post-date">03/30</span><a class="archive-post-title" href= "/iOS/2018/03/30/iOS开发/UITextField输入正整数和两位小数.html" >UITextField输入正整数和两位小数</a>
         </li>
     
     
@@ -1149,12 +1129,12 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/20</span><a class="archive-post-title" href= "/iOS/2018/03/20/Mac/重装Mac系统.html" >重装Mac系统</a>
+            <span class="archive-post-date">03/20</span><a class="archive-post-title" href= "/uncategorized/2018/03/20/GitHub博客/hello-world.html" >Hello World</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/20</span><a class="archive-post-title" href= "/uncategorized/2018/03/20/GitHub博客/hello-world.html" >Hello World</a>
+            <span class="archive-post-date">03/20</span><a class="archive-post-title" href= "/iOS/2018/03/20/Mac/重装Mac系统.html" >重装Mac系统</a>
         </li>
     
     
@@ -1238,10 +1218,6 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="搭建博客"><span class="iconfont-archer">&#xe606;</span>搭建博客</span>
     
-        <span class="sidebar-tag-name" data-tags="NTFS"><span class="iconfont-archer">&#xe606;</span>NTFS</span>
-    
-        <span class="sidebar-tag-name" data-tags="Mac"><span class="iconfont-archer">&#xe606;</span>Mac</span>
-    
         <span class="sidebar-tag-name" data-tags="BUG"><span class="iconfont-archer">&#xe606;</span>BUG</span>
     
         <span class="sidebar-tag-name" data-tags="UITextField"><span class="iconfont-archer">&#xe606;</span>UITextField</span>
@@ -1273,6 +1249,10 @@ top:50vh;
         <span class="sidebar-tag-name" data-tags="json"><span class="iconfont-archer">&#xe606;</span>json</span>
     
         <span class="sidebar-tag-name" data-tags="开篇"><span class="iconfont-archer">&#xe606;</span>开篇</span>
+    
+        <span class="sidebar-tag-name" data-tags="NTFS"><span class="iconfont-archer">&#xe606;</span>NTFS</span>
+    
+        <span class="sidebar-tag-name" data-tags="Mac"><span class="iconfont-archer">&#xe606;</span>Mac</span>
     
         <span class="sidebar-tag-name" data-tags="飞机"><span class="iconfont-archer">&#xe606;</span>飞机</span>
     
