@@ -9,7 +9,7 @@
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
-    <title></title>
+    <title>Runtime初识 · undefined</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -65,6 +65,8 @@
 
     <link rel="preload" href= /css/style.css?v=20180317 as="style" onload="this.onload=null;this.rel='stylesheet'">
     <link rel="stylesheet" type="text/css" href= /css/mobile.css?v=20180317 media="(max-width: 980px)"/>
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         
     <link rel="icon" href= /assets/me.png>
     <script>
@@ -175,12 +177,23 @@
 </head>
 
     
+        <body class="post-body">
+    
     
 <header class="header">
 
     <div class="read-progress"></div>
     <div class="header-sidebar-menu">&#xe775;</div>
     <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >交流与分享</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">Runtime初识</a>
+            </div>
+    </div>
     
     <a class="home-link" href=/>交流与分享</a>
 </header>
@@ -194,24 +207,67 @@
 
 
 
+height:50vh;
+
 >
     
     <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
             
-    <div class="site-intro-img" style="background-image: url(/)"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
     <div class="site-intro-placeholder"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
             
+            Runtime初识
+            <!-- 404 -->
+            
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
             
+            
+            <!-- 404 -->
+            
         </p>
         <!-- 文章页meta -->
+        
+            <!-- 文章页标签  -->
+            
+                <div class= post-intro-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Runtime">Runtime</a>
+    
+</div>
+            
+            <div class="post-intro-meta">
+                <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                <span class="post-intro-time">2018/04/19</span>
+                
+                <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                    <span class="iconfont-archer">&#xe602;</span>
+                    <span id="busuanzi_value_page_pv"></span>
+                </span>
+                
+                <span class="shareWrapper">
+                    <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                    <span class="shareText">Share</span>
+                    <ul class="shareList">
+                        <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                            <div class="share-qrcode"></div>
+                        </li>
+                        <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                        <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                        <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                        <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                    </ul>
+                </span>
+            </div>
         
     </div>
 </div>
@@ -295,41 +351,70 @@
 </script>        
         <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
         <div class="container container-unloaded">
-            <main class="main index-page">
+            <main class="main post-page">
+    <article class="article-entry">
+        <h3 id="关于Objective-C和Runtime的定义，看下面苹果官方文档"><a href="#关于Objective-C和Runtime的定义，看下面苹果官方文档" class="headerlink" title="关于Objective-C和Runtime的定义，看下面苹果官方文档"></a>关于Objective-C和Runtime的定义，看下面苹果官方文档</h3><p><a href="https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/Introduction/Introduction.html" target="_blank" rel="noopener">Programming with Objective-C</a>：Objective-C是编写OS X和iOS软件时使用的主要编程语言。它是C编程语言的超集，提供面向对象的功能和动态运行时。Objective-C继承了C语法，基本类型和流控制语句，并添加了定义类和方法的语法。它还增加了对象图管理和对象文字的语言级支持，同时提供动态类型和绑定，推迟了许多责任，直到运行时。</p>
+<p><a href="https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40008048?language=objc" target="_blank" rel="noopener">Objective-C Runtime Programming Guide</a>：Objective-C语言从编译时间和链接时间到运行时间都会推迟尽可能多的决策。只要有可能，它就会动态地完成任务。这意味着该语言不仅需要编译器，还需要运行时系统来执行编译后的代码。运行时系统充当Objective-C语言的一种操作系统; 这正是使语言发挥作用的原因。</p>
+<p><a href="https://developer.apple.com/documentation/objectivec/objective_c_runtime?language=objc" target="_blank" rel="noopener">Objective-C Runtime</a>：<mark> The Objective-C runtime is a runtime library</mark>  that provides support for the dynamic properties of the Objective-C language, and as such is linked to by all Objective-C apps. Objective-C runtime library support functions are implemented in the shared library found at /usr/lib/libobjc.A.dylib.</p>
+<p>【Objective-C运行库是一个运行时库，它为Objective-C语言的动态属性提供支持，并且由所有Objective-C应用程序链接。Objective-C运行时库支持函数在共享库中实现。/usr/lib/libobjc.A.dylib】</p>
+<h3 id="几个重要的定义（维基百科）"><a href="#几个重要的定义（维基百科）" class="headerlink" title="几个重要的定义（维基百科）"></a>几个重要的定义（维基百科）</h3><p><a href="https://zh.wikipedia.org/wiki/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80" target="_blank" rel="noopener">编程语言</a>（英语：programming language）：是用来定义计算机程序的形式语言。它是一种被标准化的交流技巧，用来向计算机发出指令。一种计算机语言让程序员能够准确地定义计算机所需要使用的数据，并精确地定义在不同情况下所应当采取的行动。</p>
+<p><a href="https://zh.wikipedia.org/wiki/%E9%AB%98%E7%BA%A7%E8%AF%AD%E8%A8%80" target="_blank" rel="noopener">高级编程语言</a>（High-level programming language）：是高度封装了的编程语言，与低级语言相对。它是以人类的日常语言为基础的一种编程语言，使用一般人易于接受的文字来表示，使程序编写员编写更容易，亦有较高的可读性，以方便对电脑认知较浅的人亦可以大概明白其内容。</p>
+<p><a href="https://zh.wikipedia.org/wiki/%E5%8A%A8%E6%80%81%E8%AF%AD%E8%A8%80" target="_blank" rel="noopener">动态编程语言</a>：是高级程序设计语言的一个类别，在计算机科学领域已被广泛应用。它是一类在运行时可以改变其结构的语言：例如新的函数、对象、甚至代码可以被引进，已有的函数可以被删除或是其他结构上的变化。动态语言目前非常具有活力。众所周知的ECMAScript（JavaScript）便是一个动态语言，除此之外如PHP、Ruby、Python等也都属于动态语言，而C、C++等语言则不属于动态语言。</p>
+<p><a href="https://zh.wikipedia.org/wiki/Smalltalk" target="_blank" rel="noopener">Smalltalk</a>：被公认为历史上第二个面向对象的程序设计语言，和第一个真正的集成开发环境（IDE）。Smalltalk由艾伦·凯，Dan Ingalls，Ted Kaehler，Adele Goldberg等于70年代初在Xerox PARC开发。<br>Smalltalk对其它众多的程序设计语言的产生起到了极大的推动作用，主要有：C++，C#，Objective-C，Actor，Java和Ruby等。90年代的许多软件开发思想得利于Smalltalk，例如设计模式、敏捷编程和代码重构等。</p>
+<p><a href="https://zh.wikipedia.org/wiki/%E8%A8%8A%E6%81%AF%E5%82%B3%E9%81%9E_(%E8%BB%9F%E9%AB%94" target="_blank" rel="noopener">消息传递</a>)：在计算机科学中，消息传递（英语：Message passing）是一种通信的形式，在并发计算、并行计算、面向对象程序设计与进程间通信中使用。在这种模式中，进程或对象以发送及接收消息的方式来达成同步。<br>不同于传统程序设计通过名字直接调用（invoking）一个进程、子例程或者函数，消息传递直接发送消息给一个进程，依赖进程或基础框架来调用实际执行的代码。可分为同步方式与异步方式。<br>消息传递是一种通信范型，在这种模型中，由一个传信者，将消息（messages）送给一个，或多个收信者。消息的形式，根据操作系统与编程语言的支持，而有所不同，常见的有方法（method），信号（signals）与数据包（data packets）。</p>
+<p><a href="https://zh.wikipedia.org/wiki/%E5%9F%B7%E8%A1%8C%E6%9C%9F" target="_blank" rel="noopener">运行时期</a>：运行时期（Run time）在计算机科学中代表一个计算机程序从开始运行到终止运行的运作、运行的时期。与运行时期相对的其他时期包括：设计时期（design time）、编译时期（compile time）、链接时期（link time）、与加载时期（load time）。<br>而运行环境是一种为正在运行的程序或程序提供软件服务的虚拟机械环境。它有可能是由操作系统自行提供，或由运行此程序的母程序提供。</p>
+<p><a href="https://zh.wikipedia.org/wiki/%E8%BF%87%E7%A8%8B%E5%BC%8F%E7%BC%96%E7%A8%8B" target="_blank" rel="noopener">过程式编程</a>：过程式程序设计（英语：Procedural programming），又称过程式编程、过程化编程，一种编程典范，有时会被视为是指令式编程的同义语。派生自结构化编程（Structured programming），主要采取程序调用（procedure call）或函数调用（function call）的方式来进行流程控制。流程则由包涵一系列运算步骤的程序（Procedures），例程（routines），子程序（subroutines）, 方法（methods），或函数（functions）来控制。在程序运行的任何一个时间点，都可以调用某个特定的程序。任何一个特定的程序，也能被任意一个程序或是它自己本身调用。著名的例子有Linux内核，git，以及Apache HTTP Server等。</p>
+<p><a href="https://zh.wikipedia.org/wiki/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1" target="_blank" rel="noopener">面向对象程序设计</a>：面向对象程序设计（英语：Object-oriented programming，缩写：OOP）是种具有对象概念的程序编程典范，同时也是一种程序开发的抽象方针。它可能包含数据、属性、代码与方法。对象则指的是类的实例。它将对象作为程序的基本单元，将程序和数据封装其中，以提高软件的重用性、灵活性和扩展性，对象里的程序可以访问及经常修改对象相关连的数据。在面向对象程序编程里，计算机程序会被设计成彼此相关的对象。</p>
+<p><a href="https://zh.wikipedia.org/wiki/C%E8%AF%AD%E8%A8%80" target="_blank" rel="noopener">C语言</a>：是一种通用的编程语言，广泛用于系统软件与应用软件的开发。于1969年至1973年间，为了移植与开发UNIX操作系统，由丹尼斯·里奇与肯·汤普逊，以B语言为基础，在贝尔实验室设计、开发出来。</p>
+<p>C语言具有高效、灵活、功能丰富、表达力强和较高的可移植性等特点，在程序员中备受青睐，成为最近25年使用最为广泛的编程语言[2]。目前，C语言编译器普遍存在于各种不同的操作系统中，例如Microsoft Windows、macOS、Linux、Unix等。C语言的设计影响了众多后来的编程语言，例如C++、Objective-C、Java、C#等。</p>
+<p><a href="https://zh.wikipedia.org/wiki/Objective-C" target="_blank" rel="noopener">Objective-C</a>：是一种通用、高级、面向对象的编程语言。它扩展了标准的ANSI C编程语言，将Smalltalk式的消息传递机制加入到ANSI C中。目前主要支持的编译器有GCC和Clang（采用LLVM作为后端）。</p>
+<p>Objective-C的商标权属于苹果公司，苹果公司也是这个编程语言的主要开发者。苹果在开发NeXTSTEP操作系统时使用了Objective-C，之后被OS X和iOS继承下来。现在Objective-C与Swift是OS X和iOS操作系统、及与其相关的API、Cocoa和Cocoa Touch的主要编程语言。</p>
+<p>Objective-C是C语言的严格超集－－任何C语言程序不经修改就可以直接通过Objective-C编译器，在Objective-C中使用C语言代码也是完全合法的。Objective-C被描述为盖在C语言上的薄薄一层，因为Objective-C的原意就是在C语言主体上加入面向对象的特性。Objective-C的面向对象语法源于Smalltalk消息传递风格。所有其他非面向对象的语法，包括变量类型，预处理器（preprocessing），流程控制，函数声明与调用皆与C语言完全一致。但有些C语言语法合法代码在objective-c中表达的意思不一定相同，比如某些布尔表达式，在C语言中返回值为true，但在Objective-C若与yes直接相比较，函数将会出错，因为在Objective-C中yes的值只表示为1.</p>
+<h3 id="Objective-C"><a href="#Objective-C" class="headerlink" title="Objective-C"></a>Objective-C</h3><ul>
+<li>以把大象装进冰箱为例</li>
+<li>面向过程就是需要 1.打开冰箱门 2.把大象装进去 3.关上冰箱门</li>
+<li>面向对象就是需要 人做什么，冰箱做什么，大象做什么</li>
+<li>C是面向过程的语言，Objective-C是面向对象的语言。</li>
+</ul>
+<p>Objective-C最大的特色是承自Smalltalk的消息传递模型（message passing），此机制与今日C++式之主流风格差异甚大。Objective-C里，与其说对象互相调用方法，不如说对象之间互相传递消息更为精确。此二种风格的主要差异在于调用方法/消息传递这个动作。C++里类别与方法的关系严格清楚，一个方法必定属于一个类别，而且在编译时（compile time）就已经紧密绑定，不可能调用一个不存在类别里的方法。但在Objective-C，类别与消息的关系比较松散，调用方法视为对对象发送消息，所有方法都被视为对消息的回应。所有消息处理直到运行时（runtime）才会动态决定，并交由类别自行决定如何处理收到的消息。也就是说，一个类别不保证一定会回应收到的消息，如果类别收到了一个无法处理的消息，程序只会抛出异常，不会出错或崩溃。</p>
+<h3 id="Objective-C-runtime"><a href="#Objective-C-runtime" class="headerlink" title="Objective-C runtime"></a>Objective-C runtime</h3><h4 id="1：Objective-C-runtime-是什么？"><a href="#1：Objective-C-runtime-是什么？" class="headerlink" title="1：Objective-C runtime 是什么？"></a>1：Objective-C runtime 是什么？</h4><p>根据苹果官网给的定义<br><code>The Objective-C runtime is a runtime library that provides support for the dynamic properties of the Objective-C language, and as such is linked to by all Objective-C apps.</code>和<code>You typically don&#39;t need to use the Objective-C runtime library directly when programming in Objective-C. This API is useful primarily for developing bridge layers between Objective-C and other languages, or for low-level debugging.</code></p>
+<h3 id="得知Objective-C-runtime是a-runtime-library或API，也就是：Objective-C-runtime是一个库。它是一个实体，不是运行的过程。"><a href="#得知Objective-C-runtime是a-runtime-library或API，也就是：Objective-C-runtime是一个库。它是一个实体，不是运行的过程。" class="headerlink" title="得知Objective-C runtime是a runtime library或API，也就是：Objective-C runtime是一个库。它是一个实体，不是运行的过程。"></a>得知<code>Objective-C runtime</code>是<code>a runtime library</code>或<code>API</code>，也就是：<code>Objective-C runtime</code>是一个库。它是一个实体，不是运行的过程。</h3><p>这个库基本上是用C和汇编写的，这个库使得C语言有了面向对象的能力。它就像一个操作系统一样，让所有的工作可以正常的运行。</p>
+<h4 id="2：Objective-C-runtime-干什么？"><a href="#2：Objective-C-runtime-干什么？" class="headerlink" title="2：Objective-C runtime 干什么？"></a>2：Objective-C runtime 干什么？</h4><p>在Objective-C编程时，我们通常不需要直接使用Objective-C运行时库。此API主要用于在Objective-C和其他语言之间开发桥接层，或者用于低级调试。<br>大多数情况下，运行时系统自动并在幕后工作。我们只需编写和编译Objective-C源代码即可使用它。</p>
+<p>大多数情况下，运行时系统自动并在幕后工作。我们只需编写和编译Objective-C源代码即可使用它。</p>
+<p>Objective-C runtime主要做下面几件事：</p>
+<ul>
+<li>封装：在这个库中，对象可以用C语言中的结构体表示，而方法可以用C函数来实现，另外再加上了一些额外的特性。这些结构体和函数被runtime函数封装后，我们就可以在程序运行时创建，检查，修改类、对象和它们的方法了。</li>
+<li>找出方法的最终执行代码：当程序执行[object doSomething]时，会向消息接收者(object)发送一条消息(doSomething)，runtime会根据消息接收者是否能响应该消息而做出不同的反应。</li>
+</ul>
+
+    </article>
+    <!-- 前后页  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href= "/iOS/2018/04/03/GitHub博客/购买域名和GitHubPages博客绑定的三部曲.html" title= 购买域名和GitHubPages博客绑定的三部曲 >
+                    <div class="prevTitle">购买域名和GitHubPages博客绑定的三部曲</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
     
     
+    <!--PC版-->
+
+    <!--PC版-->
+
+
     
-        <article class="index-post">
-            <a class="abstract-title" href = "/uncategorized/2015/01/17/iOS开发/viewController.html" >
-                
-                    <span>viewController</span>
-            </a>
-            <div class="abstract-content">
-                1.UIViewController生命周期几种方法调用时机
-- (id)initWithNibName:(NSString )nibNameOrNil bundle:(NSBundle )nibBundleOrNil;当UIViewController在初始化加载xib文件时，该方法被调用。
-- (void)loadView;当每次访问UIViewController的view(比如controller.view,self.view)并且view为nil，该方法就会被调用。
-- (void)viewWillUnload; 
-- (void)viewDidUnload;
-- (void)...
-            </div>
-            <div class="abstract-post-meta">
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2015/01/17</span>
-                </div>
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "kinds of viewControllers">kinds of viewControllers</a>
-    
-</div>
-                
-            </div>
-        </article>
-    
-    <!-- paginator  -->
-    
+    <!-- 评论 -->
 </main>
             <!-- profile -->
             
@@ -393,6 +478,24 @@
 </footer>
     </div>
     <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#关于Objective-C和Runtime的定义，看下面苹果官方文档"><span class="toc-number">1.</span> <span class="toc-text">关于Objective-C和Runtime的定义，看下面苹果官方文档</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#几个重要的定义（维基百科）"><span class="toc-number">2.</span> <span class="toc-text">几个重要的定义（维基百科）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Objective-C"><span class="toc-number">3.</span> <span class="toc-text">Objective-C</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Objective-C-runtime"><span class="toc-number">4.</span> <span class="toc-text">Objective-C runtime</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1：Objective-C-runtime-是什么？"><span class="toc-number">4.1.</span> <span class="toc-text">1：Objective-C runtime 是什么？</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#得知Objective-C-runtime是a-runtime-library或API，也就是：Objective-C-runtime是一个库。它是一个实体，不是运行的过程。"><span class="toc-number">5.</span> <span class="toc-text">得知Objective-C runtime是a runtime library或API，也就是：Objective-C runtime是一个库。它是一个实体，不是运行的过程。</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2：Objective-C-runtime-干什么？"><span class="toc-number">5.1.</span> <span class="toc-text">2：Objective-C runtime 干什么？</span></a></li></ol></li></ol>
+    </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
     <div class="sidebar sidebar-hide">
@@ -1260,6 +1363,8 @@ jsonContent:
     
     </div>
     <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
     
     </body>
 </html>
