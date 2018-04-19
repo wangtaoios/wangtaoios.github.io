@@ -357,16 +357,16 @@ height:50vh;
 <p><a href="https://developer.apple.com/library/ios/samplecode/Reachability/Reachability.zip" target="_blank" rel="noopener">https://developer.apple.com/library/ios/samplecode/Reachability/Reachability.zip</a></p>
 </blockquote>
 <h4 id="下载demo，修改Reachability-h"><a href="#下载demo，修改Reachability-h" class="headerlink" title="下载demo，修改Reachability.h"></a>下载demo，修改Reachability.h</h4><p>将</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">typedef enum : NSInteger &#123;</span><br><span class="line">    NotReachable = 0,</span><br><span class="line">    ReachableViaWiFi,</span><br><span class="line">    ReachableViaWWAN</span><br><span class="line">&#125; NetworkStatus;</span><br></pre></td></tr></table></figure>
+<figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">typedef <span class="class"><span class="keyword">enum</span> : <span class="title">NSInteger</span> &#123;</span></span><br><span class="line">    NotReachable = <span class="number">0</span>,</span><br><span class="line">    ReachableViaWiFi,</span><br><span class="line">    ReachableViaWWAN</span><br><span class="line">&#125; NetworkStatus;</span><br></pre></td></tr></table></figure>
 <p>改为</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">typedef enum : NSInteger &#123;</span><br><span class="line">    WTNotReachable = 0,</span><br><span class="line">    WTReachableViaWiFi = 1,</span><br><span class="line">    WTReachableViaWWAN2G = 2,</span><br><span class="line">    WTReachableViaWWAN3G = 3,</span><br><span class="line">    WTReachableViaWWAN4G = 4,</span><br><span class="line">&#125; WTNetworkStatus;</span><br></pre></td></tr></table></figure>
+<figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">typedef <span class="class"><span class="keyword">enum</span> : <span class="title">NSInteger</span> &#123;</span></span><br><span class="line">    WTNotReachable = <span class="number">0</span>,</span><br><span class="line">    WTReachableViaWiFi = <span class="number">1</span>,</span><br><span class="line">    WTReachableViaWWAN2G = <span class="number">2</span>,</span><br><span class="line">    WTReachableViaWWAN3G = <span class="number">3</span>,</span><br><span class="line">    WTReachableViaWWAN4G = <span class="number">4</span>,</span><br><span class="line">&#125; WTNetworkStatus;</span><br></pre></td></tr></table></figure>
 <h4 id="修改Reachability-m"><a href="#修改Reachability-m" class="headerlink" title="修改Reachability.m"></a>修改Reachability.m</h4><p> 将<br>    networkStatusForFlags:的这个条件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">    if ((flags &amp; kSCNetworkReachabilityFlagsIsWWAN) == kSCNetworkReachabilityFlagsIsWWAN)</span><br><span class="line">    &#123;</span><br><span class="line">        /*</span><br><span class="line">         ... but WWAN connections are OK if the calling application is using the CFNetwork APIs.</span><br><span class="line">         */</span><br><span class="line">        returnValue = ReachableViaWWAN;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">    <span class="keyword">if</span> ((flags &amp; kSCNetworkReachabilityFlagsIsWWAN) == kSCNetworkReachabilityFlagsIsWWAN)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">         ... but WWAN connections are OK if the calling application is using the CFNetwork APIs.</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="attr">returnValue</span> = ReachableViaWWAN;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 <p>改为</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">    if ((flags &amp; kSCNetworkReachabilityFlagsIsWWAN) == kSCNetworkReachabilityFlagsIsWWAN)</span><br><span class="line">    &#123;</span><br><span class="line">        /*</span><br><span class="line">         ... but WWAN connections are OK if the calling application is using the CFNetwork APIs.</span><br><span class="line">         */        </span><br><span class="line">        NSArray *typeStrings2G = @[CTRadioAccessTechnologyEdge,</span><br><span class="line">                                   CTRadioAccessTechnologyGPRS,</span><br><span class="line">                                   CTRadioAccessTechnologyCDMA1x];</span><br><span class="line">        </span><br><span class="line">        NSArray *typeStrings3G = @[CTRadioAccessTechnologyHSDPA,</span><br><span class="line">                                   CTRadioAccessTechnologyWCDMA,</span><br><span class="line">                                   CTRadioAccessTechnologyHSUPA,</span><br><span class="line">                                   CTRadioAccessTechnologyCDMAEVDORev0,</span><br><span class="line">                                   CTRadioAccessTechnologyCDMAEVDORevA,</span><br><span class="line">                                   CTRadioAccessTechnologyCDMAEVDORevB,</span><br><span class="line">                                   CTRadioAccessTechnologyeHRPD];</span><br><span class="line">        </span><br><span class="line">        NSArray *typeStrings4G = @[CTRadioAccessTechnologyLTE];</span><br><span class="line"></span><br><span class="line">        if ([[[UIDevice currentDevice] systemVersion] floatValue] &gt;= 7.0) &#123;</span><br><span class="line">            CTTelephonyNetworkInfo *teleInfo= [[CTTelephonyNetworkInfo alloc] init];</span><br><span class="line">            NSString *accessString = teleInfo.currentRadioAccessTechnology;</span><br><span class="line">            </span><br><span class="line">            if ([typeStrings4G containsObject:accessString]) &#123;</span><br><span class="line">                return WTReachableViaWWAN4G;</span><br><span class="line">            &#125; else if ([typeStrings3G containsObject:accessString]) &#123;</span><br><span class="line">                return WTReachableViaWWAN3G;</span><br><span class="line">            &#125; else if ([typeStrings2G containsObject:accessString]) &#123;</span><br><span class="line">                return WTReachableViaWWAN2G;</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                return WTNotReachable;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            return WTNotReachable;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<h4 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">CTTelephonyNetworkInfo * telephonyInfo = [[CTTelephonyNetworkInfo alloc] init];</span><br><span class="line">CTCarrier * carrier = [telephonyInfo subscriberCellularProvider];</span><br><span class="line">self.carrierNameString= [carrier carrierName];</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">WTReachability *internetReachability = [WTReachability reachabilityForInternetConnection];</span><br><span class="line">[internetReachability startNotifier];</span><br><span class="line">[self updateInterfaceWithReachability:internetReachability];</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- (void)updateInterfaceWithReachability:(WTReachability *)reachability</span><br><span class="line">&#123;</span><br><span class="line">    WTNetworkStatus netStatus = [reachability currentReachabilityStatus];</span><br><span class="line">    </span><br><span class="line">    switch (netStatus) &#123;</span><br><span class="line">        case WTReachableViaWiFi:</span><br><span class="line">            self.networkStatusString = @&quot;WiFi&quot;;</span><br><span class="line">            break;</span><br><span class="line">        case WTReachableViaWWAN2G:</span><br><span class="line">            self.networkStatusString = [NSString stringWithFormat:@&quot;%@ 2G&quot;, self.carrierNameString];</span><br><span class="line">            break;</span><br><span class="line">        case WTReachableViaWWAN3G:</span><br><span class="line">            self.networkStatusString = [NSString stringWithFormat:@&quot;%@ 3G&quot;, self.carrierNameString];</span><br><span class="line">            break;</span><br><span class="line">        case WTReachableViaWWAN4G:</span><br><span class="line">            self.networkStatusString = [NSString stringWithFormat:@&quot;%@ 4G&quot;, self.carrierNameString];</span><br><span class="line">            break;</span><br><span class="line">        case WTNotReachable:</span><br><span class="line">            self.networkStatusString = @&quot;网络不可用&quot;;</span><br><span class="line">            break;</span><br><span class="line">            </span><br><span class="line">        default:</span><br><span class="line">            break;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">    <span class="keyword">if</span> ((flags &amp; kSCNetworkReachabilityFlagsIsWWAN) == kSCNetworkReachabilityFlagsIsWWAN)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">         ... but WWAN connections are OK if the calling application is using the CFNetwork APIs.</span></span><br><span class="line"><span class="comment">         */</span>        </span><br><span class="line">        <span class="built_in">NSArray</span> *typeStrings2G = @[<span class="built_in">CTRadioAccessTechnologyEdge</span>,</span><br><span class="line">                                   <span class="built_in">CTRadioAccessTechnologyGPRS</span>,</span><br><span class="line">                                   <span class="built_in">CTRadioAccessTechnologyCDMA1x</span>];</span><br><span class="line">        </span><br><span class="line">        <span class="built_in">NSArray</span> *typeStrings3G = @[<span class="built_in">CTRadioAccessTechnologyHSDPA</span>,</span><br><span class="line">                                   <span class="built_in">CTRadioAccessTechnologyWCDMA</span>,</span><br><span class="line">                                   <span class="built_in">CTRadioAccessTechnologyHSUPA</span>,</span><br><span class="line">                                   <span class="built_in">CTRadioAccessTechnologyCDMAEVDORev0</span>,</span><br><span class="line">                                   <span class="built_in">CTRadioAccessTechnologyCDMAEVDORevA</span>,</span><br><span class="line">                                   <span class="built_in">CTRadioAccessTechnologyCDMAEVDORevB</span>,</span><br><span class="line">                                   <span class="built_in">CTRadioAccessTechnologyeHRPD</span>];</span><br><span class="line">        </span><br><span class="line">        <span class="built_in">NSArray</span> *typeStrings4G = @[<span class="built_in">CTRadioAccessTechnologyLTE</span>];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> ([[[<span class="built_in">UIDevice</span> currentDevice] systemVersion] floatValue] &gt;= <span class="number">7.0</span>) &#123;</span><br><span class="line">            <span class="built_in">CTTelephonyNetworkInfo</span> *teleInfo= [[<span class="built_in">CTTelephonyNetworkInfo</span> alloc] init];</span><br><span class="line">            <span class="built_in">NSString</span> *accessString = teleInfo.currentRadioAccessTechnology;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span> ([typeStrings4G containsObject:accessString]) &#123;</span><br><span class="line">                <span class="keyword">return</span> WTReachableViaWWAN4G;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> ([typeStrings3G containsObject:accessString]) &#123;</span><br><span class="line">                <span class="keyword">return</span> WTReachableViaWWAN3G;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> ([typeStrings2G containsObject:accessString]) &#123;</span><br><span class="line">                <span class="keyword">return</span> WTReachableViaWWAN2G;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> WTNotReachable;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> WTNotReachable;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h4><figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">CTTelephonyNetworkInfo * telephonyInfo = <span class="comment">[<span class="comment">[CTTelephonyNetworkInfo alloc]</span> init]</span>;</span><br><span class="line">CTCarrier * carrier = <span class="comment">[telephonyInfo subscriberCellularProvider]</span>;</span><br><span class="line">self.carrierNameString= <span class="comment">[carrier carrierName]</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">WTReachability *internetReachability = <span class="string">[WTReachability reachabilityForInternetConnection]</span>;</span><br><span class="line"><span class="string">[internetReachability startNotifier]</span>;</span><br><span class="line"><span class="string">[self updateInterfaceWithReachability:internetReachability]</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)updateInterfaceWithReachability:(WTReachability *)reachability</span><br><span class="line">&#123;</span><br><span class="line">    WTNetworkStatus netStatus = [reachability currentReachabilityStatus];</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">switch</span> (netStatus) &#123;</span><br><span class="line">        <span class="keyword">case</span> WTReachableViaWiFi:</span><br><span class="line">            <span class="keyword">self</span>.networkStatusString = <span class="string">@"WiFi"</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> WTReachableViaWWAN2G:</span><br><span class="line">            <span class="keyword">self</span>.networkStatusString = [<span class="built_in">NSString</span> stringWithFormat:<span class="string">@"%@ 2G"</span>, <span class="keyword">self</span>.carrierNameString];</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> WTReachableViaWWAN3G:</span><br><span class="line">            <span class="keyword">self</span>.networkStatusString = [<span class="built_in">NSString</span> stringWithFormat:<span class="string">@"%@ 3G"</span>, <span class="keyword">self</span>.carrierNameString];</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> WTReachableViaWWAN4G:</span><br><span class="line">            <span class="keyword">self</span>.networkStatusString = [<span class="built_in">NSString</span> stringWithFormat:<span class="string">@"%@ 4G"</span>, <span class="keyword">self</span>.carrierNameString];</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> WTNotReachable:</span><br><span class="line">            <span class="keyword">self</span>.networkStatusString = <span class="string">@"网络不可用"</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">            </span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
     </article>
     <!-- 前后页  -->
     <ul class="post-paginator">
@@ -1017,6 +1017,34 @@ top:50vh;
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <div class="total-archive"> Total : 37 </div>
     
     <div class="post-archive">
@@ -1039,7 +1067,12 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">04/02</span><a class="archive-post-title" href= "/iOS/2018/04/02/iOS开发/iOS_获取IP地址.html" >iOS_获取IP地址</a>
+            <span class="archive-post-date">04/02</span><a class="archive-post-title" href= "/iOS/2018/04/02/工作项目/广益云课堂APP.html" >广益云课堂APP</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/02</span><a class="archive-post-title" href= "/iOS/2018/04/02/iOS开发/iOS_检测当前网络类型和运营商.html" >iOS_检测当前网络类型和运营商</a>
         </li>
     
     
@@ -1049,12 +1082,7 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">04/02</span><a class="archive-post-title" href= "/iOS/2018/04/02/工作项目/广益云课堂APP.html" >广益云课堂APP</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">04/02</span><a class="archive-post-title" href= "/iOS/2018/04/02/iOS开发/iOS_检测当前网络类型和运营商.html" >iOS_检测当前网络类型和运营商</a>
+            <span class="archive-post-date">04/02</span><a class="archive-post-title" href= "/iOS/2018/04/02/iOS开发/iOS_获取IP地址.html" >iOS_获取IP地址</a>
         </li>
     
     
@@ -1079,17 +1107,17 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/30</span><a class="archive-post-title" href= "/iOS/2018/03/30/iOS开发/去掉json字符串中的\n \r \t.html" >去掉json字符串中的\n，\r，\t</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
             <span class="archive-post-date">03/30</span><a class="archive-post-title" href= "/iOS/2018/03/30/iOS开发/iOS导出xls.html" >iOS导出xls</a>
         </li>
     
     
         <li class="archive-post-item">
             <span class="archive-post-date">03/30</span><a class="archive-post-title" href= "/iOS/2018/03/30/iOS开发/iOS_identifierForVendor_UUID_供应商标识符_通用唯一识别码.html" >iOS_identifierForVendor_UUID_供应商标识[biāo zhì]符_通用唯一识别码</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/30</span><a class="archive-post-title" href= "/iOS/2018/03/30/iOS开发/去掉json字符串中的\n \r \t.html" >去掉json字符串中的\n，\r，\t</a>
         </li>
     
     
@@ -1144,22 +1172,22 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/21</span><a class="archive-post-title" href= "/iOS/2018/03/21/iOS开发/iOS使用YYKit实现表情键盘.html" >iOS使用YYKit实现表情键盘</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
             <span class="archive-post-date">03/21</span><a class="archive-post-title" href= "/法律/2018/03/21/法律/最高人民法院之重要司法解释.html" >中华人民共和国最高人民法院之重要司法解释</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/20</span><a class="archive-post-title" href= "/uncategorized/2018/03/20/GitHub博客/hello-world.html" >Hello World</a>
+            <span class="archive-post-date">03/21</span><a class="archive-post-title" href= "/iOS/2018/03/21/iOS开发/iOS使用YYKit实现表情键盘.html" >iOS使用YYKit实现表情键盘</a>
         </li>
     
     
         <li class="archive-post-item">
             <span class="archive-post-date">03/20</span><a class="archive-post-title" href= "/iOS/2018/03/20/Mac/重装Mac系统.html" >重装Mac系统</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/20</span><a class="archive-post-title" href= "/uncategorized/2018/03/20/GitHub博客/hello-world.html" >Hello World</a>
         </li>
     
     
@@ -1243,6 +1271,10 @@ top:50vh;
     
         <span class="sidebar-tag-name" data-tags="搭建博客"><span class="iconfont-archer">&#xe606;</span>搭建博客</span>
     
+        <span class="sidebar-tag-name" data-tags="NTFS"><span class="iconfont-archer">&#xe606;</span>NTFS</span>
+    
+        <span class="sidebar-tag-name" data-tags="Mac"><span class="iconfont-archer">&#xe606;</span>Mac</span>
+    
         <span class="sidebar-tag-name" data-tags="BUG"><span class="iconfont-archer">&#xe606;</span>BUG</span>
     
         <span class="sidebar-tag-name" data-tags="Runtime"><span class="iconfont-archer">&#xe606;</span>Runtime</span>
@@ -1276,10 +1308,6 @@ top:50vh;
         <span class="sidebar-tag-name" data-tags="json"><span class="iconfont-archer">&#xe606;</span>json</span>
     
         <span class="sidebar-tag-name" data-tags="开篇"><span class="iconfont-archer">&#xe606;</span>开篇</span>
-    
-        <span class="sidebar-tag-name" data-tags="NTFS"><span class="iconfont-archer">&#xe606;</span>NTFS</span>
-    
-        <span class="sidebar-tag-name" data-tags="Mac"><span class="iconfont-archer">&#xe606;</span>Mac</span>
     
         <span class="sidebar-tag-name" data-tags="飞机"><span class="iconfont-archer">&#xe606;</span>飞机</span>
     
