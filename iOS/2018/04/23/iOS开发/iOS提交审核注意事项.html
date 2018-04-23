@@ -9,7 +9,7 @@
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
-    <title>categories · undefined</title>
+    <title>iOS提交审核注意事项 · undefined</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -65,6 +65,8 @@
 
     <link rel="preload" href= /css/style.css?v=20180317 as="style" onload="this.onload=null;this.rel='stylesheet'">
     <link rel="stylesheet" type="text/css" href= /css/mobile.css?v=20180317 media="(max-width: 980px)"/>
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         
     <link rel="icon" href= /assets/me.png>
     <script>
@@ -175,12 +177,23 @@
 </head>
 
     
+        <body class="post-body">
+    
     
 <header class="header">
 
     <div class="read-progress"></div>
     <div class="header-sidebar-menu">&#xe775;</div>
     <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >交流与分享</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">iOS提交审核注意事项</a>
+            </div>
+    </div>
     
     <a class="home-link" href=/>交流与分享</a>
 </header>
@@ -194,24 +207,67 @@
 
 
 
+height:50vh;
+
 >
     
     <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
             
-    <div class="site-intro-img" style="background-image: url(/)"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
     <div class="site-intro-placeholder"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
             
+            iOS提交审核注意事项
+            <!-- 404 -->
+            
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
             
+            
+            <!-- 404 -->
+            
         </p>
         <!-- 文章页meta -->
+        
+            <!-- 文章页标签  -->
+            
+                <div class= post-intro-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "审核">审核</a>
+    
+</div>
+            
+            <div class="post-intro-meta">
+                <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                <span class="post-intro-time">2018/04/23</span>
+                
+                <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                    <span class="iconfont-archer">&#xe602;</span>
+                    <span id="busuanzi_value_page_pv"></span>
+                </span>
+                
+                <span class="shareWrapper">
+                    <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                    <span class="shareText">Share</span>
+                    <ul class="shareList">
+                        <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                            <div class="share-qrcode"></div>
+                        </li>
+                        <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                        <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                        <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                        <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                    </ul>
+                </span>
+            </div>
         
     </div>
 </div>
@@ -297,7 +353,19 @@
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        
+        <h3 id="1：权限"><a href="#1：权限" class="headerlink" title="1：权限"></a>1：权限</h3><p>提交应用时候，打包上传成功，可是在itunesconnect的活动模块没有显示构建版本，原因是Info.plist的权限没有打开全。我遇到的问题是，对接融云SDK，聊天页面有语音，需要调用麦克风，所以info要设置麦克风权限，我没有设置，找到好久才找到这个问题。</p>
+<p><mark> 当应用需要某些权限，一定要在Info.plist设置对应信息 <mark> </mark></mark></p>
+<p>有一些权限必须写全面，比如后台持续获取定位信息，需要在APP的描述里面书写如下，</p>
+<pre><code>巧手快修APP根据地理位置推送附近的维修消息、维修的时候定位专修员的位置信息，会持续使用GPS定位服务，切换到后台的时候，仍会保持GPS连接，相比其他操作会消耗更多的电量，并影响电池续航时间。建议使用iOS9系统安装并使用巧手快修，最低支持iOS8版本系统。
+</code></pre><p>这是我模仿高德地图等定位APP写的文案，告知用户APP持续定位会更耗电，影响电池寿命等字眼。</p>
+<h3 id="2：Info-plist-冲突"><a href="#2：Info-plist-冲突" class="headerlink" title="2：Info.plist 冲突"></a>2：Info.plist 冲突</h3><p>使用第三方库，但不是用CocoaPods来添加的情况，本地有多个<code>Info.plist</code>文件，和系统的冲突，此时打包一直失败。我遇到的情况是对接乐视播放器，SDK没有CocoaPods添加的方法，只能本地添加，此时info冲突，删掉第三方里的这个Info.plist即可。</p>
+<p><mark> 搜索Info.plist，检查第三方库是否有Info.plist <mark> </mark></mark></p>
+<h3 id="2：隐私"><a href="#2：隐私" class="headerlink" title="2：隐私"></a>2：隐私</h3><p>APP真正有需求的时候才可以找用户要隐私，不然被拒。上线<a href="">巧手快修APP</a>的时候，注册的时候必须打开定位，获取用户位置，才可以注册成功。因为后台说需要拿到位置信息，然后才可以展示用户的信息，是在地图上面展示信息，包括位置，而且后台说这个没有的话做不了，被拒了5次，最后我写死了一个定位信息给后台，注册时候即使不同意开启定位，也可以注册成功，只是这些用户的位置信息是一个我写的固定的，如果同意APP获取位置信息，就把真实的位置给后台，再提交就立即通过了审核。有趣的是，当版本更新的时候，注册的时候必须开启定位才可以注册成功，这次没有被拒，交给用户之前我更新了三次都没有被拒。</p>
+<p><mark> 关于权限，隐私，一定在真正需要时候获取 <mark> </mark></mark></p>
+<p>一个小插曲：巧手快修APP上线时候，我是不想提交的，因为这个注册问题觉得审核肯定过不了。但是领导说继续提交，并且把他写的所谓的好文案一并提交，希望苹果审核通过。最后被拒了5次，然后有一天，一个400打头的国内号码直接打给我，一个中国男士的声音，因为审核联系信息是我的手机号，那人说巧手快修APP问题被拒多次，和我说下这个问题，得改改这个需求，现在的情况苹果审核过不了，然后我问那人这怎么是国内的电话，那人说是代理，不是他审核，他只是代理联系通知开发者，然后态度和苹果客服的态度差了十万八千里，很着急地挂电话了。</p>
+<p>之后了解到，苹果的规则是不会让审核人员直接和开发者联系，后来的APP被拒，多次和审核部门联系过，是美国的座机号或者手机号，但也只是审核部门的沟通人员，不是直接的审核人员。</p>
+<p>3月份是乐视info重复，上传失败<br>1月份是融云麦克风权限，上传成功，不显示构建版本</p>
+
     </article>
     <!-- 前后页  -->
     <ul class="post-paginator">
@@ -305,6 +373,11 @@
             
         </li>
         <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href= "/iOS/2018/04/19/iOS开发/Runtime初识.html" title= Runtime初识 >
+                    <div class="prevTitle">Runtime初识</div>
+                </a>
             
         </li>
     </ul>
@@ -384,6 +457,24 @@
 </footer>
     </div>
     <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1：权限"><span class="toc-number">1.</span> <span class="toc-text">1：权限</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2：Info-plist-冲突"><span class="toc-number">2.</span> <span class="toc-text">2：Info.plist 冲突</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2：隐私"><span class="toc-number">3.</span> <span class="toc-text">2：隐私</span></a></li></ol>
+    </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
     <div class="sidebar sidebar-hide">
@@ -1259,6 +1350,8 @@ jsonContent:
     
     </div>
     <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
     
     </body>
 </html>
